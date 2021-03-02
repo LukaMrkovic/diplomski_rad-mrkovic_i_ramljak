@@ -2,7 +2,7 @@
 
 Diplomski rad - Mrković i Ramljak
 
-Studenti:   LUKA MRKOVIĆ
+Studenti:   LUKA MRKOVIĆ,
             JOSIP RAMLJAK
 
 Mentor:     DOC. DR. SC. DANIEL HOFMAN   
@@ -13,7 +13,7 @@ Sveučilište u Zagrebu Fakultet elektrotehnike i računarstva
 
 Master thesis - Mrković & Ramljak
 
-Students:   LUKA MRKOVIĆ
+Students:   LUKA MRKOVIĆ,
             JOSIP RAMLJAK
 
 Mentor:     DOC. DR. SC. DANIEL HOFMAN
