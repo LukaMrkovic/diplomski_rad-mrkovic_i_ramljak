@@ -39,6 +39,7 @@ package router_config is
     constant payload_size : integer;
     constant buffer_size : integer;
     constant flit_size : integer;
+    constant mesh_size : integer;
     
 end package router_config;
 
@@ -52,5 +53,7 @@ package body router_config is
     constant buffer_size : integer := 8;
     -- Size of a complete flit TODO
     constant flit_size : integer := 2 + payload_size;
+    -- Size of the NoC mesh TODO
+    constant mesh_size : integer := 8;
 
 end package body router_config;
