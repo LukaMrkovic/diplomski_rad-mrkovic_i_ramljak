@@ -42,11 +42,11 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 entity router_interface_module is 
 
     Generic (
-        vc_num : integer;
-        flit_size : integer;
-        payload_size : integer;
-        buffer_size : integer;
-        mesh_size : integer
+        vc_num : integer := 2;
+        flit_size : integer := 44;
+        payload_size : integer := 32;
+        buffer_size : integer := 8;
+        mesh_size : integer := 8
     );
               
     Port (
