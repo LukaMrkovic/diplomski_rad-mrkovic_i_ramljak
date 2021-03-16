@@ -172,9 +172,16 @@ begin
     
     begin
     
-        int_data_in <= data_in;
-        int_data_in_valid <= data_in_valid;
-    
+        if rising_edge(clk) then
+            if rst = '0' then
+                int_data_in <= (others => '0');
+                int_data_in_valid <= '0';
+            else
+                int_data_in <= data_in;
+                int_data_in_valid <= data_in_valid;
+            end if;
+        end if;
+            
     end process;
     
     -- LINK CONTROLLER OUTPUT
@@ -182,8 +189,15 @@ begin
     
     begin
     
-        data_out <= int_data_out;
-        data_out_valid <= int_data_out_valid;
+        if rising_edge(clk) then
+            if rst = '0' then
+                data_out <= (others => '0');
+                data_out_valid <= '0';
+            else
+                data_out <= int_data_out;
+                data_out_valid <= int_data_out_valid;
+            end if;
+        end if;
     
     end process;
 
