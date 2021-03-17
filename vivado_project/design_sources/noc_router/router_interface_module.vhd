@@ -53,42 +53,42 @@ entity router_interface_module is
         clk : in std_logic;
         rst : in std_logic; 
            
-        data_in : in std_logic_vector(flit_size downto 0);
+        data_in : in std_logic_vector(flit_size - 1 downto 0);
         data_in_valid : in std_logic;
-        data_in_vc_busy : out std_logic_vector(vc_num downto 0);
-        data_in_vc_credits : out std_logic_vector(vc_num downto 0);
+        data_in_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
+        data_in_vc_credits : out std_logic_vector(vc_num - 1 downto 0);
            
-        data_out : out std_logic_vector(flit_size downto 0);
+        data_out : out std_logic_vector(flit_size - 1 downto 0);
         data_out_valid : out std_logic;
-        data_out_vc_busy : in std_logic_vector(vc_num downto 0);
-        data_out_vc_credits : in std_logic_vector(vc_num downto 0);
+        data_out_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
+        data_out_vc_credits : in std_logic_vector(vc_num - 1 downto 0);
            
-        int_data_in : out std_logic_vector(flit_size downto 0);
+        int_data_in : out std_logic_vector(flit_size - 1 downto 0);
         int_data_in_valid : out std_logic;
            
-        int_data_out : in std_logic_vector(flit_size downto 0);
+        int_data_out : in std_logic_vector(flit_size - 1 downto 0);
         int_data_out_valid : in std_logic;
            
-        buffer_vc_credits : in std_logic_vector(vc_num downto 0)
+        buffer_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
     );
            
 end router_interface_module;
 
 architecture Behavioral of router_interface_module is
 
-    type vc_array is array (vc_num downto 0) of integer;
+    type vc_array is array (vc_num - 1 downto 0) of integer;
 
 begin
 
     -- FLOW CONTROLLER
     flow_controller_process : process (clk) is
     
-        variable vc_index_snd : std_logic_vector(vc_num downto 0);
-        variable vc_index_rcv : std_logic_vector(vc_num downto 0);
+        variable vc_index_snd : std_logic_vector(vc_num - 1 downto 0);
+        variable vc_index_rcv : std_logic_vector(vc_num - 1 downto 0);
         variable head : std_logic;
         variable tail : std_logic;
         
-        variable vc_busy : std_logic_vector(vc_num downto 0) := (others => '0');
+        variable vc_busy : std_logic_vector(vc_num - 1 downto 0) := (others => '0');
         
         variable credit_counter : vc_array := (others => 0);
         
@@ -116,7 +116,7 @@ begin
             else
                 
                 -- AKO JE VEKTOR data_out_vc_credits RAZLICIT OD 00... 0 => POVECAJ ODGOVARAJUCA BROJILA KREDITA ZA 1
-                for i in vc_num downto 0 loop 
+                for i in (vc_num - 1) downto 0 loop 
                     if data_out_vc_credits(i) = '1' then
                         credit_counter(i) := credit_counter(i) + 1;
                     end if;
@@ -124,8 +124,8 @@ begin
                 
                 -- AKO JE int_data_out_valid PODIGNUT => SMANJI ODGOVARAJUCE BROJILO KREDITA ZA 1
                 if int_data_out_valid = '1' then
-                    vc_index_snd := int_data_out((payload_size + mesh_size + vc_num - 1) downto (payload_size + mesh_size - 1));
-                    for i in vc_num downto 0 loop
+                    vc_index_snd := int_data_out((payload_size + mesh_size + vc_num - 1) downto (payload_size + mesh_size));
+                    for i in (vc_num - 1) downto 0 loop
                         if vc_index_snd(i) = '1' then
                             credit_counter(i) := credit_counter(i) - 1;
                         end if;
@@ -134,14 +134,14 @@ begin
                 
                 -- AKO JE data_in_valid PODIGNUT => POSTAVI ODGOVARAJUCE VARIJABLE
                 if data_in_valid = '1' then
-                    vc_index_rcv := data_in((payload_size + mesh_size + vc_num - 1) downto (payload_size + mesh_size - 1));
+                    vc_index_rcv := data_in((payload_size + mesh_size + vc_num - 1) downto (payload_size + mesh_size));
                     head := data_in(flit_size-1);
                     tail := data_in(flit_size-2);
                 end if;
                 
                 -- AKO JE data_in_valid PODIGNUT I data_in JE header FLIT => ODGOVARAJUCI VIRTUALNI KANAL ZAUZET
                 if data_in_valid = '1' and head = '1' then
-                    for i in vc_num downto 0 loop
+                    for i in (vc_num - 1) downto 0 loop
                         if vc_index_rcv(i) = '1' then
                             vc_busy(i) := '1';
                         end if;
@@ -150,7 +150,7 @@ begin
                     
                 -- AKO JE data_in_valid PODIGNUT I data_in JE tail FLIT => ODGOVARAJUCI VIRTUALNI KANAL JE SLOBODAN
                 if data_in_valid = '1' and tail = '1' then
-                    for i in vc_num downto 0 loop
+                    for i in (vc_num - 1) downto 0 loop
                         if vc_index_rcv(i) = '1' then
                             vc_busy(i) := '0';
                         end if;

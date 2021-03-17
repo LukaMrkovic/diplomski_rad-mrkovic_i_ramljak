@@ -51,23 +51,23 @@ architecture simulation of router_interface_module_tb1 is
         clk : in std_logic;
         rst : in std_logic; 
            
-        data_in : in std_logic_vector(flit_size downto 0);
+        data_in : in std_logic_vector(flit_size - 1 downto 0);
         data_in_valid : in std_logic;
-        data_in_vc_busy : out std_logic_vector(vc_num downto 0);
-        data_in_vc_credits : out std_logic_vector(vc_num downto 0);
+        data_in_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
+        data_in_vc_credits : out std_logic_vector(vc_num - 1 downto 0);
            
-        data_out : out std_logic_vector(flit_size downto 0);
+        data_out : out std_logic_vector(flit_size - 1 downto 0);
         data_out_valid : out std_logic;
-        data_out_vc_busy : in std_logic_vector(vc_num downto 0);
-        data_out_vc_credits : in std_logic_vector(vc_num downto 0);
+        data_out_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
+        data_out_vc_credits : in std_logic_vector(vc_num - 1 downto 0);
            
-        int_data_in : out std_logic_vector(flit_size downto 0);
+        int_data_in : out std_logic_vector(flit_size - 1 downto 0);
         int_data_in_valid : out std_logic;
            
-        int_data_out : in std_logic_vector(flit_size downto 0);
+        int_data_out : in std_logic_vector(flit_size - 1 downto 0);
         int_data_out_valid : in std_logic;
            
-        buffer_vc_credits : in std_logic_vector(vc_num downto 0)
+        buffer_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
     );
     end component;
 
@@ -75,23 +75,23 @@ architecture simulation of router_interface_module_tb1 is
     signal clk_sim : std_logic;
     signal rst_sim : std_logic; 
            
-    signal data_in_sim : std_logic_vector(44 downto 0);
+    signal data_in_sim : std_logic_vector(43 downto 0);
     signal data_in_valid_sim : std_logic;
-    signal data_in_vc_busy_sim : std_logic_vector(2 downto 0);
-    signal data_in_vc_credits_sim : std_logic_vector(2 downto 0);
+    signal data_in_vc_busy_sim : std_logic_vector(1 downto 0);
+    signal data_in_vc_credits_sim : std_logic_vector(1 downto 0);
            
-    signal data_out_sim : std_logic_vector(44 downto 0);
+    signal data_out_sim : std_logic_vector(43 downto 0);
     signal data_out_valid_sim : std_logic;
-    signal data_out_vc_busy_sim : std_logic_vector(2 downto 0);
-    signal data_out_vc_credits_sim : std_logic_vector(2 downto 0);
+    signal data_out_vc_busy_sim : std_logic_vector(1 downto 0);
+    signal data_out_vc_credits_sim : std_logic_vector(1 downto 0);
            
-    signal int_data_in_sim : std_logic_vector(44 downto 0);
+    signal int_data_in_sim : std_logic_vector(43 downto 0);
     signal int_data_in_valid_sim : std_logic;
            
-    signal int_data_out_sim : std_logic_vector(44 downto 0);
+    signal int_data_out_sim : std_logic_vector(43 downto 0);
     signal int_data_out_valid_sim : std_logic;
            
-    signal buffer_vc_credits_sim : std_logic_vector(2 downto 0); 
+    signal buffer_vc_credits_sim : std_logic_vector(1 downto 0); 
     
     -- Period clk
     constant clk_period : time := 200ns;
@@ -135,9 +135,9 @@ begin
     
     begin
     
-        clk_sim <= '0';
-        wait for clk_period / 2;
         clk_sim <= '1';
+        wait for clk_period / 2;
+        clk_sim <= '0';
         wait for clk_period / 2;
         
     end process;
@@ -146,14 +146,68 @@ begin
     stim_process : process
     
     begin
-    
+        
+        data_in_sim <= (others => '0');
+        data_in_valid_sim <= '0';
+        
+        int_data_out_sim <= (others => '0');
+        int_data_out_valid_sim <= '0';
+        
+        buffer_vc_credits_sim <= (others => '0');
+        
+        data_out_vc_busy_sim <= (others => '0');
+        data_out_vc_credits_sim <= (others => '0');
+        
         rst_sim <= '0';
         
-        wait for 10us;
+        wait for 2us;
         
         rst_sim <= '1';
         
-        -- TODO
+        wait for 2us;
+        
+        data_in_sim <= (43 => '1', 40 => '1', others => '0');
+        data_in_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        data_in_valid_sim <= '1';
+        data_in_sim <= (42 => '1', 40 => '1', others => '0');
+        
+        wait for clk_period;
+        
+        data_in_sim <= (others => '0');
+        data_in_valid_sim <= '0';
+        
+        wait for clk_period;
+        buffer_vc_credits_sim <= (0 => '1', others => '0');
+        
+        wait for clk_period;
+        buffer_vc_credits_sim <= (others => '1');
+        
+        wait for clk_period;
+        buffer_vc_credits_sim <= (others => '0');
+        
+        wait for clk_period;
+        int_data_out_sim <= (43 => '1', 40 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        int_data_out_sim <= (42 => '1', 40 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        int_data_out_sim <= (others => '0');
+        int_data_out_valid_sim <= '0';
+        
+        wait for clk_period;
+        data_out_vc_credits_sim <= (0 => '1', others => '0');
+        
+        wait for clk_period;
+        data_out_vc_credits_sim <= (others => '0');
+        
+        
+       
         
         wait;
         
