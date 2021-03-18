@@ -27,6 +27,8 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+library noc_lib;
+use noc_lib.router_config.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -83,23 +85,23 @@ architecture simulation of router_interface_module_tb1 is
     signal clk_sim : std_logic;
     signal rst_sim : std_logic; 
            
-    signal data_in_sim : std_logic_vector(43 downto 0);
+    signal data_in_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal data_in_valid_sim : std_logic;
-    signal data_in_vc_busy_sim : std_logic_vector(1 downto 0);
-    signal data_in_vc_credits_sim : std_logic_vector(1 downto 0);
+    signal data_in_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    signal data_in_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
            
-    signal data_out_sim : std_logic_vector(43 downto 0);
+    signal data_out_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal data_out_valid_sim : std_logic;
-    signal data_out_vc_busy_sim : std_logic_vector(1 downto 0);
-    signal data_out_vc_credits_sim : std_logic_vector(1 downto 0);
+    signal data_out_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    signal data_out_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
            
-    signal int_data_in_sim : std_logic_vector(43 downto 0);
+    signal int_data_in_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal int_data_in_valid_sim : std_logic;
            
-    signal int_data_out_sim : std_logic_vector(43 downto 0);
+    signal int_data_out_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal int_data_out_valid_sim : std_logic;
            
-    signal buffer_vc_credits_sim : std_logic_vector(1 downto 0); 
+    signal buffer_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0); 
     
     -- Period takta
     constant clk_period : time := 200ns;
@@ -110,11 +112,11 @@ begin
     uut: router_interface_module
         
         generic map(
-            vc_num => 2,
-            flit_size => 44,
-            payload_size => 32,
-            buffer_size => 8,
-            mesh_size => 8
+            vc_num => const_vc_num,
+            flit_size => const_flit_size,
+            payload_size => const_payload_size,
+            buffer_size => const_buffer_size,
+            mesh_size => const_mesh_size
         )
         
         port map(
@@ -254,15 +256,75 @@ begin
         
         wait for clk_period;
         
-        -- Buffer oslobodio poziciju, prvi (01) virtualni kanal
+        -- Buffer susjednog routera oslobodio poziciju, prvi (01) virtualni kanal
         data_out_vc_credits_sim <= (0 => '1', others => '0');
         
         wait for clk_period;
         
-        -- Smiren buffer signal
+        -- Smiren buffer signal susjednog routera
         data_out_vc_credits_sim <= (others => '0');
         
-        -- DODAJ STIMULUS OVDJE
+        wait for (5 * clk_period);
+        
+        -- Izlazni head flit, prvi (01) virtualni kanal
+        int_data_out_sim <= (43 => '1', 40 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Izlazni head flit, drugi (10) virtualni kanal
+        int_data_out_sim <= (43 => '1', 41 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Izlazni tail flit, prvi (01) virtualni kanal
+        int_data_out_sim <= (42 => '1', 40 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Izlazni body flit, drugi (10) virtualni kanal
+        int_data_out_sim <= (41 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Izlazni body flit, drugi (10) virtualni kanal
+        int_data_out_sim <= (41 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Izlazni tail flit, drugi (10) virtualni kanal
+        int_data_out_sim <= (42 => '1', 41 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Smireni izlazi
+        int_data_out_sim <= (others => '0');
+        int_data_out_valid_sim <= '0';
+        
+        wait for (2 * clk_period);
+        
+        -- Buffer susjednog routera oslobodio poziciju, prvi (01) i drugi (10) virtualni kanal
+        data_out_vc_credits_sim <= (others => '1');
+        
+        wait for clk_period;
+        
+        -- Buffer susjednog routera oslobodio poziciju, drugi (10) virtualni kanal
+        data_out_vc_credits_sim <= (1 => '1', others => '0');
+        
+        wait for clk_period;
+        
+        -- Buffer susjednog routera oslobodio poziciju, prvi (01) i drugi (10) virtualni kanal
+        data_out_vc_credits_sim <= (others => '1');
+        
+        wait for clk_period;
+        
+        -- Smiren buffer signal susjednog routera
+        data_out_vc_credits_sim <= (others => '0');
         
         wait;
         
