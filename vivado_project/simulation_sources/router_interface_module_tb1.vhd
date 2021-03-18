@@ -256,15 +256,75 @@ begin
         
         wait for clk_period;
         
-        -- Buffer oslobodio poziciju, prvi (01) virtualni kanal
+        -- Buffer susjednog routera oslobodio poziciju, prvi (01) virtualni kanal
         data_out_vc_credits_sim <= (0 => '1', others => '0');
         
         wait for clk_period;
         
-        -- Smiren buffer signal
+        -- Smiren buffer signal susjednog routera
         data_out_vc_credits_sim <= (others => '0');
         
-        -- DODAJ STIMULUS OVDJE
+        wait for (5 * clk_period);
+        
+        -- Izlazni head flit, prvi (01) virtualni kanal
+        int_data_out_sim <= (43 => '1', 40 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Izlazni head flit, drugi (10) virtualni kanal
+        int_data_out_sim <= (43 => '1', 41 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Izlazni tail flit, prvi (01) virtualni kanal
+        int_data_out_sim <= (42 => '1', 40 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Izlazni body flit, drugi (10) virtualni kanal
+        int_data_out_sim <= (41 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Izlazni body flit, drugi (10) virtualni kanal
+        int_data_out_sim <= (41 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Izlazni tail flit, drugi (10) virtualni kanal
+        int_data_out_sim <= (42 => '1', 41 => '1', others => '0');
+        int_data_out_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Smireni izlazi
+        int_data_out_sim <= (others => '0');
+        int_data_out_valid_sim <= '0';
+        
+        wait for (2 * clk_period);
+        
+        -- Buffer susjednog routera oslobodio poziciju, prvi (01) i drugi (10) virtualni kanal
+        data_out_vc_credits_sim <= (others => '1');
+        
+        wait for clk_period;
+        
+        -- Buffer susjednog routera oslobodio poziciju, drugi (10) virtualni kanal
+        data_out_vc_credits_sim <= (1 => '1', others => '0');
+        
+        wait for clk_period;
+        
+        -- Buffer susjednog routera oslobodio poziciju, prvi (01) i drugi (10) virtualni kanal
+        data_out_vc_credits_sim <= (others => '1');
+        
+        wait for clk_period;
+        
+        -- Smiren buffer signal susjednog routera
+        data_out_vc_credits_sim <= (others => '0');
         
         wait;
         
