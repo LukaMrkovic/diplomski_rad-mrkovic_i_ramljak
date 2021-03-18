@@ -35,25 +35,25 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 package router_config is
     
-    constant vc_num : integer;
-    constant payload_size : integer;
-    constant buffer_size : integer;
-    constant flit_size : integer;
-    constant mesh_size : integer;
+    constant const_vc_num : integer;
+    constant const_payload_size : integer;
+    constant const_buffer_size : integer;
+    constant const_flit_size : integer;
+    constant const_mesh_size : integer;
     
 end package router_config;
 
 package body router_config is
 
     -- Broj virtualnih kanala na svakom router-to-router interfaceu
-    constant vc_num : integer := 2;
+    constant const_vc_num : integer := 2;
     -- Broj payload bitova u flitu
-    constant payload_size : integer := 32;
+    constant const_payload_size : integer := 32;
     -- Velicina buffera za pojedini virtualni kanal
-    constant buffer_size : integer := 8;
+    constant const_buffer_size : integer := 8;
     -- Velicina cijelog flita TODO
-    constant flit_size : integer := 2 + payload_size;
+    constant const_flit_size : integer := 44;
     -- Velicina NoC mreze TODO
-    constant mesh_size : integer := 8;
+    constant const_mesh_size : integer := 8;
 
 end package body router_config;

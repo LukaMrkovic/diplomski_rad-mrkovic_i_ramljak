@@ -27,6 +27,8 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+library noc_lib;
+use noc_lib.router_config.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -83,23 +85,23 @@ architecture simulation of router_interface_module_tb1 is
     signal clk_sim : std_logic;
     signal rst_sim : std_logic; 
            
-    signal data_in_sim : std_logic_vector(43 downto 0);
+    signal data_in_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal data_in_valid_sim : std_logic;
-    signal data_in_vc_busy_sim : std_logic_vector(1 downto 0);
-    signal data_in_vc_credits_sim : std_logic_vector(1 downto 0);
+    signal data_in_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    signal data_in_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
            
-    signal data_out_sim : std_logic_vector(43 downto 0);
+    signal data_out_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal data_out_valid_sim : std_logic;
-    signal data_out_vc_busy_sim : std_logic_vector(1 downto 0);
-    signal data_out_vc_credits_sim : std_logic_vector(1 downto 0);
+    signal data_out_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    signal data_out_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
            
-    signal int_data_in_sim : std_logic_vector(43 downto 0);
+    signal int_data_in_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal int_data_in_valid_sim : std_logic;
            
-    signal int_data_out_sim : std_logic_vector(43 downto 0);
+    signal int_data_out_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal int_data_out_valid_sim : std_logic;
            
-    signal buffer_vc_credits_sim : std_logic_vector(1 downto 0); 
+    signal buffer_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0); 
     
     -- Period takta
     constant clk_period : time := 200ns;
@@ -110,11 +112,11 @@ begin
     uut: router_interface_module
         
         generic map(
-            vc_num => 2,
-            flit_size => 44,
-            payload_size => 32,
-            buffer_size => 8,
-            mesh_size => 8
+            vc_num => const_vc_num,
+            flit_size => const_flit_size,
+            payload_size => const_payload_size,
+            buffer_size => const_buffer_size,
+            mesh_size => const_mesh_size
         )
         
         port map(
