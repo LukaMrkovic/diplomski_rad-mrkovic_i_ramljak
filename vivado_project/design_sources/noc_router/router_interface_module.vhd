@@ -15,13 +15,17 @@
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
--- Revision 0.1 - 2021-03-11 - Mrkovic & Ramljak
--- Additional Comments: Inputs, outputs, and flow controller process defined
+-- Revision 0.1 - 2021-03-11 - Mrkovic i Ramljak
+-- Additional Comments: Ulazi, izlazi i flow controller proces definirani 
 -- Revision 0.2 - 2021-03-15 - Ramljak
--- Additional Comments: First version of the module
--- Revision 0.3 - 2021-03-16 - Mrkovic & Ramljak
--- Additional Comments: Improvements
--- 
+-- Additional Comments: Prva verzija modula
+-- Revision 0.3 - 2021-03-16 - Mrkovic i Ramljak
+-- Additional Comments: Defaultne vrijednosti genericnih varijabli postavljene
+-- Revision 0.4 - 2021-03-17 - Mrkovic i Ramljak
+-- Additional Comments: Razne dorade
+-- Revision 0.45 - 2021-03-18 - Mrkovic
+-- Additional Comments: Testni signali
+--
 ----------------------------------------------------------------------------------
 
 
@@ -32,12 +36,12 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+-- use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+-- library UNISIM;
+-- use UNISIM.VComponents.all;
 
 entity router_interface_module is 
 
@@ -77,6 +81,13 @@ end router_interface_module;
 architecture Behavioral of router_interface_module is
 
     type vc_array is array (vc_num - 1 downto 0) of integer;
+    
+    -- Testni signali - IZBRISATI IZ ZAVRSNE VERZIJE MODULA!
+    signal vc_index_snd_test : std_logic_vector(vc_num - 1 downto 0);
+    signal vc_index_rcv_test : std_logic_vector(vc_num - 1 downto 0);
+    signal head_test : std_logic;
+    signal tail_test : std_logic;
+    signal credit_counter_test : vc_array;
 
 begin
 
@@ -161,6 +172,13 @@ begin
                 data_in_vc_credits <= buffer_vc_credits;
                 -- PROSLIJEDI VARIJABLU VEKTOR vc_busy NA IZLAZ data_in_vc_busy
                 data_in_vc_busy <= vc_busy;
+                
+                -- TESTNI SIGNALI
+                vc_index_snd_test <= vc_index_snd;
+                vc_index_rcv_test <= vc_index_rcv;
+                head_test <= head;
+                tail_test <= tail;
+                credit_counter_test <= credit_counter;
                 
             end if;
         end if;

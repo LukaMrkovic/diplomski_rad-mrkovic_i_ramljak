@@ -16,7 +16,7 @@
 -- Revision 0.01 - File Created
 -- Additional Comments:
 -- Revision 0.1 - 2021-03-11
--- Additional Comments: First three contants (vc_num, payload_size, buffer_size) defined, flit size constant not finished
+-- Additional Comments: Prvih pet konstanti (vc_num, payload_size, buffer_size, flit_size, mesh_size) definirano, flit_size i mesh_size nedovrsene
 -- 
 ----------------------------------------------------------------------------------
 
@@ -26,12 +26,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+-- use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+-- library UNISIM;
+-- use UNISIM.VComponents.all;
 
 package router_config is
     
@@ -45,15 +45,15 @@ end package router_config;
 
 package body router_config is
 
-    -- Number of virtual channels on each router to router interface
+    -- Broj virtualnih kanala na svakom router-to-router interfaceu
     constant vc_num : integer := 2;
-    -- Number of payload bits in a flit
+    -- Broj payload bitova u flitu
     constant payload_size : integer := 32;
-    -- Size of a buffer for a single virtual channel
+    -- Velicina buffera za pojedini virtualni kanal
     constant buffer_size : integer := 8;
-    -- Size of a complete flit TODO
+    -- Velicina cijelog flita TODO
     constant flit_size : integer := 2 + payload_size;
-    -- Size of the NoC mesh TODO
+    -- Velicina NoC mreze TODO
     constant mesh_size : integer := 8;
 
 end package body router_config;
