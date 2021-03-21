@@ -1,8 +1,8 @@
 ----------------------------------------------------------------------------------
 -- Company: FER
--- Engineer: Mrkovic & Ramljak
+-- Engineer: Mrkovic, Ramljak
 -- 
--- Create Date: 03/11/2021 01:08:29 PM
+-- Create Date: 11.03.2021 13:08:29
 -- Design Name: NoC_Router
 -- Module Name: router_config - Behavioral
 -- Project Name: NoC_Router

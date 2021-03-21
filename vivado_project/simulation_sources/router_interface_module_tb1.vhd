@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: FER
--- Engineer: Mrkovic & Ramljak
+-- Engineer: Mrkovic, Ramljak
 -- 
 -- Create Date: 16.03.2021 15:36:08
 -- Design Name: NoC_Router
