@@ -306,6 +306,30 @@ begin
 
         -- Smiren buffer signal
         buffer_vc_credits_2_sim <= (others => '0');
+        
+        wait for (3 * clk_period);
+        
+        -- R1 -> R2 (head flit, prvi (01) virtualni kanal)
+        int_data_out_1_sim <= (43 => '1', 40 => '1', others => '0');
+        int_data_out_valid_1_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Smireni ulazi
+        int_data_out_1_sim <= (others => '0');
+        int_data_out_valid_1_sim <= '0';
+        
+        wait for clk_period;
+        
+        -- R1 -> R2 (tail flit, prvi (01) virtualni kanal)
+        int_data_out_1_sim <= (42 => '1', 40 => '1', others => '0');
+        int_data_out_valid_1_sim <= '1';
+        
+        wait for clk_period;
+        
+        -- Smireni ulazi
+        int_data_out_1_sim <= (others => '0');
+        int_data_out_valid_1_sim <= '0';
 
         wait;
 
