@@ -204,62 +204,62 @@ set obj [get_filesets constrs_1]
 # Set 'constrs_1' fileset properties
 set obj [get_filesets constrs_1]
 
-# Create 'sim_1' fileset (if not found)
-if {[string equal [get_filesets -quiet sim_1] ""]} {
-  create_fileset -simset sim_1
+# Create 'router_interface_module_sim' fileset (if not found)
+if {[string equal [get_filesets -quiet router_interface_module_sim] ""]} {
+  create_fileset -simset router_interface_module_sim
 }
 
-# Set 'sim_1' fileset object
-set obj [get_filesets sim_1]
+# Set 'router_interface_module_sim' fileset object
+set obj [get_filesets router_interface_module_sim]
 set files [list \
  [file normalize "${origin_dir}/simulation_sources/router_interface_module_tb1.vhd"] \
  [file normalize "${origin_dir}/simulation_wcfg/router_interface_module_tb1.wcfg"] \
 ]
 add_files -norecurse -fileset $obj $files
 
-# Set 'sim_1' fileset file properties for remote files
+# Set 'router_interface_module_sim' fileset file properties for remote files
 set file "$origin_dir/simulation_sources/router_interface_module_tb1.vhd"
 set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sim_1] [list "*$file"]]
+set file_obj [get_files -of_objects [get_filesets router_interface_module_sim] [list "*$file"]]
 set_property -name "file_type" -value "VHDL" -objects $file_obj
 
 
-# Set 'sim_1' fileset file properties for local files
+# Set 'router_interface_module_sim' fileset file properties for local files
 # None
 
-# Set 'sim_1' fileset properties
-set obj [get_filesets sim_1]
+# Set 'router_interface_module_sim' fileset properties
+set obj [get_filesets router_interface_module_sim]
 set_property -name "hbs.configure_design_for_hier_access" -value "1" -objects $obj
 set_property -name "top" -value "router_interface_module_tb1" -objects $obj
 set_property -name "top_auto_set" -value "0" -objects $obj
 set_property -name "top_lib" -value "xil_defaultlib" -objects $obj
 set_property -name "xsim.simulate.runtime" -value "15000ns" -objects $obj
 
-# Create 'sim_2' fileset (if not found)
-if {[string equal [get_filesets -quiet sim_2] ""]} {
-  create_fileset -simset sim_2
+# Create 'router_interface_interaction_2_routers_sim' fileset (if not found)
+if {[string equal [get_filesets -quiet router_interface_interaction_2_routers_sim] ""]} {
+  create_fileset -simset router_interface_interaction_2_routers_sim
 }
 
-# Set 'sim_2' fileset object
-set obj [get_filesets sim_2]
+# Set 'router_interface_interaction_2_routers_sim' fileset object
+set obj [get_filesets router_interface_interaction_2_routers_sim]
 set files [list \
  [file normalize "${origin_dir}/simulation_sources/router_interface_interaction_2_routers_tb1.vhd"] \
  [file normalize "${origin_dir}/simulation_wcfg/router_interface_interaction_2_routers_tb1.wcfg"] \
 ]
 add_files -norecurse -fileset $obj $files
 
-# Set 'sim_2' fileset file properties for remote files
+# Set 'router_interface_interaction_2_routers_sim' fileset file properties for remote files
 set file "$origin_dir/simulation_sources/router_interface_interaction_2_routers_tb1.vhd"
 set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sim_2] [list "*$file"]]
+set file_obj [get_files -of_objects [get_filesets router_interface_interaction_2_routers_sim] [list "*$file"]]
 set_property -name "file_type" -value "VHDL" -objects $file_obj
 
 
-# Set 'sim_2' fileset file properties for local files
+# Set 'router_interface_interaction_2_routers_sim' fileset file properties for local files
 # None
 
-# Set 'sim_2' fileset properties
-set obj [get_filesets sim_2]
+# Set 'router_interface_interaction_2_routers_sim' fileset properties
+set obj [get_filesets router_interface_interaction_2_routers_sim]
 set_property -name "hbs.configure_design_for_hier_access" -value "1" -objects $obj
 set_property -name "top" -value "router_interface_interaction_2_routers_tb1" -objects $obj
 set_property -name "top_auto_set" -value "0" -objects $obj
