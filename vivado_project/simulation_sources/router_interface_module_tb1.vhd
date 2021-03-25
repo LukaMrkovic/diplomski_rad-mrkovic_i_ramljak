@@ -15,11 +15,11 @@
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
--- Revision 0.1 - 2021-03-16
+-- Revision 0.1 - 2021-03-16 - Mrkovic i Ramljak
 -- Additional Comments: Stvorena pocetna struktura _tb (testbench) dokumenata 
--- Revision 0.2 - 2021-03-17
+-- Revision 0.2 - 2021-03-17 - Mrkovic
 -- Additional Comments: Dodani zeljeni stimulusi za testiranje modula
--- Revision 0.3 - 2021-03-18
+-- Revision 0.3 - 2021-03-18 - Mrkovic
 -- Additional Comments: Prosireni i komentirani stimulusi
 --
 ----------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ begin
             buffer_vc_credits => buffer_vc_credits_sim
         );
 
-    -- CLK PROCES
+    -- clk proces
     clk_process : process
     
     begin
@@ -154,7 +154,7 @@ begin
         
     end process;
     
-    -- STIMULIRAJUCI PROCES
+    -- stimulirajuci proces
     stim_process : process
     
     begin

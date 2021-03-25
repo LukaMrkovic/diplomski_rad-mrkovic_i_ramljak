@@ -15,9 +15,9 @@
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
--- Revision 0.1 - 2021-03-18
+-- Revision 0.1 - 2021-03-18 - Ramljak
 -- Additional Comments: Stvorena inicijalna verzija testa interakcije 2 routera
--- Revision 0.2 - 2021-03-20
+-- Revision 0.2 - 2021-03-20 - Mrkovic
 -- Additional Comments: Dorada, signali preimenovani u skladu sa dogovorenim nazivima sa sheme
 --
 ----------------------------------------------------------------------------------

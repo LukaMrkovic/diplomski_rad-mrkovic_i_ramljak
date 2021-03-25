@@ -15,9 +15,11 @@
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
--- Revision 0.1 - 2021-03-11
+-- Revision 0.1 - 2021-03-11 - Mrkovic i Ramljak
 -- Additional Comments: Prvih pet konstanti (vc_num, payload_size, buffer_size, flit_size, mesh_size) definirano, flit_size i mesh_size nedovrsene
--- 
+-- Revision 0.2 - 2021-03-24 - Ramljak
+-- Additional Comments: Dodane konstante i enumeracije potrebne za buffer_decoder_module
+--
 ----------------------------------------------------------------------------------
 
 
@@ -40,6 +42,9 @@ package router_config is
     constant const_buffer_size : integer;
     constant const_flit_size : integer;
     constant const_mesh_size : integer;
+    constant const_clock_divider : integer;
+    
+    type destination is (EMPTY, LOCAL, NORTH, SOUTH, EAST, WEST);
     
 end package router_config;
 
@@ -55,5 +60,7 @@ package body router_config is
     constant const_flit_size : integer := 44;
     -- Velicina NoC mreze TODO
     constant const_mesh_size : integer := 8;
+    -- Za koliko se puta usporava globalni clock
+    constant const_clock_divider : integer := 4;
 
 end package body router_config;

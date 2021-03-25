@@ -25,6 +25,8 @@
 -- Additional Comments: Razne dorade
 -- Revision 0.45 - 2021-03-18 - Mrkovic
 -- Additional Comments: Testni signali
+-- Revision 0.5 - 2021-03-25 - Mrkovic i Ramljak
+-- Additional Comments: Dorade (varijable/signali)
 --
 ----------------------------------------------------------------------------------
 
@@ -33,6 +35,9 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL; 
+
+library noc_lib;
+use noc_lib.router_config.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -46,11 +51,11 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 entity router_interface_module is 
 
     Generic (
-        vc_num : integer := 2;
-        flit_size : integer := 44;
-        payload_size : integer := 32;
-        buffer_size : integer := 8;
-        mesh_size : integer := 8
+        vc_num : integer := const_vc_num;
+        flit_size : integer := const_flit_size;
+        payload_size : integer := const_payload_size;
+        buffer_size : integer := const_buffer_size;
+        mesh_size : integer := const_mesh_size
     );
               
     Port (
@@ -82,7 +87,7 @@ architecture Behavioral of router_interface_module is
 
     type vc_array is array (vc_num - 1 downto 0) of integer;
     
-    -- Testni signali - IZBRISATI IZ ZAVRSNE VERZIJE MODULA!
+    -- TESTNI SIGNALI - IZBRISATI IZ ZAVRSNE VERZIJE MODULA!
     signal vc_index_snd_test : std_logic_vector(vc_num - 1 downto 0);
     signal vc_index_rcv_test : std_logic_vector(vc_num - 1 downto 0);
     signal head_test : std_logic;
