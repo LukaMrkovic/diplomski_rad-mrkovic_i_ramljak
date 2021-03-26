@@ -81,7 +81,7 @@ architecture Behavioral of FIFO_buffer_module is
     
 begin
     
-    FIFO_buffer: process (clk) is
+    FIFO_buffer : process (clk) is
         
         variable FIFO_array : buffer_array := (others => (others => '0'));
         

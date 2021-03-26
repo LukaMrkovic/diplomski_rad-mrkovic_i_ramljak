@@ -69,7 +69,7 @@ architecture simulation of router_interface_interaction_2_routers_tb1 is
             data_out_vc_credits : in std_logic_vector(vc_num - 1 downto 0);
 
             int_data_in : out std_logic_vector(flit_size - 1 downto 0);
-            int_data_in_valid : out std_logic;
+            int_data_in_valid : out std_logic_vector(vc_num - 1 downto 0);
 
             int_data_out : in std_logic_vector(flit_size - 1 downto 0);
             int_data_out_valid : in std_logic;
@@ -85,7 +85,7 @@ architecture simulation of router_interface_interaction_2_routers_tb1 is
 
     -- Router 1
     signal int_data_in_1_sim : std_logic_vector(const_flit_size - 1 downto 0);
-    signal int_data_in_valid_1_sim : std_logic;
+    signal int_data_in_valid_1_sim : std_logic_vector(const_vc_num - 1 downto 0);
 
     signal int_data_out_1_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal int_data_out_valid_1_sim : std_logic;
@@ -94,7 +94,7 @@ architecture simulation of router_interface_interaction_2_routers_tb1 is
 
     -- Router 2
     signal int_data_in_2_sim : std_logic_vector(const_flit_size - 1 downto 0);
-    signal int_data_in_valid_2_sim : std_logic;
+    signal int_data_in_valid_2_sim : std_logic_vector(const_vc_num - 1 downto 0);
 
     signal int_data_out_2_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal int_data_out_valid_2_sim : std_logic;

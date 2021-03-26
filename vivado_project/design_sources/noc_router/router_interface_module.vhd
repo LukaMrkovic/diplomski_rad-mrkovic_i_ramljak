@@ -27,6 +27,8 @@
 -- Additional Comments: Testni signali
 -- Revision 0.5 - 2021-03-25 - Mrkovic i Ramljak
 -- Additional Comments: Dorade (varijable/signali)
+-- Revision 0.6 - 2021-03-26 - Mrkovic i Ramljak
+-- Additional Comments: int_data_in_valid promijenjen iz jednog bita u vektor zbog bolje, lakse i brze komunikacije s buffer_decoder_module
 --
 ----------------------------------------------------------------------------------
 
@@ -73,7 +75,7 @@ entity router_interface_module is
         data_out_vc_credits : in std_logic_vector(vc_num - 1 downto 0);
            
         int_data_in : out std_logic_vector(flit_size - 1 downto 0);
-        int_data_in_valid : out std_logic;
+        int_data_in_valid : out std_logic_vector(vc_num - 1 downto 0);
            
         int_data_out : in std_logic_vector(flit_size - 1 downto 0);
         int_data_out_valid : in std_logic;
@@ -197,11 +199,20 @@ begin
     
         if rising_edge(clk) then
             if rst = '0' then
+                
                 int_data_in <= (others => '0');
-                int_data_in_valid <= '0';
+                int_data_in_valid <= (others => '0');
+                
             else
+                
                 int_data_in <= data_in;
-                int_data_in_valid <= data_in_valid;
+                
+                if data_in_valid = '1' then
+                    int_data_in_valid <= data_in((payload_size + mesh_size + vc_num - 1) downto (payload_size + mesh_size));
+                else
+                    int_data_in_valid <= (others => '0');
+                end if;
+                
             end if;
         end if;
             
@@ -214,11 +225,15 @@ begin
     
         if rising_edge(clk) then
             if rst = '0' then
+                
                 data_out <= (others => '0');
                 data_out_valid <= '0';
+                
             else
+                
                 data_out <= int_data_out;
                 data_out_valid <= int_data_out_valid;
+                
             end if;
         end if;
     

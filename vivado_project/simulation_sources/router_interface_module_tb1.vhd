@@ -71,7 +71,7 @@ architecture simulation of router_interface_module_tb1 is
             data_out_vc_credits : in std_logic_vector(vc_num - 1 downto 0);
            
             int_data_in : out std_logic_vector(flit_size - 1 downto 0);
-            int_data_in_valid : out std_logic;
+            int_data_in_valid : out std_logic_vector(vc_num - 1 downto 0);
            
             int_data_out : in std_logic_vector(flit_size - 1 downto 0);
             int_data_out_valid : in std_logic;
@@ -96,7 +96,7 @@ architecture simulation of router_interface_module_tb1 is
     signal data_out_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
            
     signal int_data_in_sim : std_logic_vector(const_flit_size - 1 downto 0);
-    signal int_data_in_valid_sim : std_logic;
+    signal int_data_in_valid_sim : std_logic_vector(const_vc_num - 1 downto 0);
            
     signal int_data_out_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal int_data_out_valid_sim : std_logic;
