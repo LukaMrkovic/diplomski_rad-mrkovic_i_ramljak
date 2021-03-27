@@ -48,32 +48,32 @@ architecture simulation of router_interface_interaction_2_routers_tb1 is
 
         Generic (
             vc_num : integer;
-            flit_size : integer;
+            address_size : integer;
             payload_size : integer;
-            buffer_size : integer;
-            mesh_size : integer
+            flit_size : integer;
+            buffer_size : integer
         );
-
+                  
         Port (
             clk : in std_logic;
-            rst : in std_logic;
-
+            rst : in std_logic; 
+               
             data_in : in std_logic_vector(flit_size - 1 downto 0);
             data_in_valid : in std_logic;
             data_in_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
             data_in_vc_credits : out std_logic_vector(vc_num - 1 downto 0);
-
+               
             data_out : out std_logic_vector(flit_size - 1 downto 0);
             data_out_valid : out std_logic;
             data_out_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
             data_out_vc_credits : in std_logic_vector(vc_num - 1 downto 0);
-
+               
             int_data_in : out std_logic_vector(flit_size - 1 downto 0);
             int_data_in_valid : out std_logic_vector(vc_num - 1 downto 0);
-
+               
             int_data_out : in std_logic_vector(flit_size - 1 downto 0);
             int_data_out_valid : in std_logic;
-
+               
             buffer_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
         );
 
@@ -125,10 +125,10 @@ begin
 
         generic map(
             vc_num => const_vc_num,
-            flit_size => const_flit_size,
+            address_size => const_address_size,
             payload_size => const_payload_size,
-            buffer_size => const_buffer_size,
-            mesh_size => const_mesh_size
+            flit_size => const_flit_size,
+            buffer_size => const_buffer_size   
         )
 
         port map(
@@ -161,10 +161,10 @@ begin
 
         generic map(
             vc_num => const_vc_num,
-            flit_size => const_flit_size,
+            address_size => const_address_size,
             payload_size => const_payload_size,
-            buffer_size => const_buffer_size,
-            mesh_size => const_mesh_size
+            flit_size => const_flit_size,
+            buffer_size => const_buffer_size   
         )
 
         port map(

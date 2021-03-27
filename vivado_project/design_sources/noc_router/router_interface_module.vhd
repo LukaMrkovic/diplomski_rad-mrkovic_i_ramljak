@@ -54,10 +54,10 @@ entity router_interface_module is
 
     Generic (
         vc_num : integer := const_vc_num;
-        flit_size : integer := const_flit_size;
+        address_size : integer := const_address_size;
         payload_size : integer := const_payload_size;
-        buffer_size : integer := const_buffer_size;
-        mesh_size : integer := const_mesh_size
+        flit_size : integer := const_flit_size;
+        buffer_size : integer := const_buffer_size
     );
               
     Port (
@@ -142,7 +142,7 @@ begin
                 
                 -- AKO JE int_data_out_valid PODIGNUT => SMANJI ODGOVARAJUCE BROJILO KREDITA ZA 1
                 if int_data_out_valid = '1' then
-                    vc_index_snd := int_data_out((payload_size + mesh_size + vc_num - 1) downto (payload_size + mesh_size));
+                    vc_index_snd := int_data_out((payload_size + address_size + vc_num - 1) downto (payload_size + address_size));
                     for i in (vc_num - 1) downto 0 loop
                         if vc_index_snd(i) = '1' then
                             credit_counter(i) := credit_counter(i) - 1;
@@ -152,7 +152,7 @@ begin
                 
                 -- AKO JE data_in_valid PODIGNUT => POSTAVI ODGOVARAJUCE VARIJABLE
                 if data_in_valid = '1' then
-                    vc_index_rcv := data_in((payload_size + mesh_size + vc_num - 1) downto (payload_size + mesh_size));
+                    vc_index_rcv := data_in((payload_size + address_size + vc_num - 1) downto (payload_size + address_size));
                     head := data_in(flit_size-1);
                     tail := data_in(flit_size-2);
                 end if;
@@ -208,7 +208,7 @@ begin
                 int_data_in <= data_in;
                 
                 if data_in_valid = '1' then
-                    int_data_in_valid <= data_in((payload_size + mesh_size + vc_num - 1) downto (payload_size + mesh_size));
+                    int_data_in_valid <= data_in((payload_size + address_size + vc_num - 1) downto (payload_size + address_size));
                 else
                     int_data_in_valid <= (others => '0');
                 end if;

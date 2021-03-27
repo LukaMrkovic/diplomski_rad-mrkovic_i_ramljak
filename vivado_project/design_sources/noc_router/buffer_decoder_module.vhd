@@ -44,16 +44,16 @@ entity buffer_decoder_module is
     
     Generic (
         vc_num : integer := const_vc_num;
-        flit_size : integer := const_flit_size;
-        payload_size : integer := const_payload_size;
-        buffer_size : integer := const_buffer_size;
         mesh_size_x : integer := const_mesh_size_x;
         mesh_size_y : integer := const_mesh_size_y;
-        mesh_size : integer := const_mesh_size;
-        clock_divider : integer := const_clock_divider;
-        diagonal_pref : routing_axis := const_default_diagonal_pref;
+        address_size : integer := const_address_size;
+        payload_size : integer := const_payload_size;
+        flit_size : integer := const_flit_size;
+        buffer_size : integer := const_buffer_size;
         local_address_x : std_logic_vector(const_mesh_size_x - 1 downto 0) := const_default_address_x;
-        local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0) := const_default_address_y
+        local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0) := const_default_address_y;
+        clock_divider : integer := const_clock_divider;
+        diagonal_pref : routing_axis := const_default_diagonal_pref
     );
     
     Port (
