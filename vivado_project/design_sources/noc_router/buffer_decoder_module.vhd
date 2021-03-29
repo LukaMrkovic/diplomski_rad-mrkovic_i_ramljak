@@ -19,6 +19,8 @@
 -- Additional Comments: Pocetak razvoja
 -- Revision 0.2 - 2021-03-26 - Mrkovic, Ramljak
 -- Additional Comments: Prva verzija modula
+-- Revision 0.3 - 2021-03-29 - Mrkovic, Ramljak
+-- Additional Comments: Dodan output_process (preimenuj ga)
 --
 ----------------------------------------------------------------------------------
 
@@ -122,12 +124,11 @@ architecture Behavioral of buffer_decoder_module is
     signal buffer_empty : std_logic_vector(vc_num - 1 downto 0);
     signal buffer_almost_empty : std_logic_vector(vc_num - 1 downto 0);
     
+    -- INTERFACE IZMEDU DEKODERA I OUTPUTA
+    signal dec_data : std_logic_vector(flit_size - 1 downto 0);
+    signal dec_data_valid : std_logic;
+    
 begin    
-
-    -- PROSLIJEDI grant NA IZLAZ buffer_vc_credits (PREMA router_interface_module)
-    buffer_vc_credits <= grant;
-    -- PROSLIJEDI grant NA vc_shift
-    vc_shift <= grant;
 
     -- GENERIRAJ POTREBAN BROJ FIFO_buffer_module OVISNO O vc_num
     generate_buffer_input : for i in vc_num - 1 downto 0 generate
@@ -218,8 +219,8 @@ begin
             if rst = '0' then
             
                 -- IZLAZNI SIGNALI
-                crossbar_data <= (others => '0');
-                crossbar_data_valid <= '0';
+                dec_data <= (others => '0');
+                dec_data_valid <= '0';
                 
                 req <= (others => EMPTY);
                 head <= (others => '0');
@@ -340,13 +341,56 @@ begin
                 end loop;
                 
                 -- PROSLIJEDI VARIJABLE NA VIRTUALNE KANALE
-                crossbar_data <= data;
-                crossbar_data_valid <= data_valid;
+                dec_data <= data;
+                dec_data_valid <= data_valid;
                 
                 req <= req_temp;
                 head <= head_temp;
                 tail <= tail_temp;
                 
+            end if;
+        end if;
+        
+    end process;
+    
+    output_process : process (clk) is 
+        
+        variable clk_counter : integer := 0;
+        
+    begin
+    
+        if rising_edge(clk) then
+            if rst = '0' then
+                
+                -- POSTAVI BROJILO NA 0
+                clk_counter := 0;
+                -- POSTAVI IZLAZE NA 0
+                crossbar_data <= (others => '0');
+                crossbar_data_valid <= '0';
+                buffer_vc_credits <= (others => '0');
+                vc_shift <= (others => '0');
+                  
+            
+            else
+
+                -- POVECAJ BROJILO ZA 1
+                clk_counter := (clk_counter + 1) mod (clock_divider * 2);
+                if (clk_counter = 3) then
+                    -- PROSLIJEDI IZLAZE S DEKODERA NA CROSSBAR
+                    crossbar_data <= dec_data;
+                    crossbar_data_valid <= dec_data_valid;
+                    -- PROSLIJEDI grant NA IZLAZ buffer_vc_credits (PREMA router_interface_module)
+                    buffer_vc_credits <= grant;
+                    -- PROSLIJEDI grant NA vc_shift
+                    vc_shift <= grant;
+                else
+                    -- POSTAVI IZLAZE NA 0
+                    crossbar_data <= (others => '0');
+                    crossbar_data_valid <= '0';
+                    buffer_vc_credits <= (others => '0');
+                    vc_shift <= (others => '0');
+                end if;   
+                             
             end if;
         end if;
         

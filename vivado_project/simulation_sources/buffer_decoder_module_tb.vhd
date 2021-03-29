@@ -17,6 +17,7 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-03-25 - Mrkovic i Ramljak
 -- Additional Comments: Prva verzija simulacije buffer_decoder_module 
+-- 
 ----------------------------------------------------------------------------------
 
 
@@ -30,12 +31,12 @@ use noc_lib.router_config.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+-- use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+-- library UNISIM;
+-- use UNISIM.VComponents.all;
 
 entity buffer_decoder_module_tb is
 --  Port ( );
@@ -173,6 +174,54 @@ begin
         wait for 2us;
         
         rst_sim <= '1';
+        
+        wait for (2 * clk_period);
+        
+        -- Head, vc1, dest: 0010-0010
+        int_data_in_sim <= X"92211111111";
+        int_data_in_valid_sim <= B"01";
+        
+        wait for clk_period;
+        
+        -- Smireni ulazni signal
+        int_data_in_sim <= (others => '0');
+        int_data_in_valid_sim <= (others => '0');
+        
+        wait for (3 * clk_period);
+        
+        -- Tail, vc1, dest: 0010-0010
+        int_data_in_sim <= X"52233333333";
+        int_data_in_valid_sim <= B"01";
+        
+        wait for clk_period;
+        
+        -- Smireni ulazni signal
+        int_data_in_sim <= (others => '0');
+        int_data_in_valid_sim <= (others => '0');
+        
+        wait for (3 * clk_period);
+        
+        -- Head, vc2, dest: 0001-0100
+        int_data_in_sim <= X"A1422222222";
+        int_data_in_valid_sim <= B"10";
+        
+        wait for clk_period;
+        
+        -- Smireni ulazni signal
+        int_data_in_sim <= (others => '0');
+        int_data_in_valid_sim <= (others => '0');
+        
+        wait for (2 * clk_period);
+        
+        -- Dozvola za slanje vc1 na crossbar
+        -- Nizvodni vc 10
+        grant_sim <= B"01";
+        vc_downstream_sim <= B"10";
+        
+        wait for (4 * clk_period);
+        
+        grant_sim <= (others => '0');
+        vc_downstream_sim <= (others => '0');
         
         wait;
         
