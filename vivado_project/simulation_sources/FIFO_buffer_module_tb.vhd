@@ -45,8 +45,8 @@ architecture Behavioral of FIFO_buffer_module_tb is
     component FIFO_buffer_module
     
         Generic (
-            flit_size : integer := 44;
-            buffer_size : integer := 8
+            flit_size : integer := const_flit_size;
+            buffer_size : integer := const_buffer_size
         );
                       
         Port (

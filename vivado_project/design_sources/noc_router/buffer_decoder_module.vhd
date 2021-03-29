@@ -84,8 +84,8 @@ architecture Behavioral of buffer_decoder_module is
     component FIFO_buffer_module
     
         Generic (
-            flit_size : integer := 44;
-            buffer_size : integer := 8
+            flit_size : integer := const_flit_size;
+            buffer_size : integer := const_buffer_size
         );
                       
         Port (
@@ -116,7 +116,7 @@ architecture Behavioral of buffer_decoder_module is
     -- INTERNI SIGNALI
     signal vc_shift : std_logic_vector (vc_num - 1 downto 0);
     
-    -- INTERFACE IZME?U BUFFERA I DEKODERA
+    -- INTERFACE IZMEDU BUFFERA I DEKODERA
     signal buffer_out : flit_array;
     signal buffer_next : flit_array;
     signal buffer_empty : std_logic_vector(vc_num - 1 downto 0);
