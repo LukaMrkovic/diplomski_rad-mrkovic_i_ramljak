@@ -56,8 +56,8 @@ package router_config is
     constant const_default_diagonal_pref : routing_axis;
     
     type destination_dir is (EMPTY, LOCAL, NORTH, SOUTH, EAST, WEST);
-    type req_array is
-        array (integer range const_vc_num - 1 downto 0) of destination_dir;
+    type destination_dir_vector is
+        array (natural range <>) of destination_dir;
     
 end package router_config;
 

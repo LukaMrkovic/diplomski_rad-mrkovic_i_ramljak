@@ -65,7 +65,7 @@ entity buffer_decoder_module is
         
         buffer_vc_credits : out std_logic_vector(vc_num - 1 downto 0);
         
-        req : out req_array;
+        req : out destination_dir_vector(vc_num - 1 downto 0);
         head : out std_logic_vector (vc_num - 1 downto 0 );
         tail : out std_logic_vector (vc_num - 1 downto 0 );
         
@@ -210,7 +210,7 @@ begin
         variable dir_y : destination_dir;
         variable dir : destination_dir;
         
-        variable req_temp : req_array;
+        variable req_temp : destination_dir_vector(vc_num - 1 downto 0);
     
     begin
     

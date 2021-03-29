@@ -69,7 +69,7 @@ architecture Behavioral of buffer_decoder_module_tb is
             
             buffer_vc_credits : out std_logic_vector(vc_num - 1 downto 0);
             
-            req : out req_array;
+            req : out destination_dir_vector(vc_num - 1 downto 0);
             head : out std_logic_vector (vc_num - 1 downto 0 );
             tail : out std_logic_vector (vc_num - 1 downto 0 );
             
@@ -91,7 +91,7 @@ architecture Behavioral of buffer_decoder_module_tb is
             
     signal buffer_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
             
-    signal req_sim : req_array;
+    signal req_sim : destination_dir_vector(const_vc_num - 1 downto 0);
     signal head_sim : std_logic_vector (const_vc_num - 1 downto 0 );
     signal tail_sim : std_logic_vector (const_vc_num - 1 downto 0 );
             
