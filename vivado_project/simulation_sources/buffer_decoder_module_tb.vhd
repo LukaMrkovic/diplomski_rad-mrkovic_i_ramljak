@@ -174,7 +174,7 @@ begin
         
         rst_sim <= '1';
         
-        --wait;
+        wait;
         
     end process;
 
