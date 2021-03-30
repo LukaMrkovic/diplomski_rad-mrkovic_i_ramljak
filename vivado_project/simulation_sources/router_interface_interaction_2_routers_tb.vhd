@@ -4,7 +4,7 @@
 --
 -- Create Date: 18.03.2021 21:38:08
 -- Design Name: NoC_Router
--- Module Name: router_interface_interaction_2_routers_tb1 - Simulation
+-- Module Name: router_interface_interaction_2_routers_tb - Simulation
 -- Project Name: NoC_Router
 -- Target Devices: zc706
 -- Tool Versions: 2020.2
@@ -25,8 +25,10 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+
 library noc_lib;
 use noc_lib.router_config.ALL;
+use noc_lib.component_declarations.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -37,47 +39,11 @@ use noc_lib.router_config.ALL;
 -- library UNISIM;
 -- use UNISIM.VComponents.all;
 
-entity router_interface_interaction_2_routers_tb1 is
+entity router_interface_interaction_2_routers_tb is
 --  Port ( );
-end router_interface_interaction_2_routers_tb1;
+end router_interface_interaction_2_routers_tb;
 
-architecture simulation of router_interface_interaction_2_routers_tb1 is
-
-    -- Deklaracija komponente
-    component router_interface_module
-
-        Generic (
-            vc_num : integer;
-            address_size : integer;
-            payload_size : integer;
-            flit_size : integer;
-            buffer_size : integer
-        );
-                  
-        Port (
-            clk : in std_logic;
-            rst : in std_logic; 
-               
-            data_in : in std_logic_vector(flit_size - 1 downto 0);
-            data_in_valid : in std_logic;
-            data_in_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
-            data_in_vc_credits : out std_logic_vector(vc_num - 1 downto 0);
-               
-            data_out : out std_logic_vector(flit_size - 1 downto 0);
-            data_out_valid : out std_logic;
-            data_out_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
-            data_out_vc_credits : in std_logic_vector(vc_num - 1 downto 0);
-               
-            int_data_in : out std_logic_vector(flit_size - 1 downto 0);
-            int_data_in_valid : out std_logic_vector(vc_num - 1 downto 0);
-               
-            int_data_out : in std_logic_vector(flit_size - 1 downto 0);
-            int_data_out_valid : in std_logic;
-               
-            buffer_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
-        );
-
-    end component;
+architecture Simulation of router_interface_interaction_2_routers_tb is
 
     -- Simulirani signali
     signal clk_sim : std_logic;
@@ -128,7 +94,7 @@ begin
             address_size => const_address_size,
             payload_size => const_payload_size,
             flit_size => const_flit_size,
-            buffer_size => const_buffer_size   
+            buffer_size => const_buffer_size
         )
 
         port map(
@@ -164,7 +130,7 @@ begin
             address_size => const_address_size,
             payload_size => const_payload_size,
             flit_size => const_flit_size,
-            buffer_size => const_buffer_size   
+            buffer_size => const_buffer_size
         )
 
         port map(
@@ -208,12 +174,12 @@ begin
     begin
 
         -- Inicijalne postavke ulaznih signala
-        
+
         -- Router 1
         int_data_out_1_sim <= (others => '0');
         int_data_out_valid_1_sim <= '0';
         buffer_vc_credits_1_sim <= (others => '0');
-        
+
         -- Router 2
         int_data_out_2_sim <= (others => '0');
         int_data_out_valid_2_sim <= '0';
@@ -262,7 +228,7 @@ begin
         int_data_out_valid_1_sim <= '1';
 
         wait for clk_period;
-        
+
         -- R1 -> R2 (tail flit, drugi (10) virtualni kanal)
         int_data_out_1_sim <= (42 => '1', 41 => '1', others => '0');
         int_data_out_valid_1_sim <= '1';
@@ -284,7 +250,7 @@ begin
 
         wait for clk_period;
 
-        -- R2 -> R1 (buffer oslobodio poziciju, prvi (01) virtualni kanal) 
+        -- R2 -> R1 (buffer oslobodio poziciju, prvi (01) virtualni kanal)
         buffer_vc_credits_2_sim <= (0 => '1', others => '0');
 
         wait for clk_period;
@@ -306,27 +272,27 @@ begin
 
         -- Smiren buffer signal
         buffer_vc_credits_2_sim <= (others => '0');
-        
+
         wait for (3 * clk_period);
-        
+
         -- R1 -> R2 (head flit, prvi (01) virtualni kanal)
         int_data_out_1_sim <= (43 => '1', 40 => '1', others => '0');
         int_data_out_valid_1_sim <= '1';
-        
+
         wait for clk_period;
-        
+
         -- Smireni ulazi
         int_data_out_1_sim <= (others => '0');
         int_data_out_valid_1_sim <= '0';
-        
+
         wait for clk_period;
-        
+
         -- R1 -> R2 (tail flit, prvi (01) virtualni kanal)
         int_data_out_1_sim <= (42 => '1', 40 => '1', others => '0');
         int_data_out_valid_1_sim <= '1';
-        
+
         wait for clk_period;
-        
+
         -- Smireni ulazi
         int_data_out_1_sim <= (others => '0');
         int_data_out_valid_1_sim <= '0';
@@ -335,4 +301,4 @@ begin
 
     end process;
 
-end simulation;
+end Simulation;

@@ -27,7 +27,8 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 
 library noc_lib;
-use noc_lib.router_config.ALL; 
+use noc_lib.router_config.ALL;
+use noc_lib.component_declarations.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -42,46 +43,7 @@ entity buffer_decoder_module_tb is
 --  Port ( );
 end buffer_decoder_module_tb;
 
-architecture Behavioral of buffer_decoder_module_tb is
-    
-    -- Deklaracija komponente
-    component buffer_decoder_module
-    
-        Generic (
-            vc_num : integer := const_vc_num;
-            mesh_size_x : integer := const_mesh_size_x;
-            mesh_size_y : integer := const_mesh_size_y;
-            address_size : integer := const_address_size;
-            payload_size : integer := const_payload_size;
-            flit_size : integer := const_flit_size;
-            buffer_size : integer := const_buffer_size;
-            local_address_x : std_logic_vector(const_mesh_size_x - 1 downto 0) := const_default_address_x;
-            local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0) := const_default_address_y;
-            clock_divider : integer := const_clock_divider;
-            diagonal_pref : routing_axis := const_default_diagonal_pref
-        );
-        
-        Port (
-            clk : in std_logic;
-            rst : in std_logic; 
-               
-            int_data_in : in std_logic_vector(flit_size - 1 downto 0);
-            int_data_in_valid : in std_logic_vector(vc_num - 1 downto 0);
-            
-            buffer_vc_credits : out std_logic_vector(vc_num - 1 downto 0);
-            
-            req : out destination_dir_vector(vc_num - 1 downto 0);
-            head : out std_logic_vector (vc_num - 1 downto 0 );
-            tail : out std_logic_vector (vc_num - 1 downto 0 );
-            
-            grant : in std_logic_vector (vc_num - 1 downto 0);
-            vc_downstream : in std_logic_vector (vc_num - 1 downto 0);
-            
-            crossbar_data : out std_logic_vector (flit_size - 1 downto 0);
-            crossbar_data_valid : out std_logic        
-        );
-        
-    end component;
+architecture Simulation of buffer_decoder_module_tb is
     
     -- Simulirani signali
     signal clk_sim : std_logic;
@@ -171,11 +133,11 @@ begin
         -- Reset aktivan
         rst_sim <= '0';
         
-        wait for 2us;
+        wait for (10 * clk_period);
         
         rst_sim <= '1';
         
-        wait for (4 * clk_period);
+        wait for (5.1 * clk_period);
         
         -- Head, vc1, dest: 0010-0010
         int_data_in_sim <= X"92211111111";
@@ -211,7 +173,21 @@ begin
         int_data_in_sim <= (others => '0');
         int_data_in_valid_sim <= (others => '0');
         
-        wait for (3 * clk_period);
+        wait for (4.9 * clk_period);
+        
+        -- Dozvola za slanje vc1 na crossbar
+        -- Nizvodni vc 10
+        grant_sim <= B"01";
+        vc_downstream_sim <= B"10";
+        
+        wait for (4 * clk_period);
+        
+        -- Dozvola za slanje vc2 na crossbar
+        -- Nizvodni vc 01
+        grant_sim <= B"10";
+        vc_downstream_sim <= B"01";
+        
+        wait for (4 * clk_period);
         
         -- Dozvola za slanje vc1 na crossbar
         -- Nizvodni vc 10
@@ -227,5 +203,4 @@ begin
         
     end process;
 
-
-end Behavioral;
+end Simulation;

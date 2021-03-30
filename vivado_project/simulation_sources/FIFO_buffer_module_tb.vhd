@@ -23,8 +23,10 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+
 library noc_lib;
-use noc_lib.router_config.ALL; 
+use noc_lib.router_config.ALL;
+use noc_lib.component_declarations.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -39,34 +41,8 @@ entity FIFO_buffer_module_tb is
 --  Port ( );
 end FIFO_buffer_module_tb;
 
-architecture Behavioral of FIFO_buffer_module_tb is
+architecture Simulation of FIFO_buffer_module_tb is
 
-    -- Deklaracija komponente
-    component FIFO_buffer_module
-    
-        Generic (
-            flit_size : integer := const_flit_size;
-            buffer_size : integer := const_buffer_size
-        );
-                      
-        Port (
-            clk : in std_logic;
-            rst : in std_logic; 
-                       
-            data_in : in std_logic_vector(flit_size - 1 downto 0);
-            data_in_valid : in std_logic;
-                    
-            right_shift : in std_logic;
-                    
-            data_out : out std_logic_vector(flit_size - 1 downto 0);
-            data_next : out std_logic_vector(flit_size - 1 downto 0);
-                
-            empty : out std_logic; 
-            almost_empty : out std_logic                          
-        );
-            
-    end component;
-    
     -- Simulirani signali
     signal clk_sim : std_logic;
     signal rst_sim : std_logic;
@@ -219,4 +195,4 @@ begin
     
     end process;
 
-end Behavioral;
+end Simulation;

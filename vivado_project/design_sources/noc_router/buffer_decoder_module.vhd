@@ -21,6 +21,8 @@
 -- Additional Comments: Prva verzija modula
 -- Revision 0.3 - 2021-03-29 - Mrkovic, Ramljak
 -- Additional Comments: Dodan output_process (preimenuj ga)
+-- Revision 0.5 - 2021-03-30 - Mrkovic, Ramljak
+-- Additional Comments: output_process i clock_diveder_process kombinirani u clock_transfer_process, sreden timing protocne strukture
 --
 ----------------------------------------------------------------------------------
 
@@ -32,6 +34,7 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 
 library noc_lib;
 use noc_lib.router_config.ALL;
+use noc_lib.component_declarations.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -82,32 +85,6 @@ end buffer_decoder_module;
 
 architecture Behavioral of buffer_decoder_module is
 
-    -- DEKLARACIJA KOMPONENTE INDIVIDUALNOG FIFO BUFFERA
-    component FIFO_buffer_module
-    
-        Generic (
-            flit_size : integer := const_flit_size;
-            buffer_size : integer := const_buffer_size
-        );
-                      
-        Port (
-            clk : in std_logic;
-            rst : in std_logic; 
-                       
-            data_in : in std_logic_vector(flit_size - 1 downto 0);
-            data_in_valid : in std_logic;
-                    
-            right_shift : in std_logic;
-                    
-            data_out : out std_logic_vector(flit_size - 1 downto 0);
-            data_next : out std_logic_vector(flit_size - 1 downto 0);
-                
-            empty : out std_logic; 
-            almost_empty : out std_logic                          
-        );
-            
-    end component;
-    
     -- POLJE FLITOVA IZMEDU BUFFERA I DEKODERA
     type flit_array is
         array (integer range vc_num - 1 downto 0) of std_logic_vector(flit_size - 1 downto 0);
@@ -131,6 +108,8 @@ architecture Behavioral of buffer_decoder_module is
     -- TESTNI SIGNALI
     signal clk_counter_test : integer;
     signal output_counter_test : integer; 
+    
+    signal enable_output : std_logic_vector(flit_size - 1 downto 0);
     
 begin    
 
@@ -231,7 +210,7 @@ begin
                     data := (others => '0');
                     data_valid := '0';
                     if grant(i) = '1' then
-                        -- PROSLIJEDI flit ODGOVARAJU?EG VIRTUALNOG KALA NA crossbar_data
+                        -- PROSLIJEDI flit ODGOVARAJUCEG VIRTUALNOG KALA NA crossbar_data
                         data := buffer_out(i);
                         -- ZAMIJENI SEGMENT flita IDENTIFIKACIJSKE OZNAKE VIRTUALNOG KANALA S vc_downstream
                         data(flit_size - 3 downto flit_size - 3 - vc_num + 1) := vc_downstream;
@@ -346,11 +325,7 @@ begin
                 -- POSTAVI INTERNI TAKT NA 0
                 int_clk <= '0';
                 
-                -- POSTAVI IZLAZE NA 0
-                crossbar_data <= (others => '0');
-                crossbar_data_valid <= '0';
-                buffer_vc_credits <= (others => '0');
-                vc_shift <= (others => '0');    
+                enable_output <= (others => '0');  
             
             else
             
@@ -364,20 +339,10 @@ begin
                 end if;  
                 
                 -- PROPUSTI UBRZANE IZLAZE
-                if (output_counter = 1) then 
-                    -- PROSLIJEDI IZLAZE DEKODERA NA CROSSBAR
-                    crossbar_data <= dec_data;
-                    crossbar_data_valid <= dec_data_valid;
-                    -- PROSLIJEDI grant NA IZLAZ buffer_vc_credits (PREMA router_interface_module)
-                    buffer_vc_credits <= grant;
-                    -- PROSLIJEDI grant NA vc_shift
-                    vc_shift <= grant;
+                if (output_counter = 0) then 
+                    enable_output <= (others => '1');
                 else
-                    -- POSTAVI UBRZANE IZLAZE NA 0
-                    crossbar_data <= (others => '0');
-                    crossbar_data_valid <= '0';
-                    buffer_vc_credits <= (others => '0');
-                    vc_shift <= (others => '0');
+                    enable_output <= (others => '0');
                 end if;
                 
                 clk_counter_test <= clk_counter;
@@ -387,5 +352,13 @@ begin
         end if;
         
     end process;
+    
+    -- PROSLIJEDI IZLAZE DEKODERA NA CROSSBAR
+    crossbar_data <= dec_data and enable_output;
+    crossbar_data_valid <= dec_data_valid and enable_output(0);
+    -- PROSLIJEDI grant NA IZLAZ buffer_vc_credits (PREMA router_interface_module)
+    buffer_vc_credits <= grant and enable_output(vc_num - 1 downto 0);
+    -- PROSLIJEDI grant NA vc_shift
+    vc_shift <= grant and enable_output(vc_num - 1 downto 0);
              
 end Behavioral;
