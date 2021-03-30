@@ -128,6 +128,10 @@ architecture Behavioral of buffer_decoder_module is
     signal dec_data : std_logic_vector(flit_size - 1 downto 0);
     signal dec_data_valid : std_logic;
     
+    -- TESTNI SIGNALI
+    signal clk_counter_test : integer;
+    signal output_counter_test : integer; 
+    
 begin    
 
     -- GENERIRAJ POTREBAN BROJ FIFO_buffer_module OVISNO O vc_num
@@ -160,35 +164,6 @@ begin
     
     end generate;
 
-    -- DJELJITELJ TAKTA
-    clock_divider_process : process (clk) is 
-        
-        variable clk_counter : integer := 0;
-        
-    begin
-    
-        if rising_edge(clk) then
-            if rst = '0' then
-                
-                -- POSTAVI BROJILO NA 0
-                clk_counter := 0;
-                -- POSTAVI INTERNI TAKT NA 0
-                int_clk <= '0';     
-            
-            else
-            
-                -- POVECAJ BROJILO ZA 1
-                clk_counter := (clk_counter + 1) mod clock_divider;
-                if (clk_counter = 0) then
-                    -- PROMIJENI FAZU INTERNOG TAKTA
-                    int_clk <= not int_clk;
-                end if;   
-                             
-            end if;
-        end if;
-        
-    end process;
-    
     -- DEKODER
     decoder_process : process(int_clk) is
     
@@ -353,9 +328,11 @@ begin
         
     end process;
     
-    output_process : process (clk) is 
+    -- TRANSFER TAKTA
+    clock_transfer_process : process (clk) is 
         
-        variable clk_counter : integer := 0;
+        variable clk_counter : integer;
+        variable output_counter : integer;
         
     begin
     
@@ -363,20 +340,32 @@ begin
             if rst = '0' then
                 
                 -- POSTAVI BROJILO NA 0
-                clk_counter := 0;
+                clk_counter := clock_divider - 1;
+                output_counter := (clock_divider * 2) - 1;
+                
+                -- POSTAVI INTERNI TAKT NA 0
+                int_clk <= '0';
+                
                 -- POSTAVI IZLAZE NA 0
                 crossbar_data <= (others => '0');
                 crossbar_data_valid <= '0';
                 buffer_vc_credits <= (others => '0');
-                vc_shift <= (others => '0');
-                  
+                vc_shift <= (others => '0');    
             
             else
-
+            
                 -- POVECAJ BROJILO ZA 1
-                clk_counter := (clk_counter + 1) mod (clock_divider * 2);
-                if (clk_counter = 3) then
-                    -- PROSLIJEDI IZLAZE S DEKODERA NA CROSSBAR
+                clk_counter := (clk_counter + 1) mod clock_divider;
+                output_counter := (output_counter + 1) mod (clock_divider * 2);
+                
+                -- PROMIJENI FAZU INTERNOG TAKTA
+                if (clk_counter = 0) then
+                    int_clk <= not int_clk;
+                end if;  
+                
+                -- PROPUSTI UBRZANE IZLAZE
+                if (output_counter = 1) then 
+                    -- PROSLIJEDI IZLAZE DEKODERA NA CROSSBAR
                     crossbar_data <= dec_data;
                     crossbar_data_valid <= dec_data_valid;
                     -- PROSLIJEDI grant NA IZLAZ buffer_vc_credits (PREMA router_interface_module)
@@ -384,12 +373,15 @@ begin
                     -- PROSLIJEDI grant NA vc_shift
                     vc_shift <= grant;
                 else
-                    -- POSTAVI IZLAZE NA 0
+                    -- POSTAVI UBRZANE IZLAZE NA 0
                     crossbar_data <= (others => '0');
                     crossbar_data_valid <= '0';
                     buffer_vc_credits <= (others => '0');
                     vc_shift <= (others => '0');
-                end if;   
+                end if;
+                
+                clk_counter_test <= clk_counter;
+                output_counter_test <= output_counter;
                              
             end if;
         end if;

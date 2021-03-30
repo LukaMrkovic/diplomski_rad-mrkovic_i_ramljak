@@ -175,7 +175,7 @@ begin
         
         rst_sim <= '1';
         
-        wait for (2 * clk_period);
+        wait for (4 * clk_period);
         
         -- Head, vc1, dest: 0010-0010
         int_data_in_sim <= X"92211111111";
@@ -211,7 +211,7 @@ begin
         int_data_in_sim <= (others => '0');
         int_data_in_valid_sim <= (others => '0');
         
-        wait for (2 * clk_period);
+        wait for (3 * clk_period);
         
         -- Dozvola za slanje vc1 na crossbar
         -- Nizvodni vc 10
