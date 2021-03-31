@@ -219,24 +219,7 @@ begin
     end process;
     
     -- LINK CONTROLLER OUTPUT
-    link_controller_output_process : process (clk) is
-    
-    begin
-    
-        if rising_edge(clk) then
-            if rst = '0' then
-                
-                data_out <= (others => '0');
-                data_out_valid <= '0';
-                
-            else
-                
-                data_out <= int_data_out;
-                data_out_valid <= int_data_out_valid;
-                
-            end if;
-        end if;
-    
-    end process;
+    data_out <= int_data_out;
+    data_out_valid <= int_data_out_valid;
 
 end Behavioral;
