@@ -67,6 +67,9 @@ architecture Simulation of integration_1_tb is
     signal int_data_out_valid_sim : std_logic;
 
     signal buffer_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    
+    signal arb_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    signal arb_credit_counter_sim : credit_counter_vector(const_vc_num - 1 downto 0);
 
     -- Modul buffer_decoder           
          
@@ -113,11 +116,14 @@ begin
             int_data_out => int_data_out_sim,
             int_data_out_valid => int_data_out_valid_sim,
 
-            buffer_vc_credits => buffer_vc_credits_sim
+            buffer_vc_credits => buffer_vc_credits_sim,
+            
+            arb_vc_busy => arb_vc_busy_sim,
+            arb_credit_counter => arb_credit_counter_sim
         );
         
         -- Komponenta koja se testira (Unit Under Test)
-    uut_buffer_interface_module: buffer_decoder_module
+    uut_buffer_decoder_module: buffer_decoder_module
     
         generic map (
             vc_num => const_vc_num,

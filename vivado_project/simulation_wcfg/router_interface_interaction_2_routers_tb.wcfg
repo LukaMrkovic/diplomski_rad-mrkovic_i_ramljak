@@ -5,19 +5,20 @@
    <db_ref_list>
       <db_ref path="router_interface_interaction_2_routers_tb_behav.wdb" id="1">
          <top_modules>
+            <top_module name="component_declarations" />
             <top_module name="router_config" />
             <top_module name="router_interface_interaction_2_routers_tb" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1853334fs"></ZoomStartTime>
-      <ZoomEndTime time="14733335fs"></ZoomEndTime>
-      <Cursor1Time time="4000000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="15000001fs"></ZoomEndTime>
+      <Cursor1Time time="6200000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="276"></NameColumnWidth>
-      <ValueColumnWidth column_width="108"></ValueColumnWidth>
+      <ValueColumnWidth column_width="100"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="20" />
    <wvobject type="divider" fp_name="divider67">
@@ -94,9 +95,9 @@
          <obj_property name="ElementShortName">int_data_in_1_sim[43:0]</obj_property>
          <obj_property name="ObjectShortName">int_data_in_1_sim[43:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/router_interface_interaction_2_routers_tb/int_data_in_valid_1_sim" type="logic">
-         <obj_property name="ElementShortName">int_data_in_valid_1_sim</obj_property>
-         <obj_property name="ObjectShortName">int_data_in_valid_1_sim</obj_property>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/int_data_in_valid_1_sim" type="array">
+         <obj_property name="ElementShortName">int_data_in_valid_1_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">int_data_in_valid_1_sim[1:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/router_interface_interaction_2_routers_tb/int_data_out_1_sim" type="array">
          <obj_property name="ElementShortName">int_data_out_1_sim[43:0]</obj_property>
@@ -109,6 +110,18 @@
       <wvobject fp_name="/router_interface_interaction_2_routers_tb/buffer_vc_credits_1_sim" type="array">
          <obj_property name="ElementShortName">buffer_vc_credits_1_sim[1:0]</obj_property>
          <obj_property name="ObjectShortName">buffer_vc_credits_1_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/arb_vc_busy_1_sim" type="array">
+         <obj_property name="ElementShortName">arb_vc_busy_1_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_vc_busy_1_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/arb_credit_counter_1_sim" type="array">
+         <obj_property name="ElementShortName">arb_credit_counter_1_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_credit_counter_1_sim[1:0]</obj_property>
          <obj_property name="CustomSignalColor">#008080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
@@ -160,9 +173,9 @@
          <obj_property name="ElementShortName">int_data_in[43:0]</obj_property>
          <obj_property name="ObjectShortName">int_data_in[43:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_1/int_data_in_valid" type="logic">
-         <obj_property name="ElementShortName">int_data_in_valid</obj_property>
-         <obj_property name="ObjectShortName">int_data_in_valid</obj_property>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_1/int_data_in_valid" type="array">
+         <obj_property name="ElementShortName">int_data_in_valid[1:0]</obj_property>
+         <obj_property name="ObjectShortName">int_data_in_valid[1:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_1/int_data_out" type="array">
          <obj_property name="ElementShortName">int_data_out[43:0]</obj_property>
@@ -175,6 +188,18 @@
       <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_1/buffer_vc_credits" type="array">
          <obj_property name="ElementShortName">buffer_vc_credits[1:0]</obj_property>
          <obj_property name="ObjectShortName">buffer_vc_credits[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_1/arb_vc_busy" type="array">
+         <obj_property name="ElementShortName">arb_vc_busy[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_vc_busy[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_1/arb_credit_counter" type="array">
+         <obj_property name="ElementShortName">arb_credit_counter[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_credit_counter[1:0]</obj_property>
          <obj_property name="CustomSignalColor">#008080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
@@ -206,12 +231,6 @@
          <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_1/credit_counter_test" type="array">
-         <obj_property name="ElementShortName">credit_counter_test[1:0]</obj_property>
-         <obj_property name="ObjectShortName">credit_counter_test[1:0]</obj_property>
-         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
    </wvobject>
    <wvobject type="divider" fp_name="divider117">
       <obj_property name="label">Router 2</obj_property>
@@ -225,9 +244,9 @@
          <obj_property name="ElementShortName">int_data_in_2_sim[43:0]</obj_property>
          <obj_property name="ObjectShortName">int_data_in_2_sim[43:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/router_interface_interaction_2_routers_tb/int_data_in_valid_2_sim" type="logic">
-         <obj_property name="ElementShortName">int_data_in_valid_2_sim</obj_property>
-         <obj_property name="ObjectShortName">int_data_in_valid_2_sim</obj_property>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/int_data_in_valid_2_sim" type="array">
+         <obj_property name="ElementShortName">int_data_in_valid_2_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">int_data_in_valid_2_sim[1:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/router_interface_interaction_2_routers_tb/int_data_out_2_sim" type="array">
          <obj_property name="ElementShortName">int_data_out_2_sim[43:0]</obj_property>
@@ -240,6 +259,18 @@
       <wvobject fp_name="/router_interface_interaction_2_routers_tb/buffer_vc_credits_2_sim" type="array">
          <obj_property name="ElementShortName">buffer_vc_credits_2_sim[1:0]</obj_property>
          <obj_property name="ObjectShortName">buffer_vc_credits_2_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/arb_vc_busy_2_sim" type="array">
+         <obj_property name="ElementShortName">arb_vc_busy_2_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_vc_busy_2_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/arb_credit_counter_2_sim" type="array">
+         <obj_property name="ElementShortName">arb_credit_counter_2_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_credit_counter_2_sim[1:0]</obj_property>
          <obj_property name="CustomSignalColor">#008080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
@@ -291,9 +322,9 @@
          <obj_property name="ElementShortName">int_data_in[43:0]</obj_property>
          <obj_property name="ObjectShortName">int_data_in[43:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_2/int_data_in_valid" type="logic">
-         <obj_property name="ElementShortName">int_data_in_valid</obj_property>
-         <obj_property name="ObjectShortName">int_data_in_valid</obj_property>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_2/int_data_in_valid" type="array">
+         <obj_property name="ElementShortName">int_data_in_valid[1:0]</obj_property>
+         <obj_property name="ObjectShortName">int_data_in_valid[1:0]</obj_property>
       </wvobject>
       <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_2/int_data_out" type="array">
          <obj_property name="ElementShortName">int_data_out[43:0]</obj_property>
@@ -306,6 +337,18 @@
       <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_2/buffer_vc_credits" type="array">
          <obj_property name="ElementShortName">buffer_vc_credits[1:0]</obj_property>
          <obj_property name="ObjectShortName">buffer_vc_credits[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_2/arb_vc_busy" type="array">
+         <obj_property name="ElementShortName">arb_vc_busy[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_vc_busy[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_2/arb_credit_counter" type="array">
+         <obj_property name="ElementShortName">arb_credit_counter[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_credit_counter[1:0]</obj_property>
          <obj_property name="CustomSignalColor">#008080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
@@ -334,12 +377,6 @@
       <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_2/tail_test" type="logic">
          <obj_property name="ElementShortName">tail_test</obj_property>
          <obj_property name="ObjectShortName">tail_test</obj_property>
-         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/router_interface_interaction_2_routers_tb/uut_router_2/credit_counter_test" type="array">
-         <obj_property name="ElementShortName">credit_counter_test[1:0]</obj_property>
-         <obj_property name="ObjectShortName">credit_counter_test[1:0]</obj_property>
          <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>

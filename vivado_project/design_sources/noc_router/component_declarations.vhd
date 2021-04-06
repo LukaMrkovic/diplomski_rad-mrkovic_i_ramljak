@@ -69,7 +69,10 @@ package component_declarations is
             int_data_out : in std_logic_vector(flit_size - 1 downto 0);
             int_data_out_valid : in std_logic;
                
-            buffer_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
+            buffer_vc_credits : in std_logic_vector(vc_num - 1 downto 0);
+            
+            arb_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
+            arb_credit_counter : out credit_counter_vector(vc_num - 1 downto 0)
         );
         
     end component;

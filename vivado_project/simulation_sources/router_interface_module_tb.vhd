@@ -68,6 +68,9 @@ architecture Simulation of router_interface_module_tb is
     signal int_data_out_valid_sim : std_logic;
 
     signal buffer_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    
+    signal arb_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    signal arb_credit_counter_sim : credit_counter_vector(const_vc_num - 1 downto 0);
 
     -- Period takta
     constant clk_period : time := 200ns;
@@ -105,7 +108,10 @@ begin
             int_data_out => int_data_out_sim,
             int_data_out_valid => int_data_out_valid_sim,
 
-            buffer_vc_credits => buffer_vc_credits_sim
+            buffer_vc_credits => buffer_vc_credits_sim,
+            
+            arb_vc_busy => arb_vc_busy_sim,
+            arb_credit_counter => arb_credit_counter_sim
         );
 
     -- clk proces

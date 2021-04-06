@@ -29,6 +29,8 @@
 -- Additional Comments: Dorade (varijable/signali)
 -- Revision 0.6 - 2021-03-26 - Mrkovic i Ramljak
 -- Additional Comments: int_data_in_valid promijenjen iz jednog bita u vektor zbog bolje, lakse i brze komunikacije s buffer_decoder_module
+-- Revision 0.65 - 2021-04-06 - Mrkovic
+-- Additional Comments: Dodani signali od flow_controllera prema arbiteru
 --
 ----------------------------------------------------------------------------------
 
@@ -80,21 +82,23 @@ entity router_interface_module is
         int_data_out : in std_logic_vector(flit_size - 1 downto 0);
         int_data_out_valid : in std_logic;
            
-        buffer_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
+        buffer_vc_credits : in std_logic_vector(vc_num - 1 downto 0);
+        
+        arb_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
+        arb_credit_counter : out credit_counter_vector(vc_num - 1 downto 0)
     );
            
 end router_interface_module;
 
 architecture Behavioral of router_interface_module is
 
-    type vc_array is array (vc_num - 1 downto 0) of integer;
-    
     -- TESTNI SIGNALI - IZBRISATI IZ ZAVRSNE VERZIJE MODULA!
+    -- >
     signal vc_index_snd_test : std_logic_vector(vc_num - 1 downto 0);
     signal vc_index_rcv_test : std_logic_vector(vc_num - 1 downto 0);
     signal head_test : std_logic;
     signal tail_test : std_logic;
-    signal credit_counter_test : vc_array;
+    -- <
 
 begin
 
@@ -108,7 +112,7 @@ begin
         
         variable vc_busy : std_logic_vector(vc_num - 1 downto 0) := (others => '0');
         
-        variable credit_counter : vc_array := (others => 0);
+        variable credit_counter : credit_counter_vector(vc_num - 1 downto 0) := (others => 0);
         
     begin
     
@@ -126,10 +130,12 @@ begin
                 
                 -- SVI VIRTUALNI KANALI SLOBODNI
                 vc_busy := (others => '0');
-                data_in_vc_busy <= (others => '0');
                 
                 -- SVI IZLAZI NA 00... 0
+                data_in_vc_busy <= (others => '0');
                 data_in_vc_credits <= (others => '0');
+                arb_vc_busy <= (others => '0');
+                arb_credit_counter <= (others => buffer_size);
                 
             else
                 
@@ -180,12 +186,18 @@ begin
                 -- PROSLIJEDI VARIJABLU VEKTOR vc_busy NA IZLAZ data_in_vc_busy
                 data_in_vc_busy <= vc_busy;
                 
+                -- PROSLIJEDI VARIJABLU VEKTOR vc_busy NA IZLAZ arb_vc_busy
+                arb_vc_busy <= vc_busy;
+                -- PROSLIJEDI VARIJABLU VEKTOR credit_counter NA IZLAZ arb_credit_counter
+                arb_credit_counter <= credit_counter;
+                
                 -- TESTNI SIGNALI
+                -- >
                 vc_index_snd_test <= vc_index_snd;
                 vc_index_rcv_test <= vc_index_rcv;
                 head_test <= head;
                 tail_test <= tail;
-                credit_counter_test <= credit_counter;
+                -- <
                 
             end if;
         end if;

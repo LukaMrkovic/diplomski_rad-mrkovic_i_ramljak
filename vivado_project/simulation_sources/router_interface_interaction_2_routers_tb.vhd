@@ -57,6 +57,9 @@ architecture Simulation of router_interface_interaction_2_routers_tb is
     signal int_data_out_valid_1_sim : std_logic;
 
     signal buffer_vc_credits_1_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    
+    signal arb_vc_busy_1_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    signal arb_credit_counter_1_sim : credit_counter_vector(const_vc_num - 1 downto 0);
 
     -- Router 2
     signal int_data_in_2_sim : std_logic_vector(const_flit_size - 1 downto 0);
@@ -66,6 +69,9 @@ architecture Simulation of router_interface_interaction_2_routers_tb is
     signal int_data_out_valid_2_sim : std_logic;
 
     signal buffer_vc_credits_2_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    
+    signal arb_vc_busy_2_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    signal arb_credit_counter_2_sim : credit_counter_vector(const_vc_num - 1 downto 0);
 
     -- Medukonekcije izmedu routera
     signal vc_busy_1_to_2_sim : std_logic_vector(const_vc_num - 1 downto 0);
@@ -117,7 +123,10 @@ begin
             int_data_out => int_data_out_1_sim,
             int_data_out_valid => int_data_out_valid_1_sim,
 
-            buffer_vc_credits => buffer_vc_credits_1_sim
+            buffer_vc_credits => buffer_vc_credits_1_sim,
+            
+            arb_vc_busy => arb_vc_busy_1_sim,
+            arb_credit_counter => arb_credit_counter_1_sim
         );
 
 
@@ -153,7 +162,10 @@ begin
             int_data_out => int_data_out_2_sim,
             int_data_out_valid => int_data_out_valid_2_sim,
 
-            buffer_vc_credits => buffer_vc_credits_2_sim
+            buffer_vc_credits => buffer_vc_credits_2_sim,
+            
+            arb_vc_busy => arb_vc_busy_2_sim,
+            arb_credit_counter => arb_credit_counter_2_sim
         );
 
     -- CLK PROCES

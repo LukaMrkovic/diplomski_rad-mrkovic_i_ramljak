@@ -23,6 +23,8 @@
 -- Additional Comments: Dovrsene TODO konstanti, dodane konstante
 -- Revision 0.35 - 2021-03-27 - Mrkovic
 -- Additional Comments: const_mesh_size preimenovana u const_address_size
+-- Revision 0.4 - 2021-04-06 - Mrkovic
+-- Additional Comments: tip credit_counter_vector dodan, globalna zamjena za lokalni vc_array tip iz router_interface_module
 --
 ----------------------------------------------------------------------------------
 
@@ -58,6 +60,9 @@ package router_config is
     type destination_dir is (EMPTY, LOCAL, NORTH, SOUTH, EAST, WEST);
     type destination_dir_vector is
         array (natural range <>) of destination_dir;
+        
+    type credit_counter_vector is
+        array (natural range <>) of integer;
     
 end package router_config;
 
