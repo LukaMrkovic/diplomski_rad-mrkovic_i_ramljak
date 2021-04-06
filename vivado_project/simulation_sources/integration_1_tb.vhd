@@ -122,7 +122,7 @@ begin
             arb_credit_counter => arb_credit_counter_sim
         );
         
-        -- Komponenta koja se testira (Unit Under Test)
+    -- Komponenta koja se testira (Unit Under Test)
     uut_buffer_decoder_module: buffer_decoder_module
     
         generic map (
