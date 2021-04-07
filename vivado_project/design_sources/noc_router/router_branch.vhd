@@ -99,7 +99,7 @@ architecture Behavioral of router_branch is
 begin
 
     -- router_interface komponenta
-    comp_router_interface_module: router_interface_module
+    comp_router_interface_module : router_interface_module
 
         generic map(
             vc_num => const_vc_num,

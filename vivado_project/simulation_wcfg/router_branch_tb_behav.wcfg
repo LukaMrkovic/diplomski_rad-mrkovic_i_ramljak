@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="router_branch_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="component_declarations" />
+            <top_module name="router_branch_tb" />
+            <top_module name="router_config" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="7218123fs"></ZoomEndTime>
+      <Cursor1Time time="2819999fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="223"></NameColumnWidth>
+      <ValueColumnWidth column_width="108"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="22" />
+   <wvobject fp_name="/router_branch_tb/clk_sim" type="logic">
+      <obj_property name="ElementShortName">clk_sim</obj_property>
+      <obj_property name="ObjectShortName">clk_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/uut_router_branch/comp_buffer_decoder_module/int_clk" type="logic">
+      <obj_property name="ElementShortName">int_clk</obj_property>
+      <obj_property name="ObjectShortName">int_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/rst_sim" type="logic">
+      <obj_property name="ElementShortName">rst_sim</obj_property>
+      <obj_property name="ObjectShortName">rst_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/data_in_sim" type="array">
+      <obj_property name="ElementShortName">data_in_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in_sim[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/data_in_valid_sim" type="logic">
+      <obj_property name="ElementShortName">data_in_valid_sim</obj_property>
+      <obj_property name="ObjectShortName">data_in_valid_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/data_in_vc_busy_sim" type="array">
+      <obj_property name="ElementShortName">data_in_vc_busy_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in_vc_busy_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/data_in_vc_credits_sim" type="array">
+      <obj_property name="ElementShortName">data_in_vc_credits_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in_vc_credits_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/data_out_sim" type="array">
+      <obj_property name="ElementShortName">data_out_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out_sim[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/data_out_valid_sim" type="logic">
+      <obj_property name="ElementShortName">data_out_valid_sim</obj_property>
+      <obj_property name="ObjectShortName">data_out_valid_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/data_out_vc_busy_sim" type="array">
+      <obj_property name="ElementShortName">data_out_vc_busy_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out_vc_busy_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/data_out_vc_credits_sim" type="array">
+      <obj_property name="ElementShortName">data_out_vc_credits_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out_vc_credits_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/arb_vc_busy_sim" type="array">
+      <obj_property name="ElementShortName">arb_vc_busy_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">arb_vc_busy_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/arb_credit_counter_sim" type="array">
+      <obj_property name="ElementShortName">arb_credit_counter_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">arb_credit_counter_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/req_sim" type="array">
+      <obj_property name="ElementShortName">req_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">req_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/head_sim" type="array">
+      <obj_property name="ElementShortName">head_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">head_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/tail_sim" type="array">
+      <obj_property name="ElementShortName">tail_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">tail_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/grant_sim" type="array">
+      <obj_property name="ElementShortName">grant_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">grant_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/vc_downstream_sim" type="array">
+      <obj_property name="ElementShortName">vc_downstream_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">vc_downstream_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/crossbar_data_sim" type="array">
+      <obj_property name="ElementShortName">crossbar_data_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">crossbar_data_sim[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/crossbar_data_valid_sim" type="logic">
+      <obj_property name="ElementShortName">crossbar_data_valid_sim</obj_property>
+      <obj_property name="ObjectShortName">crossbar_data_valid_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/int_data_out_sim" type="array">
+      <obj_property name="ElementShortName">int_data_out_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">int_data_out_sim[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_tb/int_data_out_valid_sim" type="logic">
+      <obj_property name="ElementShortName">int_data_out_valid_sim</obj_property>
+      <obj_property name="ObjectShortName">int_data_out_valid_sim</obj_property>
+   </wvobject>
+</wave_config>

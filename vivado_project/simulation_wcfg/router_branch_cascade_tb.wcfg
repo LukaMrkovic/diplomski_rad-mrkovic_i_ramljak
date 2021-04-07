@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="router_branch_cascade_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="component_declarations" />
+            <top_module name="router_branch_cascade_tb" />
+            <top_module name="router_config" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="6809402fs"></ZoomEndTime>
+      <Cursor1Time time="8400000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="223"></NameColumnWidth>
+      <ValueColumnWidth column_width="100"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="40" />
+   <wvobject type="divider" fp_name="divider115">
+      <obj_property name="label">Kontrolni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/clk_sim" type="logic">
+      <obj_property name="ElementShortName">clk_sim</obj_property>
+      <obj_property name="ObjectShortName">clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/rst_sim" type="logic">
+      <obj_property name="ElementShortName">rst_sim</obj_property>
+      <obj_property name="ObjectShortName">rst_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/uut_router_1_branch/comp_buffer_decoder_module/int_clk" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">int_clk</obj_property>
+      <obj_property name="ObjectShortName">int_clk</obj_property>
+      <obj_property name="label">int_clk_router_1</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/uut_router_2_branch/comp_buffer_decoder_module/int_clk" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">int_clk</obj_property>
+      <obj_property name="ObjectShortName">int_clk</obj_property>
+      <obj_property name="label">int_clk_router_2</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/uut_router_3_branch/comp_buffer_decoder_module/int_clk" type="logic">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">int_clk</obj_property>
+      <obj_property name="ObjectShortName">int_clk</obj_property>
+      <obj_property name="label">int_clk_router_3</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider169">
+      <obj_property name="label">router_1 in</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_in_1_sim" type="array">
+      <obj_property name="ElementShortName">data_in_1_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in_1_sim[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_in_valid_1_sim" type="logic">
+      <obj_property name="ElementShortName">data_in_valid_1_sim</obj_property>
+      <obj_property name="ObjectShortName">data_in_valid_1_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_in_vc_busy_1_sim" type="array">
+      <obj_property name="ElementShortName">data_in_vc_busy_1_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in_vc_busy_1_sim[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_in_vc_credits_1_sim" type="array">
+      <obj_property name="ElementShortName">data_in_vc_credits_1_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in_vc_credits_1_sim[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider170">
+      <obj_property name="label">router_1 &gt; router_2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_1_to_2_sim" type="array">
+      <obj_property name="ElementShortName">data_1_to_2_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">data_1_to_2_sim[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_valid_1_to_2_sim" type="logic">
+      <obj_property name="ElementShortName">data_valid_1_to_2_sim</obj_property>
+      <obj_property name="ObjectShortName">data_valid_1_to_2_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_vc_busy_1_to_2_sim" type="array">
+      <obj_property name="ElementShortName">data_vc_busy_1_to_2_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_vc_busy_1_to_2_sim[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_vc_credits_1_to_2_sim" type="array">
+      <obj_property name="ElementShortName">data_vc_credits_1_to_2_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_vc_credits_1_to_2_sim[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider171">
+      <obj_property name="label">router_2 &gt; router_3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_2_to_3_sim" type="array">
+      <obj_property name="ElementShortName">data_2_to_3_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">data_2_to_3_sim[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_valid_2_to_3_sim" type="logic">
+      <obj_property name="ElementShortName">data_valid_2_to_3_sim</obj_property>
+      <obj_property name="ObjectShortName">data_valid_2_to_3_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_vc_busy_2_to_3_sim" type="array">
+      <obj_property name="ElementShortName">data_vc_busy_2_to_3_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_vc_busy_2_to_3_sim[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_vc_credits_2_to_3_sim" type="array">
+      <obj_property name="ElementShortName">data_vc_credits_2_to_3_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_vc_credits_2_to_3_sim[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider172">
+      <obj_property name="label"> router 3 out</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_out_3_sim" type="array">
+      <obj_property name="ElementShortName">data_out_3_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out_3_sim[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_out_valid_3_sim" type="logic">
+      <obj_property name="ElementShortName">data_out_valid_3_sim</obj_property>
+      <obj_property name="ObjectShortName">data_out_valid_3_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_out_vc_busy_3_sim" type="array">
+      <obj_property name="ElementShortName">data_out_vc_busy_3_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out_vc_busy_3_sim[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/router_branch_cascade_tb/data_out_vc_credits_3_sim" type="array">
+      <obj_property name="ElementShortName">data_out_vc_credits_3_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out_vc_credits_3_sim[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider177">
+      <obj_property name="label">router_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group179" type="group">
+      <obj_property name="label">[r1] flow_controller &gt; arbiter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/router_branch_cascade_tb/arb_vc_busy_1_sim" type="array">
+         <obj_property name="ElementShortName">arb_vc_busy_1_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_vc_busy_1_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/arb_credit_counter_1_sim" type="array">
+         <obj_property name="ElementShortName">arb_credit_counter_1_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_credit_counter_1_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group180" type="group">
+      <obj_property name="label">[r1] decoder &gt; arbiter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/router_branch_cascade_tb/req_1_sim" type="array">
+         <obj_property name="ElementShortName">req_1_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">req_1_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/head_1_sim" type="array">
+         <obj_property name="ElementShortName">head_1_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">head_1_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/tail_1_sim" type="array">
+         <obj_property name="ElementShortName">tail_1_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">tail_1_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group181" type="group">
+      <obj_property name="label">[r1] arbiter &gt; decoder</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/router_branch_cascade_tb/grant_1_sim" type="array">
+         <obj_property name="ElementShortName">grant_1_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">grant_1_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/vc_downstream_1_sim" type="array">
+         <obj_property name="ElementShortName">vc_downstream_1_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_downstream_1_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider182">
+      <obj_property name="label">router_2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group183" type="group">
+      <obj_property name="label">[r2] flow_controller &gt; arbiter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/router_branch_cascade_tb/arb_vc_busy_2_sim" type="array">
+         <obj_property name="ElementShortName">arb_vc_busy_2_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_vc_busy_2_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/arb_credit_counter_2_sim" type="array">
+         <obj_property name="ElementShortName">arb_credit_counter_2_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_credit_counter_2_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group184" type="group">
+      <obj_property name="label">[r2] decoder &gt; arbiter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/router_branch_cascade_tb/req_2_sim" type="array">
+         <obj_property name="ElementShortName">req_2_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">req_2_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/head_2_sim" type="array">
+         <obj_property name="ElementShortName">head_2_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">head_2_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/tail_2_sim" type="array">
+         <obj_property name="ElementShortName">tail_2_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">tail_2_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group185" type="group">
+      <obj_property name="label">[r2] arbiter &gt; decoder</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/router_branch_cascade_tb/grant_2_sim" type="array">
+         <obj_property name="ElementShortName">grant_2_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">grant_2_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/vc_downstream_2_sim" type="array">
+         <obj_property name="ElementShortName">vc_downstream_2_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_downstream_2_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider186">
+      <obj_property name="label">router_3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group187" type="group">
+      <obj_property name="label">[r3] flow_controller &gt; arbiter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/router_branch_cascade_tb/arb_vc_busy_3_sim" type="array">
+         <obj_property name="ElementShortName">arb_vc_busy_3_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_vc_busy_3_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/arb_credit_counter_3_sim" type="array">
+         <obj_property name="ElementShortName">arb_credit_counter_3_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">arb_credit_counter_3_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group188" type="group">
+      <obj_property name="label">[r3] decoder &gt; arbiter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/router_branch_cascade_tb/req_3_sim" type="array">
+         <obj_property name="ElementShortName">req_3_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">req_3_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/head_3_sim" type="array">
+         <obj_property name="ElementShortName">head_3_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">head_3_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/tail_3_sim" type="array">
+         <obj_property name="ElementShortName">tail_3_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">tail_3_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group189" type="group">
+      <obj_property name="label">[r3] arbiter &gt; decoder</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/router_branch_cascade_tb/grant_3_sim" type="array">
+         <obj_property name="ElementShortName">grant_3_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">grant_3_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/router_branch_cascade_tb/vc_downstream_3_sim" type="array">
+         <obj_property name="ElementShortName">vc_downstream_3_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_downstream_3_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider190">
+      <obj_property name="label">Pomocni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group176" type="group">
+      <obj_property name="label">Pomocni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="group173" type="group">
+         <obj_property name="label">router_1 prospoji</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/router_branch_cascade_tb/crossbar_to_int_data_1_sim" type="array">
+            <obj_property name="ElementShortName">crossbar_to_int_data_1_sim[43:0]</obj_property>
+            <obj_property name="ObjectShortName">crossbar_to_int_data_1_sim[43:0]</obj_property>
+            <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/router_branch_cascade_tb/crossbar_to_int_data_valid_1_sim" type="logic">
+            <obj_property name="ElementShortName">crossbar_to_int_data_valid_1_sim</obj_property>
+            <obj_property name="ObjectShortName">crossbar_to_int_data_valid_1_sim</obj_property>
+            <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group174" type="group">
+         <obj_property name="label">router_2 prospoji</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/router_branch_cascade_tb/crossbar_to_int_data_2_sim" type="array">
+            <obj_property name="ElementShortName">crossbar_to_int_data_2_sim[43:0]</obj_property>
+            <obj_property name="ObjectShortName">crossbar_to_int_data_2_sim[43:0]</obj_property>
+            <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/router_branch_cascade_tb/crossbar_to_int_data_valid_2_sim" type="logic">
+            <obj_property name="ElementShortName">crossbar_to_int_data_valid_2_sim</obj_property>
+            <obj_property name="ObjectShortName">crossbar_to_int_data_valid_2_sim</obj_property>
+            <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject fp_name="group175" type="group">
+         <obj_property name="label">router_3 prospoji</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/router_branch_cascade_tb/crossbar_to_int_data_3_sim" type="array">
+            <obj_property name="ElementShortName">crossbar_to_int_data_3_sim[43:0]</obj_property>
+            <obj_property name="ObjectShortName">crossbar_to_int_data_3_sim[43:0]</obj_property>
+            <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/router_branch_cascade_tb/crossbar_to_int_data_valid_3_sim" type="logic">
+            <obj_property name="ElementShortName">crossbar_to_int_data_valid_3_sim</obj_property>
+            <obj_property name="ObjectShortName">crossbar_to_int_data_valid_3_sim</obj_property>
+            <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+</wave_config>
