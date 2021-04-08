@@ -3,7 +3,7 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="router_branch_tb_behav.wdb" id="1">
+      <db_ref path="router_branch_tb.wdb" id="1">
          <top_modules>
             <top_module name="component_declarations" />
             <top_module name="router_branch_tb" />

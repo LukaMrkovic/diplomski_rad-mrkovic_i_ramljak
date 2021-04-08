@@ -45,7 +45,7 @@
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/integration_1_tb.vhd"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/integration_1_tb.wcfg"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/router_branch_tb.vhd"
-#    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/router_branch_tb_behav.wcfg"
+#    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/router_branch_tb.wcfg"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/router_branch_cascade_tb.vhd"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/router_branch_cascade_tb.wcfg"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/crossbar_mux_module_tb.vhd"
@@ -75,7 +75,7 @@ proc checkRequiredFiles { origin_dir} {
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/integration_1_tb.vhd" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/integration_1_tb.wcfg" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/router_branch_tb.vhd" \
-   "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/router_branch_tb_behav.wcfg" \
+   "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/router_branch_tb.wcfg" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/router_branch_cascade_tb.vhd" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/router_branch_cascade_tb.wcfg" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/crossbar_mux_module_tb.vhd" \
@@ -446,7 +446,7 @@ if {[string equal [get_filesets -quiet router_branch_sim] ""]} {
 set obj [get_filesets router_branch_sim]
 set files [list \
  [file normalize "${origin_dir}/simulation_sources/router_branch_tb.vhd"] \
- [file normalize "${origin_dir}/simulation_wcfg/router_branch_tb_behav.wcfg"] \
+ [file normalize "${origin_dir}/simulation_wcfg/router_branch_tb.wcfg"] \
 ]
 add_files -norecurse -fileset $obj $files
 
