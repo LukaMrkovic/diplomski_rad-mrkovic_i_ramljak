@@ -193,5 +193,34 @@ package component_declarations is
         );
         
     end component;
+    
+    -- Deklaracija komponente crossbar_mux_module
+    component crossbar_mux_module
+    
+        Generic (
+            flit_size : integer
+        );
+        
+        Port (
+            select_vector : in std_logic_vector(4 downto 0);
+        
+            data_local : in std_logic_vector(flit_size - 1 downto 0);
+            data_north : in std_logic_vector(flit_size - 1 downto 0);
+            data_east  : in std_logic_vector(flit_size - 1 downto 0);
+            data_south : in std_logic_vector(flit_size - 1 downto 0);
+            data_west  : in std_logic_vector(flit_size - 1 downto 0);
+            
+            data_valid_local : in std_logic;
+            data_valid_north : in std_logic;
+            data_valid_east  : in std_logic;
+            data_valid_south : in std_logic;
+            data_valid_west  : in std_logic;
+            
+            data_out : out std_logic_vector(flit_size - 1 downto 0);
+            
+            data_valid_out : out std_logic
+        );
+    
+    end component;
 
 end package component_declarations;
