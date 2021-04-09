@@ -222,5 +222,46 @@ package component_declarations is
         );
     
     end component;
+    
+    -- Deklaracija komponente crossbar
+    component crossbar
+    
+        Generic (
+            flit_size : integer
+        );
+        
+        Port (
+            select_vector_local : in std_logic_vector(4 downto 0);
+            select_vector_north : in std_logic_vector(4 downto 0);
+            select_vector_east : in std_logic_vector(4 downto 0);
+            select_vector_south : in std_logic_vector(4 downto 0);
+            select_vector_west : in std_logic_vector(4 downto 0);
+        
+            data_in_local : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_north : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_east  : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_south : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_west  : in std_logic_vector(flit_size - 1 downto 0);
+            
+            data_in_valid_local : in std_logic;
+            data_in_valid_north : in std_logic;
+            data_in_valid_east  : in std_logic;
+            data_in_valid_south : in std_logic;
+            data_in_valid_west  : in std_logic;
+            
+            data_out_local : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_north : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_east  : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_south : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_west  : out std_logic_vector(flit_size - 1 downto 0);
+            
+            data_out_valid_local : out std_logic;
+            data_out_valid_north : out std_logic;
+            data_out_valid_east  : out std_logic;
+            data_out_valid_south : out std_logic;
+            data_out_valid_west  : out std_logic
+        );
+    
+    end component;
 
 end package component_declarations;

@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: FER
--- Engineer: Mrkovic
+-- Engineer: Mrkovic, Ramljak
 -- 
 -- Create Date: 08.04.2021 13:36:17
 -- Design Name: NoC Router
