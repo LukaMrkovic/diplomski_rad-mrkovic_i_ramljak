@@ -134,7 +134,6 @@ begin
                 -- SVI IZLAZI NA 00... 0
                 data_in_vc_busy <= (others => '0');
                 data_in_vc_credits <= (others => '0');
-                arb_vc_busy <= (others => '0');
                 arb_credit_counter <= (others => buffer_size);
                 
             else
@@ -186,8 +185,6 @@ begin
                 -- PROSLIJEDI VARIJABLU VEKTOR vc_busy NA IZLAZ data_in_vc_busy
                 data_in_vc_busy <= vc_busy;
                 
-                -- PROSLIJEDI VARIJABLU VEKTOR vc_busy NA IZLAZ arb_vc_busy
-                arb_vc_busy <= vc_busy;
                 -- PROSLIJEDI VARIJABLU VEKTOR credit_counter NA IZLAZ arb_credit_counter
                 arb_credit_counter <= credit_counter;
                 
@@ -233,5 +230,8 @@ begin
     -- LINK CONTROLLER OUTPUT
     data_out <= int_data_out;
     data_out_valid <= int_data_out_valid;
+    
+    -- PROSLIJEDI VARIJABLU VEKTOR vc_busy NA IZLAZ arb_vc_busy
+    arb_vc_busy <= data_out_vc_busy;
 
 end Behavioral;
