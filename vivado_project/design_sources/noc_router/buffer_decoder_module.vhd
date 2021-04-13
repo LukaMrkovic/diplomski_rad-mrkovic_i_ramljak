@@ -347,7 +347,7 @@ begin
                 end if;
                 
                 -- PROPUSTI KREDIT PREMA INTERFACEU
-                if (output_counter = 3) then 
+                if (output_counter = (clock_divider * 2) - 1) then 
                     enable_credits <= (others => '1');
                 else
                     enable_credits <= (others => '0');
