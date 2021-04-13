@@ -110,6 +110,7 @@ architecture Behavioral of buffer_decoder_module is
     signal output_counter_test : integer; 
     
     signal enable_output : std_logic_vector(flit_size - 1 downto 0);
+    signal enable_credits : std_logic_vector(flit_size - 1 downto 0);
     
 begin    
 
@@ -345,6 +346,13 @@ begin
                     enable_output <= (others => '0');
                 end if;
                 
+                -- PROPUSTI KREDIT PREMA INTERFACEU
+                if (output_counter = 3) then 
+                    enable_credits <= (others => '1');
+                else
+                    enable_credits <= (others => '0');
+                end if;
+                
                 clk_counter_test <= clk_counter;
                 output_counter_test <= output_counter;
                              
@@ -357,7 +365,7 @@ begin
     crossbar_data <= dec_data and enable_output;
     crossbar_data_valid <= dec_data_valid and enable_output(0);
     -- PROSLIJEDI grant NA IZLAZ buffer_vc_credits (PREMA router_interface_module)
-    buffer_vc_credits <= grant and enable_output(vc_num - 1 downto 0);
+    buffer_vc_credits <= grant and enable_credits(vc_num - 1 downto 0);
     -- PROSLIJEDI grant NA vc_shift
     vc_shift <= grant and enable_output(vc_num - 1 downto 0);
              
