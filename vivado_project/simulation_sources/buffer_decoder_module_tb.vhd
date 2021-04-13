@@ -137,7 +137,7 @@ begin
         
         rst_sim <= '1';
         
-        wait for (5.1 * clk_period);
+        wait for (4.1 * clk_period);
         
         -- Head, vc1, dest: 0010-0010
         int_data_in_sim <= X"92211111111";
