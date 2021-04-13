@@ -93,7 +93,7 @@ package body router_config is
     constant const_default_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0) := "0001";
     
     -- Omjer usporavanja globalnog takta (podijeljeno s 2)
-    constant const_clock_divider : integer := 2;
+    constant const_clock_divider : integer := 3;
     
     -- Preferenca sljedeceg koraka ukoliko je potrebno flit usmjeriti dijagonalno
     -- (ni x ni y os trenutnog i odredišnog routera se ne poklapaju)

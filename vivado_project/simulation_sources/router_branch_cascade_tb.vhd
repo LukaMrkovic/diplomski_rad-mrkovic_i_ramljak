@@ -308,7 +308,7 @@ begin
         -- Reset neaktivan
         rst_sim <= '1';
         
-        wait for (4.1 * clk_period);
+        wait for (6.1 * clk_period);
         
         -- Head, vc1, dest: 0010-0010
         data_in_1_sim <= X"92211111111";
@@ -320,7 +320,7 @@ begin
         data_in_1_sim <= (others => '0');
         data_in_valid_1_sim <= '0';
         
-        wait for (3 * clk_period);
+        wait for (5 * clk_period);
         
         -- Tail, vc1, dest: 0010-0010
         data_in_1_sim <= X"52233333333";
@@ -332,14 +332,14 @@ begin
         data_in_1_sim <= (others => '0');
         data_in_valid_1_sim <= '0';
         
-        wait for (1.9 * clk_period);
+        wait for (3.9 * clk_period);
         
         -- Dozvola za slanje vc1 na crossbar
         -- Nizvodni vc 10
         grant_1_sim <= B"01";
         vc_downstream_1_sim <= B"10";
         
-        wait for (8 * clk_period);
+        wait for (12 * clk_period);
         
         grant_1_sim <= (others => '0');
         vc_downstream_1_sim <= (others => '0');
@@ -349,7 +349,7 @@ begin
         grant_2_sim <= B"10";
         vc_downstream_2_sim <= B"01";
         
-        wait for (8 * clk_period);
+        wait for (12 * clk_period);
         
         grant_2_sim <= (others => '0');
         vc_downstream_2_sim <= (others => '0');
@@ -359,7 +359,7 @@ begin
         grant_3_sim <= B"01";
         vc_downstream_3_sim <= B"10";
         
-        wait for (8 * clk_period);
+        wait for (12 * clk_period);
         
         grant_3_sim <= (others => '0');
         vc_downstream_3_sim <= (others => '0');
