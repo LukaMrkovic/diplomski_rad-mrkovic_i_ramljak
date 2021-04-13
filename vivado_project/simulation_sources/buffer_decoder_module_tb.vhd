@@ -173,7 +173,7 @@ begin
         int_data_in_sim <= (others => '0');
         int_data_in_valid_sim <= (others => '0');
         
-        wait for (4.9 * clk_period);
+        wait for (5.9 * clk_period);
         
         -- Dozvola za slanje vc1 na crossbar
         -- Nizvodni vc 10
