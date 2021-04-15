@@ -325,8 +325,8 @@ begin
                 
                 -- POSTAVI INTERNI TAKT NA 0
                 int_clk <= '0';
-                
-                enable_output <= (others => '0');  
+                enable_output <= (others => '0');
+                enable_credits <= (others => '0');
             
             else
             
