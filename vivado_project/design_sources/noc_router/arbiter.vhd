@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-04-15 - Mrkovic, Ramljak
 -- Additional Comments: Kostur fsm-a
+-- Revision 0.2 - 2021-04-16 - Mrkovic, Ramljak
+-- Additional Comments: Prva verzija arbitera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -122,12 +124,18 @@ architecture Behavioral of arbiter is
     -- ARRAY ZA GRUPIRANJE ULAZA OBLIKA std_logic_vector (4 downto 0) 
     type IO_num_length_array is
         array (4 downto 0) of std_logic_vector(4 downto 0);
-    -- ARRAY ZA GRUPIRANJE credit_counter
+    -- ARRAY ZA GRUPIRANJE credit_counter ULAZA
     type credit_counter_vector_array is
         array (4 downto 0) of credit_counter_vector(vc_num - 1 downto 0);
-    -- ARRAY ZA GRUPIRANJE req
+    -- ARRAY ZA GRUPIRANJE req ULAZA
     type destination_dir_vector_array is 
         array (4 downto 0) of destination_dir_vector(vc_num - 1 downto 0);
+    -- ARRAY INTEGERA DULJINE 5
+    type IO_num_integer_array is
+        array (4 downto 0) of integer;
+    -- ARRAY VEKTORA DULJINE 5 * vc_num
+    type connection_vector_array is
+        array ((5 * vc_num) - 1 downto 0) of std_logic_vector ((5 * vc_num) - 1 downto 0);
     
     -- ULAZNA POLJA
     signal vc_busy_array : vc_num_length_array;
@@ -141,12 +149,18 @@ architecture Behavioral of arbiter is
     signal vc_downstream_array : vc_num_length_array;
     signal select_vector_array : IO_num_length_array;
     
-    -- > TESTNI SIGNALI
-    signal counter_1_test : integer;
-    signal counter_2_test : integer;
-    signal counter_3_test : integer;
-    signal counter_4_test : integer;
-    -- <
+    -- INTERNI SIGNALI
+    -- POLJE KONEKCIJA UZVODNIH I NIZVODNIH VIRTUALNIH KANALA
+    signal connection_array : connection_vector_array;
+    -- ROUND ROBIN COUNTER ZA ULAZE
+    signal input_rr_counter : integer;
+    -- ROUND ROBIN COUNTERI ZA VIRTUALNE KANALE PO ULAZIMA
+    signal vc_rr_counter_array : IO_num_integer_array;
+    -- MATRICA ZAHTJEVA ULAZA NA IZLAZE
+    signal IO_req_matrix : IO_num_length_array;
+    -- ARBITRIRANI VIRTUALNI KANALI
+    signal arbitrated_vc_array : IO_num_integer_array;
+    
 
 begin
 
@@ -239,20 +253,56 @@ begin
     -- PROCES STANJA 1
     state_1_process : process (clk) is
     
-        variable counter_1 : integer;
+        variable input_rr_counter_var : integer;
+        variable vc_rr_counter_array_var : IO_num_integer_array;
+        variable connection_compressed : std_logic_vector ((5 * vc_num) - 1 downto 0);
     
     begin
     
         if rising_edge(clk) then
             if rst = '0' then
+            
+                -- IZLAZNI SIGNALI
+                input_rr_counter <= 0;
+                vc_rr_counter_array <= (others => 0);
+                -- INTERNE VARIJABLE
+                input_rr_counter_var := 0;
+                vc_rr_counter_array_var := (others => 0);
+                connection_compressed := (others => '0');
+            
+            else
                 
-                counter_1 := 0;
-                counter_1_test <= 0;
+                -- AKO JE POSTAVLJEN SIGNAL state_1_enable
+                if state_1_enable = '1' then
                 
-            elsif state_1_enable = '1' then
+                    -- POVECAJ ROUND ROBIN BROJILO za ULAZE (input_rr_counter)
+                    input_rr_counter_var := (input_rr_counter_var + 1) mod 5;
+                    
+                    -- PARALELNA OBRADA ROUND ROBIN BROJILA SVAKOG ULAZA
+                    loop_1 : for i in 4 downto 0 loop
+                    
+                        connection_compressed := (others => '0');
+                    
+                        -- STISNI VEKOTRE KONEKCIJA JEDNOG ULAZA U JEDAN VEKTOR
+                        loop_2 : for j in 4 downto 0 loop
+                        
+                            connection_compressed := connection_compressed or connection_array((5 * i) + j);
+                        
+                        end loop;
+                    
+                        -- AKO KONEKCIJA ULAZNOG VIRTUALNOG KANALA NE POSTOJI NITI S JEDNIM IZLAZNIM VIRTUALNIM KANALOM
+                        if connection_compressed = (others => '0') then
+                        
+                            vc_rr_counter_array_var(i) := (vc_rr_counter_array_var(i) + 1) mod vc_num;
+                        
+                        end if;
+                    
+                    end loop;
                 
-                counter_1 := counter_1 + 1;
-                counter_1_test <= counter_1;
+                end if;
+                
+                input_rr_counter <= input_rr_counter_var;
+                vc_rr_counter_array <= vc_rr_counter_array_var;
                 
             end if;
         end if;
@@ -262,20 +312,20 @@ begin
     -- PROCES STANJA 2
     state_2_process : process (clk) is
     
-        variable counter_2 : integer;
-    
     begin
     
         if rising_edge(clk) then
             if rst = '0' then
+            
+                -- IZLAZNI SIGNALI
+                -- INTERNE VARIJABLE
+            
+            else
                 
-                counter_2 := 0;
-                counter_2_test <= 0;
+                -- AKO JE POSTAVLJEN SIGNAL state_2_enable
+                if state_2_enable = '1' then
                 
-            elsif state_2_enable = '1' then
-                
-                counter_2 := counter_2 + 1;
-                counter_2_test <= counter_2;
+                end if;
                 
             end if;
         end if;
@@ -285,21 +335,111 @@ begin
     -- PROCES STANJA 3
     state_3_process : process (clk) is
     
-        variable counter_3 : integer;
+        variable ds_index : integer;
+        variable req_parsed : destination_dir_vector(vc_num - 1 downto 0);
+        variable IO_req_matrix_var : IO_num_length_array;
+        variable arbitrated_vc_array_var : IO_num_integer_array; 
     
     begin
     
         if rising_edge(clk) then
             if rst = '0' then
+            
+                -- IZLAZNI SIGNALI
+                IO_req_matrix <= (others => (others => '0'));
+                arbitrated_vc_array <= (others => 0);
                 
-                counter_3 := 0;
-                counter_3_test <= 0;
+                -- INTERNE VARIJABLE
+                ds_index := 0;
+                req_parsed := (others => EMPTY);
+                IO_req_matrix_var := (others => (others => '0'));
+                arbitrated_vc_array_var := (others => 0);
+            
+            else
+            
+                -- AKO JE POSTAVLJEN SIGNAL state_3_enable
+                if state_3_enable = '1' then
                 
-            elsif state_3_enable = '1' then
+                    -- RESETIRAJ IO_req_matrix_var I arbitrated_vc_array_var U 00... 0
+                    IO_req_matrix_var := (others => (others => '0'));
+                    arbitrated_vc_array_var := (others => 0);
                 
-                counter_3 := counter_3 + 1;
-                counter_3_test <= counter_3;
+                    -- PARALELNA OBRADA I ARBITRIRANJE SVAKOG ULAZA
+                    loop_1 : for i in 4 downto 0 loop
+                    
+                        -- RESETIRAJ req_parsed U EMPTY, EMPTY,... EMPTY
+                        req_parsed := (others => EMPTY);
+                    
+                        -- PROCISTI ZAHTJEV SVAKOG VIRTUALNOG KANALA ULAZA
+                        loop_2a : for j in (vc_num - 1) downto 0 loop
+                        
+                            -- AKO JE ZAHTJEV U req_array(i)(j) RAZLICIT OD EMPTY
+                            if req_array(i)(j) /= EMPTY then
+                            
+                                -- ODREEDI INDEKS NIZVODNOG vc_busy SIGNALA
+                                case req_array(i)(j) is
+                                    when NORTH => ds_index := 1;
+                                    when EAST => ds_index := 2;
+                                    when SOUTH => ds_index := 3;
+                                    when WEST => ds_index := 4;
+                                    when others => ds_index := 0;
+                                end case;
+                                
+                                -- AKO SIGNAL head_array(i)(j) JE POSTAVLJEN I SIGNAL vc_busy_array(ds_index)(j) NIJE POSTAVLJEN
+                                -- ILI
+                                -- AKO SIGNAL head_array(i)(j) NIJE POSTAVLJEN I SIGNAL connection_array((5 * i) + j)((5 * ds_index) + j) JE POSTAVLJEN
+                                if (head_array(i)(j) = '1' and vc_busy_array(ds_index)(j) = '0') or
+                                   (head_array(i)(j) = '0' and connection_array((5 * i) + j)((5 * ds_index) + j) = '1') then
+                                   
+                                    -- AKO SIGNAL credit_counter_array(ds_index)(j) VECI OD 0 
+                                    if credit_counter_array(ds_index)(j) > 0 then
+                                    
+                                        -- PREPISI ZAHTJEV IZ req_array(i)(j) U req_parsed(j)
+                                        req_parsed(j) := req_array(i)(j);
+                                    
+                                    end if;
+                                   
+                                end if;
+                            
+                            end if;
+                        
+                        end loop;
+                        
+                        -- ODABERI POSTAVLJEN ZAHTJEV NAJVISEG PRIORITETA (PO ROUND ROBINU)
+                        loop_2b : for j in (vc_num - 1) downto 0 loop
+                        
+                            -- AKO JE ZAHTJEV U req_parsed(j + vc_rr_counter_array(i)) POSTAVLJEN
+                            if req_parsed(j + vc_rr_counter_array(i)) /= EMPTY then
+                                
+                                -- ODREEDI INDEKS ZAHTJEVANOG IZLAZA
+                                case req_parsed(j + vc_rr_counter_array(i)) is
+                                    when NORTH => ds_index := 1;
+                                    when EAST => ds_index := 2;
+                                    when SOUTH => ds_index := 3;
+                                    when WEST => ds_index := 4;
+                                    when others => ds_index := 0;
+                                end case;
+                                
+                                -- POSTAVI IO_req_matrix_var(ds_index)(i) U 1
+                                IO_req_matrix_var(ds_index)(i) := '1';
+                                -- POHRANI ARBITRIRANI VIRTUALNI KANAL U arbitrated_vc_array_var(i)
+                                arbitrated_vc_array_var(i) := j;
+                                
+                                -- IZADJI IZ PETLJE
+                                exit loop_2b;
+                                
+                            end if;
+                        
+                        end loop;
+                    
+                    end loop;
                 
+                end if;
+            
+                -- PROSLIJEDI INTERNE VARIJABLE NA SIGNALE
+                IO_req_matrix <= IO_req_matrix_var;
+                arbitrated_vc_array <= arbitrated_vc_array_var;
+            
             end if;
         end if;
     
@@ -308,33 +448,86 @@ begin
     -- PROCES STANJA 4
     state_4_process : process (clk) is
     
-        variable counter_4 : integer;
+        variable rr_index : integer;
+        variable vc_index : integer;
+        variable grant_array_var : vc_num_length_array;
+        variable vc_downstream_array_var : vc_num_length_array;
+        variable select_vector_array_var : IO_num_length_array;
+        variable connection_array_var : connection_vector_array;
     
     begin
     
         if rising_edge(clk) then
             if rst = '0' then
                 
+                -- IZLAZNI SIGNALI
                 grant_array <= (others => (others => '0'));
                 vc_downstream_array <= (others => (others => '0'));
                 select_vector_array <= (others => (others => '0'));
-                counter_4 := 0;
-                counter_4_test <= 0;
+                connection_array <= (others => (others => '0'));
                 
-            elsif state_4_enable = '1' then
+                -- INTERNE VARIJABLE
                 
-                counter_4 := counter_4 + 1;
-                counter_4_test <= counter_4;
+                rr_index := 0;
+                vc_index := 0;
+                grant_array_var := (others => (others => '0'));
+                vc_downstream_array_var := (others => (others => '0'));
+                select_vector_array_var := (others => (others => '0'));
+                connection_array_var := (others => (others => '0'));
                 
-                if (counter_4 mod 2) = 0 then
-                    grant_array <= (others => (others => '0'));
-                    vc_downstream_array <= (others => (others => '0'));
-                    select_vector_array <= (others => (others => '0'));
-                else
-                    grant_array <= (others => (others => '1'));
-                    vc_downstream_array <= (others => (others => '1'));
-                    select_vector_array <= (others => (others => '1'));
+            else
+                
+                -- AKO JE POSTAVLJEN SIGNAL state_4_enable
+                if state_4_enable = '1' then
+                
+                    grant_array_var := (others => (others => '0'));
+                    vc_downstream_array_var := (others => (others => '0'));
+                    select_vector_array_var := (others => (others => '0'));
+                
+                    -- PARALELNO ARBITRIRANJE SVAKOG IZLAZA
+                    loop_1 : for i in 4 downto 0 loop
+                    
+                        -- ODABERI ULAZ S POSTAVLJENIM ZAHTJEVOM NAJVISEG PRIORITETA ZA SVAKI IZLAZ (PO ROUND ROBINU)
+                        loop_2 : for j in 4 downto 0 loop
+                        
+                            rr_index := j + input_rr_counter;
+                        
+                            -- AKO JE BIT IO_req_matrix(i)(j + input_rr_counter) POSTAVLJEN
+                            if IO_req_matrix(i)(rr_index) = '1' then
+                            
+                                vc_index := arbitrated_vc_array(rr_index);
+                            
+                                -- GENERIRAJ ODGOVARAJUCI grant SIGNAL
+                                grant_array_var(rr_index) := (vc_index => '1', others => '0');
+                                -- GENERIRAJ ODGOVARAJUCI vc_downstream SIGNAL
+                                vc_downstream_array_var(rr_index) := (vc_index => '1', others => '0');
+                                -- GENERIRAJ ODGOVARAJUCI select_vector SIGNAL
+                                select_vector_array_var(i) := (rr_index => '1', others => '0');
+                                
+                                -- AKO JE POSTAVLJEN head SIGNAL POHRANI KONEKCIJU UZVODNOG I NIZVODNOG VIRTUALNOG KANALA
+                                if head_array(rr_index)(vc_index) = '1' then
+                                    connection_array_var((5 * rr_index) + vc_index)((5 * i) + vc_index) := '1';
+                                end if;
+                                -- AKO JE POSTAVLJEN tail SIGNAL OBRIŠI KONEKCIJU UZVODNOG I NIZVODNOG VIRTUALNOG KANALA
+                                if tail_array(rr_index)(vc_index) = '1' then
+                                    connection_array_var((5 * rr_index) + vc_index)((5 * i) + vc_index) := '0';
+                                end if;
+                               
+                                -- IZADJI IZ PETLJE
+                                exit loop_2;
+                            
+                            end if;
+                        
+                        end loop;
+                    
+                    end loop;
+                
                 end if;
+                
+                grant_array <= grant_array_var;
+                vc_downstream_array <= vc_downstream_array_var;
+                select_vector_array <= select_vector_array_var;
+                connection_array <= connection_array_var;
                 
             end if;
         end if;
