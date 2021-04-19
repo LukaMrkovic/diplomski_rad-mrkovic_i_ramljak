@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-04-15 - Mrkovic, Ramljak
 -- Additional Comments: Prva verzija simulacije arbitera
+-- Revision 0.2 - 2021-04-19 - Mrkovic, Ramljak
+-- Additional Comments: Druga verzija simulacije arbitera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -179,7 +181,7 @@ begin
     end process;
     
     -- simulacija sporog takta
-    clock_transfer_process : process (clk_sim) is 
+    int_clk_process : process (clk_sim) is 
         
         variable clk_counter : integer;
         
@@ -220,11 +222,11 @@ begin
         vc_busy_south_sim <= (others => '0');
         vc_busy_west_sim <= (others => '0');
     
-        credit_counter_local_sim <= (others => 0);
-        credit_counter_north_sim <= (others => 0);
-        credit_counter_east_sim <= (others => 0);
-        credit_counter_south_sim <= (others => 0);
-        credit_counter_west_sim <= (others => 0);
+        credit_counter_local_sim <= (others => const_buffer_size);
+        credit_counter_north_sim <= (others => const_buffer_size);
+        credit_counter_east_sim <= (others => const_buffer_size);
+        credit_counter_south_sim <= (others => const_buffer_size);
+        credit_counter_west_sim <= (others => const_buffer_size);
     
         req_local_sim <= (others => EMPTY);
         req_north_sim <= (others => EMPTY);
@@ -252,37 +254,107 @@ begin
         -- Reset neaktivan
         rst_sim <= '1';
         
-        wait for (5 * clk_period);
+        wait for (4.1 * clk_period);
         
-        vc_busy_local_sim <= B"01";
-        vc_busy_north_sim <= B"10";
-        vc_busy_east_sim <= B"01";
-        vc_busy_south_sim <= B"10";
-        vc_busy_west_sim <= B"01";
+        -- LOCAL > EAST (vc1, head)
+        req_local_sim <= (1 => EAST, 0 => EMPTY);
+        head_local_sim <= (1 => '1', 0 => '0');
+        
+        -- WEST > SOUTH (vc0, head)
+        req_west_sim <= (1 => EMPTY, 0 => SOUTH);
+        head_west_sim <= (1 => '0', 0 => '1');
+        
+        -- NORTH > EAST (vc1, headtail)
+        req_north_sim <= (1 => EAST, 0 => EMPTY);
+        head_north_sim <= (1 => '1', 0 => '0');
+        tail_north_sim <= (1 => '1', 0 => '0');
+        
+        wait for clk_period;
+        
+        -- NADA
+        
+        wait for (3 * clk_period);
+        
+        -- LOCAL > EAST (vc1, tail)
+        head_local_sim <= (others => '0');
+        tail_local_sim <= (1 => '1', 0 => '0');
+        
+        -- WEST > SOUTH (vc0, body)
+        head_west_sim <= (others => '0');
+        
+        wait for clk_period;
+        
+        credit_counter_east_sim <= (1 => (const_buffer_size - 1), 0 => const_buffer_size);
+        credit_counter_south_sim <= (1 => const_buffer_size, 0 => (const_buffer_size - 1));
+        vc_busy_east_sim <= (1 => '1', 0 => '0');
+        vc_busy_south_sim <= (1 => '0', 0 => '1');
+        
+        wait for (3 * clk_period);
+        
+        -- LOCAL > EAST (vc1)
+        req_local_sim <= (others => EMPTY);
+        tail_local_sim <= (others => '0');
+        
+        -- WEST > SOUTH (vc0, tail)
+        tail_west_sim <= (1 => '0', 0 => '1');
+        
+        wait for clk_period;
+        
+        credit_counter_east_sim <= (1 => (const_buffer_size - 2), 0 => const_buffer_size);
+        credit_counter_south_sim <= (1 => const_buffer_size, 0 => (const_buffer_size - 2));
+        vc_busy_east_sim <= (others => '0');
+        vc_busy_south_sim <= (1 => '0', 0 => '1');
+        
+        wait for (3 * clk_period);
+        
+        -- WEST > SOUTH (vc0)
+        req_west_sim <= (others => EMPTY);
+        tail_west_sim <= (others => '0');
+        
+        -- NORTH > EAST (vc1)
+        req_north_sim <= (others => EMPTY);
+        head_north_sim <= (others => '0');
+        tail_north_sim <= (others => '0');
+        
+        wait for clk_period;
+        
+        credit_counter_east_sim <= (1 => (const_buffer_size - 3), 0 => const_buffer_size);
+        credit_counter_south_sim <= (1 => const_buffer_size, 0 => (const_buffer_size - 3));
+        vc_busy_east_sim <= (others => '0');
+        vc_busy_south_sim <= (others => '1');
+        
+        
+        -- wait for (5 * clk_period);
+        
+        -- vc_busy_local_sim <= B"01";
+        -- vc_busy_north_sim <= B"10";
+        -- vc_busy_east_sim <= B"01";
+        -- vc_busy_south_sim <= B"10";
+        -- vc_busy_west_sim <= B"01";
     
-        credit_counter_local_sim <= (others => 7);
-        credit_counter_north_sim <= (others => 6);
-        credit_counter_east_sim <= (others => 5);
-        credit_counter_south_sim <= (others => 4);
-        credit_counter_west_sim <= (others => 3);
+        -- credit_counter_local_sim <= (others => 7);
+        -- credit_counter_north_sim <= (others => 6);
+        -- credit_counter_east_sim <= (others => 5);
+        -- credit_counter_south_sim <= (others => 4);
+        -- credit_counter_west_sim <= (others => 3);
     
-        req_local_sim <= (others => LOCAL);
-        req_north_sim <= (others => NORTH);
-        req_east_sim <= (others => EAST);
-        req_south_sim <= (others => SOUTH);
-        req_west_sim <= (others => WEST);
+        -- req_local_sim <= (others => LOCAL);
+        -- req_north_sim <= (others => NORTH);
+        -- req_east_sim <= (others => EAST);
+        -- req_south_sim <= (others => SOUTH);
+        -- req_west_sim <= (others => WEST);
     
-        head_local_sim <= B"10";
-        head_north_sim <= B"01";
-        head_east_sim <= B"10";
-        head_south_sim <= B"01";
-        head_west_sim <= B"10";
+        -- head_local_sim <= B"10";
+        -- head_north_sim <= B"01";
+        -- head_east_sim <= B"10";
+        -- head_south_sim <= B"01";
+        -- head_west_sim <= B"10";
     
-        tail_local_sim <= B"01";
-        tail_north_sim <= B"10";
-        tail_east_sim <= B"01";
-        tail_south_sim <= B"10";
-        tail_west_sim <= B"01";
+        -- tail_local_sim <= B"01";
+        -- tail_north_sim <= B"10";
+        -- tail_east_sim <= B"01";
+        -- tail_south_sim <= B"10";
+        -- tail_west_sim <= B"01";
     
         wait;
     
