@@ -399,7 +399,7 @@ begin
                         end loop;
                         
                         -- ODABERI POSTAVLJEN ZAHTJEV NAJVISEG PRIORITETA (PO ROUND ROBINU)
-                        loop_2b : for j in (vc_num - 1) downto 0 loop
+                        loop_2b : for j in 0 to (vc_num - 1) loop
                         
                             vc_index := (j + vc_rr_counter_array(i)) mod vc_num;
                         
@@ -483,7 +483,7 @@ begin
                     loop_1 : for i in 4 downto 0 loop
                     
                         -- ODABERI ULAZ S POSTAVLJENIM ZAHTJEVOM NAJVISEG PRIORITETA ZA SVAKI IZLAZ (PO ROUND ROBINU)
-                        loop_2 : for j in 4 downto 0 loop
+                        loop_2 : for j in 0 to 4 loop
                         
                             rr_index := (j + input_rr_counter) mod 5;
                         

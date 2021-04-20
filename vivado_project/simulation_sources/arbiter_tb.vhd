@@ -257,17 +257,18 @@ begin
         wait for (4.1 * clk_period);
         
         -- LOCAL > EAST (vc1, head)
-        req_local_sim <= (1 => EAST, 0 => EMPTY);
-        head_local_sim <= (1 => '1', 0 => '0');
+        -- LOCAL > WEST (vc0, head)
+        req_local_sim <= (1 => EAST, 0 => WEST);
+        head_local_sim <= (1 => '1', 0 => '1');
         
         -- WEST > SOUTH (vc0, head)
-        req_west_sim <= (1 => EMPTY, 0 => SOUTH);
-        head_west_sim <= (1 => '0', 0 => '1');
+        -- req_west_sim <= (1 => EMPTY, 0 => SOUTH);
+        -- head_west_sim <= (1 => '0', 0 => '1');
         
         -- NORTH > EAST (vc1, headtail)
-        req_north_sim <= (1 => EAST, 0 => EMPTY);
-        head_north_sim <= (1 => '1', 0 => '0');
-        tail_north_sim <= (1 => '1', 0 => '0');
+        -- req_north_sim <= (1 => EAST, 0 => EMPTY);
+        -- head_north_sim <= (1 => '1', 0 => '0');
+        -- tail_north_sim <= (1 => '1', 0 => '0');
         
         wait for clk_period;
         
@@ -276,52 +277,68 @@ begin
         wait for (3 * clk_period);
         
         -- LOCAL > EAST (vc1, tail)
-        head_local_sim <= (others => '0');
+        -- LOCAL > WEST (vc0, tail)
+        head_local_sim <= (1 => '0', 0 => '1');
         tail_local_sim <= (1 => '1', 0 => '0');
         
         -- WEST > SOUTH (vc0, body)
-        head_west_sim <= (others => '0');
+        -- head_west_sim <= (others => '0');
         
         wait for clk_period;
         
+        -- credit_counter_east_sim <= (1 => (const_buffer_size - 1), 0 => const_buffer_size);
         credit_counter_east_sim <= (1 => (const_buffer_size - 1), 0 => const_buffer_size);
-        credit_counter_south_sim <= (1 => const_buffer_size, 0 => (const_buffer_size - 1));
+        -- vc_busy_east_sim <= (1 => '1', 0 => '0');
         vc_busy_east_sim <= (1 => '1', 0 => '0');
-        vc_busy_south_sim <= (1 => '0', 0 => '1');
         
         wait for (3 * clk_period);
         
         -- LOCAL > EAST (vc1)
-        req_local_sim <= (others => EMPTY);
+        req_local_sim <= (1 => EMPTY, 0 => WEST);
         tail_local_sim <= (others => '0');
         
         -- WEST > SOUTH (vc0, tail)
-        tail_west_sim <= (1 => '0', 0 => '1');
+        -- tail_west_sim <= (1 => '0', 0 => '1');
         
         wait for clk_period;
         
+        -- credit_counter_east_sim <= (1 => (const_buffer_size - 2), 0 => const_buffer_size);
         credit_counter_east_sim <= (1 => (const_buffer_size - 2), 0 => const_buffer_size);
-        credit_counter_south_sim <= (1 => const_buffer_size, 0 => (const_buffer_size - 2));
+        -- vc_busy_east_sim <= (others => '0');
         vc_busy_east_sim <= (others => '0');
-        vc_busy_south_sim <= (1 => '0', 0 => '1');
         
         wait for (3 * clk_period);
         
         -- WEST > SOUTH (vc0)
-        req_west_sim <= (others => EMPTY);
-        tail_west_sim <= (others => '0');
+        -- req_west_sim <= (others => EMPTY);
+        -- tail_west_sim <= (others => '0');
+        
+        -- LOCAL > EAST (vc1)
+        head_local_sim <= (others => '0');
+        tail_local_sim <= (1 => '0', 0 => '1');
         
         -- NORTH > EAST (vc1)
-        req_north_sim <= (others => EMPTY);
-        head_north_sim <= (others => '0');
-        tail_north_sim <= (others => '0');
+        -- req_north_sim <= (others => EMPTY);
+        -- head_north_sim <= (others => '0');
+        -- tail_north_sim <= (others => '0');
         
         wait for clk_period;
         
-        credit_counter_east_sim <= (1 => (const_buffer_size - 3), 0 => const_buffer_size);
-        credit_counter_south_sim <= (1 => const_buffer_size, 0 => (const_buffer_size - 3));
-        vc_busy_east_sim <= (others => '0');
-        vc_busy_south_sim <= (others => '1');
+        credit_counter_west_sim <= (1 => const_buffer_size, 0 => (const_buffer_size - 1));
+        -- credit_counter_south_sim <= (1 => const_buffer_size, 0 => (const_buffer_size - 3));
+        vc_busy_west_sim <= (1 => '0', 0 => '1');
+        -- vc_busy_south_sim <= (others => '1');
+        
+        wait for (3 * clk_period);
+        
+        req_local_sim <= (others => EMPTY);
+        head_local_sim <= (others => '0');
+        tail_local_sim <= (others => '0');
+        
+        wait for clk_period;
+        
+        credit_counter_west_sim <= (1 => const_buffer_size, 0 => (const_buffer_size - 2));
+        vc_busy_west_sim <= (others => '0');
         
         
         -- wait for (5 * clk_period);
