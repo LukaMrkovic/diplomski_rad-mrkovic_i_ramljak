@@ -263,5 +263,150 @@ package component_declarations is
         );
     
     end component;
+    
+    -- Deklaracija komponente arbiter
+    component arbiter
+    
+        Generic (
+            vc_num : integer
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic;
+            
+            vc_busy_local : in std_logic_vector(vc_num - 1 downto 0);
+            vc_busy_north : in std_logic_vector(vc_num - 1 downto 0);
+            vc_busy_east : in std_logic_vector(vc_num - 1 downto 0);
+            vc_busy_south : in std_logic_vector(vc_num - 1 downto 0);
+            vc_busy_west : in std_logic_vector(vc_num - 1 downto 0);
+            
+            credit_counter_local : in credit_counter_vector(vc_num - 1 downto 0);
+            credit_counter_north : in credit_counter_vector(vc_num - 1 downto 0);
+            credit_counter_east : in credit_counter_vector(vc_num - 1 downto 0);
+            credit_counter_south : in credit_counter_vector(vc_num - 1 downto 0);
+            credit_counter_west : in credit_counter_vector(vc_num - 1 downto 0);
+            
+            req_local : in destination_dir_vector(vc_num - 1 downto 0);
+            req_north : in destination_dir_vector(vc_num - 1 downto 0);
+            req_east : in destination_dir_vector(vc_num - 1 downto 0);
+            req_south : in destination_dir_vector(vc_num - 1 downto 0);
+            req_west : in destination_dir_vector(vc_num - 1 downto 0);
+            
+            head_local : in std_logic_vector (vc_num - 1 downto 0 );
+            head_north : in std_logic_vector (vc_num - 1 downto 0 );
+            head_east : in std_logic_vector (vc_num - 1 downto 0 );
+            head_south : in std_logic_vector (vc_num - 1 downto 0 );
+            head_west : in std_logic_vector (vc_num - 1 downto 0 );
+            
+            tail_local : in std_logic_vector (vc_num - 1 downto 0 );
+            tail_north : in std_logic_vector (vc_num - 1 downto 0 );
+            tail_east : in std_logic_vector (vc_num - 1 downto 0 );
+            tail_south : in std_logic_vector (vc_num - 1 downto 0 );
+            tail_west : in std_logic_vector (vc_num - 1 downto 0 );
+            
+            grant_local : out std_logic_vector (vc_num - 1 downto 0);
+            grant_north : out std_logic_vector (vc_num - 1 downto 0);
+            grant_east : out std_logic_vector (vc_num - 1 downto 0);
+            grant_south : out std_logic_vector (vc_num - 1 downto 0);
+            grant_west : out std_logic_vector (vc_num - 1 downto 0);
+            
+            vc_downstream_local : out std_logic_vector (vc_num - 1 downto 0);
+            vc_downstream_north : out std_logic_vector (vc_num - 1 downto 0);
+            vc_downstream_east : out std_logic_vector (vc_num - 1 downto 0);
+            vc_downstream_south : out std_logic_vector (vc_num - 1 downto 0);
+            vc_downstream_west : out std_logic_vector (vc_num - 1 downto 0);
+            
+            select_vector_local : out std_logic_vector(4 downto 0);
+            select_vector_north : out std_logic_vector(4 downto 0);
+            select_vector_east : out std_logic_vector(4 downto 0);
+            select_vector_south : out std_logic_vector(4 downto 0);
+            select_vector_west : out std_logic_vector(4 downto 0)
+        );    
+    
+    end component;
+    
+    component noc_router
+        
+        Generic (
+            vc_num : integer;
+            mesh_size_x : integer;
+            mesh_size_y : integer;
+            address_size : integer;
+            payload_size : integer;
+            flit_size : integer;
+            buffer_size : integer;
+            local_address_x : std_logic_vector(const_mesh_size_x - 1 downto 0);
+            local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0);
+            clock_divider : integer;
+            diagonal_pref : routing_axis
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic;
+            
+            -- ROUTER TO ROUTER INTERFACE
+            -- LOCAL
+            data_in_local : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_local : in std_logic;
+            data_in_vc_busy_local : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_local : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_local : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_local : out std_logic;
+            data_out_vc_busy_local : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_local : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER TO ROUTER INTERFACE
+            -- NORTH
+            data_in_north : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_north : in std_logic;
+            data_in_vc_busy_north : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_north : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_north : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_north : out std_logic;
+            data_out_vc_busy_north : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_north : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER TO ROUTER INTERFACE
+            -- EAST
+            data_in_east : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_east : in std_logic;
+            data_in_vc_busy_east : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_east : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_east : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_east : out std_logic;
+            data_out_vc_busy_east : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_east : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER TO ROUTER INTERFACE
+            -- SOUTH
+            data_in_south : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_south : in std_logic;
+            data_in_vc_busy_south : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_south : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_south : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_south : out std_logic;
+            data_out_vc_busy_south : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_south : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER TO ROUTER INTERFACE
+            -- WEST
+            data_in_west : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_west : in std_logic;
+            data_in_vc_busy_west : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_west : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_west : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_west : out std_logic;
+            data_out_vc_busy_west : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_west : in std_logic_vector(vc_num - 1 downto 0)
+        );
+        
+    end component;
 
 end package component_declarations;

@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="arbiter_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="arbiter_tb" />
+            <top_module name="component_declarations" />
+            <top_module name="router_config" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="5151099fs"></ZoomEndTime>
+      <Cursor1Time time="3fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="284"></NameColumnWidth>
+      <ValueColumnWidth column_width="128"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="44" />
+   <wvobject type="divider" fp_name="divider45">
+      <obj_property name="label">Kontrolni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/clk_sim" type="logic">
+      <obj_property name="ElementShortName">clk_sim</obj_property>
+      <obj_property name="ObjectShortName">clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/int_clk_sim" type="logic">
+      <obj_property name="ElementShortName">int_clk_sim</obj_property>
+      <obj_property name="ObjectShortName">int_clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/rst_sim" type="logic">
+      <obj_property name="ElementShortName">rst_sim</obj_property>
+      <obj_property name="ObjectShortName">rst_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider46">
+      <obj_property name="label">vc_busy</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group47" type="group">
+      <obj_property name="label">vc_busy inputs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/arbiter_tb/vc_busy_local_sim" type="array">
+         <obj_property name="ElementShortName">vc_busy_local_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_local_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/vc_busy_north_sim" type="array">
+         <obj_property name="ElementShortName">vc_busy_north_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_north_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/vc_busy_east_sim" type="array">
+         <obj_property name="ElementShortName">vc_busy_east_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_east_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/vc_busy_south_sim" type="array">
+         <obj_property name="ElementShortName">vc_busy_south_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_south_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/vc_busy_west_sim" type="array">
+         <obj_property name="ElementShortName">vc_busy_west_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_west_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/vc_busy_array" type="array">
+      <obj_property name="ElementShortName">vc_busy_array[4:0][1:0]</obj_property>
+      <obj_property name="ObjectShortName">vc_busy_array[4:0][1:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider48">
+      <obj_property name="label">credit_counter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group49" type="group">
+      <obj_property name="label">credit_counter inputs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/arbiter_tb/credit_counter_local_sim" type="array">
+         <obj_property name="ElementShortName">credit_counter_local_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">credit_counter_local_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/credit_counter_north_sim" type="array">
+         <obj_property name="ElementShortName">credit_counter_north_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">credit_counter_north_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/credit_counter_east_sim" type="array">
+         <obj_property name="ElementShortName">credit_counter_east_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">credit_counter_east_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/credit_counter_south_sim" type="array">
+         <obj_property name="ElementShortName">credit_counter_south_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">credit_counter_south_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/credit_counter_west_sim" type="array">
+         <obj_property name="ElementShortName">credit_counter_west_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">credit_counter_west_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/credit_counter_array" type="array">
+      <obj_property name="ElementShortName">credit_counter_array[4:0][1:0]</obj_property>
+      <obj_property name="ObjectShortName">credit_counter_array[4:0][1:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider50">
+      <obj_property name="label">req</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group51" type="group">
+      <obj_property name="label">req inputs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/arbiter_tb/req_local_sim" type="array">
+         <obj_property name="ElementShortName">req_local_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">req_local_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/req_north_sim" type="array">
+         <obj_property name="ElementShortName">req_north_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">req_north_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/req_east_sim" type="array">
+         <obj_property name="ElementShortName">req_east_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">req_east_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/req_south_sim" type="array">
+         <obj_property name="ElementShortName">req_south_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">req_south_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/req_west_sim" type="array">
+         <obj_property name="ElementShortName">req_west_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">req_west_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/req_array" type="array">
+      <obj_property name="ElementShortName">req_array[4:0][1:0]</obj_property>
+      <obj_property name="ObjectShortName">req_array[4:0][1:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider52">
+      <obj_property name="label">head</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group54" type="group">
+      <obj_property name="label">head inputs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/arbiter_tb/head_local_sim" type="array">
+         <obj_property name="ElementShortName">head_local_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">head_local_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/head_north_sim" type="array">
+         <obj_property name="ElementShortName">head_north_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">head_north_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/head_east_sim" type="array">
+         <obj_property name="ElementShortName">head_east_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">head_east_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/head_south_sim" type="array">
+         <obj_property name="ElementShortName">head_south_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">head_south_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/head_west_sim" type="array">
+         <obj_property name="ElementShortName">head_west_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">head_west_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/head_array" type="array">
+      <obj_property name="ElementShortName">head_array[4:0][1:0]</obj_property>
+      <obj_property name="ObjectShortName">head_array[4:0][1:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider53">
+      <obj_property name="label">tail</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group56" type="group">
+      <obj_property name="label">tail inputs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/arbiter_tb/tail_local_sim" type="array">
+         <obj_property name="ElementShortName">tail_local_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">tail_local_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/tail_north_sim" type="array">
+         <obj_property name="ElementShortName">tail_north_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">tail_north_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/tail_east_sim" type="array">
+         <obj_property name="ElementShortName">tail_east_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">tail_east_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/tail_south_sim" type="array">
+         <obj_property name="ElementShortName">tail_south_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">tail_south_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/tail_west_sim" type="array">
+         <obj_property name="ElementShortName">tail_west_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">tail_west_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/tail_array" type="array">
+      <obj_property name="ElementShortName">tail_array[4:0][1:0]</obj_property>
+      <obj_property name="ObjectShortName">tail_array[4:0][1:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider55">
+      <obj_property name="label">grant</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group57" type="group">
+      <obj_property name="label">grant outputs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/arbiter_tb/grant_local_sim" type="array">
+         <obj_property name="ElementShortName">grant_local_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">grant_local_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/grant_north_sim" type="array">
+         <obj_property name="ElementShortName">grant_north_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">grant_north_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/grant_east_sim" type="array">
+         <obj_property name="ElementShortName">grant_east_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">grant_east_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/grant_south_sim" type="array">
+         <obj_property name="ElementShortName">grant_south_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">grant_south_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/grant_west_sim" type="array">
+         <obj_property name="ElementShortName">grant_west_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">grant_west_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/grant_array" type="array">
+      <obj_property name="ElementShortName">grant_array[4:0][1:0]</obj_property>
+      <obj_property name="ObjectShortName">grant_array[4:0][1:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider58">
+      <obj_property name="label">vc_downstream</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group60" type="group">
+      <obj_property name="label">vc_downstream outputs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/arbiter_tb/vc_downstream_local_sim" type="array">
+         <obj_property name="ElementShortName">vc_downstream_local_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_downstream_local_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/vc_downstream_north_sim" type="array">
+         <obj_property name="ElementShortName">vc_downstream_north_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_downstream_north_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/vc_downstream_east_sim" type="array">
+         <obj_property name="ElementShortName">vc_downstream_east_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_downstream_east_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/vc_downstream_south_sim" type="array">
+         <obj_property name="ElementShortName">vc_downstream_south_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_downstream_south_sim[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/vc_downstream_west_sim" type="array">
+         <obj_property name="ElementShortName">vc_downstream_west_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_downstream_west_sim[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/vc_downstream_array" type="array">
+      <obj_property name="ElementShortName">vc_downstream_array[4:0][1:0]</obj_property>
+      <obj_property name="ObjectShortName">vc_downstream_array[4:0][1:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider59">
+      <obj_property name="label">select_vector</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group61" type="group">
+      <obj_property name="label">select_vector outputs</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/arbiter_tb/select_vector_local_sim" type="array">
+         <obj_property name="ElementShortName">select_vector_local_sim[4:0]</obj_property>
+         <obj_property name="ObjectShortName">select_vector_local_sim[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/select_vector_north_sim" type="array">
+         <obj_property name="ElementShortName">select_vector_north_sim[4:0]</obj_property>
+         <obj_property name="ObjectShortName">select_vector_north_sim[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/select_vector_east_sim" type="array">
+         <obj_property name="ElementShortName">select_vector_east_sim[4:0]</obj_property>
+         <obj_property name="ObjectShortName">select_vector_east_sim[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/select_vector_south_sim" type="array">
+         <obj_property name="ElementShortName">select_vector_south_sim[4:0]</obj_property>
+         <obj_property name="ObjectShortName">select_vector_south_sim[4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/arbiter_tb/select_vector_west_sim" type="array">
+         <obj_property name="ElementShortName">select_vector_west_sim[4:0]</obj_property>
+         <obj_property name="ObjectShortName">select_vector_west_sim[4:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/select_vector_array" type="array">
+      <obj_property name="ElementShortName">select_vector_array[4:0][4:0]</obj_property>
+      <obj_property name="ObjectShortName">select_vector_array[4:0][4:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider62">
+      <obj_property name="label">FSM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/current_state" type="other">
+      <obj_property name="ElementShortName">current_state</obj_property>
+      <obj_property name="ObjectShortName">current_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/next_state" type="other">
+      <obj_property name="ElementShortName">next_state</obj_property>
+      <obj_property name="ObjectShortName">next_state</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider77">
+      <obj_property name="label">state_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/state_1_enable" type="logic">
+      <obj_property name="ElementShortName">state_1_enable</obj_property>
+      <obj_property name="ObjectShortName">state_1_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/input_rr_counter" type="other">
+      <obj_property name="ElementShortName">input_rr_counter</obj_property>
+      <obj_property name="ObjectShortName">input_rr_counter</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/vc_rr_counter_array" type="array">
+      <obj_property name="ElementShortName">vc_rr_counter_array[4:0]</obj_property>
+      <obj_property name="ObjectShortName">vc_rr_counter_array[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider78">
+      <obj_property name="label">state_2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/state_2_enable" type="logic">
+      <obj_property name="ElementShortName">state_2_enable</obj_property>
+      <obj_property name="ObjectShortName">state_2_enable</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider79">
+      <obj_property name="label">state_3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/state_3_enable" type="logic">
+      <obj_property name="ElementShortName">state_3_enable</obj_property>
+      <obj_property name="ObjectShortName">state_3_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/IO_req_matrix" type="array">
+      <obj_property name="ElementShortName">IO_req_matrix[4:0][4:0]</obj_property>
+      <obj_property name="ObjectShortName">IO_req_matrix[4:0][4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/arbitrated_vc_array" type="array">
+      <obj_property name="ElementShortName">arbitrated_vc_array[4:0]</obj_property>
+      <obj_property name="ObjectShortName">arbitrated_vc_array[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider80">
+      <obj_property name="label">state_4</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/state_4_enable" type="logic">
+      <obj_property name="ElementShortName">state_4_enable</obj_property>
+      <obj_property name="ObjectShortName">state_4_enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/arbiter_tb/uut/connection_array" type="array">
+      <obj_property name="ElementShortName">connection_array[9:0][9:0]</obj_property>
+      <obj_property name="ObjectShortName">connection_array[9:0][9:0]</obj_property>
+   </wvobject>
+</wave_config>

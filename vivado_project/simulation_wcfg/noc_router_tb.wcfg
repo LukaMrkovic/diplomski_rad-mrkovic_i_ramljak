@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="noc_router_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="component_declarations" />
+            <top_module name="noc_router_tb" />
+            <top_module name="router_config" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="15000001fs"></ZoomEndTime>
+      <Cursor1Time time="4600000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="256"></NameColumnWidth>
+      <ValueColumnWidth column_width="116"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject type="divider" fp_name="divider45">
+      <obj_property name="label">Kontrolni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/noc_router_tb/clk_sim" type="logic">
+      <obj_property name="ElementShortName">clk_sim</obj_property>
+      <obj_property name="ObjectShortName">clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/noc_router_tb/int_clk_sim" type="logic">
+      <obj_property name="ElementShortName">int_clk_sim</obj_property>
+      <obj_property name="ObjectShortName">int_clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/noc_router_tb/rst_sim" type="logic">
+      <obj_property name="ElementShortName">rst_sim</obj_property>
+      <obj_property name="ObjectShortName">rst_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider119">
+      <obj_property name="label">Local IO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group124" type="group">
+      <obj_property name="label">Local interface</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/noc_router_tb/data_in_local_sim" type="array">
+         <obj_property name="ElementShortName">data_in_local_sim[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_local_sim[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_valid_local_sim" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_local_sim</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_local_sim</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_vc_busy_local_sim" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_local_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_local_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_vc_credits_local_sim" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_local_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_local_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_local_sim" type="array">
+         <obj_property name="ElementShortName">data_out_local_sim[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_local_sim[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_valid_local_sim" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_local_sim</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_local_sim</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_vc_busy_local_sim" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_local_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_local_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_vc_credits_local_sim" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_local_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_local_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider120">
+      <obj_property name="label">North IO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group126" type="group">
+      <obj_property name="label">North interface</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/noc_router_tb/data_in_north_sim" type="array">
+         <obj_property name="ElementShortName">data_in_north_sim[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_north_sim[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_valid_north_sim" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_north_sim</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_north_sim</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_vc_busy_north_sim" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_north_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_north_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_vc_credits_north_sim" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_north_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_north_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_north_sim" type="array">
+         <obj_property name="ElementShortName">data_out_north_sim[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_north_sim[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_valid_north_sim" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_north_sim</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_north_sim</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_vc_busy_north_sim" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_north_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_north_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_vc_credits_north_sim" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_north_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_north_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider121">
+      <obj_property name="label">East IO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group127" type="group">
+      <obj_property name="label">East interface</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/noc_router_tb/data_in_east_sim" type="array">
+         <obj_property name="ElementShortName">data_in_east_sim[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_east_sim[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_valid_east_sim" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_east_sim</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_east_sim</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_vc_busy_east_sim" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_east_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_east_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_vc_credits_east_sim" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_east_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_east_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_east_sim" type="array">
+         <obj_property name="ElementShortName">data_out_east_sim[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_east_sim[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_valid_east_sim" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_east_sim</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_east_sim</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_vc_busy_east_sim" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_east_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_east_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_vc_credits_east_sim" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_east_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_east_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider122">
+      <obj_property name="label">South IO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group128" type="group">
+      <obj_property name="label">South interface</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/noc_router_tb/data_in_south_sim" type="array">
+         <obj_property name="ElementShortName">data_in_south_sim[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_south_sim[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_valid_south_sim" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_south_sim</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_south_sim</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_vc_busy_south_sim" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_south_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_south_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_vc_credits_south_sim" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_south_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_south_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_south_sim" type="array">
+         <obj_property name="ElementShortName">data_out_south_sim[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_south_sim[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_valid_south_sim" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_south_sim</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_south_sim</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_vc_busy_south_sim" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_south_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_south_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_vc_credits_south_sim" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_south_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_south_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider123">
+      <obj_property name="label">West IO</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group129" type="group">
+      <obj_property name="label">West interface</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/noc_router_tb/data_in_west_sim" type="array">
+         <obj_property name="ElementShortName">data_in_west_sim[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_west_sim[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_valid_west_sim" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_west_sim</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_west_sim</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_vc_busy_west_sim" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_west_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_west_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_in_vc_credits_west_sim" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_west_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_west_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_west_sim" type="array">
+         <obj_property name="ElementShortName">data_out_west_sim[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_west_sim[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_valid_west_sim" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_west_sim</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_west_sim</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_vc_busy_west_sim" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_west_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_west_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/data_out_vc_credits_west_sim" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_west_sim[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_west_sim[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider273">
+      <obj_property name="label">Arbiter</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group274" type="group">
+      <obj_property name="label">Arbiter signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider275">
+         <obj_property name="label">vc_busy</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/vc_busy_array" type="array">
+         <obj_property name="ElementShortName">vc_busy_array[4:0][1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_array[4:0][1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider276">
+         <obj_property name="label">credit_counter</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/credit_counter_array" type="array">
+         <obj_property name="ElementShortName">credit_counter_array[4:0][1:0]</obj_property>
+         <obj_property name="ObjectShortName">credit_counter_array[4:0][1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider277">
+         <obj_property name="label">req</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/req_array" type="array">
+         <obj_property name="ElementShortName">req_array[4:0][1:0]</obj_property>
+         <obj_property name="ObjectShortName">req_array[4:0][1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider278">
+         <obj_property name="label">head</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/head_array" type="array">
+         <obj_property name="ElementShortName">head_array[4:0][1:0]</obj_property>
+         <obj_property name="ObjectShortName">head_array[4:0][1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider279">
+         <obj_property name="label">tail</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/tail_array" type="array">
+         <obj_property name="ElementShortName">tail_array[4:0][1:0]</obj_property>
+         <obj_property name="ObjectShortName">tail_array[4:0][1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider281">
+         <obj_property name="label">grant</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/grant_array" type="array">
+         <obj_property name="ElementShortName">grant_array[4:0][1:0]</obj_property>
+         <obj_property name="ObjectShortName">grant_array[4:0][1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider282">
+         <obj_property name="label">vc_downstream</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/vc_downstream_array" type="array">
+         <obj_property name="ElementShortName">vc_downstream_array[4:0][1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_downstream_array[4:0][1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider283">
+         <obj_property name="label">select_vector</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/select_vector_array" type="array">
+         <obj_property name="ElementShortName">select_vector_array[4:0][4:0]</obj_property>
+         <obj_property name="ObjectShortName">select_vector_array[4:0][4:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider284">
+         <obj_property name="label">FSM</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/current_state" type="other">
+         <obj_property name="ElementShortName">current_state</obj_property>
+         <obj_property name="ObjectShortName">current_state</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/next_state" type="other">
+         <obj_property name="ElementShortName">next_state</obj_property>
+         <obj_property name="ObjectShortName">next_state</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider285">
+         <obj_property name="label">state_1</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/state_1_enable" type="logic">
+         <obj_property name="ElementShortName">state_1_enable</obj_property>
+         <obj_property name="ObjectShortName">state_1_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/input_rr_counter" type="other">
+         <obj_property name="ElementShortName">input_rr_counter</obj_property>
+         <obj_property name="ObjectShortName">input_rr_counter</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/vc_rr_counter_array" type="array">
+         <obj_property name="ElementShortName">vc_rr_counter_array[4:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_rr_counter_array[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider286">
+         <obj_property name="label">state_2</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/state_2_enable" type="logic">
+         <obj_property name="ElementShortName">state_2_enable</obj_property>
+         <obj_property name="ObjectShortName">state_2_enable</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider287">
+         <obj_property name="label">state_3</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/state_3_enable" type="logic">
+         <obj_property name="ElementShortName">state_3_enable</obj_property>
+         <obj_property name="ObjectShortName">state_3_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/IO_req_matrix" type="array">
+         <obj_property name="ElementShortName">IO_req_matrix[4:0][4:0]</obj_property>
+         <obj_property name="ObjectShortName">IO_req_matrix[4:0][4:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/arbitrated_vc_array" type="array">
+         <obj_property name="ElementShortName">arbitrated_vc_array[4:0]</obj_property>
+         <obj_property name="ObjectShortName">arbitrated_vc_array[4:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider288">
+         <obj_property name="label">state_4</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/state_4_enable" type="logic">
+         <obj_property name="ElementShortName">state_4_enable</obj_property>
+         <obj_property name="ObjectShortName">state_4_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_router_tb/uut/comp_arbiter/connection_array" type="array">
+         <obj_property name="ElementShortName">connection_array[9:0][9:0]</obj_property>
+         <obj_property name="ObjectShortName">connection_array[9:0][9:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

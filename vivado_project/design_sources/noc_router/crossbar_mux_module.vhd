@@ -71,19 +71,19 @@ architecture Behavioral of crossbar_mux_module is
 begin
 
     with select_vector select
-        data_out <= data_local          when "10000",
-                    data_north          when "01000",
+        data_out <= data_local          when "00001",
+                    data_north          when "00010",
                     data_east           when "00100",
-                    data_south          when "00010",
-                    data_west           when "00001",
+                    data_south          when "01000",
+                    data_west           when "10000",
                     (others => '0')     when others;
                 
     with select_vector select
-        data_valid_out <= data_valid_local      when "10000",
-                          data_valid_north      when "01000",
+        data_valid_out <= data_valid_local      when "00001",
+                          data_valid_north      when "00010",
                           data_valid_east       when "00100",
-                          data_valid_south      when "00010",
-                          data_valid_west       when "00001",
+                          data_valid_south      when "01000",
+                          data_valid_west       when "10000",
                           '0'                   when others;
 
 end Behavioral;
