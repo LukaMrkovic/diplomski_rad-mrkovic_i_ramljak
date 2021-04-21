@@ -549,29 +549,29 @@ begin
             select_vector_south => select_vector_south,
             select_vector_west => select_vector_west,
         
-            data_in_local => data_in_local,
-            data_in_north => data_in_north,
-            data_in_east => data_in_east,
-            data_in_south => data_in_south,
-            data_in_west => data_in_west,
+            data_in_local => crossbar_data_local,
+            data_in_north => crossbar_data_north,
+            data_in_east => crossbar_data_east,
+            data_in_south => crossbar_data_south,
+            data_in_west => crossbar_data_west,
             
-            data_in_valid_local => data_in_valid_local,
-            data_in_valid_north => data_in_valid_north,
-            data_in_valid_east => data_in_valid_east,
-            data_in_valid_south => data_in_valid_south,
-            data_in_valid_west => data_in_valid_west,
+            data_in_valid_local => crossbar_data_valid_local,
+            data_in_valid_north => crossbar_data_valid_north,
+            data_in_valid_east => crossbar_data_valid_east,
+            data_in_valid_south => crossbar_data_valid_south,
+            data_in_valid_west => crossbar_data_valid_west,
             
-            data_out_local => data_out_local,
-            data_out_north => data_out_north,
-            data_out_east => data_out_east,
-            data_out_south => data_out_south,
-            data_out_west => data_out_west,
+            data_out_local => int_data_out_local,
+            data_out_north => int_data_out_north,
+            data_out_east => int_data_out_east,
+            data_out_south => int_data_out_south,
+            data_out_west => int_data_out_west,
             
-            data_out_valid_local => data_out_valid_local,
-            data_out_valid_north => data_out_valid_north,
-            data_out_valid_east => data_out_valid_east,
-            data_out_valid_south => data_out_valid_south,
-            data_out_valid_west => data_out_valid_west
+            data_out_valid_local => int_data_out_valid_local,
+            data_out_valid_north => int_data_out_valid_north,
+            data_out_valid_east => int_data_out_valid_east,
+            data_out_valid_south => int_data_out_valid_south,
+            data_out_valid_west => int_data_out_valid_west
         );
 
 end Behavioral;

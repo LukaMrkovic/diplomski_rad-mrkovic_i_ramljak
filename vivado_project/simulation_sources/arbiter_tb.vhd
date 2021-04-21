@@ -103,7 +103,7 @@ architecture Simulation of arbiter_tb is
     -- Period takta
     constant clk_period : time := 200ns;
     
-    -- Spori ckl za usporedbu
+    -- Spori clk za usporedbu
     signal int_clk_sim : std_logic;
 
 begin
