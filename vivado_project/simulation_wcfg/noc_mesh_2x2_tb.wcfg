@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="noc_mesh_2x2_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="component_declarations" />
+            <top_module name="noc_mesh_2x2_tb" />
+            <top_module name="router_config" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="14602852fs"></ZoomEndTime>
+      <Cursor1Time time="3352fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="309"></NameColumnWidth>
+      <ValueColumnWidth column_width="125"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="20" />
+   <wvobject type="divider" fp_name="divider352">
+      <obj_property name="label">Kontrolni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/noc_mesh_2x2_tb/clk_sim" type="logic">
+      <obj_property name="ElementShortName">clk_sim</obj_property>
+      <obj_property name="ObjectShortName">clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/noc_mesh_2x2_tb/int_clk_sim" type="logic">
+      <obj_property name="ElementShortName">int_clk_sim</obj_property>
+      <obj_property name="ObjectShortName">int_clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/noc_mesh_2x2_tb/rst_sim" type="logic">
+      <obj_property name="ElementShortName">rst_sim</obj_property>
+      <obj_property name="ObjectShortName">rst_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider354">
+      <obj_property name="label">ROUTER A</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group358" type="group">
+      <obj_property name="label">router_A</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider359">
+         <obj_property name="label">LOCAL IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group362" type="group">
+         <obj_property name="label">Local interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_A_local" type="array">
+            <obj_property name="ElementShortName">data_in_A_local[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_A_local[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_A_local" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_A_local</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_A_local</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_A_local" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_A_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_A_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_A_local" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_A_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_A_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_A_local" type="array">
+            <obj_property name="ElementShortName">data_out_A_local[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_A_local[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_A_local" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_A_local</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_A_local</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_A_local" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_A_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_A_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_A_local" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_A_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_A_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider360">
+         <obj_property name="label">NORTH IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group364" type="group">
+         <obj_property name="label">North interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_A_north" type="array">
+            <obj_property name="ElementShortName">data_in_A_north[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_A_north[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_A_north" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_A_north</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_A_north</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_A_north" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_A_north[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_A_north[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_A_north" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_A_north[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_A_north[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_A_north" type="array">
+            <obj_property name="ElementShortName">data_out_A_north[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_A_north[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_A_north" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_A_north</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_A_north</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_A_north" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_A_north[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_A_north[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_A_north" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_A_north[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_A_north[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider361">
+         <obj_property name="label">WEST IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group363" type="group">
+         <obj_property name="label">West interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_A_west" type="array">
+            <obj_property name="ElementShortName">data_in_A_west[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_A_west[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_A_west" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_A_west</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_A_west</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_A_west" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_A_west[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_A_west[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_A_west" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_A_west[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_A_west[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_A_west" type="array">
+            <obj_property name="ElementShortName">data_out_A_west[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_A_west[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_A_west" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_A_west</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_A_west</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_A_west" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_A_west[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_A_west[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_A_west" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_A_west[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_A_west[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider355">
+      <obj_property name="label">ROUTER B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group365" type="group">
+      <obj_property name="label">router_B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider368">
+         <obj_property name="label">LOCAL IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group371" type="group">
+         <obj_property name="label">Local interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_B_local" type="array">
+            <obj_property name="ElementShortName">data_in_B_local[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_B_local[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_B_local" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_B_local</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_B_local</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_B_local" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_B_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_B_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_B_local" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_B_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_B_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_B_local" type="array">
+            <obj_property name="ElementShortName">data_out_B_local[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_B_local[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_B_local" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_B_local</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_B_local</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_B_local" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_B_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_B_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_B_local" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_B_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_B_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider369">
+         <obj_property name="label">NORTH IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group372" type="group">
+         <obj_property name="label">North interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_B_north" type="array">
+            <obj_property name="ElementShortName">data_in_B_north[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_B_north[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_B_north" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_B_north</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_B_north</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_B_north" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_B_north[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_B_north[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_B_north" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_B_north[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_B_north[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_B_north" type="array">
+            <obj_property name="ElementShortName">data_out_B_north[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_B_north[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_B_north" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_B_north</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_B_north</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_B_north" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_B_north[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_B_north[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_B_north" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_B_north[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_B_north[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider370">
+         <obj_property name="label">EAST IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group373" type="group">
+         <obj_property name="label">East interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_B_east" type="array">
+            <obj_property name="ElementShortName">data_in_B_east[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_B_east[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_B_east" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_B_east</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_B_east</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_B_east" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_B_east[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_B_east[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_B_east" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_B_east[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_B_east[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_B_east" type="array">
+            <obj_property name="ElementShortName">data_out_B_east[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_B_east[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_B_east" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_B_east</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_B_east</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_B_east" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_B_east[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_B_east[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_B_east" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_B_east[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_B_east[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider356">
+      <obj_property name="label">ROUTER C</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group366" type="group">
+      <obj_property name="label">router_C</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider368">
+         <obj_property name="label">LOCAL IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group371" type="group">
+         <obj_property name="label">Local interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_C_local" type="array">
+            <obj_property name="ElementShortName">data_in_C_local[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_C_local[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_C_local" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_C_local</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_C_local</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_C_local" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_C_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_C_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_C_local" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_C_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_C_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_C_local" type="array">
+            <obj_property name="ElementShortName">data_out_C_local[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_C_local[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_C_local" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_C_local</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_C_local</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_C_local" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_C_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_C_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_C_local" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_C_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_C_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider369">
+         <obj_property name="label">SOUTH IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group372" type="group">
+         <obj_property name="label">South interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_C_south" type="array">
+            <obj_property name="ElementShortName">data_in_C_south[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_C_south[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_C_south" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_C_south</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_C_south</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_C_south" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_C_south[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_C_south[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_C_south" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_C_south[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_C_south[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_C_south" type="array">
+            <obj_property name="ElementShortName">data_out_C_south[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_C_south[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_C_south" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_C_south</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_C_south</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_C_south" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_C_south[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_C_south[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_C_south" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_C_south[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_C_south[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider370">
+         <obj_property name="label">WEST IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group373" type="group">
+         <obj_property name="label">West interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_C_west" type="array">
+            <obj_property name="ElementShortName">data_in_C_west[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_C_west[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_C_west" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_C_west</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_C_west</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_C_west" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_C_west[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_C_west[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_C_west" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_C_west[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_C_west[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_C_west" type="array">
+            <obj_property name="ElementShortName">data_out_C_west[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_C_west[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_C_west" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_C_west</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_C_west</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_C_west" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_C_west[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_C_west[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_C_west" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_C_west[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_C_west[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider357">
+      <obj_property name="label">ROUTER D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group367" type="group">
+      <obj_property name="label">router_D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider368">
+         <obj_property name="label">LOCAL IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group371" type="group">
+         <obj_property name="label">Local interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_D_local" type="array">
+            <obj_property name="ElementShortName">data_in_D_local[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_D_local[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_D_local" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_D_local</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_D_local</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_D_local" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_D_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_D_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_D_local" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_D_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_D_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_D_local" type="array">
+            <obj_property name="ElementShortName">data_out_D_local[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_D_local[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_D_local" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_D_local</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_D_local</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_D_local" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_D_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_D_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_D_local" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_D_local[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_D_local[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider370">
+         <obj_property name="label">EAST IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group373" type="group">
+         <obj_property name="label">East interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_D_east" type="array">
+            <obj_property name="ElementShortName">data_in_D_east[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_D_east[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_D_east" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_D_east</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_D_east</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_D_east" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_D_east[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_D_east[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_D_east" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_D_east[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_D_east[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_D_east" type="array">
+            <obj_property name="ElementShortName">data_out_D_east[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_D_east[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_D_east" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_D_east</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_D_east</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_D_east" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_D_east[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_D_east[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_D_east" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_D_east[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_D_east[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider369">
+         <obj_property name="label">SOUTH IO</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group372" type="group">
+         <obj_property name="label">South interface</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_D_south" type="array">
+            <obj_property name="ElementShortName">data_in_D_south[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_D_south[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_valid_D_south" type="logic">
+            <obj_property name="ElementShortName">data_in_valid_D_south</obj_property>
+            <obj_property name="ObjectShortName">data_in_valid_D_south</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_busy_D_south" type="array">
+            <obj_property name="ElementShortName">data_in_vc_busy_D_south[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_busy_D_south[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_in_vc_credits_D_south" type="array">
+            <obj_property name="ElementShortName">data_in_vc_credits_D_south[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_in_vc_credits_D_south[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_D_south" type="array">
+            <obj_property name="ElementShortName">data_out_D_south[43:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_D_south[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_valid_D_south" type="logic">
+            <obj_property name="ElementShortName">data_out_valid_D_south</obj_property>
+            <obj_property name="ObjectShortName">data_out_valid_D_south</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_busy_D_south" type="array">
+            <obj_property name="ElementShortName">data_out_vc_busy_D_south[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_busy_D_south[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/noc_mesh_2x2_tb/data_out_vc_credits_D_south" type="array">
+            <obj_property name="ElementShortName">data_out_vc_credits_D_south[1:0]</obj_property>
+            <obj_property name="ObjectShortName">data_out_vc_credits_D_south[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider444">
+      <obj_property name="label">ROUTER A - ROUTER B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group451" type="group">
+      <obj_property name="label">Interface_AB</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_A_to_B" type="array">
+         <obj_property name="ElementShortName">data_A_to_B[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_A_to_B[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_valid_A_to_B" type="logic">
+         <obj_property name="ElementShortName">data_valid_A_to_B</obj_property>
+         <obj_property name="ObjectShortName">data_valid_A_to_B</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_busy_B_to_A" type="array">
+         <obj_property name="ElementShortName">vc_busy_B_to_A[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_B_to_A[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_credits_B_to_A" type="array">
+         <obj_property name="ElementShortName">vc_credits_B_to_A[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_B_to_A[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_B_to_A" type="array">
+         <obj_property name="ElementShortName">data_B_to_A[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_B_to_A[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_valid_B_to_A" type="logic">
+         <obj_property name="ElementShortName">data_valid_B_to_A</obj_property>
+         <obj_property name="ObjectShortName">data_valid_B_to_A</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_busy_A_to_B" type="array">
+         <obj_property name="ElementShortName">vc_busy_A_to_B[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_A_to_B[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_credits_A_to_B" type="array">
+         <obj_property name="ElementShortName">vc_credits_A_to_B[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_A_to_B[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider444">
+      <obj_property name="label">ROUTER A - ROUTER C</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group451" type="group">
+      <obj_property name="label">Interface_AC</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_A_to_C" type="array">
+         <obj_property name="ElementShortName">data_A_to_C[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_A_to_C[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_valid_A_to_C" type="logic">
+         <obj_property name="ElementShortName">data_valid_A_to_C</obj_property>
+         <obj_property name="ObjectShortName">data_valid_A_to_C</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_busy_C_to_A" type="array">
+         <obj_property name="ElementShortName">vc_busy_C_to_A[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_C_to_A[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_credits_C_to_A" type="array">
+         <obj_property name="ElementShortName">vc_credits_C_to_A[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_C_to_A[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_C_to_A" type="array">
+         <obj_property name="ElementShortName">data_C_to_A[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_C_to_A[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_valid_C_to_A" type="logic">
+         <obj_property name="ElementShortName">data_valid_C_to_A</obj_property>
+         <obj_property name="ObjectShortName">data_valid_C_to_A</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_busy_A_to_C" type="array">
+         <obj_property name="ElementShortName">vc_busy_A_to_C[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_A_to_C[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_credits_A_to_C" type="array">
+         <obj_property name="ElementShortName">vc_credits_A_to_C[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_A_to_C[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider444">
+      <obj_property name="label">ROUTER B - ROUTER D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group451" type="group">
+      <obj_property name="label">Interface_BD</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_B_to_D" type="array">
+         <obj_property name="ElementShortName">data_B_to_D[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_B_to_D[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_valid_B_to_D" type="logic">
+         <obj_property name="ElementShortName">data_valid_B_to_D</obj_property>
+         <obj_property name="ObjectShortName">data_valid_B_to_D</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_busy_D_to_B" type="array">
+         <obj_property name="ElementShortName">vc_busy_D_to_B[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_D_to_B[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_credits_D_to_B" type="array">
+         <obj_property name="ElementShortName">vc_credits_D_to_B[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_D_to_B[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_D_to_B" type="array">
+         <obj_property name="ElementShortName">data_D_to_B[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_D_to_B[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_valid_D_to_B" type="logic">
+         <obj_property name="ElementShortName">data_valid_D_to_B</obj_property>
+         <obj_property name="ObjectShortName">data_valid_D_to_B</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_busy_B_to_D" type="array">
+         <obj_property name="ElementShortName">vc_busy_B_to_D[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_B_to_D[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_credits_B_to_D" type="array">
+         <obj_property name="ElementShortName">vc_credits_B_to_D[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_B_to_D[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider444">
+      <obj_property name="label">ROUTER C - ROUTER D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group451" type="group">
+      <obj_property name="label">Interface_CD</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_C_to_D" type="array">
+         <obj_property name="ElementShortName">data_C_to_D[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_C_to_D[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_valid_C_to_D" type="logic">
+         <obj_property name="ElementShortName">data_valid_C_to_D</obj_property>
+         <obj_property name="ObjectShortName">data_valid_C_to_D</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_busy_D_to_C" type="array">
+         <obj_property name="ElementShortName">vc_busy_D_to_C[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_D_to_C[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_credits_D_to_C" type="array">
+         <obj_property name="ElementShortName">vc_credits_D_to_C[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_D_to_C[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_D_to_C" type="array">
+         <obj_property name="ElementShortName">data_D_to_C[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_D_to_C[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/data_valid_D_to_C" type="logic">
+         <obj_property name="ElementShortName">data_valid_D_to_C</obj_property>
+         <obj_property name="ObjectShortName">data_valid_D_to_C</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_busy_C_to_D" type="array">
+         <obj_property name="ElementShortName">vc_busy_C_to_D[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_C_to_D[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/noc_mesh_2x2_tb/vc_credits_C_to_D" type="array">
+         <obj_property name="ElementShortName">vc_credits_C_to_D[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_C_to_D[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
