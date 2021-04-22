@@ -274,31 +274,46 @@ begin
         wait for (4.1 * clk_period);
         
         -- Local, head, vc0, dest: 0010-0010
-        data_in_local_sim <= X"92212345678";
+        data_in_local_sim <= X"92211111111";
         data_in_valid_local_sim <= '1';
+        -- North, head, vc1, dest: 0010-0010
+        data_in_north_sim <= X"A2244444444";
+        data_in_valid_north_sim <= '1';
         
         wait for clk_period;
         
         -- Smireni ulazni signal
         data_in_local_sim <= (others => '0');
         data_in_valid_local_sim <= '0';
+        data_in_north_sim <= (others => '0');
+        data_in_valid_north_sim <= '0';
         
         wait for (3 * clk_period);
         
         -- Local, body, vc0, dest: 0010-0010
-        data_in_local_sim <= X"12223456781";
+        data_in_local_sim <= X"12222222222";
         data_in_valid_local_sim <= '1';
+        -- North, tail, vc1, dest: 0010-0010
+        data_in_north_sim <= X"62255555555";
+        data_in_valid_north_sim <= '1';
+        -- South, headtail, vc0, dest: 0010-0010
+        data_in_south_sim <= X"D2266666666";
+        data_in_valid_south_sim <= '1';
         
         wait for clk_period;
         
         -- Smireni ulazni signal
         data_in_local_sim <= (others => '0');
         data_in_valid_local_sim <= '0';
+        data_in_north_sim <= (others => '0');
+        data_in_valid_north_sim <= '0';
+        data_in_south_sim <= (others => '0');
+        data_in_valid_south_sim <= '0';
         
         wait for (3 * clk_period);
         
         -- Local, tail, vc0, dest: 0010-0010
-        data_in_local_sim <= X"52234567812";
+        data_in_local_sim <= X"52233333333";
         data_in_valid_local_sim <= '1';
         
         wait for clk_period;
