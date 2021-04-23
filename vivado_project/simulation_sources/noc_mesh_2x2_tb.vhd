@@ -660,7 +660,94 @@ begin
         -- Reset neaktivan
         rst_sim <= '1';       
 
-
+        wait for (4.1 * clk_period);
+        
+        -- Local, head, vc0, dest: 0010-0010
+        data_in_A_local <= X"92211111111";
+        data_in_valid_A_local <= '1';
+        -- North, head, vc1, dest: 0010-0010
+        data_in_A_north <= X"A2244444444";
+        data_in_valid_A_north <= '1';
+        
+        -- Local, head, vc0, dest: 0010-0010
+        data_in_D_local <= X"91111111111";
+        data_in_valid_D_local <= '1';
+        -- North, head, vc1, dest: 0010-0010
+        data_in_D_east <= X"A1144444444";
+        data_in_valid_D_east <= '1';
+        
+        wait for clk_period;
+        
+        -- Smireni ulazni signal
+        data_in_A_local <= (others => '0');
+        data_in_valid_A_local <= '0';
+        data_in_A_north <= (others => '0');
+        data_in_valid_A_north <= '0';
+        
+        data_in_D_local <= (others => '0');
+        data_in_valid_D_local <= '0';
+        data_in_D_east <= (others => '0');
+        data_in_valid_D_east <= '0';
+        
+        wait for (3 * clk_period);
+        
+        -- Local, body, vc0, dest: 0010-0010
+        data_in_A_local <= X"12222222222";
+        data_in_valid_A_local <= '1';
+        -- North, tail, vc1, dest: 0010-0010
+        data_in_A_north <= X"62255555555";
+        data_in_valid_A_north <= '1';
+        -- South, headtail, vc0, dest: 0010-0010
+        data_in_A_west <= X"D2266666666";
+        data_in_valid_A_west <= '1';
+        
+        -- Local, body, vc0, dest: 0010-0010
+        data_in_D_local <= X"11122222222";
+        data_in_valid_D_local <= '1';
+        -- North, tail, vc1, dest: 0010-0010
+        data_in_D_east <= X"61155555555";
+        data_in_valid_D_east <= '1';
+        -- South, headtail, vc0, dest: 0010-0010
+        data_in_D_south <= X"D1166666666";
+        data_in_valid_D_south <= '1';
+        
+        wait for clk_period;
+        
+        -- Smireni ulazni signal
+        data_in_A_local <= (others => '0');
+        data_in_valid_A_local <= '0';
+        data_in_A_north <= (others => '0');
+        data_in_valid_A_north <= '0';
+        data_in_A_west <= (others => '0');
+        data_in_valid_A_west <= '0';
+        
+        -- Smireni ulazni signal
+        data_in_D_local <= (others => '0');
+        data_in_valid_D_local <= '0';
+        data_in_D_east <= (others => '0');
+        data_in_valid_D_east <= '0';
+        data_in_D_south <= (others => '0');
+        data_in_valid_D_south <= '0';
+        
+        wait for (3 * clk_period);
+        
+        -- Local, tail, vc0, dest: 0010-0010
+        data_in_A_local <= X"52233333333";
+        data_in_valid_A_local <= '1';
+        
+        -- Local, tail, vc0, dest: 0010-0010
+        data_in_D_local <= X"51133333333";
+        data_in_valid_D_local <= '1';
+        
+        wait for clk_period;
+        
+        -- Smireni ulazni signal
+        data_in_A_local <= (others => '0');
+        data_in_valid_A_local <= '0';
+        
+        -- Smireni ulazni signal
+        data_in_D_local <= (others => '0');
+        data_in_valid_D_local <= '0';
 
         wait;
     

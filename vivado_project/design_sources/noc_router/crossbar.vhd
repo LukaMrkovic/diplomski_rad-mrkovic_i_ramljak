@@ -87,7 +87,7 @@ begin
     crossbar_mux_module_local : crossbar_mux_module
     
         generic map (
-            flit_size => const_flit_size
+            flit_size => flit_size
         )
         
         port map (
@@ -114,7 +114,7 @@ begin
     crossbar_mux_module_north : crossbar_mux_module
     
         generic map (
-            flit_size => const_flit_size
+            flit_size => flit_size
         )
         
         port map (
@@ -141,7 +141,7 @@ begin
     crossbar_mux_module_east : crossbar_mux_module
     
         generic map (
-            flit_size => const_flit_size
+            flit_size => flit_size
         )
         
         port map (
@@ -168,7 +168,7 @@ begin
     crossbar_mux_module_south : crossbar_mux_module
     
         generic map (
-            flit_size => const_flit_size
+            flit_size => flit_size
         )
         
         port map (
@@ -195,7 +195,7 @@ begin
     crossbar_mux_module_west : crossbar_mux_module
     
         generic map (
-            flit_size => const_flit_size
+            flit_size => flit_size
         )
         
         port map (

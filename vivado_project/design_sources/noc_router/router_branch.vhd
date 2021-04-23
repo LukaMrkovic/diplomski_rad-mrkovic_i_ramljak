@@ -102,11 +102,11 @@ begin
     comp_router_interface_module : router_interface_module
 
         generic map(
-            vc_num => const_vc_num,
-            address_size => const_address_size,
-            payload_size => const_payload_size,
-            flit_size => const_flit_size,
-            buffer_size => const_buffer_size
+            vc_num => vc_num,
+            address_size => address_size,
+            payload_size => payload_size,
+            flit_size => flit_size,
+            buffer_size => buffer_size
         )
 
         port map(
@@ -139,17 +139,17 @@ begin
     comp_buffer_decoder_module: buffer_decoder_module
     
         generic map (
-            vc_num => const_vc_num,
-            mesh_size_x => const_mesh_size_x,
-            mesh_size_y => const_mesh_size_y,
-            address_size => const_address_size,
-            payload_size => const_payload_size,
-            flit_size => const_flit_size,
-            buffer_size => const_buffer_size,
-            local_address_x => const_default_address_x,
-            local_address_y => const_default_address_y,
-            clock_divider => const_clock_divider,
-            diagonal_pref => const_default_diagonal_pref
+            vc_num => vc_num,
+            mesh_size_x => mesh_size_x,
+            mesh_size_y => mesh_size_y,
+            address_size => address_size,
+            payload_size => payload_size,
+            flit_size => flit_size,
+            buffer_size => buffer_size,
+            local_address_x => local_address_x,
+            local_address_y => local_address_y,
+            clock_divider => clock_divider,
+            diagonal_pref => diagonal_pref
         )
         
         port map(
