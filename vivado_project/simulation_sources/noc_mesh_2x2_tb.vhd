@@ -468,7 +468,7 @@ begin
             local_address_x => "0010",
             local_address_y => "0010",
             clock_divider => const_clock_divider,
-            diagonal_pref => const_default_diagonal_pref
+            diagonal_pref => VER
         )
         
         port map(
@@ -662,19 +662,33 @@ begin
 
         wait for (4.1 * clk_period);
         
-        -- Local, head, vc0, dest: 0010-0010
+        -- A Local, head, vc0, dest: 0010-0010
         data_in_A_local <= X"92211111111";
         data_in_valid_A_local <= '1';
-        -- North, head, vc1, dest: 0010-0010
+        -- A North, head, vc1, dest: 0010-0010
         data_in_A_north <= X"A2244444444";
         data_in_valid_A_north <= '1';
         
-        -- Local, head, vc0, dest: 0010-0010
+        -- B Local, head, vc0, dest: 0001-0010
+        data_in_B_local <= X"91211111111";
+        data_in_valid_B_local <= '1';
+        -- B East, head, vc1, dest: 0001-0010
+        data_in_B_east <= X"A1244444444";
+        data_in_valid_B_east <= '1';
+        
+        -- C Local, head, vc0, dest: 0010-0001
+        data_in_C_local <= X"92111111111";
+        data_in_valid_C_local <= '1';
+        -- C West, head, vc1, dest: 0010-0001
+        data_in_C_west <= X"A2144444444";
+        data_in_valid_C_west <= '1';
+        
+        -- D Local, head, vc0, dest: 0001-0001
         data_in_D_local <= X"91111111111";
         data_in_valid_D_local <= '1';
-        -- North, head, vc1, dest: 0010-0010
+        -- D East, head, vc1, dest: 0001-0001
         data_in_D_east <= X"A1144444444";
-        data_in_valid_D_east <= '1';
+        data_in_valid_D_east <= '1';   
         
         wait for clk_period;
         
@@ -684,6 +698,16 @@ begin
         data_in_A_north <= (others => '0');
         data_in_valid_A_north <= '0';
         
+        data_in_B_local <= (others => '0');
+        data_in_valid_B_local <= '0';
+        data_in_B_east <= (others => '0');
+        data_in_valid_B_east <= '0';
+        
+        data_in_C_local <= (others => '0');
+        data_in_valid_C_local <= '0';
+        data_in_C_west <= (others => '0');
+        data_in_valid_C_west <= '0';
+        
         data_in_D_local <= (others => '0');
         data_in_valid_D_local <= '0';
         data_in_D_east <= (others => '0');
@@ -691,26 +715,46 @@ begin
         
         wait for (3 * clk_period);
         
-        -- Local, body, vc0, dest: 0010-0010
+        -- A Local, body, vc0, dest: 0010-0010
         data_in_A_local <= X"12222222222";
         data_in_valid_A_local <= '1';
-        -- North, tail, vc1, dest: 0010-0010
+        -- A North, tail, vc1, dest: 0010-0010
         data_in_A_north <= X"62255555555";
         data_in_valid_A_north <= '1';
-        -- South, headtail, vc0, dest: 0010-0010
+        -- A West, headtail, vc0, dest: 0010-0010
         data_in_A_west <= X"D2266666666";
         data_in_valid_A_west <= '1';
         
-        -- Local, body, vc0, dest: 0010-0010
+        -- B Local, body, vc0, dest: 0001-0010
+        data_in_B_local <= X"11222222222";
+        data_in_valid_B_local <= '1';
+        -- B East, tail, vc1, dest: 0001-0010
+        data_in_B_east <= X"61255555555";
+        data_in_valid_B_east <= '1';
+        -- B North, headtail, vc0, dest: 0001-0010
+        data_in_B_north <= X"D1266666666";
+        data_in_valid_B_north <= '1';
+        
+        -- C Local, body, vc0, dest: 0010-0001
+        data_in_C_local <= X"12122222222";
+        data_in_valid_C_local <= '1';
+        -- C West, tail, vc1, dest: 0010-0001
+        data_in_C_west <= X"62155555555";
+        data_in_valid_C_west <= '1';
+        -- C South, headtail, vc0, dest: 0010-0001
+        data_in_C_south <= X"D2166666666";
+        data_in_valid_C_south <= '1';
+        
+        -- D Local, body, vc0, dest: 0001-0001
         data_in_D_local <= X"11122222222";
         data_in_valid_D_local <= '1';
-        -- North, tail, vc1, dest: 0010-0010
+        -- D East, tail, vc1, dest: 0001-0001
         data_in_D_east <= X"61155555555";
         data_in_valid_D_east <= '1';
-        -- South, headtail, vc0, dest: 0010-0010
+        -- D South, headtail, vc0, dest: 0001-0001
         data_in_D_south <= X"D1166666666";
         data_in_valid_D_south <= '1';
-        
+               
         wait for clk_period;
         
         -- Smireni ulazni signal
@@ -722,6 +766,22 @@ begin
         data_in_valid_A_west <= '0';
         
         -- Smireni ulazni signal
+        data_in_B_local <= (others => '0');
+        data_in_valid_B_local <= '0';
+        data_in_B_east <= (others => '0');
+        data_in_valid_B_east <= '0';
+        data_in_B_north <= (others => '0');
+        data_in_valid_B_north <= '0';
+        
+        -- Smireni ulazni signal
+        data_in_C_local <= (others => '0');
+        data_in_valid_C_local <= '0';
+        data_in_C_west <= (others => '0');
+        data_in_valid_C_west <= '0';
+        data_in_C_south <= (others => '0');
+        data_in_valid_C_south <= '0';
+        
+        -- Smireni ulazni signal
         data_in_D_local <= (others => '0');
         data_in_valid_D_local <= '0';
         data_in_D_east <= (others => '0');
@@ -731,11 +791,19 @@ begin
         
         wait for (3 * clk_period);
         
-        -- Local, tail, vc0, dest: 0010-0010
+        -- A Local, tail, vc0, dest: 0010-0010
         data_in_A_local <= X"52233333333";
         data_in_valid_A_local <= '1';
         
-        -- Local, tail, vc0, dest: 0010-0010
+        -- B Local, tail, vc0, dest: 0001-0010
+        data_in_B_local <= X"51233333333";
+        data_in_valid_B_local <= '1';
+        
+        -- C Local, tail, vc0, dest: 0010-0001
+        data_in_C_local <= X"52133333333";
+        data_in_valid_C_local <= '1';
+        
+        -- D Local, tail, vc0, dest: 0001-0001
         data_in_D_local <= X"51133333333";
         data_in_valid_D_local <= '1';
         
@@ -746,13 +814,19 @@ begin
         data_in_valid_A_local <= '0';
         
         -- Smireni ulazni signal
+        data_in_B_local <= (others => '0');
+        data_in_valid_B_local <= '0';
+        
+        -- Smireni ulazni signal
+        data_in_C_local <= (others => '0');
+        data_in_valid_C_local <= '0';
+        
+        -- Smireni ulazni signal
         data_in_D_local <= (others => '0');
         data_in_valid_D_local <= '0';
 
         wait;
     
     end process;
-    
-
 
 end Simulation;
