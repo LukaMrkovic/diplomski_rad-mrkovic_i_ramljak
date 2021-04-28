@@ -137,7 +137,7 @@ architecture Behavioral of arbiter is
         array (4 downto 0) of integer;
     -- ARRAY VELICINE IO * vc_num VEKTORA DULJINE IO * vc_num
     type IO_vc_num_x_IO_vc_num_std_array is
-        array ((5 * vc_num) - 1 downto 0) of std_logic_vector ((5 * vc_num) - 1 downto 0);
+        array ((5 * vc_num) - 1 downto 0) of std_logic_vector((5 * vc_num) - 1 downto 0);
     
     -- ULAZNA POLJA
     signal vc_busy_array : IO_x_vc_num_std_array;
@@ -154,14 +154,24 @@ architecture Behavioral of arbiter is
     -- INTERNI SIGNALI
     -- POLJE KONEKCIJA UZVODNIH I NIZVODNIH VIRTUALNIH KANALA
     signal connection_array : IO_vc_num_x_IO_vc_num_std_array;
-    -- ROUND ROBIN COUNTER ZA ULAZE
-    signal input_rr_counter : integer;
     -- ROUND ROBIN COUNTERI ZA VIRTUALNE KANALE PO ULAZIMA
     signal vc_rr_counter_array : IO_x_1_integer_array;
     -- MATRICA ZAHTJEVA ULAZA NA IZLAZE
     signal IO_req_matrix : IO_x_IO_std_array;
     -- ARBITRIRANI VIRTUALNI KANALI
     signal arbitrated_vc_array : IO_x_1_integer_array;
+    
+    -- DODATNA POLJA I INTERNI SIGNALI (DODANI PRILIKOM UNAPRIJEDJENJA ROUND ROBIN IMPLEMENTACIJE)
+    -- UZLAZAN ARRAY INTEGERA
+    type IO_x_1_integer_rising_array is
+        array (0 to 4) of integer;
+    -- POLJE INDEKSA ULAZA POREDANO PO PRIORITERU ULAZA
+    signal input_priority_array : IO_x_1_integer_rising_array;
+    -- POLJE ULAZA OBRADJENIH U PRIJASNJEM CIKLUSU (ULAZI POREDANI JEDNAKO KAO I U input_priority_array)
+    signal processed_inputs_array : std_logic_vector(0 to 4);
+    -- MASKA ZA GENERIRANJE OSVJEZENOG input_priority_array
+    signal io_mask_array : IO_x_1_integer_rising_array;
+    
     
 
 begin
@@ -255,7 +265,7 @@ begin
     -- PROCES STANJA 1
     state_1_process : process (clk) is
     
-        variable input_rr_counter_var : integer;
+        variable io_mask_array_var : IO_x_1_integer_rising_array;
         variable vc_rr_counter_array_var : IO_x_1_integer_array;
     
     begin
@@ -264,19 +274,64 @@ begin
             if rst = '0' then
             
                 -- IZLAZNI SIGNALI
-                input_rr_counter <= 0;
+                io_mask_array <= (0, 1, 2, 3, 4);
                 vc_rr_counter_array <= (others => 0);
+                
                 -- INTERNE VARIJABLE
-                input_rr_counter_var := 4;
+                io_mask_array_var := (0, 1, 2, 3, 4);
                 vc_rr_counter_array_var := (others => (vc_num - 1));
-            
+                
             else
                 
                 -- AKO JE POSTAVLJEN SIGNAL state_1_enable
                 if state_1_enable = '1' then
                 
-                    -- POVECAJ ROUND ROBIN BROJILO za ULAZE (input_rr_counter)
-                    input_rr_counter_var := (input_rr_counter_var + 1) mod 5;
+                    -- >DODANO PRILIKOM UNAPRIJEDJENJA ROUND ROBIN IMPLEMENTACIJE
+                    -- ODREDI io_mask_array NA OSNOVU processed_inputs_array VRIJEDNOSTI
+                    case processed_inputs_array is
+                        when "00000" => io_mask_array_var := (0, 1, 2, 3, 4);
+                        when "00001" => io_mask_array_var := (0, 1, 2, 3, 4);
+                        when "00010" => io_mask_array_var := (0, 1, 2, 4, 3);
+                        when "00011" => io_mask_array_var := (0, 1, 2, 3, 4);
+                                        
+                        when "00100" => io_mask_array_var := (0, 1, 3, 4, 2);
+                        when "00101" => io_mask_array_var := (0, 1, 3, 2, 4);
+                        when "00110" => io_mask_array_var := (0, 1, 4, 2, 3);
+                        when "00111" => io_mask_array_var := (0, 1, 2, 3, 4);
+                                        
+                        when "01000" => io_mask_array_var := (0, 2, 3, 4, 1);
+                        when "01001" => io_mask_array_var := (0, 2, 3, 1, 4);
+                        when "01010" => io_mask_array_var := (0, 2, 4, 1, 3);
+                        when "01011" => io_mask_array_var := (0, 2, 1, 3, 4);
+                                        
+                        when "01100" => io_mask_array_var := (0, 3, 4, 1, 2);
+                        when "01101" => io_mask_array_var := (0, 3, 1, 2, 4);
+                        when "01110" => io_mask_array_var := (0, 4, 1, 2, 3);
+                        when "01111" => io_mask_array_var := (0, 1, 2, 3, 4);
+                                        
+                        when "10000" => io_mask_array_var := (1, 2, 3, 4, 0);
+                        when "10001" => io_mask_array_var := (1, 2, 3, 0, 4);
+                        when "10010" => io_mask_array_var := (1, 2, 4, 0, 3);
+                        when "10011" => io_mask_array_var := (1, 2, 0, 3, 4);
+                                        
+                        when "10100" => io_mask_array_var := (1, 3, 4, 0, 2);
+                        when "10101" => io_mask_array_var := (1, 3, 0, 2, 4);
+                        when "10110" => io_mask_array_var := (1, 4, 0, 2, 3);
+                        when "10111" => io_mask_array_var := (1, 0, 2, 3, 4);
+                                        
+                        when "11000" => io_mask_array_var := (2, 3, 4, 0, 1);
+                        when "11001" => io_mask_array_var := (2, 3, 0, 1, 4);
+                        when "11010" => io_mask_array_var := (2, 4, 0, 1, 3);
+                        when "11011" => io_mask_array_var := (2, 0, 1, 3, 4);
+                                        
+                        when "11100" => io_mask_array_var := (3, 4, 0, 1, 2);
+                        when "11101" => io_mask_array_var := (3, 0, 1, 2, 4);
+                        when "11110" => io_mask_array_var := (4, 0, 1, 2, 3);
+                        when "11111" => io_mask_array_var := (0, 1, 2, 3, 4);
+                                        
+                        when others  => io_mask_array_var := (0, 1, 2, 3, 4);
+                    end case;
+                    -- <
                     
                     -- PARALELNA OBRADA ROUND ROBIN BROJILA SVAKOG ULAZA
                     loop_1 : for i in 4 downto 0 loop
@@ -292,7 +347,7 @@ begin
                 
                 end if;
                 
-                input_rr_counter <= input_rr_counter_var;
+                io_mask_array <= io_mask_array_var;
                 vc_rr_counter_array <= vc_rr_counter_array_var;
                 
             end if;
@@ -303,20 +358,34 @@ begin
     -- PROCES STANJA 2
     state_2_process : process (clk) is
     
+        variable input_priority_array_var : IO_x_1_integer_rising_array;
+    
     begin
     
         if rising_edge(clk) then
             if rst = '0' then
             
                 -- IZLAZNI SIGNALI
+                input_priority_array <= (0, 1, 2, 3, 4);
+                
                 -- INTERNE VARIJABLE
+                input_priority_array_var := (0, 1, 2, 3, 4);
             
             else
                 
                 -- AKO JE POSTAVLJEN SIGNAL state_2_enable
                 if state_2_enable = '1' then
                 
+                    -- PARALELNA OBRADA SVAKOG BITA input_priority_array
+                    loop_1 : for i in 0 to 4 loop
+                    
+                        input_priority_array_var(i) := input_priority_array(io_mask_array(i));
+                    
+                    end loop;
+                
                 end if;
+                
+                input_priority_array <= input_priority_array_var;
                 
             end if;
         end if;
@@ -328,6 +397,7 @@ begin
     
         variable ds_index : integer;
         variable vc_index : integer;
+        
         variable req_parsed : destination_dir_vector(vc_num - 1 downto 0);
         variable IO_req_matrix_var : IO_x_IO_std_array;
         variable arbitrated_vc_array_var : IO_x_1_integer_array; 
@@ -344,8 +414,10 @@ begin
                 -- INTERNE VARIJABLE
                 ds_index := 0;
                 vc_index := 0;
+                
                 req_parsed := (others => EMPTY);
                 IO_req_matrix_var := (others => (others => '0'));
+                
                 arbitrated_vc_array_var := (others => 0);
             
             else
@@ -445,10 +517,13 @@ begin
     
         variable rr_index : integer;
         variable vc_index : integer;
+        
         variable grant_array_var : IO_x_vc_num_std_array;
         variable vc_downstream_array_var : IO_x_vc_num_std_array;
         variable select_vector_array_var : IO_x_IO_std_array;
+        
         variable connection_array_var : IO_vc_num_x_IO_vc_num_std_array;
+        variable processed_inputs_array_var : std_logic_vector(0 to 4);
     
     begin
     
@@ -459,16 +534,21 @@ begin
                 grant_array <= (others => (others => '0'));
                 vc_downstream_array <= (others => (others => '0'));
                 select_vector_array <= (others => (others => '0'));
+                
                 connection_array <= (others => (others => '0'));
+                processed_inputs_array <= (others => '0');
                 
                 -- INTERNE VARIJABLE
                 
                 rr_index := 0;
                 vc_index := 0;
+                
                 grant_array_var := (others => (others => '0'));
                 vc_downstream_array_var := (others => (others => '0'));
                 select_vector_array_var := (others => (others => '0'));
+                
                 connection_array_var := (others => (others => '0'));
+                processed_inputs_array_var := (others => '0');
                 
             else
                 
@@ -478,6 +558,7 @@ begin
                     grant_array_var := (others => (others => '0'));
                     vc_downstream_array_var := (others => (others => '0'));
                     select_vector_array_var := (others => (others => '0'));
+                    processed_inputs_array_var := (others => '0');
                 
                     -- PARALELNO ARBITRIRANJE SVAKOG IZLAZA
                     loop_1 : for i in 4 downto 0 loop
@@ -485,7 +566,7 @@ begin
                         -- ODABERI ULAZ S POSTAVLJENIM ZAHTJEVOM NAJVISEG PRIORITETA ZA SVAKI IZLAZ (PO ROUND ROBINU)
                         loop_2 : for j in 0 to 4 loop
                         
-                            rr_index := (j + input_rr_counter) mod 5;
+                            rr_index := input_priority_array(j);
                         
                             -- AKO JE BIT IO_req_matrix(i)(rr_index) POSTAVLJEN
                             if IO_req_matrix(i)(rr_index) = '1' then
@@ -506,6 +587,7 @@ begin
                                 -- AKO JE POSTAVLJEN tail SIGNAL OBRIŠI KONEKCIJU UZVODNOG I NIZVODNOG VIRTUALNOG KANALA
                                 if tail_array(rr_index)(vc_index) = '1' then
                                     connection_array_var((vc_num * rr_index) + vc_index)((vc_num * i) + vc_index) := '0';
+                                    processed_inputs_array_var(j) := '1';
                                 end if;
                                
                                 -- IZADJI IZ PETLJE
@@ -522,7 +604,9 @@ begin
                 grant_array <= grant_array_var;
                 vc_downstream_array <= vc_downstream_array_var;
                 select_vector_array <= select_vector_array_var;
+                
                 connection_array <= connection_array_var;
+                processed_inputs_array <= processed_inputs_array_var;
                 
             end if;
         end if;
