@@ -32,6 +32,7 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 
 library noc_lib;
 use noc_lib.router_config.ALL;
+use noc_lib.router_functions.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -105,6 +106,7 @@ end arbiter;
 
 architecture Behavioral of arbiter is
 
+
     -- ENUMERACIJA STANJA fsm-a
     type state_type is (state_1, state_2, state_3, state_4);
     -- TRENUTNO STANJE
@@ -162,17 +164,13 @@ architecture Behavioral of arbiter is
     signal arbitrated_vc_array : IO_x_1_integer_array;
     
     -- DODATNA POLJA I INTERNI SIGNALI (DODANI PRILIKOM UNAPRIJEDJENJA ROUND ROBIN IMPLEMENTACIJE)
-    -- UZLAZAN ARRAY INTEGERA
-    type IO_x_1_integer_rising_array is
-        array (0 to 4) of integer;
     -- POLJE INDEKSA ULAZA POREDANO PO PRIORITERU ULAZA
-    signal input_priority_array : IO_x_1_integer_rising_array;
+    signal input_priority_array : IO_x_1_asc_integer_array;
     -- POLJE ULAZA OBRADJENIH U PRIJASNJEM CIKLUSU (ULAZI POREDANI JEDNAKO KAO I U input_priority_array)
     signal processed_inputs_array : std_logic_vector(0 to 4);
     -- MASKA ZA GENERIRANJE OSVJEZENOG input_priority_array
-    signal io_mask_array : IO_x_1_integer_rising_array;
-    
-    
+    signal io_mask_array : IO_x_1_asc_integer_array;
+
 
 begin
 
@@ -265,7 +263,7 @@ begin
     -- PROCES STANJA 1
     state_1_process : process (clk) is
     
-        variable io_mask_array_var : IO_x_1_integer_rising_array;
+        variable io_mask_array_var : IO_x_1_asc_integer_array;
         variable vc_rr_counter_array_var : IO_x_1_integer_array;
     
     begin
@@ -288,55 +286,15 @@ begin
                 
                     -- >DODANO PRILIKOM UNAPRIJEDJENJA ROUND ROBIN IMPLEMENTACIJE
                     -- ODREDI io_mask_array NA OSNOVU processed_inputs_array VRIJEDNOSTI
-                    case processed_inputs_array is
-                        when "00000" => io_mask_array_var := (0, 1, 2, 3, 4);
-                        when "00001" => io_mask_array_var := (0, 1, 2, 3, 4);
-                        when "00010" => io_mask_array_var := (0, 1, 2, 4, 3);
-                        when "00011" => io_mask_array_var := (0, 1, 2, 3, 4);
-                                        
-                        when "00100" => io_mask_array_var := (0, 1, 3, 4, 2);
-                        when "00101" => io_mask_array_var := (0, 1, 3, 2, 4);
-                        when "00110" => io_mask_array_var := (0, 1, 4, 2, 3);
-                        when "00111" => io_mask_array_var := (0, 1, 2, 3, 4);
-                                        
-                        when "01000" => io_mask_array_var := (0, 2, 3, 4, 1);
-                        when "01001" => io_mask_array_var := (0, 2, 3, 1, 4);
-                        when "01010" => io_mask_array_var := (0, 2, 4, 1, 3);
-                        when "01011" => io_mask_array_var := (0, 2, 1, 3, 4);
-                                        
-                        when "01100" => io_mask_array_var := (0, 3, 4, 1, 2);
-                        when "01101" => io_mask_array_var := (0, 3, 1, 2, 4);
-                        when "01110" => io_mask_array_var := (0, 4, 1, 2, 3);
-                        when "01111" => io_mask_array_var := (0, 1, 2, 3, 4);
-                                        
-                        when "10000" => io_mask_array_var := (1, 2, 3, 4, 0);
-                        when "10001" => io_mask_array_var := (1, 2, 3, 0, 4);
-                        when "10010" => io_mask_array_var := (1, 2, 4, 0, 3);
-                        when "10011" => io_mask_array_var := (1, 2, 0, 3, 4);
-                                        
-                        when "10100" => io_mask_array_var := (1, 3, 4, 0, 2);
-                        when "10101" => io_mask_array_var := (1, 3, 0, 2, 4);
-                        when "10110" => io_mask_array_var := (1, 4, 0, 2, 3);
-                        when "10111" => io_mask_array_var := (1, 0, 2, 3, 4);
-                                        
-                        when "11000" => io_mask_array_var := (2, 3, 4, 0, 1);
-                        when "11001" => io_mask_array_var := (2, 3, 0, 1, 4);
-                        when "11010" => io_mask_array_var := (2, 4, 0, 1, 3);
-                        when "11011" => io_mask_array_var := (2, 0, 1, 3, 4);
-                                        
-                        when "11100" => io_mask_array_var := (3, 4, 0, 1, 2);
-                        when "11101" => io_mask_array_var := (3, 0, 1, 2, 4);
-                        when "11110" => io_mask_array_var := (4, 0, 1, 2, 3);
-                        when "11111" => io_mask_array_var := (0, 1, 2, 3, 4);
-                                        
-                        when others  => io_mask_array_var := (0, 1, 2, 3, 4);
-                    end case;
+                    
+                    io_mask_array_var := IO_mask_function(processed_inputs_array);
+                    
                     -- <
                     
                     -- PARALELNA OBRADA ROUND ROBIN BROJILA SVAKOG ULAZA
                     loop_1 : for i in 4 downto 0 loop
                     
-                        -- AKO KONEKCIJA ULAZNOG VIRTUALNOG KANALA NE POSTOJI NITI S JEDNIM IZLAZNIM VIRTUALNIM KANALOM
+                        -- AKO KONEKCIJA PRIORITETNOG ULAZNOG VIRTUALNOG KANALA NE POSTOJI NITI S JEDNIM IZLAZNIM VIRTUALNIM KANALOM
                         if unsigned(connection_array((vc_num * i) + vc_rr_counter_array_var(i))) = 0 then
                         
                             vc_rr_counter_array_var(i) := (vc_rr_counter_array_var(i) + 1) mod vc_num;
@@ -358,7 +316,7 @@ begin
     -- PROCES STANJA 2
     state_2_process : process (clk) is
     
-        variable input_priority_array_var : IO_x_1_integer_rising_array;
+        variable input_priority_array_var : IO_x_1_asc_integer_array;
     
     begin
     
