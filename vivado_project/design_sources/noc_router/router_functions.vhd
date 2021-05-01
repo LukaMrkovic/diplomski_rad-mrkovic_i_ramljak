@@ -52,8 +52,11 @@ package router_functions is
     return IO_x_1_asc_integer_array;
     
     function vc_mask_function (
-        processed_vc_array : in std_logic_vector(0 to 4)
+        processed_vc_array : in std_logic_vector(0 to const_vc_num - 1)
     )
+    return vc_num_x_1_asc_integer_array;
+    
+    function vc_reset_function
     return vc_num_x_1_asc_integer_array;
 
 end package router_functions;
@@ -102,7 +105,7 @@ package body router_functions is
     end;
     
     function vc_mask_function (
-        processed_vc_array : in std_logic_vector(0 to 4)
+        processed_vc_array : in std_logic_vector(0 to const_vc_num - 1)
     )
     return vc_num_x_1_asc_integer_array is
     
@@ -114,7 +117,7 @@ package body router_functions is
         index := 0;
         vc_mask := (others => 0);
         
-        loop_1a : for i in 0 to 4 loop
+        loop_1a : for i in 0 to (const_vc_num - 1) loop
         
             if processed_vc_array(i) = '0' then
             
@@ -125,7 +128,7 @@ package body router_functions is
         
         end loop;
         
-        loop_1b : for i in 0 to 4 loop
+        loop_1b : for i in 0 to (const_vc_num - 1) loop
         
             if processed_vc_array(i) = '1' then
             
@@ -139,5 +142,24 @@ package body router_functions is
         return vc_mask;
     
     end;    
+    
+    function vc_reset_function
+    return vc_num_x_1_asc_integer_array is
+    
+        variable vc_mask : vc_num_x_1_asc_integer_array;
+    
+    begin
+    
+        vc_mask := (others => 0);
+        
+        loop_1 : for i in 0 to (const_vc_num - 1) loop
+
+            vc_mask(i) := i;
+
+        end loop;
+        
+        return vc_mask;
+    
+    end;
 
 end package body router_functions;
