@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-04-29 - Mrkovic
 -- Additional Comments: Funkcije potrebne za generiranje maski prioriteta za ulaze i virtualne kanale
+-- Revision 0.2 - 2021-05-02 - Mrkovic
+-- Additional Comments: Dodana funkcija za resetiranje prioriteta virtualnih kanala, neki nazivi promijenjeni
 -- 
 ----------------------------------------------------------------------------------
 
@@ -38,26 +40,29 @@ use noc_lib.router_config.ALL;
 
 package router_functions is
 
-    -- uzlazan array int duljine IO
-    type IO_x_1_asc_integer_array is
+    -- uzlazan integer vektor duljine IO
+    type input_mask_or_priority_vector is
         array (0 to 4) of integer;
         
-    -- uzlazan array int duljine vc_num
-    type vc_num_x_1_asc_integer_array is
+    -- uzlazan integer vektor duljine const_vc_num
+    type vc_mask_or_priority_vector is
         array (0 to const_vc_num - 1) of integer;
-        
-    function IO_mask_function (
-        processed_inputs_array : in std_logic_vector(0 to 4)
-    )
-    return IO_x_1_asc_integer_array;
     
-    function vc_mask_function (
-        processed_vc_array : in std_logic_vector(0 to const_vc_num - 1)
+    -- funkcija koja generira input_mask_vector na osnovu processed_inputs_vector    
+    function generate_input_mask (
+        processed_inputs_vector : in std_logic_vector(0 to 4)
     )
-    return vc_num_x_1_asc_integer_array;
+    return input_mask_or_priority_vector;
     
-    function vc_reset_function
-    return vc_num_x_1_asc_integer_array;
+    -- funkcija koja generira vc_mask_vector na osnovu processed_vcs_vector
+    function generate_vc_mask (
+        processed_vcs_vector : in std_logic_vector(0 to const_vc_num - 1)
+    )
+    return vc_mask_or_priority_vector;
+    
+    -- funkcija koja generira inicijalan vc_mask_vector ili vc_priority_vector
+    function reset_vc_order
+    return vc_mask_or_priority_vector;
 
 end package router_functions;
 
@@ -65,24 +70,24 @@ end package router_functions;
 
 package body router_functions is
 
-    function IO_mask_function (
-        processed_inputs_array : in std_logic_vector(0 to 4)
+    function generate_input_mask (
+        processed_inputs_vector : in std_logic_vector(0 to 4)
     )
-    return IO_x_1_asc_integer_array is
+    return input_mask_or_priority_vector is
     
         variable index : integer;
-        variable IO_mask : IO_x_1_asc_integer_array;
+        variable input_mask_vector : input_mask_or_priority_vector;
     
     begin
     
         index := 0;
-        IO_mask := (others => 0);
+        input_mask_vector := (others => 0);
         
         loop_1a : for i in 0 to 4 loop
         
-            if processed_inputs_array(i) = '0' then
+            if processed_inputs_vector(i) = '0' then
             
-                IO_mask(index) := i;
+                input_mask_vector(index) := i;
                 index := index + 1;
             
             end if;
@@ -91,37 +96,37 @@ package body router_functions is
         
         loop_1b : for i in 0 to 4 loop
         
-            if processed_inputs_array(i) = '1' then
+            if processed_inputs_vector(i) = '1' then
             
-                IO_mask(index) := i;
+                input_mask_vector(index) := i;
                 index := index + 1;
             
             end if;
         
         end loop;
         
-        return IO_mask;
+        return input_mask_vector;
     
     end;
     
-    function vc_mask_function (
-        processed_vc_array : in std_logic_vector(0 to const_vc_num - 1)
+    function generate_vc_mask (
+        processed_vcs_vector : in std_logic_vector(0 to const_vc_num - 1)
     )
-    return vc_num_x_1_asc_integer_array is
+    return vc_mask_or_priority_vector is
     
         variable index : integer;
-        variable vc_mask : vc_num_x_1_asc_integer_array;
+        variable vc_mask_vector : vc_mask_or_priority_vector;
     
     begin
     
         index := 0;
-        vc_mask := (others => 0);
+        vc_mask_vector := (others => 0);
         
         loop_1a : for i in 0 to (const_vc_num - 1) loop
         
-            if processed_vc_array(i) = '0' then
+            if processed_vcs_vector(i) = '0' then
             
-                vc_mask(index) := i;
+                vc_mask_vector(index) := i;
                 index := index + 1;
             
             end if;
@@ -130,35 +135,35 @@ package body router_functions is
         
         loop_1b : for i in 0 to (const_vc_num - 1) loop
         
-            if processed_vc_array(i) = '1' then
+            if processed_vcs_vector(i) = '1' then
             
-                vc_mask(index) := i;
+                vc_mask_vector(index) := i;
                 index := index + 1;
             
             end if;
         
         end loop;
         
-        return vc_mask;
+        return vc_mask_vector;
     
     end;    
     
-    function vc_reset_function
-    return vc_num_x_1_asc_integer_array is
+    function reset_vc_order
+    return vc_mask_or_priority_vector is
     
-        variable vc_mask : vc_num_x_1_asc_integer_array;
+        variable vc_vector : vc_mask_or_priority_vector;
     
     begin
     
-        vc_mask := (others => 0);
+        vc_vector := (others => 0);
         
         loop_1 : for i in 0 to (const_vc_num - 1) loop
 
-            vc_mask(i) := i;
+            vc_vector(i) := i;
 
         end loop;
         
-        return vc_mask;
+        return vc_vector;
     
     end;
 

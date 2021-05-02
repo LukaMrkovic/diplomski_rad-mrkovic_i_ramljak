@@ -14,14 +14,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="15000001fs"></ZoomEndTime>
-      <Cursor1Time time="15000fs"></Cursor1Time>
+      <ZoomEndTime time="19304fs"></ZoomEndTime>
+      <Cursor1Time time="15fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="284"></NameColumnWidth>
-      <ValueColumnWidth column_width="120"></ValueColumnWidth>
+      <ValueColumnWidth column_width="116"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="49" />
+   <WVObjectSize size="48" />
    <wvobject type="divider" fp_name="divider45">
       <obj_property name="label">Kontrolni signali</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -331,17 +331,13 @@
       <obj_property name="ElementShortName">state_1_enable</obj_property>
       <obj_property name="ObjectShortName">state_1_enable</obj_property>
    </wvobject>
-   <wvobject fp_name="/arbiter_tb/uut/vc_rr_counter_array" type="array">
-      <obj_property name="ElementShortName">vc_rr_counter_array[4:0]</obj_property>
-      <obj_property name="ObjectShortName">vc_rr_counter_array[4:0]</obj_property>
+   <wvobject fp_name="/arbiter_tb/uut/input_mask_vector" type="array">
+      <obj_property name="ElementShortName">input_mask_vector[0:4]</obj_property>
+      <obj_property name="ObjectShortName">input_mask_vector[0:4]</obj_property>
    </wvobject>
-   <wvobject fp_name="/arbiter_tb/uut/io_mask" type="array">
-      <obj_property name="ElementShortName">io_mask[0:4]</obj_property>
-      <obj_property name="ObjectShortName">io_mask[0:4]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/arbiter_tb/uut/vc_mask_array" type="array">
-      <obj_property name="ElementShortName">vc_mask_array[4:0][0:1]</obj_property>
-      <obj_property name="ObjectShortName">vc_mask_array[4:0][0:1]</obj_property>
+   <wvobject fp_name="/arbiter_tb/uut/vc_mask_vector_array" type="array">
+      <obj_property name="ElementShortName">vc_mask_vector_array[4:0][0:1]</obj_property>
+      <obj_property name="ObjectShortName">vc_mask_vector_array[4:0][0:1]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider78">
       <obj_property name="label">state_2</obj_property>
@@ -352,13 +348,13 @@
       <obj_property name="ElementShortName">state_2_enable</obj_property>
       <obj_property name="ObjectShortName">state_2_enable</obj_property>
    </wvobject>
-   <wvobject fp_name="/arbiter_tb/uut/input_priority" type="array">
-      <obj_property name="ElementShortName">input_priority[0:4]</obj_property>
-      <obj_property name="ObjectShortName">input_priority[0:4]</obj_property>
+   <wvobject fp_name="/arbiter_tb/uut/input_priority_vector" type="array">
+      <obj_property name="ElementShortName">input_priority_vector[0:4]</obj_property>
+      <obj_property name="ObjectShortName">input_priority_vector[0:4]</obj_property>
    </wvobject>
-   <wvobject fp_name="/arbiter_tb/uut/vc_priority_array" type="array">
-      <obj_property name="ElementShortName">vc_priority_array[4:0][0:1]</obj_property>
-      <obj_property name="ObjectShortName">vc_priority_array[4:0][0:1]</obj_property>
+   <wvobject fp_name="/arbiter_tb/uut/vc_priority_vector_array" type="array">
+      <obj_property name="ElementShortName">vc_priority_vector_array[4:0][0:1]</obj_property>
+      <obj_property name="ObjectShortName">vc_priority_vector_array[4:0][0:1]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider79">
       <obj_property name="label">state_3</obj_property>
@@ -373,9 +369,9 @@
       <obj_property name="ElementShortName">IO_req_matrix[4:0][4:0]</obj_property>
       <obj_property name="ObjectShortName">IO_req_matrix[4:0][4:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/arbiter_tb/uut/arbitrated_vc_array" type="array">
-      <obj_property name="ElementShortName">arbitrated_vc_array[4:0]</obj_property>
-      <obj_property name="ObjectShortName">arbitrated_vc_array[4:0]</obj_property>
+   <wvobject fp_name="/arbiter_tb/uut/arbitrated_vc_priority_index_array" type="array">
+      <obj_property name="ElementShortName">arbitrated_vc_priority_index_array[4:0]</obj_property>
+      <obj_property name="ObjectShortName">arbitrated_vc_priority_index_array[4:0]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider80">
       <obj_property name="label">state_4</obj_property>
@@ -390,12 +386,12 @@
       <obj_property name="ElementShortName">connection_array[9:0][9:0]</obj_property>
       <obj_property name="ObjectShortName">connection_array[9:0][9:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/arbiter_tb/uut/processed_inputs" type="array">
-      <obj_property name="ElementShortName">processed_inputs[0:4]</obj_property>
-      <obj_property name="ObjectShortName">processed_inputs[0:4]</obj_property>
+   <wvobject fp_name="/arbiter_tb/uut/processed_inputs_vector" type="array">
+      <obj_property name="ElementShortName">processed_inputs_vector[0:4]</obj_property>
+      <obj_property name="ObjectShortName">processed_inputs_vector[0:4]</obj_property>
    </wvobject>
-   <wvobject fp_name="/arbiter_tb/uut/processed_vc_array" type="array">
-      <obj_property name="ElementShortName">processed_vc_array[4:0][0:1]</obj_property>
-      <obj_property name="ObjectShortName">processed_vc_array[4:0][0:1]</obj_property>
+   <wvobject fp_name="/arbiter_tb/uut/processed_vcs_vector_array" type="array">
+      <obj_property name="ElementShortName">processed_vcs_vector_array[4:0][0:1]</obj_property>
+      <obj_property name="ObjectShortName">processed_vcs_vector_array[4:0][0:1]</obj_property>
    </wvobject>
 </wave_config>

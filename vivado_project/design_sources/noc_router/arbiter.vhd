@@ -23,6 +23,8 @@
 -- Additional Comments: Testna verzija arbitera
 -- Revision 0.8 - 2021-05-01 - Mrkovic
 -- Additional Comments: Potpuna verzija arbitera
+-- Revision 0.9 - 2021-05-02 - Mrkovic
+-- Additional Comments: Dotjerana potpuna verzija arbitera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -108,7 +110,6 @@ end arbiter;
 
 architecture Behavioral of arbiter is
 
-
     -- ENUMERACIJA STANJA fsm-a
     type state_type is (state_4, state_3, state_2, state_1);
     -- TRENUTNO STANJE
@@ -136,12 +137,18 @@ architecture Behavioral of arbiter is
     -- ARRAY ZA GRUPIRANJE ULAZA OBLIKA destination_dir_vector(vc_num - 1 downto 0)
     type IO_x_vc_num_destination_dir_array is 
         array (4 downto 0) of destination_dir_vector(vc_num - 1 downto 0);
-    -- ARRAY INTEGERA
+    -- ARRAY VELICINE IO integera
     type IO_x_1_integer_array is
         array (4 downto 0) of integer;
-    -- ARRAY VELICINE IO * vc_num VEKTORA DULJINE IO * vc_num
+    -- ARRAY VELICINE (IO * vc_num) std_logic_vectora DULJINE (IO * vc_num)
     type IO_vc_num_x_IO_vc_num_std_array is
         array ((5 * vc_num) - 1 downto 0) of std_logic_vector((5 * vc_num) - 1 downto 0);
+    -- ARRAY VELICINE IO vc_mask_or_priority_vectora
+    type IO_x_1_vc_mask_or_priority_vector_array is
+        array (4 downto 0) of vc_mask_or_priority_vector;
+    -- ARRAY VELICINE IO UZLAZNIH std_logic_vectora DULJINE vc_num
+    type IO_x_vc_num_asc_std_array is
+        array (4 downto 0) of std_logic_vector (0 to vc_num - 1);
     
     -- ULAZNA POLJA
     signal vc_busy_array : IO_x_vc_num_std_array;
@@ -156,38 +163,31 @@ architecture Behavioral of arbiter is
     signal select_vector_array : IO_x_IO_std_array;
     
     -- INTERNI SIGNALI
+    
     -- POLJE KONEKCIJA UZVODNIH I NIZVODNIH VIRTUALNIH KANALA
     signal connection_array : IO_vc_num_x_IO_vc_num_std_array;
     -- MATRICA ZAHTJEVA ULAZA NA IZLAZE
     signal IO_req_matrix : IO_x_IO_std_array;
     -- ARBITRIRANI VIRTUALNI KANALI
-    signal arbitrated_vc_array : IO_x_1_integer_array;
+    signal arbitrated_vc_priority_index_array : IO_x_1_integer_array;
     
-    -- DODATNA POLJA I INTERNI SIGNALI (DODANI PRILIKOM UNAPRIJEDJENJA ROUND ROBIN IMPLEMENTACIJE)
-    -- >
-    -- VEKTOR INDEKSA ULAZA POREDAN PO PRIORITERU ULAZA
-    signal input_priority : IO_x_1_asc_integer_array;
-    -- VEKTOR ULAZA OBRADJENIH U PRIJASNJEM CIKLUSU (ULAZI POREDANI JEDNAKO KAO I U input_priority_array)
-    signal processed_inputs : std_logic_vector(0 to 4);
-    -- MASKA ZA GENERIRANJE OSVJEZENOG input_priority_array
-    signal io_mask : IO_x_1_asc_integer_array;
+    -- VEKTOR INDEKSA ULAZA POREDANIH PO PRIORITERU
+    signal input_priority_vector : input_mask_or_priority_vector;
+    -- VEKTOR ULAZA OBRADJENIH U PRIJASNJEM CIKLUSU (ULAZI POREDANI JEDNAKO KAO I U input_priority_vector)
+    signal processed_inputs_vector : std_logic_vector(0 to 4);
+    -- MASKA ZA GENERIRANJE OSVJEZENOG input_priority_vector
+    signal input_mask_vector : input_mask_or_priority_vector;
     
-    -- POLJE VEKTORA INDEKSA VIRTUALNIH KANALA POREDANIH PO PRIORITETU VIRTUALNIH KANALA
-    type IO_x_1_vc_num_x_1_asc_integer_vector_array is
-        array (4 downto 0) of vc_num_x_1_asc_integer_array;
-    signal vc_priority_array : IO_x_1_vc_num_x_1_asc_integer_vector_array;
-    -- POLJE VEKTORA VIRTUALNIH KANALA OBRADJENIH U PRIJASNJEM CIKLUSU (VIRTUALNI KANALI POREDANI JEDNAKO KAO I U vc_priority_array)
-    type IO_x_vc_num_asc_std_array is
-        array (4 downto 0) of std_logic_vector (0 to vc_num - 1);
-    signal processed_vc_array : IO_x_vc_num_asc_std_array;
-    -- POLJE MASKI ZA GENERIRANJE OSVJEZENOG vc_priority_array
-    signal vc_mask_array : IO_x_1_vc_num_x_1_asc_integer_vector_array;
-    -- <
-
+    -- POLJE VEKTORA INDEKSA VIRTUALNIH KANALA POREDANIH PO PRIORITETU
+    signal vc_priority_vector_array : IO_x_1_vc_mask_or_priority_vector_array;
+    -- POLJE VEKTORA VIRTUALNIH KANALA OBRADJENIH U PRIJASNJEM CIKLUSU (VIRTUALNI KANALI POREDANI JEDNAKO KAO I U vc_priority_vector_array)
+    signal processed_vcs_vector_array : IO_x_vc_num_asc_std_array;
+    -- POLJE MASKI ZA GENERIRANJE OSVJEZENOG vc_priority_vector_array
+    signal vc_mask_vector_array : IO_x_1_vc_mask_or_priority_vector_array;
 
 begin
 
-    -- > PREPISIVANJE I/O SIGNALA U/IZ POLJA
+    -- PREPISIVANJE I/O SIGNALA U/IZ POLJA
     vc_busy_array(0) <= vc_busy_local;
     vc_busy_array(1) <= vc_busy_north;
     vc_busy_array(2) <= vc_busy_east;
@@ -235,7 +235,6 @@ begin
     select_vector_east <= select_vector_array(2);
     select_vector_south <= select_vector_array(3);
     select_vector_west <= select_vector_array(4);
-    -- <
 
     -- PROCES KOJI KOORDINIRA PROCESE POJEDINIH STANJA
     trigger_process : process (current_state) is
@@ -276,8 +275,8 @@ begin
     -- PROCES STANJA 1
     state_1_process : process (clk) is
     
-        variable io_mask_var : IO_x_1_asc_integer_array;
-        variable vc_mask_array_var : IO_x_1_vc_num_x_1_asc_integer_vector_array;
+        variable input_mask_vector_var : input_mask_or_priority_vector;
+        variable vc_mask_vector_array_var : IO_x_1_vc_mask_or_priority_vector_array;
     
     begin
     
@@ -285,33 +284,34 @@ begin
             if rst = '0' then
             
                 -- IZLAZNI SIGNALI
-                io_mask <= (0, 1, 2, 3, 4);
-                vc_mask_array <= (others => vc_reset_function);
+                input_mask_vector <= (0, 1, 2, 3, 4);
+                vc_mask_vector_array <= (others => reset_vc_order);
                 
                 -- INTERNE VARIJABLE
-                io_mask_var := (0, 1, 2, 3, 4);
-                vc_mask_array_var := (others => vc_reset_function);
+                input_mask_vector_var := (0, 1, 2, 3, 4);
+                vc_mask_vector_array_var := (others => reset_vc_order);
                 
             else
                 
                 -- AKO JE POSTAVLJEN SIGNAL state_1_enable
                 if state_1_enable = '1' then
                 
-                    -- ODREDI io_mask NA OSNOVU processed_inputs VRIJEDNOSTI
-                    io_mask_var := IO_mask_function(processed_inputs);
+                    -- GENERIRAJ input_mask_vector NA OSNOVU processed_inputs_vector VRIJEDNOSTI
+                    input_mask_vector_var := generate_input_mask(processed_inputs_vector);
                     
-                    -- PARALELAN IZRACUN vc_mask SVAKOG ULAZA
+                    -- PARALELAN IZRACUN vc_mask_vector SVAKOG ULAZA
                     loop_1 : for i in 4 downto 0 loop
                     
-                        -- ODREDI vc_mask NA OSNOVU processed_vc VRIJEDNOSTI
-                        vc_mask_array_var(i) := vc_mask_function(processed_vc_array(i));
+                        -- ODREDI vc_mask_vector NA OSNOVU processed_vcs_vector VRIJEDNOSTI
+                        vc_mask_vector_array_var(i) := generate_vc_mask(processed_vcs_vector_array(i));
                     
                     end loop;
                 
                 end if;
                 
-                io_mask <= io_mask_var;
-                vc_mask_array <=  vc_mask_array_var;
+                -- PROSLIJEDI INTERNE VARIJABLE NA SIGNALE
+                input_mask_vector <= input_mask_vector_var;
+                vc_mask_vector_array <=  vc_mask_vector_array_var;
                 
             end if;
         end if;
@@ -321,8 +321,8 @@ begin
     -- PROCES STANJA 2
     state_2_process : process (clk) is
     
-        variable input_priority_var : IO_x_1_asc_integer_array;
-        variable vc_priority_array_var : IO_x_1_vc_num_x_1_asc_integer_vector_array;
+        variable input_priority_vector_var : input_mask_or_priority_vector;
+        variable vc_priority_vector_array_var : IO_x_1_vc_mask_or_priority_vector_array;
     
     begin
     
@@ -330,32 +330,32 @@ begin
             if rst = '0' then
             
                 -- IZLAZNI SIGNALI
-                input_priority <= (0, 1, 2, 3, 4);
-                vc_priority_array <= (others => vc_reset_function);
+                input_priority_vector <= (0, 1, 2, 3, 4);
+                vc_priority_vector_array <= (others => reset_vc_order);
                 
                 -- INTERNE VARIJABLE
-                input_priority_var := (0, 1, 2, 3, 4);
-                vc_priority_array_var := (others => vc_reset_function);
+                input_priority_vector_var := (0, 1, 2, 3, 4);
+                vc_priority_vector_array_var := (others => reset_vc_order);
             
             else
                 
                 -- AKO JE POSTAVLJEN SIGNAL state_2_enable
                 if state_2_enable = '1' then
                 
-                    -- PARALELNA OBRADA SVAKOG BITA input_priority
-                    loop_1 : for i in 0 to 4 loop
+                    -- PARALELNA OBRADA SVAKOG BITA input_priority_vectora
+                    loop_1a : for i in 0 to 4 loop
                     
-                        input_priority_var(i) := input_priority(io_mask(i));
+                        input_priority_vector_var(i) := input_priority_vector(input_mask_vector(i));
                     
                     end loop;
                     
-                    -- PARALELNA OBRADA SVAKOG VEKTORA PRIORITETA U vc_priority_array
-                    loop_2a : for i in 4 downto 0 loop
+                    -- PARALELNA OBRADA SVAKOG vc_priority_vectora U vc_priority_vector_arrayu
+                    loop_1b : for i in 4 downto 0 loop
                     
                         -- PARALELNA OBRADA SVAKOG BITA vc_priority
-                        loop_2b : for j in 0 to (vc_num - 1) loop
+                        loop_2 : for j in 0 to (vc_num - 1) loop
                         
-                            vc_priority_array_var(i)(j) := vc_priority_array(i)(vc_mask_array(i)(j));
+                            vc_priority_vector_array_var(i)(j) := vc_priority_vector_array(i)(vc_mask_vector_array(i)(j));
                         
                         end loop;
                     
@@ -363,8 +363,9 @@ begin
                 
                 end if;
                 
-                input_priority <= input_priority_var;
-                vc_priority_array <= vc_priority_array_var;
+                -- PROSLIJEDI INTERNE VARIJABLE NA SIGNALE
+                input_priority_vector <= input_priority_vector_var;
+                vc_priority_vector_array <= vc_priority_vector_array_var;
                 
             end if;
         end if;
@@ -378,8 +379,9 @@ begin
         variable vc_index : integer;
         
         variable req_parsed : destination_dir_vector(vc_num - 1 downto 0);
+        
         variable IO_req_matrix_var : IO_x_IO_std_array;
-        variable arbitrated_vc_array_var : IO_x_1_integer_array; 
+        variable arbitrated_vc_priority_index_array_var : IO_x_1_integer_array; 
     
     begin
     
@@ -388,25 +390,25 @@ begin
             
                 -- IZLAZNI SIGNALI
                 IO_req_matrix <= (others => (others => '0'));
-                arbitrated_vc_array <= (others => 0);
+                arbitrated_vc_priority_index_array <= (others => 0);
                 
                 -- INTERNE VARIJABLE
                 ds_index := 0;
                 vc_index := 0;
                 
                 req_parsed := (others => EMPTY);
-                IO_req_matrix_var := (others => (others => '0'));
                 
-                arbitrated_vc_array_var := (others => 0);
+                IO_req_matrix_var := (others => (others => '0'));
+                arbitrated_vc_priority_index_array_var := (others => 0);
             
             else
             
                 -- AKO JE POSTAVLJEN SIGNAL state_3_enable
                 if state_3_enable = '1' then
                 
-                    -- RESETIRAJ IO_req_matrix_var I arbitrated_vc_array_var U 00... 0
+                    -- RESETIRAJ IO_req_matrix_var I arbitrated_vc_priority_index_array_var U 00... 0
                     IO_req_matrix_var := (others => (others => '0'));
-                    arbitrated_vc_array_var := (others => 0);
+                    arbitrated_vc_priority_index_array_var := (others => 0);
                 
                     -- PARALELNA OBRADA I ARBITRIRANJE SVAKOG ULAZA
                     loop_1 : for i in 4 downto 0 loop
@@ -429,9 +431,9 @@ begin
                                     when others => ds_index := 0;
                                 end case;
                                 
-                                -- AKO SIGNAL head_array(i)(j) JE POSTAVLJEN I SIGNAL vc_busy_array(ds_index)(j) NIJE POSTAVLJEN
+                                -- AKO SIGNAL head_array(i)(j) JE POSTAVLJEN I SIGNAL vc_busy_array(ds_index)(j) NIJE POSTAVLJEN [novi paket]
                                 -- ILI
-                                -- AKO SIGNAL head_array(i)(j) NIJE POSTAVLJEN I SIGNAL connection_array((vc_num * i) + j)((vc_num * ds_index) + j) JE POSTAVLJEN
+                                -- AKO SIGNAL head_array(i)(j) NIJE POSTAVLJEN I SIGNAL connection_array((vc_num * i) + j)((vc_num * ds_index) + j) JE POSTAVLJEN [paket u tijeku]
                                 if (head_array(i)(j) = '1' and vc_busy_array(ds_index)(j) = '0') or
                                    (head_array(i)(j) = '0' and connection_array((vc_num * i) + j)((vc_num * ds_index) + j) = '1') then
                                    
@@ -452,7 +454,7 @@ begin
                         -- ODABERI POSTAVLJEN ZAHTJEV NAJVISEG PRIORITETA (PO ROUND ROBINU)
                         loop_2b : for j in 0 to (vc_num - 1) loop
                         
-                            vc_index := vc_priority_array(i)(j);
+                            vc_index := vc_priority_vector_array(i)(j);
                         
                             -- AKO JE ZAHTJEV U req_parsed(vc_index) POSTAVLJEN
                             if req_parsed(vc_index) /= EMPTY then
@@ -468,8 +470,8 @@ begin
                                 
                                 -- POSTAVI IO_req_matrix_var(ds_index)(i) U 1
                                 IO_req_matrix_var(ds_index)(i) := '1';
-                                -- POHRANI ARBITRIRANI VIRTUALNI KANAL U arbitrated_vc_array_var(i)
-                                arbitrated_vc_array_var(i) := vc_index;
+                                -- POHRANI INDEX U POLJU vc_priority_vector ARBITRIRANOG VIRTUALNOG KANALA U arbitrated_vc_priority_index_array_var(i)
+                                arbitrated_vc_priority_index_array_var(i) := j;
                                 
                                 -- IZADJI IZ PETLJE
                                 exit loop_2b;
@@ -484,7 +486,7 @@ begin
             
                 -- PROSLIJEDI INTERNE VARIJABLE NA SIGNALE
                 IO_req_matrix <= IO_req_matrix_var;
-                arbitrated_vc_array <= arbitrated_vc_array_var;
+                arbitrated_vc_priority_index_array <= arbitrated_vc_priority_index_array_var;
             
             end if;
         end if;
@@ -502,8 +504,8 @@ begin
         variable select_vector_array_var : IO_x_IO_std_array;
         
         variable connection_array_var : IO_vc_num_x_IO_vc_num_std_array;
-        variable processed_inputs_var : std_logic_vector(0 to 4);
-        variable processed_vc_array_var : IO_x_vc_num_asc_std_array;
+        variable processed_inputs_vector_var : std_logic_vector(0 to 4);
+        variable processed_vcs_vector_array_var : IO_x_vc_num_asc_std_array;
     
     begin
     
@@ -516,8 +518,8 @@ begin
                 select_vector_array <= (others => (others => '0'));
                 
                 connection_array <= (others => (others => '0'));
-                processed_inputs <= (others => '0');
-                processed_vc_array <= (others => (others => '0'));
+                processed_inputs_vector <= (others => '0');
+                processed_vcs_vector_array <= (others => (others => '0'));
                 
                 -- INTERNE VARIJABLE
                 
@@ -529,8 +531,8 @@ begin
                 select_vector_array_var := (others => (others => '0'));
                 
                 connection_array_var := (others => (others => '0'));
-                processed_inputs_var := (others => '0');
-                processed_vc_array_var := (others => (others => '0'));
+                processed_inputs_vector_var := (others => '0');
+                processed_vcs_vector_array_var := (others => (others => '0'));
                 
             else
                 
@@ -541,8 +543,8 @@ begin
                     vc_downstream_array_var := (others => (others => '0'));
                     select_vector_array_var := (others => (others => '0'));
                     
-                    processed_inputs_var := (others => '0');
-                    processed_vc_array_var := (others => (others => '0'));
+                    processed_inputs_vector_var := (others => '0');
+                    processed_vcs_vector_array_var := (others => (others => '0'));
                 
                     -- PARALELNO ARBITRIRANJE SVAKOG IZLAZA
                     loop_1 : for i in 4 downto 0 loop
@@ -550,12 +552,12 @@ begin
                         -- ODABERI ULAZ S POSTAVLJENIM ZAHTJEVOM NAJVISEG PRIORITETA ZA SVAKI IZLAZ (PO ROUND ROBINU)
                         loop_2 : for j in 0 to 4 loop
                         
-                            rr_index := input_priority(j);
+                            rr_index := input_priority_vector(j);
                         
                             -- AKO JE BIT IO_req_matrix(i)(rr_index) POSTAVLJEN
                             if IO_req_matrix(i)(rr_index) = '1' then
                             
-                                vc_index := arbitrated_vc_array(rr_index);
+                                vc_index := vc_priority_vector_array(rr_index)(arbitrated_vc_priority_index_array(rr_index));
                             
                                 -- GENERIRAJ ODGOVARAJUCI grant SIGNAL
                                 grant_array_var(rr_index) := (vc_index => '1', others => '0');
@@ -571,8 +573,8 @@ begin
                                 -- AKO JE POSTAVLJEN tail SIGNAL OBRIŠI KONEKCIJU UZVODNOG I NIZVODNOG VIRTUALNOG KANALA
                                 if tail_array(rr_index)(vc_index) = '1' then
                                     connection_array_var((vc_num * rr_index) + vc_index)((vc_num * i) + vc_index) := '0';
-                                    processed_inputs_var(j) := '1';
-                                    processed_vc_array_var(rr_index)(vc_index) := '1';
+                                    processed_inputs_vector_var(j) := '1';
+                                    processed_vcs_vector_array_var(rr_index)(arbitrated_vc_priority_index_array(rr_index)) := '1';
                                 end if;
                                
                                 -- IZADJI IZ PETLJE
@@ -586,13 +588,14 @@ begin
                 
                 end if;
                 
+                -- PROSLIJEDI INTERNE VARIJABLE NA SIGNALE
                 grant_array <= grant_array_var;
                 vc_downstream_array <= vc_downstream_array_var;
                 select_vector_array <= select_vector_array_var;
                 
                 connection_array <= connection_array_var;
-                processed_inputs <= processed_inputs_var;
-                processed_vc_array <= processed_vc_array_var;
+                processed_inputs_vector <= processed_inputs_vector_var;
+                processed_vcs_vector_array <= processed_vcs_vector_array_var;
                 
             end if;
         end if;
