@@ -20,7 +20,7 @@
 -- Revision 0.2 - 2021-04-06 - Ramljak
 -- Additional Comments: Dodana deklaracija komponente router_branch
 -- Revision 0.3 - 2021-05-03 - Mrkovic, Ramljak
--- Additional Comments: Dodane deklracije komponenata crossbar_mux_module, crossbar, arbiter, noc_router, AXI_to_noc_FIFO_buffer 
+-- Additional Comments: Dodane deklracije komponenata crossbar_mux_module, crossbar, arbiter, noc_router, AXI_to_noc_FIFO_buffer, noc_to_AXI_FIFO_buffer 
 -- 
 ----------------------------------------------------------------------------------
 
@@ -438,5 +438,30 @@ package component_declarations is
     );
     
     end component;
+    
+    component noc_to_AXI_FIFO_buffer
+    
+        Generic (
+        flit_size : integer;
+        buffer_size : integer
+    );
+                  
+    Port (
+        clk : in std_logic;
+        rst : in std_logic; 
+                   
+        flit_in : in std_logic_vector(flit_size - 1 downto 0);
+        flit_in_valid : in std_logic;
+        
+        flit_out : out std_logic_vector(flit_size - 1 downto 0);
+        has_tail : out std_logic;
+                
+        right_shift : in std_logic;
+        
+        full : out std_logic
+    );
+    
+    end component;
+    
 
 end package component_declarations;
