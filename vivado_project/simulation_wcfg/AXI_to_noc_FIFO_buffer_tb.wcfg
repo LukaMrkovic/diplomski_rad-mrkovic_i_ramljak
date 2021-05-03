@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="AXI_to_noc_FIFO_buffer_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="AXI_to_noc_FIFO_buffer_tb" />
+            <top_module name="axi_network_adapter_config" />
+            <top_module name="component_declarations" />
+            <top_module name="router_config" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="19586564fs"></ZoomEndTime>
+      <Cursor1Time time="826873fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="248"></NameColumnWidth>
+      <ValueColumnWidth column_width="104"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject type="divider" fp_name="divider197">
+      <obj_property name="label">Kontrolni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/clk_sim" type="logic">
+      <obj_property name="ElementShortName">clk_sim</obj_property>
+      <obj_property name="ObjectShortName">clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/rst_sim" type="logic">
+      <obj_property name="ElementShortName">rst_sim</obj_property>
+      <obj_property name="ObjectShortName">rst_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider198">
+      <obj_property name="label">AXI signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/flit_in_sim" type="array">
+      <obj_property name="ElementShortName">flit_in_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">flit_in_sim[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/flit_in_valid_sim" type="logic">
+      <obj_property name="ElementShortName">flit_in_valid_sim</obj_property>
+      <obj_property name="ObjectShortName">flit_in_valid_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/buffer_write_ready_sim" type="logic">
+      <obj_property name="ElementShortName">buffer_write_ready_sim</obj_property>
+      <obj_property name="ObjectShortName">buffer_write_ready_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/buffer_read_ready_sim" type="logic">
+      <obj_property name="ElementShortName">buffer_read_ready_sim</obj_property>
+      <obj_property name="ObjectShortName">buffer_read_ready_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider199">
+      <obj_property name="label">NoC signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/flit_out_sim" type="array">
+      <obj_property name="ElementShortName">flit_out_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">flit_out_sim[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/empty_sim" type="logic">
+      <obj_property name="ElementShortName">empty_sim</obj_property>
+      <obj_property name="ObjectShortName">empty_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/right_shift_sim" type="logic">
+      <obj_property name="ElementShortName">right_shift_sim</obj_property>
+      <obj_property name="ObjectShortName">right_shift_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="group201" type="group">
+      <obj_property name="label">Testni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/uut/head_test" type="other">
+         <obj_property name="ElementShortName">head_test</obj_property>
+         <obj_property name="ObjectShortName">head_test</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/uut/tail_test" type="other">
+         <obj_property name="ElementShortName">tail_test</obj_property>
+         <obj_property name="ObjectShortName">tail_test</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/uut/counter_test" type="other">
+         <obj_property name="ElementShortName">counter_test</obj_property>
+         <obj_property name="ObjectShortName">counter_test</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/AXI_to_noc_FIFO_buffer_tb/uut/FIFO_array_test" type="array">
+         <obj_property name="ElementShortName">FIFO_array_test[7:0][43:0]</obj_property>
+         <obj_property name="ObjectShortName">FIFO_array_test[7:0][43:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

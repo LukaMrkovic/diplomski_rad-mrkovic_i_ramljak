@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 29.04.2021 16:20:52
 -- Design Name: NoC_Router
--- Module Name: router_functions - Behavioral
+-- Module Name: router_functions - Package
 -- Project Name: NoC_Router
 -- Target Devices: zc706
 -- Tool Versions: 2020.2

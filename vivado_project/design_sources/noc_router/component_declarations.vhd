@@ -19,6 +19,8 @@
 -- Additional Comments: Dodane deklaracije komponenata router_interface_module, FIFO_buffer_module i buffer_decoder_module
 -- Revision 0.2 - 2021-04-06 - Ramljak
 -- Additional Comments: Dodana deklaracija komponente router_branch
+-- Revision 0.3 - 2021-05-03 - Mrkovic, Ramljak
+-- Additional Comments: Dodane deklracije komponenata crossbar_mux_module, crossbar, arbiter, noc_router, AXI_to_noc_FIFO_buffer 
 -- 
 ----------------------------------------------------------------------------------
 
@@ -28,6 +30,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 library noc_lib;
 use noc_lib.router_config.ALL;
+use noc_lib.AXI_network_adapter_config.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -407,6 +410,33 @@ package component_declarations is
             data_out_vc_credits_west : in std_logic_vector(vc_num - 1 downto 0)
         );
         
+    end component;
+    
+    component AXI_to_noc_FIFO_buffer
+    
+        Generic (
+        flit_size : integer;
+        buffer_size : integer;
+        write_threshold : integer;
+        read_threshold : integer
+    );
+                  
+    Port (
+        clk : in std_logic;
+        rst : in std_logic; 
+                   
+        flit_in : in std_logic_vector(flit_size - 1 downto 0);
+        flit_in_valid : in std_logic;
+        
+        flit_out : out std_logic_vector(flit_size - 1 downto 0);
+        empty : out std_logic;
+                
+        right_shift : in std_logic;
+        
+        buffer_write_ready : out std_logic;        
+        buffer_read_ready : out std_logic
+    );
+    
     end component;
 
 end package component_declarations;
