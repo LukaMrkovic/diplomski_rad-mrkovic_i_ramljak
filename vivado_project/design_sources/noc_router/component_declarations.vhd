@@ -415,53 +415,113 @@ package component_declarations is
     component AXI_to_noc_FIFO_buffer
     
         Generic (
-        flit_size : integer;
-        buffer_size : integer;
-        write_threshold : integer;
-        read_threshold : integer
-    );
-                  
-    Port (
-        clk : in std_logic;
-        rst : in std_logic; 
-                   
-        flit_in : in std_logic_vector(flit_size - 1 downto 0);
-        flit_in_valid : in std_logic;
-        
-        flit_out : out std_logic_vector(flit_size - 1 downto 0);
-        empty : out std_logic;
-                
-        right_shift : in std_logic;
-        
-        buffer_write_ready : out std_logic;        
-        buffer_read_ready : out std_logic
-    );
+            flit_size : integer;
+            buffer_size : integer;
+            write_threshold : integer;
+            read_threshold : integer
+        );
+                      
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                       
+            flit_in : in std_logic_vector(flit_size - 1 downto 0);
+            flit_in_valid : in std_logic;
+            
+            flit_out : out std_logic_vector(flit_size - 1 downto 0);
+            empty : out std_logic;
+                    
+            right_shift : in std_logic;
+            
+            buffer_write_ready : out std_logic;        
+            buffer_read_ready : out std_logic
+        );
     
     end component;
     
     component noc_to_AXI_FIFO_buffer
     
         Generic (
-        flit_size : integer;
-        buffer_size : integer
-    );
-                  
-    Port (
-        clk : in std_logic;
-        rst : in std_logic; 
-                   
-        flit_in : in std_logic_vector(flit_size - 1 downto 0);
-        flit_in_valid : in std_logic;
-        
-        flit_out : out std_logic_vector(flit_size - 1 downto 0);
-        has_tail : out std_logic;
-                
-        right_shift : in std_logic;
-        
-        full : out std_logic
-    );
+            flit_size : integer;
+            buffer_size : integer
+        );
+                      
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                       
+            flit_in : in std_logic_vector(flit_size - 1 downto 0);
+            flit_in_valid : in std_logic;
+            
+            flit_out : out std_logic_vector(flit_size - 1 downto 0);
+            has_tail : out std_logic;
+                    
+            right_shift : in std_logic;
+            
+            full : out std_logic
+        );
     
     end component;
     
-
+    component MNA_req_AXI_handshake_controller
+    
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                       
+            AWADDR : in std_logic_vector(31 downto 0);
+            AWVALID : in std_logic;
+            AWREADY : out std_logic;
+            
+            WDATA : in std_logic_vector(31 downto 0);
+            WVALID : in std_logic;
+            WREADY : out std_logic;
+            
+            AWPROT : in std_logic_vector(2 downto 0);
+            WSTRB : in std_logic_vector(3 downto 0);
+            
+            ARADDR : in std_logic_vector(31 downto 0);
+            ARVALID : in std_logic;
+            ARREADY : out std_logic;
+            
+            ARPROT : in std_logic_vector(2 downto 0);
+            
+            op_write : out std_logic;
+            op_read : out std_logic;
+            
+            buffer_read_ready : in std_logic;
+            buffer_write_ready : in std_logic;
+            
+            addr : out std_logic_vector(31 downto 0);
+            data : out std_logic_vector(31 downto 0);
+            prot : out std_logic_vector(2 downto 0);
+            strb : out std_logic_vector(3 downto 0)
+        );
+    
+    end component;
+    
+    component MNA_resp_AXI_handshake_controller
+    
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                       
+            BREADY : in std_logic;
+            BRESP : out std_logic_vector(1 downto 0);
+            BVALID : out std_logic;
+            
+            RREADY : in std_logic;
+            RDATA : out std_logic_vector(31 downto 0);
+            RRESP : out std_logic_vector(1 downto 0);
+            RVALID : out std_logic;
+            
+            op_write : in std_logic;
+            op_read : in std_logic;
+            
+            data : in std_logic_vector(31 downto 0);
+            resp : in std_logic_vector(1 downto 0)
+        );
+    
+    end component;
+    
 end package component_declarations;
