@@ -39,6 +39,8 @@ package AXI_network_adapter_config is
     constant const_MNA_read_threshold : integer;
     constant const_SNA_write_threshold : integer;
     constant const_SNA_read_threshold : integer;
+    constant const_default_injection_vc : integer;
+    constant const_node_address_size : integer;
     
 end package AXI_network_adapter_config;
 
@@ -52,5 +54,9 @@ package body AXI_network_adapter_config is
     constant const_SNA_write_threshold : integer := 1;
     -- Broj potrebnih slobodnih mjesta u SNA bufferu za pokretanje operacije citanja
     constant const_SNA_read_threshold : integer := 2;
+    -- Virtualni kanal u koji AXI network adapter salje flitove
+    constant const_default_injection_vc : integer := 0;
+    -- Broj gornjih bitova u AXI adresi koji identificiraju node u mrezi
+    constant const_node_address_size : integer := 4;
 
 end package body AXI_network_adapter_config;

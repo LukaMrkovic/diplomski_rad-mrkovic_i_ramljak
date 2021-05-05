@@ -524,4 +524,37 @@ package component_declarations is
     
     end component;
     
+    component MNA_req_buffer_controller
+    
+        Generic (
+            vc_num : integer;
+            mesh_size_x : integer;
+            mesh_size_y : integer;
+            address_size : integer;
+            payload_size : integer;
+            flit_size : integer;
+            node_address_size : integer;
+            injection_vc : integer;
+            local_address_x : std_logic_vector(const_mesh_size_x - 1 downto 0);
+            local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0)
+        );
+                      
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                       
+            flit_in : out std_logic_vector(flit_size - 1 downto 0);
+            flit_in_valid : out std_logic;
+            
+            op_write : in std_logic;
+            op_read : in std_logic;
+            
+            addr : in std_logic_vector(31 downto 0);
+            data : in std_logic_vector(31 downto 0);
+            prot : in std_logic_vector(2 downto 0);
+            strb : in std_logic_vector(3 downto 0)
+        );
+    
+    end component;
+    
 end package component_declarations;
