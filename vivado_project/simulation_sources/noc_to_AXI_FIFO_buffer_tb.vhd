@@ -118,69 +118,89 @@ begin
         
         wait for 2.1 * clk_period;
         
-        flit_in_sim <= X"31223456677";
-        flit_in_valid_sim <= '1';
+        --flit_in_sim <= X"31223456677";
+        --flit_in_valid_sim <= '1';
         
-        wait for clk_period;
+        --wait for clk_period;
         
-        flit_in_sim <= X"37665456677";
-        flit_in_valid_sim <= '1';
+        --flit_in_sim <= X"37665456677";
+        --flit_in_valid_sim <= '1';
         
-        wait for clk_period;
+        --wait for clk_period;
         
-        flit_in_sim <= (others => '0');
-        flit_in_valid_sim <= '0';
+        --flit_in_sim <= (others => '0');
+        --flit_in_valid_sim <= '0';
         
-        right_shift_sim <= '1';
+        --right_shift_sim <= '1';
         
-        wait for clk_period;
+        --wait for clk_period;
         
-        right_shift_sim <= '0';
+        --right_shift_sim <= '0';
         
-        wait for clk_period;
+        --wait for clk_period;
         
-        flit_in_sim <= X"75432123456";
-        flit_in_valid_sim <= '1';
+        --flit_in_sim <= X"75432123456";
+        --flit_in_valid_sim <= '1';
         
-        right_shift_sim <= '1';
+        --right_shift_sim <= '1';
         
-        wait for clk_period;
+        --wait for clk_period;
         
-        flit_in_sim <= (others => '0');
-        flit_in_valid_sim <= '0';
+        --flit_in_sim <= (others => '0');
+        --flit_in_valid_sim <= '0';
         
-        right_shift_sim <= '1';
+        --right_shift_sim <= '1';
         
-        wait for clk_period;
+        --wait for clk_period;
         
-        flit_in_sim <= X"31111111111";
-        flit_in_valid_sim <= '1';
+        --flit_in_sim <= X"31111111111";
+        --flit_in_valid_sim <= '1';
         
-        right_shift_sim <= '0';
+        --right_shift_sim <= '0';
         
-        wait for clk_period;
+        --wait for clk_period;
         
-        flit_in_sim <= X"32222222222";
-        flit_in_valid_sim <= '1';
+        --flit_in_sim <= X"32222222222";
+        --flit_in_valid_sim <= '1';
         
-        wait for clk_period;
+        --wait for clk_period;
+        
+        --flit_in_sim <= X"33333333333";
+        --flit_in_valid_sim <= '1';
+        
+        --wait for clk_period;
+        
+        --flit_in_sim <= X"34444444444";
+        --flit_in_valid_sim <= '1';
+        
+        --wait for clk_period;
+        
+        --flit_in_sim <= X"35555555555";
+        --flit_in_valid_sim <= '1';
+        
+        --wait for clk_period;
+        
+        --flit_in_sim <= X"36666666666";
+        --flit_in_valid_sim <= '1';
+        
+        --wait for clk_period;
+        
+        --flit_in_sim <= X"77777777777";
+        --flit_in_valid_sim <= '1';
+        
+        --wait for clk_period;
+        
+        --flit_in_sim <= X"88888888888";
+        --flit_in_valid_sim <= '1';
+        
+        --wait for clk_period;
+        
+        --flit_in_sim <= (others => '0');
+        --flit_in_valid_sim <= '0';
+        
+        --wait for clk_period;
         
         flit_in_sim <= X"33333333333";
-        flit_in_valid_sim <= '1';
-        
-        wait for clk_period;
-        
-        flit_in_sim <= X"34444444444";
-        flit_in_valid_sim <= '1';
-        
-        wait for clk_period;
-        
-        flit_in_sim <= X"35555555555";
-        flit_in_valid_sim <= '1';
-        
-        wait for clk_period;
-        
-        flit_in_sim <= X"36666666666";
         flit_in_valid_sim <= '1';
         
         wait for clk_period;
@@ -190,15 +210,14 @@ begin
         
         wait for clk_period;
         
-        flit_in_sim <= X"88888888888";
-        flit_in_valid_sim <= '1';
-        
-        wait for clk_period;
-        
         flit_in_sim <= (others => '0');
         flit_in_valid_sim <= '0';
         
-        wait for clk_period;
+        right_shift_sim <= '1';
+        
+        wait for (2 * clk_period);
+        
+        right_shift_sim <= '0';
     
         wait;
     

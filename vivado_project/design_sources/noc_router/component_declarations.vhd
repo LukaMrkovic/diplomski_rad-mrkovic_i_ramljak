@@ -557,4 +557,28 @@ package component_declarations is
     
     end component;
     
+    component MNA_resp_buffer_controller
+    
+        Generic (
+            flit_size : integer
+        );
+                      
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                       
+            flit_out : in std_logic_vector(flit_size - 1 downto 0);
+            has_tail : in std_logic;
+            
+            right_shift : out std_logic;
+            
+            op_write : out std_logic;
+            op_read : out std_logic;
+            
+            data : out std_logic_vector(31 downto 0);
+            resp : out std_logic_vector(1 downto 0)
+        );
+        
+    end component;
+    
 end package component_declarations;

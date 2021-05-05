@@ -133,13 +133,12 @@ begin
         
         op_write_sim <= '1';
         
+        data_sim <= (others => '0');
         resp_sim <= "01";
         
         wait for clk_period;
         
         op_write_sim <= '0';
-        
-        resp_sim <= (others => '0');
         
         wait for clk_period;
         
@@ -160,9 +159,6 @@ begin
         
         op_read_sim <= '0';
         
-        data_sim <= (others => '0');
-        resp_sim <= (others => '0');
-        
         wait for clk_period;
         
         RREADY_sim <= '0';
@@ -171,13 +167,12 @@ begin
         
         op_write_sim <= '1';
         
+        data_sim <= (others => '0');
         resp_sim <= "11";
         
         wait for clk_period;
         
         op_write_sim <= '0';
-        
-        resp_sim <= (others => '0');
         
         wait for (2 * clk_period);
         
@@ -197,9 +192,6 @@ begin
         wait for clk_period;
         
         op_read_sim <= '0';
-        
-        data_sim <= (others => '0');
-        resp_sim <= (others => '0');
         
         wait for (3 * clk_period);
         
