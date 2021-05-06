@@ -643,4 +643,36 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente MNA_resp_flow
+    component MNA_resp_flow
+    
+        Generic (
+            flit_size : integer;
+            buffer_size : integer
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+            
+            -- AXI WRITE RESPONSE CHANNEL   
+            BREADY : in std_logic;
+            BRESP : out std_logic_vector(1 downto 0);
+            BVALID : out std_logic;
+            
+            -- AXI READ RESPONSE CHANNEL
+            RREADY : in std_logic;
+            RDATA : out std_logic_vector(31 downto 0);
+            RRESP : out std_logic_vector(1 downto 0);
+            RVALID : out std_logic;
+            
+            -- >PRIVREMENO!< BUFFER IZLAZI
+            flit_in : in std_logic_vector(flit_size - 1 downto 0);
+            flit_in_valid : in std_logic;
+            
+            full : out std_logic
+        );
+    
+    end component;
+    
 end package component_declarations;

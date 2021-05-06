@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="MNA_resp_flow_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="MNA_resp_flow_tb" />
+            <top_module name="axi_network_adapter_config" />
+            <top_module name="component_declarations" />
+            <top_module name="router_config" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="13929412fs"></ZoomEndTime>
+      <Cursor1Time time="16000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="297"></NameColumnWidth>
+      <ValueColumnWidth column_width="91"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="31" />
+   <wvobject type="divider" fp_name="divider21">
+      <obj_property name="label">Kontrolni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/clk_sim" type="logic">
+      <obj_property name="ElementShortName">clk_sim</obj_property>
+      <obj_property name="ObjectShortName">clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/rst_sim" type="logic">
+      <obj_property name="ElementShortName">rst_sim</obj_property>
+      <obj_property name="ObjectShortName">rst_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider21">
+      <obj_property name="label">AXI WRITE RESPONSE CHANNEL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/BREADY_sim" type="logic">
+      <obj_property name="ElementShortName">BREADY_sim</obj_property>
+      <obj_property name="ObjectShortName">BREADY_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/BRESP_sim" type="array">
+      <obj_property name="ElementShortName">BRESP_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">BRESP_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/BVALID_sim" type="logic">
+      <obj_property name="ElementShortName">BVALID_sim</obj_property>
+      <obj_property name="ObjectShortName">BVALID_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider21">
+      <obj_property name="label">AXI READ RESPONSE CHANNEL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/RREADY_sim" type="logic">
+      <obj_property name="ElementShortName">RREADY_sim</obj_property>
+      <obj_property name="ObjectShortName">RREADY_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/RDATA_sim" type="array">
+      <obj_property name="ElementShortName">RDATA_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RDATA_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/RRESP_sim" type="array">
+      <obj_property name="ElementShortName">RRESP_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">RRESP_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/RVALID_sim" type="logic">
+      <obj_property name="ElementShortName">RVALID_sim</obj_property>
+      <obj_property name="ObjectShortName">RVALID_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider28">
+      <obj_property name="label">&gt;PRIVREMENO&lt; FIFO_buffer</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/flit_in_sim" type="array">
+      <obj_property name="ElementShortName">flit_in_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">flit_in_sim[43:0]</obj_property>
+      <obj_property name="CustomSignalColor">#D2691E</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/flit_in_valid_sim" type="logic">
+      <obj_property name="ElementShortName">flit_in_valid_sim</obj_property>
+      <obj_property name="ObjectShortName">flit_in_valid_sim</obj_property>
+      <obj_property name="CustomSignalColor">#D2691E</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/full_sim" type="logic">
+      <obj_property name="ElementShortName">full_sim</obj_property>
+      <obj_property name="ObjectShortName">full_sim</obj_property>
+      <obj_property name="CustomSignalColor">#D2691E</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider21">
+      <obj_property name="label">handshake_controller - buffer_controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/uut/op_write" type="logic">
+      <obj_property name="ElementShortName">op_write</obj_property>
+      <obj_property name="ObjectShortName">op_write</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/uut/op_read" type="logic">
+      <obj_property name="ElementShortName">op_read</obj_property>
+      <obj_property name="ObjectShortName">op_read</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/uut/data" type="array">
+      <obj_property name="ElementShortName">data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/uut/resp" type="array">
+      <obj_property name="ElementShortName">resp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">resp[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider28">
+      <obj_property name="label">buffer_controller - FIFO_buffer</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/uut/flit_out" type="array">
+      <obj_property name="ElementShortName">flit_out[43:0]</obj_property>
+      <obj_property name="ObjectShortName">flit_out[43:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/uut/has_tail" type="logic">
+      <obj_property name="ElementShortName">has_tail</obj_property>
+      <obj_property name="ObjectShortName">has_tail</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/uut/right_shift" type="logic">
+      <obj_property name="ElementShortName">right_shift</obj_property>
+      <obj_property name="ObjectShortName">right_shift</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider28">
+      <obj_property name="label">FSM - handshake_controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group50" type="group">
+      <obj_property name="label">FSM - handshake_controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/handshake_controller/current_state" type="other">
+         <obj_property name="ElementShortName">current_state</obj_property>
+         <obj_property name="ObjectShortName">current_state</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/handshake_controller/next_state" type="other">
+         <obj_property name="ElementShortName">next_state</obj_property>
+         <obj_property name="ObjectShortName">next_state</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider28">
+      <obj_property name="label">FSM - buffer_controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group49" type="group">
+      <obj_property name="label">FSM - buffer_controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/buffer_controller/current_state" type="other">
+         <obj_property name="ElementShortName">current_state</obj_property>
+         <obj_property name="ObjectShortName">current_state</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/buffer_controller/next_state" type="other">
+         <obj_property name="ElementShortName">next_state</obj_property>
+         <obj_property name="ObjectShortName">next_state</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/buffer_controller/W_FLIT_1_enable" type="logic">
+         <obj_property name="ElementShortName">W_FLIT_1_enable</obj_property>
+         <obj_property name="ObjectShortName">W_FLIT_1_enable</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/buffer_controller/R_FLIT_1_enable" type="logic">
+         <obj_property name="ElementShortName">R_FLIT_1_enable</obj_property>
+         <obj_property name="ObjectShortName">R_FLIT_1_enable</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/buffer_controller/R_FLIT_2_enable" type="logic">
+         <obj_property name="ElementShortName">R_FLIT_2_enable</obj_property>
+         <obj_property name="ObjectShortName">R_FLIT_2_enable</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider28">
+      <obj_property name="label">Interni signali - FIFO_buffer</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="group48" type="group">
+      <obj_property name="label">Interni signali - FIFO_buffer</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/FIFO_buffer/FIFO_array_test" type="array">
+         <obj_property name="ElementShortName">FIFO_array_test[7:0][43:0]</obj_property>
+         <obj_property name="ObjectShortName">FIFO_array_test[7:0][43:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/FIFO_buffer/head_test" type="other">
+         <obj_property name="ElementShortName">head_test</obj_property>
+         <obj_property name="ObjectShortName">head_test</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/FIFO_buffer/tail_test" type="other">
+         <obj_property name="ElementShortName">tail_test</obj_property>
+         <obj_property name="ObjectShortName">tail_test</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/FIFO_buffer/counter_test" type="other">
+         <obj_property name="ElementShortName">counter_test</obj_property>
+         <obj_property name="ObjectShortName">counter_test</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
