@@ -329,6 +329,7 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente noc_router
     component noc_router
         
         Generic (
@@ -412,6 +413,7 @@ package component_declarations is
         
     end component;
     
+    -- Deklaracija komponente AXI_to_noc_FIFO_buffer
     component AXI_to_noc_FIFO_buffer
     
         Generic (
@@ -439,6 +441,7 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente noc_to_AXI_FIFO_buffer
     component noc_to_AXI_FIFO_buffer
     
         Generic (
@@ -463,6 +466,7 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente MNA_req_AXI_handshake_controller
     component MNA_req_AXI_handshake_controller
     
         Port (
@@ -500,6 +504,7 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente MNA_resp_AXI_handshake_controller
     component MNA_resp_AXI_handshake_controller
     
         Port (
@@ -524,6 +529,7 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente MNA_req_buffer_controller
     component MNA_req_buffer_controller
     
         Generic (
@@ -557,6 +563,7 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente MNA_resp_buffer_controller
     component MNA_resp_buffer_controller
     
         Generic (
@@ -579,6 +586,61 @@ package component_declarations is
             resp : out std_logic_vector(1 downto 0)
         );
         
+    end component;
+    
+    -- Deklaracija komponente MNA_req_flow
+    component MNA_req_flow
+    
+        Generic (
+            vc_num : integer;
+            mesh_size_x : integer;
+            mesh_size_y : integer;
+            address_size : integer;
+            payload_size : integer;
+            flit_size : integer;
+            node_address_size : integer;
+            buffer_size : integer;
+            write_threshold : integer;
+            read_threshold : integer;
+            
+            injection_vc : integer;
+            local_address_x : std_logic_vector(const_mesh_size_x - 1 downto 0);
+            local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0)
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                
+            -- AXI WRITE ADDRESS CHANNEL           
+            AWADDR : in std_logic_vector(31 downto 0);
+            AWVALID : in std_logic;
+            AWREADY : out std_logic;
+            
+            -- AXI WRITE DATA CHANNEL
+            WDATA : in std_logic_vector(31 downto 0);
+            WVALID : in std_logic;
+            WREADY : out std_logic;
+            
+            -- AXI WRITE AUXILIARY SIGNALS
+            AWPROT : in std_logic_vector(2 downto 0);
+            WSTRB : in std_logic_vector(3 downto 0);
+            
+            -- AXI READ ADDRESS CHANNEL
+            ARADDR : in std_logic_vector(31 downto 0);
+            ARVALID : in std_logic;
+            ARREADY : out std_logic;
+            
+            -- AXI READ AUXILIARY SIGNALS
+            ARPROT : in std_logic_vector(2 downto 0);
+            
+            -- >PRIVREMENO!< BUFFER IZLAZI
+            flit_out : out std_logic_vector(flit_size - 1 downto 0);
+            empty : out std_logic;
+                    
+            right_shift : in std_logic
+        );
+    
     end component;
     
 end package component_declarations;
