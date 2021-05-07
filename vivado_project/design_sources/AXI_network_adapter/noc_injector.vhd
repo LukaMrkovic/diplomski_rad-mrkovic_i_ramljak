@@ -1,0 +1,183 @@
+----------------------------------------------------------------------------------
+-- Company: FER
+-- Engineer: Mrkovic, Ramljak
+-- 
+-- Create Date: 07.05.2021 12:11:00
+-- Design Name: AXI_Network_Adapter
+-- Module Name: noc_injector - Behavioral
+-- Project Name: NoC_Router
+-- Target Devices: zc706
+-- Tool Versions: 2020.2
+-- Description: 
+-- 
+-- Dependencies: 
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+-- Revision 0.1 - 2021-05-07 - Mrkovic, Ramljak
+-- Additional Comments: Prva verzija noc_injectora
+-- 
+----------------------------------------------------------------------------------
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+
+library noc_lib;
+use noc_lib.router_config.ALL;
+use noc_lib.AXI_network_adapter_config.ALL;
+
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+-- use IEEE.NUMERIC_STD.ALL;
+
+-- Uncomment the following library declaration if instantiating
+-- any Xilinx leaf cells in this code.
+-- library UNISIM;
+-- use UNISIM.VComponents.all;
+
+entity noc_injector is
+
+    Generic (
+        vc_num : integer := const_vc_num;
+        flit_size : integer := const_flit_size;
+        buffer_size : integer := const_buffer_size;
+        clock_divider : integer := const_clock_divider;
+        
+        injection_vc : integer := const_default_injection_vc
+    );
+    
+    Port (
+        clk : in std_logic;
+        rst : in std_logic; 
+                   
+        flit_out : in std_logic_vector(flit_size - 1 downto 0);
+        empty : in std_logic;
+                
+        right_shift : out std_logic;
+        
+        AXI_noc_data : out std_logic_vector(flit_size - 1 downto 0);        
+        AXI_noc_data_valid : out std_logic;
+        
+        noc_AXI_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
+        noc_AXI_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
+    );
+
+end noc_injector;
+
+architecture Behavioral of noc_injector is
+
+    -- ENABLE SIGNAL SLANJA U noc MREZU
+    signal enable_output : std_logic;
+    
+    -- TESTNI SIGNALI
+    signal output_counter_test : integer;
+    signal credit_counter_test : integer;
+
+begin
+
+    -- INJECTOR PROCES
+    injector_process : process (clk) is
+    
+        variable credit_counter : integer;
+    
+    begin
+    
+        if rising_edge(clk) then
+            if rst = '0' then
+            
+                AXI_noc_data <= (others => '0');
+                AXI_noc_data_valid <= '0';
+
+                right_shift <= '0';
+                
+                credit_counter := buffer_size;
+            
+            else
+            
+                AXI_noc_data <= (others => '0');
+                AXI_noc_data_valid <= '0';
+
+                right_shift <= '0';
+            
+                -- AKO JE POSTAVLJEN enable_output
+                if enable_output = '1' then
+                
+                    -- AKO JE empty = 0
+                    if empty = '0' then
+                    
+                        -- AKO JE (vc_busy(injection_vc) = 0 I flit_out(flit_size - 1) = 1)
+                        --    ILI (vc_busy(injection_vc) = 1 I flit_out(flit_size - 1) = 0)
+                        if (noc_AXI_vc_busy(injection_vc) = '0' and flit_out(flit_size - 1) = '1') or
+                           (noc_AXI_vc_busy(injection_vc) = '1' and flit_out(flit_size - 1) = '0') then
+                           
+                           -- AKO JE credit_counter > 0
+                           if credit_counter > 0 then
+                           
+                                AXI_noc_data <= flit_out;
+                                AXI_noc_data_valid <= '1';
+                                
+                                right_shift <= '1';
+                                
+                                credit_counter := credit_counter - 1;
+                           
+                           end if;
+                           
+                        end if;
+                        
+                    end if;
+                
+                end if;
+                
+                if noc_AXI_vc_credits(injection_vc) = '1' then
+                
+                    credit_counter := credit_counter + 1;
+                
+                end if;
+                
+                credit_counter_test <= credit_counter;
+            
+            end if;
+        end if;
+    
+    end process;
+
+    -- OUTPUT ENABLE PROCES
+    output_enable_process : process (clk) is 
+        
+        variable output_counter : integer;
+        
+    begin
+    
+        if rising_edge(clk) then
+            if rst = '0' then
+                
+                -- POSTAVI BROJILO NA 0
+                output_counter := (clock_divider * 2) - 1;
+                
+                -- POSTAVI INTERNI TAKT NA 0
+                enable_output <= '0';
+            
+            else
+            
+                -- POVECAJ BROJILO ZA 1
+                output_counter := (output_counter + 1) mod (clock_divider * 2);
+                
+                -- PROPUSTI UBRZANE IZLAZE
+                if (output_counter = 3) then 
+                    enable_output <= '1';
+                else
+                    enable_output <= '0';
+                end if;
+                
+                output_counter_test <= output_counter;
+                             
+            end if;
+        end if;
+        
+    end process;
+
+end Behavioral;

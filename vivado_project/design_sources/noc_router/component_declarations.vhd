@@ -602,6 +602,7 @@ package component_declarations is
             buffer_size : integer;
             write_threshold : integer;
             read_threshold : integer;
+            clock_divider : integer;
             
             injection_vc : integer;
             local_address_x : std_logic_vector(const_mesh_size_x - 1 downto 0);
@@ -634,11 +635,12 @@ package component_declarations is
             -- AXI READ AUXILIARY SIGNALS
             ARPROT : in std_logic_vector(2 downto 0);
             
-            -- >PRIVREMENO!< BUFFER IZLAZI
-            flit_out : out std_logic_vector(flit_size - 1 downto 0);
-            empty : out std_logic;
+            -- NOC INTERFACE
+            AXI_noc_data : out std_logic_vector(flit_size - 1 downto 0);
+            AXI_noc_data_valid : out std_logic;
                     
-            right_shift : in std_logic
+            noc_AXI_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
+            noc_AXI_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
         );
     
     end component;
@@ -671,6 +673,36 @@ package component_declarations is
             flit_in_valid : in std_logic;
             
             full : out std_logic
+        );
+    
+    end component;
+    
+    -- Deklaracija komponente noc_injector
+    component noc_injector
+    
+        Generic (
+            vc_num : integer;
+            flit_size : integer;
+            buffer_size : integer;
+            clock_divider : integer;
+            
+            injection_vc : integer
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                       
+            flit_out : in std_logic_vector(flit_size - 1 downto 0);
+            empty : in std_logic;
+                    
+            right_shift : out std_logic;
+            
+            AXI_noc_data : out std_logic_vector(flit_size - 1 downto 0);        
+            AXI_noc_data_valid : out std_logic;
+            
+            noc_AXI_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
+            noc_AXI_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
         );
     
     end component;

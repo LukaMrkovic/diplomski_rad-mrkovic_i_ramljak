@@ -53,6 +53,7 @@ entity MNA_req_flow is
         buffer_size : integer := const_buffer_size;
         write_threshold : integer := const_MNA_write_threshold;
         read_threshold : integer := const_MNA_read_threshold;
+        clock_divider : integer := const_clock_divider;
         
         injection_vc : integer := const_default_injection_vc;
         local_address_x : std_logic_vector(const_mesh_size_x - 1 downto 0) := const_default_address_x;
@@ -85,11 +86,12 @@ entity MNA_req_flow is
         -- AXI READ AUXILIARY SIGNALS
         ARPROT : in std_logic_vector(2 downto 0);
         
-        -- >PRIVREMENO!< BUFFER IZLAZI
-        flit_out : out std_logic_vector(flit_size - 1 downto 0);
-        empty : out std_logic;
+        -- NOC INTERFACE
+        AXI_noc_data : out std_logic_vector(flit_size - 1 downto 0);
+        AXI_noc_data_valid : out std_logic;
                 
-        right_shift : in std_logic
+        noc_AXI_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
+        noc_AXI_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
     );
 
 end MNA_req_flow;
@@ -114,6 +116,12 @@ architecture Behavioral of MNA_req_flow is
     -- BUFFER CONTROLLER - BUFFER
     signal flit_in : std_logic_vector(flit_size - 1 downto 0);
     signal flit_in_valid : std_logic;
+    
+    -- BUFFER - NOC_INJECTOR
+    signal flit_out : std_logic_vector(flit_size - 1 downto 0);
+    signal empty : std_logic;
+                
+    signal right_shift : std_logic;
 
 begin
 
@@ -209,6 +217,34 @@ begin
             
             buffer_write_ready => buffer_write_ready,
             buffer_read_ready => buffer_read_ready
+        );
+
+    -- noc_injector KOMPONENTA
+    injector : noc_injector
+    
+        generic map(
+            vc_num => vc_num,
+            flit_size => flit_size,
+            buffer_size => buffer_size,
+            clock_divider => clock_divider,
+            
+            injection_vc => injection_vc
+        )
+        
+        port map(
+            clk => clk,
+            rst => rst,
+                       
+            flit_out => flit_out,
+            empty => empty,
+                    
+            right_shift => right_shift,
+            
+            AXI_noc_data => AXI_noc_data,
+            AXI_noc_data_valid => AXI_noc_data_valid,
+            
+            noc_AXI_vc_busy => noc_AXI_vc_busy,
+            noc_AXI_vc_credits => noc_AXI_vc_credits
         );
 
 end Behavioral;

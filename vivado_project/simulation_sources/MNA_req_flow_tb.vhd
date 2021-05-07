@@ -48,6 +48,7 @@ architecture Simulation of MNA_req_flow_tb is
 
     -- Simulirani signali
     signal clk_sim : std_logic;
+    signal int_clk_sim : std_logic;
     signal rst_sim : std_logic;
     
     -- AXI WRITE ADDRESS CHANNEL           
@@ -72,11 +73,12 @@ architecture Simulation of MNA_req_flow_tb is
     -- AXI READ AUXILIARY SIGNALS
     signal ARPROT_sim : std_logic_vector(2 downto 0);
     
-    -- >PRIVREMENO!< BUFFER IZLAZI
-    signal flit_out_sim : std_logic_vector(const_flit_size - 1 downto 0);
-    signal empty_sim : std_logic;
-    
-    signal right_shift_sim : std_logic;
+    -- NOC INTERFACE
+    signal AXI_noc_data_sim : std_logic_vector(const_flit_size - 1 downto 0);
+    signal AXI_noc_data_valid_sim : std_logic;
+           
+    signal noc_AXI_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    signal noc_AXI_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
 
     -- Period takta
     constant clk_period : time := 200ns;
@@ -97,6 +99,7 @@ begin
             buffer_size => const_buffer_size,
             write_threshold => const_MNA_write_threshold,
             read_threshold => const_MNA_read_threshold,
+            clock_divider => const_clock_divider,
             
             injection_vc => const_default_injection_vc,
             local_address_x => const_default_address_x,
@@ -129,11 +132,12 @@ begin
             -- AXI READ AUXILIARY SIGNALS
             ARPROT => ARPROT_sim,
             
-            -- >PRIVREMENO!< BUFFER IZLAZI
-            flit_out => flit_out_sim,
-            empty => empty_sim,
+            -- NOC INTERFACE
+            AXI_noc_data => AXI_noc_data_sim,
+            AXI_noc_data_valid => AXI_noc_data_valid_sim,
                     
-            right_shift => right_shift_sim
+            noc_AXI_vc_busy => noc_AXI_vc_busy_sim,
+            noc_AXI_vc_credits => noc_AXI_vc_credits_sim
         );
 
     -- clk proces
@@ -145,6 +149,37 @@ begin
         wait for clk_period / 2;
         clk_sim <= '0';
         wait for clk_period / 2;
+        
+    end process;
+    
+    -- simulacija sporog takta
+    int_clk_process : process (clk_sim) is 
+        
+        variable clk_counter : integer;
+        
+    begin
+    
+        if rising_edge(clk_sim) then
+            if rst_sim = '0' then
+                
+                -- POSTAVI BROJILO NA 0
+                clk_counter := const_clock_divider - 1;
+                
+                -- POSTAVI INTERNI TAKT NA 0
+                int_clk_sim <= '0';
+            
+            else
+            
+                -- POVECAJ BROJILO ZA 1
+                clk_counter := (clk_counter + 1) mod const_clock_divider;
+                
+                -- PROMIJENI FAZU INTERNOG TAKTA
+                if (clk_counter = 0) then
+                    int_clk_sim <= not int_clk_sim;
+                end if;  
+                        
+            end if;
+        end if;
         
     end process;
     
@@ -168,7 +203,8 @@ begin
         
         ARPROT_sim <= (others => '0');
         
-        right_shift_sim <= '0';
+        noc_AXI_vc_busy_sim <= (others => '0');
+        noc_AXI_vc_credits_sim <= (others => '0');
     
         -- Reset aktivan
         rst_sim <= '0';
@@ -200,9 +236,38 @@ begin
         
         AWPROT_sim <= (others => '0');
         WSTRB_sim <= (others => '0');
-        -- <
         
         wait for (5 * clk_period);
+        
+        noc_AXI_vc_busy_sim <= (0 => '1', others => '0');
+        
+        wait for (7 * clk_period);
+        
+        noc_AXI_vc_credits_sim <= (0 => '1', others => '0');
+        
+        wait for clk_period;
+        
+        noc_AXI_vc_busy_sim <= (others => '0');
+        noc_AXI_vc_credits_sim <= (others => '0');
+        
+        wait for (3 * clk_period);
+        
+        noc_AXI_vc_credits_sim <= (0 => '1', others => '0');
+        
+        wait for clk_period;
+        
+        noc_AXI_vc_credits_sim <= (others => '0');
+        
+        wait for (3 * clk_period);
+        
+        noc_AXI_vc_credits_sim <= (0 => '1', others => '0');
+        
+        wait for clk_period;
+        
+        noc_AXI_vc_credits_sim <= (others => '0');
+        
+        wait for (5 * clk_period);
+        -- <
         
         -- > READ
         ARADDR_sim <= X"E1234567";
@@ -216,16 +281,30 @@ begin
         ARVALID_sim <= '0';
         
         ARPROT_sim <= (others => '0');
-        -- <
-        
-        -- > RIGHT SHIFT
-        wait for (5 * clk_period);
-        
-        right_shift_sim <= '1';
         
         wait for (5 * clk_period);
         
-        right_shift_sim <= '0';
+        noc_AXI_vc_busy_sim <= (0 => '1', others => '0');
+        
+        wait for (4 * clk_period);
+        
+        noc_AXI_vc_busy_sim <= (others => '0');
+        
+        wait for (3 * clk_period);
+        
+        noc_AXI_vc_credits_sim <= (0 => '1', others => '0');
+        
+        wait for clk_period;
+        
+        noc_AXI_vc_credits_sim <= (others => '0');
+        
+        wait for (3 * clk_period);
+        
+        noc_AXI_vc_credits_sim <= (0 => '1', others => '0');
+        
+        wait for clk_period;
+        
+        noc_AXI_vc_credits_sim <= (others => '0');
         -- <
         
         wait;
