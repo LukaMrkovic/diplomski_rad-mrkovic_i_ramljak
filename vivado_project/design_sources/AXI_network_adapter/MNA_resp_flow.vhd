@@ -43,8 +43,12 @@ use noc_lib.component_declarations.ALL;
 entity MNA_resp_flow is
 
     Generic (
+        vc_num : integer := const_vc_num;
         flit_size : integer := const_flit_size;
-        buffer_size : integer := const_buffer_size
+        buffer_size : integer := const_buffer_size;
+        clock_divider : integer := const_clock_divider;
+        
+        injection_vc : integer := const_default_injection_vc
     );
     
     Port (
@@ -62,11 +66,12 @@ entity MNA_resp_flow is
         RRESP : out std_logic_vector(1 downto 0);
         RVALID : out std_logic;
         
-        -- >PRIVREMENO!< BUFFER IZLAZI
-        flit_in : in std_logic_vector(flit_size - 1 downto 0);
-        flit_in_valid : in std_logic;
+        -- NOC INTERFACE
+        noc_AXI_data : in std_logic_vector(flit_size - 1 downto 0);        
+        noc_AXI_data_valid : in std_logic;
         
-        full : out std_logic
+        AXI_noc_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
+        AXI_noc_vc_credits : out std_logic_vector(vc_num - 1 downto 0)
     );
 
 end MNA_resp_flow;
@@ -87,6 +92,12 @@ architecture Behavioral of MNA_resp_flow is
     signal has_tail : std_logic;
                 
     signal right_shift : std_logic;
+    
+    -- BUFFER - NOC RECEIVER
+    signal flit_in : std_logic_vector(flit_size - 1 downto 0);
+    signal flit_in_valid : std_logic;
+        
+    signal full : std_logic;
     
 begin
 
@@ -158,6 +169,32 @@ begin
             right_shift => right_shift,
             
             full => full
+        );
+        
+   receiver : noc_receiver 
+    
+        generic map(
+            vc_num => vc_num,
+            flit_size => flit_size,
+            clock_divider => clock_divider,
+            
+            injection_vc => injection_vc
+        )
+        
+        port map(
+            clk => clk,
+            rst => rst, 
+            
+            noc_AXI_data => noc_AXI_data,   
+            noc_AXI_data_valid => noc_AXI_data_valid,
+            
+            AXI_noc_vc_busy => AXI_noc_vc_busy,
+            AXI_noc_vc_credits => AXI_noc_vc_credits,
+            
+            flit_in => flit_in,
+            flit_in_valid => flit_in_valid,
+            
+            right_shift => right_shift
         );
         
 end Behavioral;

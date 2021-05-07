@@ -48,6 +48,7 @@ architecture Simulation of MNA_resp_flow_tb is
 
     -- Simulirani signali
     signal clk_sim : std_logic;
+    signal int_clk_sim : std_logic;
     signal rst_sim : std_logic;
         
     -- AXI WRITE RESPONSE CHANNEL   
@@ -60,12 +61,13 @@ architecture Simulation of MNA_resp_flow_tb is
     signal RDATA_sim : std_logic_vector(31 downto 0);
     signal RRESP_sim : std_logic_vector(1 downto 0);
     signal RVALID_sim : std_logic;
+    
+    -- NOC INTERFACE
+    signal noc_AXI_data_sim : std_logic_vector(const_flit_size - 1 downto 0);        
+    signal noc_AXI_data_valid_sim : std_logic;
         
-    -- >PRIVREMENO!< BUFFER IZLAZI
-    signal flit_in_sim : std_logic_vector(const_flit_size - 1 downto 0);
-    signal flit_in_valid_sim : std_logic;
-        
-    signal full_sim : std_logic;
+    signal AXI_noc_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    signal AXI_noc_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
     
     -- Period takta
     constant clk_period : time := 200ns;
@@ -76,8 +78,12 @@ begin
     uut: MNA_resp_flow
     
         generic map(
+            vc_num => const_vc_num,
             flit_size => const_flit_size,
-            buffer_size => const_buffer_size
+            buffer_size => const_buffer_size,
+            clock_divider => const_clock_divider,
+        
+            injection_vc => const_default_injection_vc
         )
         
         port map(
@@ -95,10 +101,12 @@ begin
             RRESP => RRESP_sim,
             RVALID => RVALID_sim,
             
-            -- AXI WRITE AUXILIARY SIGNALS
-            flit_in => flit_in_sim,
-            flit_in_valid => flit_in_valid_sim,
-            full => full_sim
+            -- NOC INTERFACE
+            noc_AXI_data => noc_AXI_data_sim,   
+            noc_AXI_data_valid => noc_AXI_data_valid_sim,
+        
+            AXI_noc_vc_busy => AXI_noc_vc_busy_sim,
+            AXI_noc_vc_credits => AXI_noc_vc_credits_sim
         );
         
     -- clk proces
@@ -113,6 +121,37 @@ begin
         
     end process;
     
+    -- simulacija sporog takta
+    int_clk_process : process (clk_sim) is 
+        
+        variable clk_counter : integer;
+        
+    begin
+    
+        if rising_edge(clk_sim) then
+            if rst_sim = '0' then
+                
+                -- POSTAVI BROJILO NA 0
+                clk_counter := const_clock_divider - 1;
+                
+                -- POSTAVI INTERNI TAKT NA 0
+                int_clk_sim <= '0';
+            
+            else
+            
+                -- POVECAJ BROJILO ZA 1
+                clk_counter := (clk_counter + 1) mod const_clock_divider;
+                
+                -- PROMIJENI FAZU INTERNOG TAKTA
+                if (clk_counter = 0) then
+                    int_clk_sim <= not int_clk_sim;
+                end if;  
+                        
+            end if;
+        end if;
+        
+    end process;
+    
     -- stimulirajuci proces
     stim_process : process
     
@@ -122,8 +161,8 @@ begin
         BREADY_sim <= '0';
         RREADY_sim <= '0';
         
-        flit_in_sim <= (others => '0');
-        flit_in_valid_sim <= '0';
+        noc_AXI_data_sim <= (others => '0');
+        noc_AXI_data_valid_sim <= '0';
         
         -- Reset aktivan
         rst_sim <= '0';
@@ -133,21 +172,27 @@ begin
         -- Reset neaktivan
         rst_sim <= '1';
         
-        wait for (2.1 * clk_period);
+        wait for (4.1 * clk_period);
         
-        flit_in_sim <= X"91100000007";
-        flit_in_valid_sim <= '1';
-        
-        wait for clk_period;
-        
-        flit_in_sim <= X"51187654321";
+        noc_AXI_data_sim <= X"91100000007";
+        noc_AXI_data_valid_sim <= '1';
         
         wait for clk_period;
         
-        flit_in_sim <= (others => '0');
-        flit_in_valid_sim <= '0';
+        noc_AXI_data_sim <= (others => '0');
+        noc_AXI_data_valid_sim <= '0';
         
-        wait for (4 * clk_period);
+        wait for (3 * clk_period);
+        
+        noc_AXI_data_sim <= X"51187654321";
+        noc_AXI_data_valid_sim <= '1';
+        
+        wait for clk_period;
+        
+        noc_AXI_data_sim <= (others => '0');
+        noc_AXI_data_valid_sim <= '0';
+        
+        wait for (5 * clk_period);
         
         RREADY_sim <= '1';
         
@@ -155,19 +200,19 @@ begin
         
         RREADY_sim <= '0';
         
-        wait for clk_period;
+        wait for (3 * clk_period);
        
         BREADY_sim <= '1';
         
         wait for (2 * clk_period);
         
-        flit_in_sim <= X"D1100000004";
-        flit_in_valid_sim <= '1';
+        noc_AXI_data_sim <= X"D1100000004";
+        noc_AXI_data_valid_sim <= '1';
         
         wait for clk_period;
         
-        flit_in_sim <= (others => '0');
-        flit_in_valid_sim <= '0';
+        noc_AXI_data_sim <= (others => '0');
+        noc_AXI_data_valid_sim <= '0';
         
         wait for (3 * clk_period);
         
