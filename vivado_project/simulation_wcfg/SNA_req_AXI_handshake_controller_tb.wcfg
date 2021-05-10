@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="SNA_req_AXI_handshake_controller_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="SNA_req_AXI_handshake_controller_tb" />
+            <top_module name="axi_network_adapter_config" />
+            <top_module name="component_declarations" />
+            <top_module name="router_config" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="6609499fs"></ZoomEndTime>
+      <Cursor1Time time="633245fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="269"></NameColumnWidth>
+      <ValueColumnWidth column_width="91"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="43" />
+   <wvobject type="divider" fp_name="divider44">
+      <obj_property name="label">Kontrolni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/clk_sim" type="logic">
+      <obj_property name="ElementShortName">clk_sim</obj_property>
+      <obj_property name="ObjectShortName">clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/rst_sim" type="logic">
+      <obj_property name="ElementShortName">rst_sim</obj_property>
+      <obj_property name="ObjectShortName">rst_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider45">
+      <obj_property name="label">AXI WRITE ADDRESS CHANNEL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/AWADDR_sim" type="array">
+      <obj_property name="ElementShortName">AWADDR_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">AWADDR_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/AWVALID_sim" type="logic">
+      <obj_property name="ElementShortName">AWVALID_sim</obj_property>
+      <obj_property name="ObjectShortName">AWVALID_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/AWREADY_sim" type="logic">
+      <obj_property name="ElementShortName">AWREADY_sim</obj_property>
+      <obj_property name="ObjectShortName">AWREADY_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider45">
+      <obj_property name="label">AXI WRITE DATA CHANNEL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/WDATA_sim" type="array">
+      <obj_property name="ElementShortName">WDATA_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WDATA_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/WVALID_sim" type="logic">
+      <obj_property name="ElementShortName">WVALID_sim</obj_property>
+      <obj_property name="ObjectShortName">WVALID_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/WREADY_sim" type="logic">
+      <obj_property name="ElementShortName">WREADY_sim</obj_property>
+      <obj_property name="ObjectShortName">WREADY_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider45">
+      <obj_property name="label">AXI WRITE AUXILIARY SIGNALS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/AWPROT_sim" type="array">
+      <obj_property name="ElementShortName">AWPROT_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">AWPROT_sim[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/WSTRB_sim" type="array">
+      <obj_property name="ElementShortName">WSTRB_sim[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WSTRB_sim[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider45">
+      <obj_property name="label">AXI READ ADDRESS CHANNEL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/ARADDR_sim" type="array">
+      <obj_property name="ElementShortName">ARADDR_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ARADDR_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/ARVALID_sim" type="logic">
+      <obj_property name="ElementShortName">ARVALID_sim</obj_property>
+      <obj_property name="ObjectShortName">ARVALID_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/ARREADY_sim" type="logic">
+      <obj_property name="ElementShortName">ARREADY_sim</obj_property>
+      <obj_property name="ObjectShortName">ARREADY_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider45">
+      <obj_property name="label">AXI READ AUXILIARY SIGNALS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/ARPROT_sim" type="array">
+      <obj_property name="ElementShortName">ARPROT_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ARPROT_sim[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider54">
+      <obj_property name="label">buffer_controller - handshake_controller</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/op_write_sim" type="logic">
+      <obj_property name="ElementShortName">op_write_sim</obj_property>
+      <obj_property name="ObjectShortName">op_write_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/op_read_sim" type="logic">
+      <obj_property name="ElementShortName">op_read_sim</obj_property>
+      <obj_property name="ObjectShortName">op_read_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/addr_sim" type="array">
+      <obj_property name="ElementShortName">addr_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/data_sim" type="array">
+      <obj_property name="ElementShortName">data_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/prot_sim" type="array">
+      <obj_property name="ElementShortName">prot_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">prot_sim[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/strb_sim" type="array">
+      <obj_property name="ElementShortName">strb_sim[3:0]</obj_property>
+      <obj_property name="ObjectShortName">strb_sim[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider55">
+      <obj_property name="label">req FIFO buffer</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/buffer_read_ready_sim" type="logic">
+      <obj_property name="ElementShortName">buffer_read_ready_sim</obj_property>
+      <obj_property name="ObjectShortName">buffer_read_ready_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/buffer_write_ready_sim" type="logic">
+      <obj_property name="ElementShortName">buffer_write_ready_sim</obj_property>
+      <obj_property name="ObjectShortName">buffer_write_ready_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider56">
+      <obj_property name="label">FSM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/uut/current_state" type="other">
+      <obj_property name="ElementShortName">current_state</obj_property>
+      <obj_property name="ObjectShortName">current_state</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/uut/next_state" type="other">
+      <obj_property name="ElementShortName">next_state</obj_property>
+      <obj_property name="ObjectShortName">next_state</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider60">
+      <obj_property name="label">Enable signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/uut/W_output_enable" type="array">
+      <obj_property name="ElementShortName">W_output_enable[31:0]</obj_property>
+      <obj_property name="ObjectShortName">W_output_enable[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/uut/R_output_enable" type="array">
+      <obj_property name="ElementShortName">R_output_enable[31:0]</obj_property>
+      <obj_property name="ObjectShortName">R_output_enable[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider57">
+      <obj_property name="label">Interni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/uut/AWADDR_int" type="array">
+      <obj_property name="ElementShortName">AWADDR_int[31:0]</obj_property>
+      <obj_property name="ObjectShortName">AWADDR_int[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/uut/WDATA_int" type="array">
+      <obj_property name="ElementShortName">WDATA_int[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WDATA_int[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/uut/AWPROT_int" type="array">
+      <obj_property name="ElementShortName">AWPROT_int[2:0]</obj_property>
+      <obj_property name="ObjectShortName">AWPROT_int[2:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/uut/WSTRB_int" type="array">
+      <obj_property name="ElementShortName">WSTRB_int[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WSTRB_int[3:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/uut/ARADDR_int" type="array">
+      <obj_property name="ElementShortName">ARADDR_int[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ARADDR_int[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_AXI_handshake_controller_tb/uut/ARPROT_int" type="array">
+      <obj_property name="ElementShortName">ARPROT_int[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ARPROT_int[2:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+</wave_config>

@@ -741,4 +741,73 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente SNA_req_AXI_handshake_controller
+    component SNA_req_AXI_handshake_controller
+    
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                       
+            AWADDR : out std_logic_vector(31 downto 0);
+            AWVALID : out std_logic;
+            AWREADY : in std_logic;
+            
+            WDATA : out std_logic_vector(31 downto 0);
+            WVALID : out std_logic;
+            WREADY : in std_logic;
+            
+            AWPROT : out std_logic_vector(2 downto 0);
+            WSTRB : out std_logic_vector(3 downto 0);
+            
+            ARADDR : out std_logic_vector(31 downto 0);
+            ARVALID : out std_logic;
+            ARREADY : in std_logic;
+            
+            ARPROT : out std_logic_vector(2 downto 0);
+            
+            op_write : in std_logic;
+            op_read : in std_logic;
+            
+            buffer_read_ready : in std_logic;
+            buffer_write_ready : in std_logic;
+            
+            addr : in std_logic_vector(31 downto 0);
+            data : in std_logic_vector(31 downto 0);
+            prot : in std_logic_vector(2 downto 0);
+            strb : in std_logic_vector(3 downto 0)
+        );
+    
+    end component;
+    
+    -- Deklaracija komponente SNA_resp_AXI_handshake_controller
+    component SNA_resp_AXI_handshake_controller
+    
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                       
+            BREADY : out std_logic;
+            BRESP : in std_logic_vector(1 downto 0);
+            BVALID : in std_logic;
+            
+            RREADY : out std_logic;
+            RDATA : in std_logic_vector(31 downto 0);
+            RRESP : in std_logic_vector(1 downto 0);
+            RVALID : in std_logic;
+            
+            resp_write : in std_logic;
+            resp_read : in std_logic;
+            
+            op_write : out std_logic;
+            op_read : out std_logic;
+            
+            buffer_read_ready : in std_logic;
+            buffer_write_ready : in std_logic;
+            
+            data : out std_logic_vector(31 downto 0);
+            resp : out std_logic_vector(1 downto 0)
+        );
+    
+    end component;
+    
 end package component_declarations;
