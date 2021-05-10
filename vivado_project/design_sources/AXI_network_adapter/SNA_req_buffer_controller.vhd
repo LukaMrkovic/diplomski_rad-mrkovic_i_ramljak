@@ -2,9 +2,9 @@
 -- Company: FER
 -- Engineer: Mrkovic, Ramljak
 -- 
--- Create Date: 05/05/2021 02:32:13 PM
+-- Create Date: 10.05.2021 16:30:21
 -- Design Name: AXI_Network_Adapter
--- Module Name: MNA_resp_buffer_controller - Behavioral
+-- Module Name: SNA_req_buffer_controller - Behavioral
 -- Project Name: NoC_Router
 -- Target Devices: zc706
 -- Tool Versions: 2020.2
@@ -15,8 +15,8 @@
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
--- Revision 0.1 - 2021-05-05 - Mrkovic, Ramljak
--- Additional Comments: Prva verzija MNA_resp_buffer_controllera
+-- Revision 0.1 - 2021-05-10 - Mrkovic
+-- Additional Comments: Prva verzija SNA_req_buffer_controllera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -39,10 +39,12 @@ use noc_lib.AXI_network_adapter_config.ALL;
 -- library UNISIM;
 -- use UNISIM.VComponents.all;
 
-entity MNA_resp_buffer_controller is
+entity SNA_req_buffer_controller is
 
     Generic (
-        flit_size : integer := const_flit_size
+        flit_size : integer := const_flit_size;
+        address_size : integer := const_address_size;
+        payload_size : integer := const_payload_size
     );
                   
     Port (
@@ -57,16 +59,26 @@ entity MNA_resp_buffer_controller is
         op_write : out std_logic;
         op_read : out std_logic;
         
+        addr : out std_logic_vector(31 downto 0);
         data : out std_logic_vector(31 downto 0);
-        resp : out std_logic_vector(1 downto 0)
+        prot : out std_logic_vector(2 downto 0);
+        strb : out std_logic_vector(3 downto 0);
+        
+        SNA_ready : in std_logic;
+        t_begun : out std_logic;
+        
+        resp_write : out std_logic;
+        resp_read : out std_logic;
+        
+        r_addr : out std_logic_vector(address_size - 1 downto 0)
     );
 
-end MNA_resp_buffer_controller;
+end SNA_req_buffer_controller;
 
-architecture Behavioral of MNA_resp_buffer_controller is
+architecture Behavioral of SNA_req_buffer_controller is
 
     -- ENUMERACIJA STANJA fsm-a
-    type state_type is (IDLE, W_FLIT_1, R_FLIT_1, R_FLIT_2);
+    type state_type is (IDLE, W_FLIT_1, W_FLIT_2, W_FLIT_3, R_FLIT_1, R_FLIT_2);
     -- TRENUTNO STANJE
     signal current_state : state_type;
     -- SLJEDECE STANJE
@@ -76,32 +88,40 @@ architecture Behavioral of MNA_resp_buffer_controller is
     
     -- enable SIGNALI PROCESA INDIVIDUALNIH STANJA
     signal W_FLIT_1_enable : std_logic;
+    signal W_FLIT_2_enable : std_logic;
+    signal W_FLIT_3_enable : std_logic;
     signal R_FLIT_1_enable : std_logic;
     signal R_FLIT_2_enable : std_logic;
 
 begin
 
     -- PROCES KOJI KOORDINIRA PROCESE POJEDINIH STANJA
-    combinatorial_process : process (current_state, has_tail) is
+    combinatorial_process : process (current_state, has_tail, SNA_ready) is
     
     begin
     
         W_FLIT_1_enable <= '0';
+        W_FLIT_2_enable <= '0';
+        W_FLIT_3_enable <= '0';
         R_FLIT_1_enable <= '0';
         R_FLIT_2_enable <= '0';
         
         op_write <= '0';
         op_read <= '0';
+        resp_write <= '0';
+        resp_read <= '0';
         
         right_shift <= '0';
-    
+        t_begun <= '0';
+        
         case current_state is
         
             when IDLE =>
             
-                if has_tail = '1' then
+                if has_tail = '1' and SNA_ready = '1' then
                 
                     right_shift <= '1';
+                    t_begun <= '1';
                 
                     if flit_out(0) = '0' then
                     
@@ -119,11 +139,24 @@ begin
                 
                     next_state <= IDLE;
                 
-                end if; 
+                end if;
             
             when W_FLIT_1 =>
             
+                right_shift <= '1';
+                W_FLIT_2_enable <= '1';
+                next_state <= W_FLIT_2;
+            
+            when W_FLIT_2 =>
+            
+                right_shift <= '1';
+                W_FLIT_3_enable <= '1';
+                next_state <= W_FLIT_3;
+            
+            when W_FLIT_3 =>
+            
                 op_write <= '1';
+                resp_write <= '1';
                 next_state <= IDLE;
             
             when R_FLIT_1 =>
@@ -131,54 +164,81 @@ begin
                 right_shift <= '1';
                 R_FLIT_2_enable <= '1';
                 next_state <= R_FLIT_2;
-                
+            
             when R_FLIT_2 =>
             
                 op_read <= '1';
+                resp_read <= '1';
                 next_state <= IDLE;
-            
+                
         end case;
-    
+                
     end process;
     
     -- PROCES KOJI RASTVARA FLITOVE I PROSLJEDJUJE PODATKE
     unboxer_process : process (clk) is
     
+        variable addr_var : std_logic_vector(31 downto 0);
         variable data_var : std_logic_vector(31 downto 0);
-        variable resp_var : std_logic_vector(1 downto 0);
+        variable prot_var : std_logic_vector(2 downto 0);
+        variable strb_var : std_logic_vector(3 downto 0);
+        variable r_addr_var : std_logic_vector(address_size - 1 downto 0);
     
     begin
     
         if rising_edge(clk) then
             if rst = '0' then
-                
+            
+                addr_var := (others => '0');
                 data_var := (others => '0');
-                resp_var := (others => '0');
+                prot_var := (others => '0');
+                strb_var := (others => '0');
+                r_addr_var := (others => '0');
                 
+                addr <= (others => '0');
                 data <= (others => '0');
-                resp <= (others => '0');
-                
+                prot <= (others => '0');
+                strb <= (others => '0');
+                r_addr <= (others => '0');
+            
             else
-                
+            
                 if W_FLIT_1_enable = '1' then
                 
+                    addr_var := (others => '0');
                     data_var := (others => '0');
-                    resp_var := flit_out(2 downto 1);
+                    prot_var := flit_out(3 downto 1);
+                    strb_var := flit_out(7 downto 4);
+                    r_addr_var := flit_out(payload_size - 1 downto payload_size - address_size);
                 
-                elsif R_FLIT_1_enable = '1' then
+                elsif W_FLIT_2_enable = '1' then
                 
-                    data_var := (others => '0');
-                    resp_var := flit_out(2 downto 1);
+                    addr_var := flit_out(31 downto 0);
                 
-                elsif R_FLIT_2_enable = '1' then
+                elsif W_FLIT_3_enable = '1' then
                 
                     data_var := flit_out(31 downto 0);
                 
+                elsif R_FLIT_1_enable = '1' then
+                
+                    addr_var := (others => '0');
+                    data_var := (others => '0');
+                    prot_var := flit_out(3 downto 1);
+                    strb_var := (others => '0');
+                    r_addr_var := flit_out(payload_size - 1 downto payload_size - address_size);
+                
+                elsif R_FLIT_2_enable = '1' then
+                
+                    addr_var := flit_out(31 downto 0);
+                
                 end if;
                 
+                addr <= addr_var;
                 data <= data_var;
-                resp <= resp_var;
-                
+                prot <= prot_var;
+                strb <= strb_var;
+                r_addr <= r_addr_var;
+            
             end if;
         end if;
     
