@@ -51,6 +51,7 @@
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/design_sources/AXI_network_adapter/noc_receiver.vhd"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/design_sources/AXI_network_adapter/SNA_req_AXI_handshake_controller.vhd"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/design_sources/AXI_network_adapter/SNA_resp_AXI_handshake_controller.vhd"
+#    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/design_sources/AXI_network_adapter/SNA_req_buffer_controller.vhd"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/design_sources/AXI_network_adapter/SNA_resp_buffer_controller.vhd"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/router_interface_module_tb.vhd"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/router_interface_module_tb.wcfg"
@@ -129,6 +130,7 @@ proc checkRequiredFiles { origin_dir} {
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/design_sources/AXI_network_adapter/noc_receiver.vhd" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/design_sources/AXI_network_adapter/SNA_req_AXI_handshake_controller.vhd" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/design_sources/AXI_network_adapter/SNA_resp_AXI_handshake_controller.vhd" \
+   "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/design_sources/AXI_network_adapter/SNA_req_buffer_controller.vhd" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/design_sources/AXI_network_adapter/SNA_resp_buffer_controller.vhd" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/router_interface_module_tb.vhd" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/router_interface_module_tb.wcfg" \
@@ -287,6 +289,7 @@ set_property -name "source_mgmt_mode" -value "DisplayOnly" -objects $obj
 set_property -name "target_language" -value "VHDL" -objects $obj
 set_property -name "webtalk.xsim_launch_sim" -value "334" -objects $obj
 
+
 # Create 'sources_1' fileset (if not found)
 if {[string equal [get_filesets -quiet sources_1] ""]} {
   create_fileset -srcset sources_1
@@ -319,6 +322,7 @@ set files [list \
  [file normalize "${origin_dir}/design_sources/AXI_network_adapter/noc_receiver.vhd"] \
  [file normalize "${origin_dir}/design_sources/AXI_network_adapter/SNA_req_AXI_handshake_controller.vhd"] \
  [file normalize "${origin_dir}/design_sources/AXI_network_adapter/SNA_resp_AXI_handshake_controller.vhd"] \
+ [file normalize "${origin_dir}/design_sources/AXI_network_adapter/SNA_req_buffer_controller.vhd"] \
  [file normalize "${origin_dir}/design_sources/AXI_network_adapter/SNA_resp_buffer_controller.vhd"] \
 ]
 add_files -norecurse -fileset $obj $files
@@ -444,6 +448,11 @@ set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "VHDL" -objects $file_obj
 
 set file "$origin_dir/design_sources/AXI_network_adapter/SNA_resp_AXI_handshake_controller.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+set file "$origin_dir/design_sources/AXI_network_adapter/SNA_req_buffer_controller.vhd"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property -name "file_type" -value "VHDL" -objects $file_obj
