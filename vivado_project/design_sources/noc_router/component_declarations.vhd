@@ -567,7 +567,8 @@ package component_declarations is
     component MNA_resp_buffer_controller
     
         Generic (
-            flit_size : integer
+            flit_size : integer := const_flit_size;
+            vc_num : integer := const_vc_num
         );
                       
         Port (
@@ -578,6 +579,7 @@ package component_declarations is
             has_tail : in std_logic;
             
             right_shift : out std_logic;
+            vc_credits : out std_logic_vector(vc_num - 1 downto 0);
             
             op_write : out std_logic;
             op_read : out std_logic;
@@ -652,9 +654,7 @@ package component_declarations is
         vc_num : integer;
         flit_size : integer;
         buffer_size : integer;
-        clock_divider : integer;
-        
-        injection_vc : integer
+        clock_divider : integer
     );
     
     Port (
@@ -716,11 +716,9 @@ package component_declarations is
     component noc_receiver
     
         Generic (
-            vc_num : integer;
-            flit_size : integer;
-            clock_divider : integer;
-            
-            injection_vc : integer
+            vc_num : integer := const_vc_num;
+            flit_size : integer := const_flit_size;
+            clock_divider : integer := const_clock_divider
         );
         
         Port (
@@ -736,7 +734,7 @@ package component_declarations is
             flit_in : out std_logic_vector(flit_size - 1 downto 0);
             flit_in_valid : out std_logic;
             
-            right_shift : in std_logic
+            vc_credits : in std_logic_vector(vc_num - 1 downto 0)
         );
     
     end component;
@@ -810,6 +808,44 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente SNA_req_buffer_controller
+    component SNA_req_buffer_controller
+    
+        Generic (
+            flit_size : integer;
+            address_size : integer;
+            payload_size : integer
+        );
+                      
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                       
+            flit_out : in std_logic_vector(flit_size - 1 downto 0);
+            has_tail : in std_logic;
+            
+            right_shift : out std_logic;
+            
+            op_write : out std_logic;
+            op_read : out std_logic;
+            
+            addr : out std_logic_vector(31 downto 0);
+            data : out std_logic_vector(31 downto 0);
+            prot : out std_logic_vector(2 downto 0);
+            strb : out std_logic_vector(3 downto 0);
+            
+            SNA_ready : in std_logic;
+            t_begun : out std_logic;
+            
+            resp_write : out std_logic;
+            resp_read : out std_logic;
+            
+            r_addr : out std_logic_vector(address_size - 1 downto 0)
+        );
+    
+    end component;
+    
+    -- Deklaracija komponente SNA_resp_buffer_controller
     component SNA_resp_buffer_controller
     
         Generic (

@@ -42,7 +42,8 @@ use noc_lib.AXI_network_adapter_config.ALL;
 entity MNA_resp_buffer_controller is
 
     Generic (
-        flit_size : integer := const_flit_size
+        flit_size : integer := const_flit_size;
+        vc_num : integer := const_vc_num
     );
                   
     Port (
@@ -53,6 +54,7 @@ entity MNA_resp_buffer_controller is
         has_tail : in std_logic;
         
         right_shift : out std_logic;
+        vc_credits : out std_logic_vector(vc_num - 1 downto 0);
         
         op_write : out std_logic;
         op_read : out std_logic;
@@ -94,6 +96,8 @@ begin
         op_read <= '0';
         
         right_shift <= '0';
+        
+        vc_credits <= (others => '0');
     
         case current_state is
         
@@ -102,6 +106,7 @@ begin
                 if has_tail = '1' then
                 
                     right_shift <= '1';
+                    vc_credits <= flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
                 
                     if flit_out(0) = '0' then
                     
@@ -129,6 +134,8 @@ begin
             when R_FLIT_1 =>
             
                 right_shift <= '1';
+                vc_credits <= flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
+                
                 R_FLIT_2_enable <= '1';
                 next_state <= R_FLIT_2;
                 

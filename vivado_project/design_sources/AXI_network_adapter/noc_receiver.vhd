@@ -44,9 +44,7 @@ entity noc_receiver is
     Generic (
         vc_num : integer := const_vc_num;
         flit_size : integer := const_flit_size;
-        clock_divider : integer := const_clock_divider;
-        
-        injection_vc : integer := const_default_injection_vc
+        clock_divider : integer := const_clock_divider
     );
     
     Port (
@@ -62,7 +60,7 @@ entity noc_receiver is
         flit_in : out std_logic_vector(flit_size - 1 downto 0);
         flit_in_valid : out std_logic;
         
-        right_shift : in std_logic
+        vc_credits : in std_logic_vector(vc_num - 1 downto 0)
     );
 
 end noc_receiver;
@@ -74,7 +72,7 @@ architecture Behavioral of noc_receiver is
     
     -- TESTNI SIGNALI
     signal output_counter_test : integer;
-    signal credit_to_send_test : integer;
+    signal credit_to_send_test : credit_counter_vector(vc_num - 1 downto 0);
 
 begin
 
@@ -84,7 +82,10 @@ begin
     -- RECEIVER PROCES
     receiver_process : process (clk) is
     
-        variable credits_to_send : integer;
+        variable AXI_noc_vc_busy_var : std_logic_vector(vc_num - 1 downto 0);
+        variable AXI_noc_vc_credits_var : std_logic_vector(vc_num - 1 downto 0);
+    
+        variable credits_to_send : credit_counter_vector(vc_num - 1 downto 0);
     
     begin
     
@@ -93,21 +94,29 @@ begin
             
                 AXI_noc_vc_credits <= (others => '0');
                 AXI_noc_vc_busy <= (others => '0');
-                credits_to_send := 0;
+                
+                AXI_noc_vc_busy_var := (others => '0');
+                AXI_noc_vc_credits_var := (others => '0');
+                
+                credits_to_send := (others => 0);
             
             else
             
-                AXI_noc_vc_credits <= (others => '0');
+                AXI_noc_vc_credits_var := (others => '0');
             
                 -- AKO JE POSTAVLJEN enable_output
                 if enable_output = '1' then
                 
-                    if credits_to_send > 0 then
+                    for i in vc_num - 1 downto 0 loop
                     
-                        AXI_noc_vc_credits(injection_vc) <= '1';
-                        credits_to_send := credits_to_send - 1; 
+                        if credits_to_send(i) > 0 then
+                        
+                            AXI_noc_vc_credits_var(i) := '1';
+                            credits_to_send(i) := credits_to_send(i) - 1;
+                        
+                        end if;
                     
-                    end if;
+                    end loop;
                 
                 end if;
                 
@@ -115,23 +124,30 @@ begin
                 
                     if noc_AXI_data(flit_size - 1) = '1' then
                     
-                        AXI_noc_vc_busy(injection_vc) <= '1';
+                        AXI_noc_vc_busy_var := (others => '1');
                     
                     end if;
                     
                     if noc_AXI_data(flit_size - 2) = '1' then
                     
-                        AXI_noc_vc_busy(injection_vc) <= '0';
+                        AXI_noc_vc_busy_var := (others => '0');
                     
                     end if;
                 
                 end if;
                 
-                if right_shift = '1' then
+                for i in vc_num - 1 downto 0 loop
                 
-                    credits_to_send := credits_to_send + 1;
+                    if vc_credits(i) = '1' then
+                    
+                        credits_to_send(i) := credits_to_send(i) + 1;
+                    
+                    end if;
                 
-                end if;
+                end loop;
+                
+                AXI_noc_vc_credits <= AXI_noc_vc_credits_var;
+                AXI_noc_vc_busy <= AXI_noc_vc_busy_var;
                 
                 credit_to_send_test <= credits_to_send;
             

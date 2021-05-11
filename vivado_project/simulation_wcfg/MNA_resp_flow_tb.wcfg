@@ -14,14 +14,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="22540fs"></ZoomEndTime>
-      <Cursor1Time time="16000fs"></Cursor1Time>
+      <ZoomEndTime time="6548173fs"></ZoomEndTime>
+      <Cursor1Time time="4400000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="297"></NameColumnWidth>
-      <ValueColumnWidth column_width="86"></ValueColumnWidth>
+      <ValueColumnWidth column_width="74"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="39" />
+   <WVObjectSize size="41" />
    <wvobject type="divider" fp_name="divider21">
       <obj_property name="label">Kontrolni signali</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -156,6 +156,17 @@
       <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
+   <wvobject type="divider" fp_name="divider123">
+      <obj_property name="label">buffer_controller - noc_receiver</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_resp_flow_tb/uut/vc_credits" type="array">
+      <obj_property name="ElementShortName">vc_credits[1:0]</obj_property>
+      <obj_property name="ObjectShortName">vc_credits[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
    <wvobject type="divider" fp_name="divider48">
       <obj_property name="label">FIFO_buffer - noc_receiver</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -187,6 +198,7 @@
    <wvobject fp_name="group50" type="group">
       <obj_property name="label">FSM - handshake_controller</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/MNA_resp_flow_tb/uut/handshake_controller/current_state" type="other">
          <obj_property name="ElementShortName">current_state</obj_property>
          <obj_property name="ObjectShortName">current_state</obj_property>
@@ -280,7 +292,6 @@
    <wvobject fp_name="group53" type="group">
       <obj_property name="label">Testni signali - noc_receiver</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/MNA_resp_flow_tb/uut/receiver/enable_output" type="logic">
          <obj_property name="ElementShortName">enable_output</obj_property>
          <obj_property name="ObjectShortName">enable_output</obj_property>
@@ -293,9 +304,9 @@
          <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_resp_flow_tb/uut/receiver/credit_to_send_test" type="other">
-         <obj_property name="ElementShortName">credit_to_send_test</obj_property>
-         <obj_property name="ObjectShortName">credit_to_send_test</obj_property>
+      <wvobject fp_name="/MNA_resp_flow_tb/uut/receiver/credit_to_send_test" type="array">
+         <obj_property name="ElementShortName">credit_to_send_test[1:0]</obj_property>
+         <obj_property name="ObjectShortName">credit_to_send_test[1:0]</obj_property>
          <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>

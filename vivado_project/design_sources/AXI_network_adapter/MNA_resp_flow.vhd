@@ -46,9 +46,7 @@ entity MNA_resp_flow is
         vc_num : integer := const_vc_num;
         flit_size : integer := const_flit_size;
         buffer_size : integer := const_buffer_size;
-        clock_divider : integer := const_clock_divider;
-        
-        injection_vc : integer := const_default_injection_vc
+        clock_divider : integer := const_clock_divider
     );
     
     Port (
@@ -93,6 +91,9 @@ architecture Behavioral of MNA_resp_flow is
                 
     signal right_shift : std_logic;
     
+    -- BUFFER CONTROLLER - NOC RECEIVER
+    signal vc_credits : std_logic_vector(vc_num - 1 downto 0);
+    
     -- BUFFER - NOC RECEIVER
     signal flit_in : std_logic_vector(flit_size - 1 downto 0);
     signal flit_in_valid : std_logic;
@@ -129,7 +130,8 @@ begin
     buffer_controller : MNA_resp_buffer_controller 
     
         generic map(
-            flit_size => flit_size
+            flit_size => flit_size,
+            vc_num => vc_num
         )
         
         port map(
@@ -140,6 +142,7 @@ begin
             has_tail => has_tail,
             
             right_shift => right_shift,
+            vc_credits => vc_credits,
             
             op_write => op_write,
             op_read => op_read,
@@ -176,9 +179,7 @@ begin
         generic map(
             vc_num => vc_num,
             flit_size => flit_size,
-            clock_divider => clock_divider,
-            
-            injection_vc => injection_vc
+            clock_divider => clock_divider
         )
         
         port map(
@@ -194,7 +195,7 @@ begin
             flit_in => flit_in,
             flit_in_valid => flit_in_valid,
             
-            right_shift => right_shift
+            vc_credits => vc_credits
         );
         
 end Behavioral;

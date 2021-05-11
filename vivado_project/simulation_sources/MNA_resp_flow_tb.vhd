@@ -81,9 +81,7 @@ begin
             vc_num => const_vc_num,
             flit_size => const_flit_size,
             buffer_size => const_buffer_size,
-            clock_divider => const_clock_divider,
-        
-            injection_vc => const_default_injection_vc
+            clock_divider => const_clock_divider
         )
         
         port map(
@@ -174,7 +172,7 @@ begin
         
         wait for (4.1 * clk_period);
         
-        noc_AXI_data_sim <= X"91100000007";
+        noc_AXI_data_sim <= X"A1100000007";
         noc_AXI_data_valid_sim <= '1';
         
         wait for clk_period;
@@ -184,7 +182,7 @@ begin
         
         wait for (3 * clk_period);
         
-        noc_AXI_data_sim <= X"51187654321";
+        noc_AXI_data_sim <= X"61187654321";
         noc_AXI_data_valid_sim <= '1';
         
         wait for clk_period;

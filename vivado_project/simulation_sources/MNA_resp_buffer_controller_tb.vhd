@@ -54,6 +54,7 @@ architecture Simulation of MNA_resp_buffer_controller_tb is
     signal has_tail_sim : std_logic;
     
     signal right_shift_sim : std_logic;
+    signal vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
     
     signal op_write_sim : std_logic;
     signal op_read_sim : std_logic;
@@ -70,7 +71,8 @@ begin
     uut: MNA_resp_buffer_controller
     
         generic map(
-            flit_size => const_flit_size
+            flit_size => const_flit_size,
+            vc_num => const_vc_num
         )
         
         port map(
@@ -81,6 +83,7 @@ begin
             has_tail => has_tail_sim,
             
             right_shift => right_shift_sim,
+            vc_credits => vc_credits_sim,
             
             op_write => op_write_sim,
             op_read => op_read_sim,
@@ -128,7 +131,7 @@ begin
         
         wait for (4 * clk_period);
         
-        flit_out_sim <= X"91234567893";
+        flit_out_sim <= X"A1234567893";
         
         wait for clk_period;
         
@@ -136,7 +139,7 @@ begin
         
         wait for clk_period;
         
-        flit_out_sim <= X"50012345678";
+        flit_out_sim <= X"60012345678";
         has_tail_sim <= '0';
         
         wait for clk_period;
