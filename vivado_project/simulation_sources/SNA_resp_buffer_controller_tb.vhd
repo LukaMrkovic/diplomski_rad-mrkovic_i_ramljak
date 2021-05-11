@@ -60,6 +60,8 @@ architecture Simulation of SNA_resp_buffer_controller_tb is
     signal resp_sim : std_logic_vector(1 downto 0);
     
     signal r_addr_sim : std_logic_vector(const_address_size - 1 downto 0);
+    signal r_vc_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    
     signal t_end_sim : std_logic;
     
     -- Period takta
@@ -73,10 +75,7 @@ begin
         generic map (
             flit_size => const_flit_size,
             vc_num => const_vc_num,
-            mesh_size_x => const_mesh_size_x,
-            mesh_size_y => const_mesh_size_y,
-            address_size => const_address_size,
-            injection_vc => 1
+            address_size => const_address_size
         )
                       
         port map (
@@ -93,6 +92,8 @@ begin
             resp => resp_sim,
 
             r_addr => r_addr_sim,
+            r_vc => r_vc_sim,
+            
             t_end => t_end_sim
         );
         
@@ -120,12 +121,14 @@ begin
         resp_sim <= (others => '0');
         
         r_addr_sim <= (others => '0');
+        r_vc_sim <= (others => '0');
         
         -- Reset aktivan
         rst_sim <= '0';
         
         wait for (10 * clk_period);
         
+        -- Reset neaktivan
         rst_sim <= '1';
         
         wait for (2.1 * clk_period);
@@ -133,6 +136,7 @@ begin
         --> WRITE RESPONSE
         -- Povratna adresa routera 0 (0001 0001)
         r_addr_sim <= "00010001";
+        r_vc_sim <= "01";
         
         wait for (2 * clk_period);
         
@@ -145,13 +149,14 @@ begin
         op_write_sim <= '0';
         --<
         
-        --> READ RESPONSE
-        wait for (3 * clk_period);
+        wait for (2 * clk_period);
         
+        --> READ RESPONSE
         -- Povratna adresa routera 15 (1000 1000)
         r_addr_sim <= "10001000";
+        r_vc_sim <= "10";
         
-        wait for clk_period;
+        wait for (2 * clk_period);
         
         op_read_sim <= '1';
         

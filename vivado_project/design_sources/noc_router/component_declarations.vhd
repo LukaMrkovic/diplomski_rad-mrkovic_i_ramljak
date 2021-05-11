@@ -850,12 +850,9 @@ package component_declarations is
     component SNA_resp_buffer_controller
     
         Generic (
-            flit_size : integer;
             vc_num : integer;
-            mesh_size_x : integer;
-            mesh_size_y : integer;
             address_size : integer;
-            injection_vc : integer
+            flit_size : integer
         );
                       
         Port (
@@ -872,6 +869,8 @@ package component_declarations is
             resp : in std_logic_vector(1 downto 0);
             
             r_addr : in std_logic_vector(address_size - 1 downto 0);
+            r_vc : in std_logic_vector(vc_num - 1 downto 0);
+            
             t_end : out std_logic
         );
     
