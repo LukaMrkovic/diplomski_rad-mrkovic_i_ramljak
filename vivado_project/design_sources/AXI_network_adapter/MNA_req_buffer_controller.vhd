@@ -97,6 +97,8 @@ begin
     
     begin
     
+        flit_in_valid <= '0';
+    
         W_FLIT_1_enable <= '0';
         W_FLIT_2_enable <= '0';
         W_FLIT_3_enable <= '0';
@@ -109,13 +111,13 @@ begin
             
                 if op_write = '1' then
                     
-                    next_state <= W_FLIT_1;
                     W_FLIT_1_enable <= '1';
+                    next_state <= W_FLIT_1;
                 
                 elsif op_read = '1' then
                     
-                    next_state <= R_FLIT_1;
                     R_FLIT_1_enable <= '1';
+                    next_state <= R_FLIT_1;
                     
                 else
                 
@@ -125,25 +127,30 @@ begin
             
             when W_FLIT_1 =>
             
-                next_state <= W_FLIT_2;
+                flit_in_valid <= '1';
                 W_FLIT_2_enable <= '1';
+                next_state <= W_FLIT_2;
                 
             when W_FLIT_2 =>
             
-                next_state <= W_FLIT_3;
+                flit_in_valid <= '1';
                 W_FLIT_3_enable <= '1';
+                next_state <= W_FLIT_3;
                 
             when W_FLIT_3 =>
             
+                flit_in_valid <= '1';
                 next_state <= IDLE;
                 
             when R_FLIT_1 =>
             
-                next_state <= R_FLIT_2;
+                flit_in_valid <= '1';
                 R_FLIT_2_enable <= '1';
+                next_state <= R_FLIT_2;
                 
             when R_FLIT_2 =>
             
+                flit_in_valid <= '1';
                 next_state <= IDLE;
             
         end case;
@@ -154,7 +161,7 @@ begin
     builder_process : process (clk) is
     
         variable flit_var : std_logic_vector(flit_size - 1 downto 0);
-        variable flit_valid_var : std_logic;
+        
         variable vc_var : std_logic_vector(vc_num - 1 downto 0);
         variable dest : std_logic_vector(node_address_size - 1 downto 0);
         variable dest_int : integer;
@@ -169,7 +176,6 @@ begin
             if rst = '0' then
                 
                 flit_var := (others => '0');
-                flit_valid_var := '0';
                 vc_var := (others => '0');
                 dest := (others => '0');
                 dest_int := 0;
@@ -179,12 +185,10 @@ begin
                 dest_y := (others => '0');
                 
                 flit_in <= (others => '0');
-                flit_in_valid <= '0';
                 
             else
             
                 flit_var := (others => '0');
-                flit_valid_var := '0';
                 vc_var := (injection_vc => '1', others => '0');
                 dest := addr(32 - 1 downto 32 - node_address_size);
                 dest_int := conv_integer(dest);
@@ -219,8 +223,6 @@ begin
                     flit_var(3 downto 1) := prot;
                     -- R/W
                     flit_var(0) := '0';
-                    
-                    flit_valid_var := '1';
                 
                 elsif W_FLIT_2_enable = '1' then
                 
@@ -238,8 +240,6 @@ begin
                              flit_size - 2 - vc_num - mesh_size_x - mesh_size_y) := dest_y;
                     -- WRITE ADDRESS
                     flit_var(31 downto 0) := addr;
-                    
-                    flit_valid_var := '1';
                 
                 elsif W_FLIT_3_enable = '1' then
                 
@@ -257,8 +257,6 @@ begin
                              flit_size - 2 - vc_num - mesh_size_x - mesh_size_y) := dest_y;
                     -- WRITE DATA
                     flit_var(31 downto 0) := data;
-                    
-                    flit_valid_var := '1';
                 
                 elsif R_FLIT_1_enable = '1' then
                 
@@ -284,8 +282,6 @@ begin
                     flit_var(3 downto 1) := prot;
                     -- R/W
                     flit_var(0) := '1';
-                    
-                    flit_valid_var := '1';
                 
                 elsif R_FLIT_2_enable = '1' then
                 
@@ -303,13 +299,10 @@ begin
                              flit_size - 2 - vc_num - mesh_size_x - mesh_size_y) := dest_y;
                     -- READ ADDRESS
                     flit_var(31 downto 0) := addr;
-                    
-                    flit_valid_var := '1';
                 
                 end if;
                 
                 flit_in <= flit_var;
-                flit_in_valid <= flit_valid_var;
                 
             end if;
         end if;

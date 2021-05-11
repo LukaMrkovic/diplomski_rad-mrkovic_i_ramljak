@@ -13,13 +13,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="14999980fs"></ZoomStartTime>
-      <ZoomEndTime time="15000005fs"></ZoomEndTime>
-      <Cursor1Time time="15000000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="3fs"></ZoomEndTime>
+      <Cursor1Time time="15000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="252"></NameColumnWidth>
-      <ValueColumnWidth column_width="110"></ValueColumnWidth>
+      <ValueColumnWidth column_width="106"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="51" />
    <wvobject type="divider" fp_name="divider148">
@@ -245,6 +245,7 @@
    <wvobject fp_name="group243" type="group">
       <obj_property name="label">FSM - handshake_controller</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/MNA_req_flow_tb/uut/handshake_controller/current_state" type="other">
          <obj_property name="ElementShortName">current_state</obj_property>
          <obj_property name="ObjectShortName">current_state</obj_property>
@@ -278,6 +279,7 @@
    <wvobject fp_name="group242" type="group">
       <obj_property name="label">FSM - buffer_controller</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/MNA_req_flow_tb/uut/buffer_controller/current_state" type="other">
          <obj_property name="ElementShortName">current_state</obj_property>
          <obj_property name="ObjectShortName">current_state</obj_property>
@@ -329,6 +331,7 @@
    <wvobject fp_name="group241" type="group">
       <obj_property name="label">Interni signali - FIFO_buffer</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/MNA_req_flow_tb/uut/FIFO_buffer/FIFO_array_test" type="array">
          <obj_property name="ElementShortName">FIFO_array_test[7:0][43:0]</obj_property>
          <obj_property name="ObjectShortName">FIFO_array_test[7:0][43:0]</obj_property>
@@ -362,6 +365,7 @@
    <wvobject fp_name="group244" type="group">
       <obj_property name="label">Testni signali - noc_injector</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/MNA_req_flow_tb/uut/injector/enable_output" type="logic">
          <obj_property name="ElementShortName">enable_output</obj_property>
          <obj_property name="ObjectShortName">enable_output</obj_property>
@@ -372,9 +376,15 @@
          <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_req_flow_tb/uut/injector/credit_counter_test" type="other">
-         <obj_property name="ElementShortName">credit_counter_test</obj_property>
-         <obj_property name="ObjectShortName">credit_counter_test</obj_property>
+      <wvobject fp_name="/MNA_req_flow_tb/uut/injector/credit_counter_test" type="array">
+         <obj_property name="ElementShortName">credit_counter_test[1:0]</obj_property>
+         <obj_property name="ObjectShortName">credit_counter_test[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/MNA_req_flow_tb/uut/injector/vc_test" type="other">
+         <obj_property name="ElementShortName">vc_test</obj_property>
+         <obj_property name="ObjectShortName">vc_test</obj_property>
          <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>

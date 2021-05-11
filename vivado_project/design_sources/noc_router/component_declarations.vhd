@@ -567,8 +567,8 @@ package component_declarations is
     component MNA_resp_buffer_controller
     
         Generic (
-            flit_size : integer := const_flit_size;
-            vc_num : integer := const_vc_num
+            flit_size : integer;
+            vc_num : integer
         );
                       
         Port (
@@ -689,9 +689,7 @@ package component_declarations is
             vc_num : integer;
             flit_size : integer;
             buffer_size : integer;
-            clock_divider : integer;
-            
-            injection_vc : integer
+            clock_divider : integer
         );
         
         Port (
@@ -716,9 +714,9 @@ package component_declarations is
     component noc_receiver
     
         Generic (
-            vc_num : integer := const_vc_num;
-            flit_size : integer := const_flit_size;
-            clock_divider : integer := const_clock_divider
+            vc_num : integer;
+            flit_size : integer;
+            clock_divider : integer
         );
         
         Port (

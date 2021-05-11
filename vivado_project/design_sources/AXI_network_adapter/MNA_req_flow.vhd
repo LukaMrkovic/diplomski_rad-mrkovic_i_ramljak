@@ -226,9 +226,7 @@ begin
             vc_num => vc_num,
             flit_size => flit_size,
             buffer_size => buffer_size,
-            clock_divider => clock_divider,
-            
-            injection_vc => injection_vc
+            clock_divider => clock_divider
         )
         
         port map(

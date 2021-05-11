@@ -45,9 +45,7 @@ entity noc_injector is
         vc_num : integer := const_vc_num;
         flit_size : integer := const_flit_size;
         buffer_size : integer := const_buffer_size;
-        clock_divider : integer := const_clock_divider;
-        
-        injection_vc : integer := const_default_injection_vc
+        clock_divider : integer := const_clock_divider
     );
     
     Port (
@@ -75,14 +73,21 @@ architecture Behavioral of noc_injector is
     
     -- TESTNI SIGNALI
     signal output_counter_test : integer;
-    signal credit_counter_test : integer;
+    signal credit_counter_test : credit_counter_vector(vc_num - 1 downto 0);
+    signal vc_test : integer;
 
 begin
 
     -- INJECTOR PROCES
     injector_process : process (clk) is
     
-        variable credit_counter : integer;
+        variable AXI_noc_data_var : std_logic_vector(flit_size - 1 downto 0);
+        variable AXI_noc_data_valid_var : std_logic;
+        
+        variable right_shift_var : std_logic;
+    
+        variable credit_counter : credit_counter_vector(vc_num - 1 downto 0);
+        variable vc : integer;
     
     begin
     
@@ -94,14 +99,21 @@ begin
 
                 right_shift <= '0';
                 
-                credit_counter := buffer_size;
+                AXI_noc_data_var := (others => '0');
+                AXI_noc_data_valid_var := '0';
+
+                right_shift_var := '0';
+                
+                credit_counter := (others => buffer_size);
+                vc := 0;
             
             else
             
-                AXI_noc_data <= (others => '0');
-                AXI_noc_data_valid <= '0';
+                AXI_noc_data_var := (others => '0');
+                AXI_noc_data_valid_var := '0';
 
-                right_shift <= '0';
+                right_shift_var := '0';
+                vc := 0;
             
                 -- AKO JE POSTAVLJEN enable_output
                 if enable_output = '1' then
@@ -109,20 +121,30 @@ begin
                     -- AKO JE empty = 0
                     if empty = '0' then
                     
-                        -- AKO JE (vc_busy(injection_vc) = 0 I flit_out(flit_size - 1) = 1)
-                        --    ILI (vc_busy(injection_vc) = 1 I flit_out(flit_size - 1) = 0)
-                        if (noc_AXI_vc_busy(injection_vc) = '0' and flit_out(flit_size - 1) = '1') or
-                           (noc_AXI_vc_busy(injection_vc) = '1' and flit_out(flit_size - 1) = '0') then
+                        for i in vc_num - 1 downto 0 loop
+                        
+                            if flit_out(flit_size - 2 - 1 - i) = '1' then
+                            
+                                vc := vc_num - 1 - i;
+                            
+                            end if;
+                        
+                        end loop;
+                    
+                        -- AKO JE (vc_busy(vc) = 0 I flit_out(flit_size - 1) = 1)
+                        --    ILI (vc_busy(vc) = 1 I flit_out(flit_size - 1) = 0)
+                        if (noc_AXI_vc_busy(vc) = '0' and flit_out(flit_size - 1) = '1') or
+                           (noc_AXI_vc_busy(vc) = '1' and flit_out(flit_size - 1) = '0') then
                            
                            -- AKO JE credit_counter > 0
-                           if credit_counter > 0 then
+                           if credit_counter(vc) > 0 then
                            
-                                AXI_noc_data <= flit_out;
-                                AXI_noc_data_valid <= '1';
+                                AXI_noc_data_var := flit_out;
+                                AXI_noc_data_valid_var := '1';
                                 
-                                right_shift <= '1';
+                                right_shift_var := '1';
                                 
-                                credit_counter := credit_counter - 1;
+                                credit_counter(vc) := credit_counter(vc) - 1;
                            
                            end if;
                            
@@ -132,13 +154,23 @@ begin
                 
                 end if;
                 
-                if noc_AXI_vc_credits(injection_vc) = '1' then
+                for i in vc_num - 1 downto 0 loop
                 
-                    credit_counter := credit_counter + 1;
+                    if noc_AXI_vc_credits(i) = '1' then
                 
-                end if;
+                        credit_counter(i) := credit_counter(i) + 1;
+                    
+                    end if;
+                
+                end loop;
+                
+                AXI_noc_data <= AXI_noc_data_var;
+                AXI_noc_data_valid <= AXI_noc_data_valid_var;
+
+                right_shift <= right_shift_var;
                 
                 credit_counter_test <= credit_counter;
+                vc_test <= vc;
             
             end if;
         end if;
