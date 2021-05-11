@@ -42,6 +42,7 @@ use noc_lib.AXI_network_adapter_config.ALL;
 entity SNA_req_buffer_controller is
 
     Generic (
+        vc_num : integer := const_vc_num;
         flit_size : integer := const_flit_size;
         address_size : integer := const_address_size;
         payload_size : integer := const_payload_size
@@ -55,6 +56,7 @@ entity SNA_req_buffer_controller is
         has_tail : in std_logic;
         
         right_shift : out std_logic;
+        vc_credits : out std_logic_vector(vc_num - 1 downto 0);
         
         op_write : out std_logic;
         op_read : out std_logic;
@@ -70,7 +72,8 @@ entity SNA_req_buffer_controller is
         resp_write : out std_logic;
         resp_read : out std_logic;
         
-        r_addr : out std_logic_vector(address_size - 1 downto 0)
+        r_addr : out std_logic_vector(address_size - 1 downto 0);
+        r_vc : out std_logic_vector(vc_num - 1 downto 0)
     );
 
 end SNA_req_buffer_controller;
@@ -112,6 +115,8 @@ begin
         resp_read <= '0';
         
         right_shift <= '0';
+        vc_credits <= (others => '0');
+        
         t_begun <= '0';
         
         case current_state is
@@ -121,6 +126,8 @@ begin
                 if has_tail = '1' and SNA_ready = '1' then
                 
                     right_shift <= '1';
+                    vc_credits <= flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
+                    
                     t_begun <= '1';
                 
                     if flit_out(0) = '0' then
@@ -144,12 +151,16 @@ begin
             when W_FLIT_1 =>
             
                 right_shift <= '1';
+                vc_credits <= flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
+                
                 W_FLIT_2_enable <= '1';
                 next_state <= W_FLIT_2;
             
             when W_FLIT_2 =>
             
                 right_shift <= '1';
+                vc_credits <= flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
+                
                 W_FLIT_3_enable <= '1';
                 next_state <= W_FLIT_3;
             
@@ -162,6 +173,8 @@ begin
             when R_FLIT_1 =>
             
                 right_shift <= '1';
+                vc_credits <= flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
+                
                 R_FLIT_2_enable <= '1';
                 next_state <= R_FLIT_2;
             
@@ -183,6 +196,7 @@ begin
         variable prot_var : std_logic_vector(2 downto 0);
         variable strb_var : std_logic_vector(3 downto 0);
         variable r_addr_var : std_logic_vector(address_size - 1 downto 0);
+        variable r_vc_var : std_logic_vector(vc_num - 1 downto 0);
     
     begin
     
@@ -194,12 +208,14 @@ begin
                 prot_var := (others => '0');
                 strb_var := (others => '0');
                 r_addr_var := (others => '0');
+                r_vc_var := (others => '0');
                 
                 addr <= (others => '0');
                 data <= (others => '0');
                 prot <= (others => '0');
                 strb <= (others => '0');
                 r_addr <= (others => '0');
+                r_vc <= (others => '0');
             
             else
             
@@ -210,6 +226,7 @@ begin
                     prot_var := flit_out(3 downto 1);
                     strb_var := flit_out(7 downto 4);
                     r_addr_var := flit_out(payload_size - 1 downto payload_size - address_size);
+                    r_vc_var := flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
                 
                 elsif W_FLIT_2_enable = '1' then
                 
@@ -226,6 +243,7 @@ begin
                     prot_var := flit_out(3 downto 1);
                     strb_var := (others => '0');
                     r_addr_var := flit_out(payload_size - 1 downto payload_size - address_size);
+                    r_vc_var := flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
                 
                 elsif R_FLIT_2_enable = '1' then
                 
@@ -238,6 +256,7 @@ begin
                 prot <= prot_var;
                 strb <= strb_var;
                 r_addr <= r_addr_var;
+                r_vc <= r_vc_var;
             
             end if;
         end if;

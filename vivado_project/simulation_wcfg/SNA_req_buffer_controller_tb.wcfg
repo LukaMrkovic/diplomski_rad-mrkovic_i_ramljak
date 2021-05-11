@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="SNA_req_buffer_controller_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="SNA_req_buffer_controller_tb" />
+            <top_module name="axi_network_adapter_config" />
+            <top_module name="component_declarations" />
+            <top_module name="router_config" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="6417005fs"></ZoomEndTime>
+      <Cursor1Time time="3020000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="286"></NameColumnWidth>
+      <ValueColumnWidth column_width="108"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="32" />
+   <wvobject type="divider" fp_name="divider903">
+      <obj_property name="label">Kontrolni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/clk_sim" type="logic">
+      <obj_property name="ElementShortName">clk_sim</obj_property>
+      <obj_property name="ObjectShortName">clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/rst_sim" type="logic">
+      <obj_property name="ElementShortName">rst_sim</obj_property>
+      <obj_property name="ObjectShortName">rst_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider904">
+      <obj_property name="label">FIFO_buffer_signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/flit_out_sim" type="array">
+      <obj_property name="ElementShortName">flit_out_sim[43:0]</obj_property>
+      <obj_property name="ObjectShortName">flit_out_sim[43:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/has_tail_sim" type="logic">
+      <obj_property name="ElementShortName">has_tail_sim</obj_property>
+      <obj_property name="ObjectShortName">has_tail_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/right_shift_sim" type="logic">
+      <obj_property name="ElementShortName">right_shift_sim</obj_property>
+      <obj_property name="ObjectShortName">right_shift_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider905">
+      <obj_property name="label">noc_receiver signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/vc_credits_sim" type="array">
+      <obj_property name="ElementShortName">vc_credits_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">vc_credits_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider906">
+      <obj_property name="label">handshake_controller signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/op_write_sim" type="logic">
+      <obj_property name="ElementShortName">op_write_sim</obj_property>
+      <obj_property name="ObjectShortName">op_write_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/op_read_sim" type="logic">
+      <obj_property name="ElementShortName">op_read_sim</obj_property>
+      <obj_property name="ObjectShortName">op_read_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/addr_sim" type="array">
+      <obj_property name="ElementShortName">addr_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/data_sim" type="array">
+      <obj_property name="ElementShortName">data_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/prot_sim" type="array">
+      <obj_property name="ElementShortName">prot_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">prot_sim[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/strb_sim" type="array">
+      <obj_property name="ElementShortName">strb_sim[3:0]</obj_property>
+      <obj_property name="ObjectShortName">strb_sim[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider907">
+      <obj_property name="label">t_monitor signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/SNA_ready_sim" type="logic">
+      <obj_property name="ElementShortName">SNA_ready_sim</obj_property>
+      <obj_property name="ObjectShortName">SNA_ready_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/t_begun_sim" type="logic">
+      <obj_property name="ElementShortName">t_begun_sim</obj_property>
+      <obj_property name="ObjectShortName">t_begun_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider908">
+      <obj_property name="label">resp_flow signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/resp_write_sim" type="logic">
+      <obj_property name="ElementShortName">resp_write_sim</obj_property>
+      <obj_property name="ObjectShortName">resp_write_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/resp_read_sim" type="logic">
+      <obj_property name="ElementShortName">resp_read_sim</obj_property>
+      <obj_property name="ObjectShortName">resp_read_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/r_addr_sim" type="array">
+      <obj_property name="ElementShortName">r_addr_sim[7:0]</obj_property>
+      <obj_property name="ObjectShortName">r_addr_sim[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/r_vc_sim" type="array">
+      <obj_property name="ElementShortName">r_vc_sim[1:0]</obj_property>
+      <obj_property name="ObjectShortName">r_vc_sim[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider909">
+      <obj_property name="label">FSM</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/uut/current_state" type="other">
+      <obj_property name="ElementShortName">current_state</obj_property>
+      <obj_property name="ObjectShortName">current_state</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/uut/next_state" type="other">
+      <obj_property name="ElementShortName">next_state</obj_property>
+      <obj_property name="ObjectShortName">next_state</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/uut/W_FLIT_1_enable" type="logic">
+      <obj_property name="ElementShortName">W_FLIT_1_enable</obj_property>
+      <obj_property name="ObjectShortName">W_FLIT_1_enable</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/uut/W_FLIT_2_enable" type="logic">
+      <obj_property name="ElementShortName">W_FLIT_2_enable</obj_property>
+      <obj_property name="ObjectShortName">W_FLIT_2_enable</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/uut/W_FLIT_3_enable" type="logic">
+      <obj_property name="ElementShortName">W_FLIT_3_enable</obj_property>
+      <obj_property name="ObjectShortName">W_FLIT_3_enable</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/uut/R_FLIT_1_enable" type="logic">
+      <obj_property name="ElementShortName">R_FLIT_1_enable</obj_property>
+      <obj_property name="ObjectShortName">R_FLIT_1_enable</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/SNA_req_buffer_controller_tb/uut/R_FLIT_2_enable" type="logic">
+      <obj_property name="ElementShortName">R_FLIT_2_enable</obj_property>
+      <obj_property name="ObjectShortName">R_FLIT_2_enable</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+</wave_config>

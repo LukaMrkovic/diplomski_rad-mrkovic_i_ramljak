@@ -810,6 +810,7 @@ package component_declarations is
     component SNA_req_buffer_controller
     
         Generic (
+            vc_num : integer;
             flit_size : integer;
             address_size : integer;
             payload_size : integer
@@ -823,6 +824,7 @@ package component_declarations is
             has_tail : in std_logic;
             
             right_shift : out std_logic;
+            vc_credits : out std_logic_vector(vc_num - 1 downto 0);
             
             op_write : out std_logic;
             op_read : out std_logic;
@@ -838,7 +840,8 @@ package component_declarations is
             resp_write : out std_logic;
             resp_read : out std_logic;
             
-            r_addr : out std_logic_vector(address_size - 1 downto 0)
+            r_addr : out std_logic_vector(address_size - 1 downto 0);
+            r_vc : out std_logic_vector(vc_num - 1 downto 0)
         );
     
     end component;

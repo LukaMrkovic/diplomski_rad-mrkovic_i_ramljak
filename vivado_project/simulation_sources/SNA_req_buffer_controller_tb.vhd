@@ -2,9 +2,9 @@
 -- Company: FER
 -- Engineer: Mrkovic, Ramljak
 -- 
--- Create Date: 05/05/2021 02:55:45 PM
+-- Create Date: 11.05.2021 14:07:54
 -- Design Name: AXI_Network_Adapter
--- Module Name: MNA_resp_buffer_controller_tb - Simulation
+-- Module Name: SNA_req_buffer_controller_tb - Simulation
 -- Project Name: NoC_Router
 -- Target Devices: zc706
 -- Tool Versions: 2020.2
@@ -15,8 +15,8 @@
 -- Revision:
 -- Revision 0.01 - File Created
 -- Additional Comments:
--- Revision 0.1 - 2021-05-05 - Mrkovic, Ramljak
--- Additional Comments: Prva verzija simulacije MNA_resp_buffer_controllera
+-- Revision 0.1 - 2021-05-11 - Mrkovic, Ramljak
+-- Additional Comments: Prva verzija simulacije SNA_req_buffer_controllera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -40,11 +40,11 @@ use noc_lib.component_declarations.ALL;
 -- library UNISIM;
 -- use UNISIM.VComponents.all;
 
-entity MNA_resp_buffer_controller_tb is
+entity SNA_req_buffer_controller_tb is
 --  Port ( );
-end MNA_resp_buffer_controller_tb;
+end SNA_req_buffer_controller_tb;
 
-architecture Simulation of MNA_resp_buffer_controller_tb is
+architecture Simulation of SNA_req_buffer_controller_tb is
 
     -- Simulirani signali
     signal clk_sim : std_logic;
@@ -52,15 +52,26 @@ architecture Simulation of MNA_resp_buffer_controller_tb is
     
     signal flit_out_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal has_tail_sim : std_logic;
-    
+        
     signal right_shift_sim : std_logic;
     signal vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
-    
+        
     signal op_write_sim : std_logic;
     signal op_read_sim : std_logic;
-    
+        
+    signal addr_sim : std_logic_vector(31 downto 0);
     signal data_sim : std_logic_vector(31 downto 0);
-    signal resp_sim : std_logic_vector(1 downto 0);
+    signal prot_sim : std_logic_vector(2 downto 0);
+    signal strb_sim : std_logic_vector(3 downto 0);
+        
+    signal SNA_ready_sim : std_logic;
+    signal t_begun_sim : std_logic;
+        
+    signal resp_write_sim : std_logic;
+    signal resp_read_sim : std_logic;
+        
+    signal r_addr_sim : std_logic_vector(const_address_size - 1 downto 0);
+    signal r_vc_sim : std_logic_vector(const_vc_num - 1 downto 0);
     
     -- Period takta
     constant clk_period : time := 200ns;
@@ -68,11 +79,13 @@ architecture Simulation of MNA_resp_buffer_controller_tb is
 begin
 
     -- Komponenta koja se testira (Unit Under Test)
-    uut: MNA_resp_buffer_controller
+    uut: SNA_req_buffer_controller
     
         generic map(
+            vc_num => const_vc_num,
             flit_size => const_flit_size,
-            vc_num => const_vc_num
+            address_size => const_address_size,
+            payload_size => const_payload_size
         )
         
         port map(
@@ -88,10 +101,21 @@ begin
             op_write => op_write_sim,
             op_read => op_read_sim,
             
+            addr => addr_sim,
             data => data_sim,
-            resp => resp_sim
+            prot => prot_sim,
+            strb => strb_sim,
+            
+            SNA_ready => SNA_ready_sim,
+            t_begun => t_begun_sim,
+            
+            resp_write => resp_write_sim,
+            resp_read => resp_read_sim,
+            
+            r_addr => r_addr_sim,
+            r_vc => r_vc_sim
         );
-        
+
     -- clk proces
     clk_process : process
     
@@ -108,21 +132,36 @@ begin
     stim_process : process
     
     begin
-        
+    
         flit_out_sim <= (others => '0');
         has_tail_sim <= '0';
         
+        SNA_ready_sim <= '0';
+    
         -- Reset aktivan
         rst_sim <= '0';
         
         wait for (10 * clk_period);
         
+        -- Reset neaktivan
         rst_sim <= '1';
         
         wait for (2.1 * clk_period);
         
-        flit_out_sim <= X"D1234567896";
+        SNA_ready_sim <= '1';
+        
+        wait for (3 * clk_period);
+        
+        flit_out_sim <= X"914110000fa";
         has_tail_sim <= '1';
+        
+        wait for clk_period;
+        
+        flit_out_sim <= X"11487654321";
+        
+        wait for clk_period;
+        
+        flit_out_sim <= X"51412344321";
         
         wait for clk_period;
         
@@ -131,21 +170,18 @@ begin
         
         wait for (4 * clk_period);
         
-        flit_out_sim <= X"A1234567893";
-        
-        wait for clk_period;
-        
+        flit_out_sim <= X"a4812000005";
         has_tail_sim <= '1';
         
         wait for clk_period;
         
-        flit_out_sim <= X"60012345678";
-        has_tail_sim <= '0';
+        flit_out_sim <= X"648e1234567";
         
         wait for clk_period;
         
         flit_out_sim <= X"00000000000";
-        
+        has_tail_sim <= '0';
+    
         wait;
     
     end process;
