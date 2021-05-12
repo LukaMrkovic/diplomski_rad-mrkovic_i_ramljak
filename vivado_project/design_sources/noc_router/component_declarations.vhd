@@ -876,4 +876,65 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente SNA_req_flow
+    component SNA_req_flow
+    
+        Generic (
+            vc_num : integer;
+            address_size : integer;
+            payload_size : integer;
+            flit_size : integer;
+            buffer_size : integer;
+            clock_divider : integer
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+    
+            -- AXI WRITE ADDRESS CHANNEL 
+            AWADDR : out std_logic_vector(31 downto 0);
+            AWVALID : out std_logic;
+            AWREADY : in std_logic;
+    
+            -- AXI WRITE DATA CHANNEL
+            WDATA : out std_logic_vector(31 downto 0);
+            WVALID : out std_logic;
+            WREADY : in std_logic;
+            
+            -- AXI WRITE AUXILIARY SIGNALS
+            AWPROT : out std_logic_vector(2 downto 0);
+            WSTRB : out std_logic_vector(3 downto 0);
+    
+            -- AXI READ ADDRESS CHANNEL
+            ARADDR : out std_logic_vector(31 downto 0);
+            ARVALID : out std_logic;
+            ARREADY : in std_logic;
+    
+            -- AXI READ AUXILIARY SIGNALS
+            ARPROT : out std_logic_vector(2 downto 0);
+    
+            -- NOC INTERFACE
+            noc_AXI_data : in std_logic_vector(flit_size - 1 downto 0);        
+            noc_AXI_data_valid : in std_logic;
+            
+            AXI_noc_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
+            AXI_noc_vc_credits : out std_logic_vector(vc_num - 1 downto 0);
+            
+            -- RESP FLOW INTERFACE
+            SNA_ready : in std_logic;
+            t_begun : out std_logic;
+            
+            resp_write : out std_logic;
+            resp_read : out std_logic;
+            
+            r_addr : out std_logic_vector(address_size - 1 downto 0);
+            r_vc : out std_logic_vector(vc_num - 1 downto 0);
+            
+            buffer_read_ready : in std_logic;
+            buffer_write_ready : in std_logic
+        );
+    
+    end component;
+    
 end package component_declarations;
