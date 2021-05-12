@@ -47,8 +47,8 @@ entity SNA_resp_flow is
         flit_size : integer := const_flit_size;
         buffer_size : integer := const_buffer_size;
         address_size : integer := const_address_size;
-        write_threshold : integer := const_MNA_write_threshold;
-        read_threshold : integer := const_MNA_read_threshold;
+        write_threshold : integer := const_SNA_write_threshold;
+        read_threshold : integer := const_SNA_read_threshold;
         clock_divider : integer := const_clock_divider
     );
     
@@ -179,8 +179,8 @@ begin
         generic map(
             flit_size => flit_size,
             buffer_size => buffer_size,
-            write_threshold => const_SNA_write_threshold,
-            read_threshold => const_SNA_read_threshold
+            write_threshold => write_threshold,
+            read_threshold => read_threshold
         )
         
         port map(
