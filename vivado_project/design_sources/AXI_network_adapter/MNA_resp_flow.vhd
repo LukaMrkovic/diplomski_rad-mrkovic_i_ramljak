@@ -173,8 +173,9 @@ begin
             
             full => full
         );
-        
-   receiver : noc_receiver 
+     
+    -- noc_receiver KOMPONENTA  
+    receiver : noc_receiver 
     
         generic map(
             vc_num => vc_num,
