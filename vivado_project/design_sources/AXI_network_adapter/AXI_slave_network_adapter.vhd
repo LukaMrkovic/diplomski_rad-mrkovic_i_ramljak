@@ -130,12 +130,12 @@ begin
     req_flow : SNA_req_flow
 
         generic map(
-            vc_num => const_vc_num,
-            address_size => const_address_size,
-            payload_size => const_payload_size,
-            flit_size => const_flit_size,
-            buffer_size => const_buffer_size,
-            clock_divider => const_clock_divider
+            vc_num => vc_num,
+            address_size => address_size,
+            payload_size => payload_size,
+            flit_size => flit_size,
+            buffer_size => buffer_size,
+            clock_divider => clock_divider
         )
         
         port map(
@@ -189,13 +189,13 @@ begin
     resp_flow : SNA_resp_flow
 
         generic map(
-            vc_num => const_vc_num,
-            flit_size => const_flit_size,
-            address_size => const_address_size,
-            buffer_size => const_buffer_size,
-            write_threshold => const_SNA_write_threshold,
-            read_threshold => const_SNA_read_threshold,
-            clock_divider => const_clock_divider
+            vc_num => vc_num,
+            flit_size => flit_size,
+            address_size => address_size,
+            buffer_size => buffer_size,
+            write_threshold => write_threshold,
+            read_threshold => read_threshold,
+            clock_divider => clock_divider
         )
         
         port map(
