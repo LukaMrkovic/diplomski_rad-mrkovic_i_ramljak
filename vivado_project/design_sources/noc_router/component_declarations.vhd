@@ -987,4 +987,69 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente AXI_slave_network_adapter
+    component AXI_slave_network_adapter
+    
+        Generic (
+            vc_num : integer;
+            address_size : integer;
+            payload_size : integer;
+            flit_size : integer;
+            buffer_size : integer;
+            clock_divider : integer;
+            
+            write_threshold : integer;
+            read_threshold : integer
+        );
+    
+        Port (
+            clk : in std_logic;
+            rst : in std_logic;
+            
+            -- AXI WRITE ADDRESS CHANNEL 
+            AWADDR : out std_logic_vector(31 downto 0);
+            AWPROT : out std_logic_vector(2 downto 0);
+            AWVALID : out std_logic;
+            AWREADY : in std_logic;
+            
+            -- AXI WRITE DATA CHANNEL
+            WDATA : out std_logic_vector(31 downto 0);
+            WSTRB : out std_logic_vector(3 downto 0);
+            WVALID : out std_logic;
+            WREADY : in std_logic;
+            
+            -- AXI READ ADDRESS CHANNEL
+            ARADDR : out std_logic_vector(31 downto 0);
+            ARPROT : out std_logic_vector(2 downto 0);
+            ARVALID : out std_logic;
+            ARREADY : in std_logic;
+            
+            -- AXI WRITE RESPONSE CHANNEL
+            BRESP : in std_logic_vector(1 downto 0);
+            BVALID : in std_logic;
+            BREADY : out std_logic;
+            
+            -- AXI READ RESPONSE CHANNEL
+            RDATA : in std_logic_vector(31 downto 0);
+            RRESP : in std_logic_vector(1 downto 0);
+            RVALID : in std_logic;
+            RREADY : out std_logic;
+            
+            -- NOC INTERFACE - FLIT AXI > NOC
+            AXI_noc_data : out std_logic_vector(flit_size - 1 downto 0);        
+            AXI_noc_data_valid : out std_logic;
+            
+            noc_AXI_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
+            noc_AXI_vc_credits : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- NOC INTERFACE - FLIT NOC > AXI
+            noc_AXI_data : in std_logic_vector(flit_size - 1 downto 0);        
+            noc_AXI_data_valid : in std_logic;
+            
+            AXI_noc_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
+            AXI_noc_vc_credits : out std_logic_vector(vc_num - 1 downto 0)
+        );
+    
+    end component;
+    
 end package component_declarations;
