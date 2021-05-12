@@ -934,54 +934,56 @@ package component_declarations is
             buffer_read_ready : in std_logic;
             buffer_write_ready : in std_logic
         );
+        
+    end component;
 
     -- Deklaracija komponente SNA_resp_flow
     component SNA_resp_flow 
     
         Generic (
-        vc_num : integer;
-        flit_size : integer;
-        buffer_size : integer;
-        address_size : integer;
-        write_threshold : integer;
-        read_threshold : integer;
-        clock_divider : integer
-    );
-    
-    Port (
-        clk : in std_logic;
-        rst : in std_logic;
+            vc_num : integer;
+            flit_size : integer;
+            buffer_size : integer;
+            address_size : integer;
+            write_threshold : integer;
+            read_threshold : integer;
+            clock_divider : integer
+        );
         
-        -- AXI WRITE RESPONSE
-        BREADY : out std_logic;
-        BRESP : in std_logic_vector(1 downto 0);
-        BVALID : in std_logic;
-        
-        -- AXI READ RESPONSE
-        RREADY : out std_logic;
-        RDATA : in std_logic_vector(31 downto 0);
-        RRESP : in std_logic_vector(1 downto 0);
-        RVALID : in std_logic;
-        
-        -- SNA REQ FLOW
-        resp_write : in std_logic;
-        resp_read : in std_logic;
-        r_addr : in std_logic_vector(address_size - 1 downto 0);
-        r_vc : in std_logic_vector(vc_num - 1 downto 0);
-        
-        buffer_read_ready : out std_logic;
-        buffer_write_ready : out std_logic;
-        
-        -- T_MONITOR
-        t_end : out std_logic;
-        
-        -- NOC INTERFACE
-        AXI_noc_data : out std_logic_vector(flit_size - 1 downto 0);        
-        AXI_noc_data_valid : out std_logic;
-        
-        noc_AXI_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
-        noc_AXI_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
-    );
+        Port (
+            clk : in std_logic;
+            rst : in std_logic;
+            
+            -- AXI WRITE RESPONSE
+            BREADY : out std_logic;
+            BRESP : in std_logic_vector(1 downto 0);
+            BVALID : in std_logic;
+            
+            -- AXI READ RESPONSE
+            RREADY : out std_logic;
+            RDATA : in std_logic_vector(31 downto 0);
+            RRESP : in std_logic_vector(1 downto 0);
+            RVALID : in std_logic;
+            
+            -- SNA REQ FLOW
+            resp_write : in std_logic;
+            resp_read : in std_logic;
+            r_addr : in std_logic_vector(address_size - 1 downto 0);
+            r_vc : in std_logic_vector(vc_num - 1 downto 0);
+            
+            buffer_read_ready : out std_logic;
+            buffer_write_ready : out std_logic;
+            
+            -- T_MONITOR
+            t_end : out std_logic;
+            
+            -- NOC INTERFACE
+            AXI_noc_data : out std_logic_vector(flit_size - 1 downto 0);        
+            AXI_noc_data_valid : out std_logic;
+            
+            noc_AXI_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
+            noc_AXI_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
+        );
     
     end component;
     
