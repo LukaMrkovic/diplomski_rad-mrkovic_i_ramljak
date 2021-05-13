@@ -109,6 +109,8 @@
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/SNA_req_flow_tb.wcfg"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/SNA_resp_flow_tb.vhd"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/SNA_resp_flow_tb.wcfg"
+#    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/AXI_master_network_adapter_tb.vhd"
+#    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/AXI_master_network_adapter_tb.wcfg"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/AXI_slave_network_adapter_tb.vhd"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/AXI_slave_network_adapter_tb.wcfg"
 #
@@ -200,6 +202,8 @@ proc checkRequiredFiles { origin_dir} {
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/SNA_req_flow_tb.wcfg" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/SNA_resp_flow_tb.vhd" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/SNA_resp_flow_tb.wcfg" \
+   "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/AXI_master_network_adapter_tb.vhd" \
+   "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/AXI_master_network_adapter_tb.wcfg" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/AXI_slave_network_adapter_tb.vhd" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/AXI_slave_network_adapter_tb.wcfg" \
   ]
@@ -311,7 +315,7 @@ set_property -name "sim.ip.auto_export_scripts" -value "1" -objects $obj
 set_property -name "simulator_language" -value "Mixed" -objects $obj
 set_property -name "source_mgmt_mode" -value "DisplayOnly" -objects $obj
 set_property -name "target_language" -value "VHDL" -objects $obj
-set_property -name "webtalk.xsim_launch_sim" -value "392" -objects $obj
+set_property -name "webtalk.xsim_launch_sim" -value "398" -objects $obj
 
 # Create 'sources_1' fileset (if not found)
 if {[string equal [get_filesets -quiet sources_1] ""]} {
@@ -1349,6 +1353,37 @@ set_property -name "top" -value "SNA_resp_flow_tb" -objects $obj
 set_property -name "top_auto_set" -value "0" -objects $obj
 set_property -name "top_lib" -value "xil_defaultlib" -objects $obj
 set_property -name "xsim.simulate.runtime" -value "15000ns" -objects $obj
+
+# Create 'AXI_master_network_adapter_sim' fileset (if not found)
+if {[string equal [get_filesets -quiet AXI_master_network_adapter_sim] ""]} {
+  create_fileset -simset AXI_master_network_adapter_sim
+}
+
+# Set 'AXI_master_network_adapter_sim' fileset object
+set obj [get_filesets AXI_master_network_adapter_sim]
+set files [list \
+ [file normalize "${origin_dir}/simulation_sources/AXI_master_network_adapter_tb.vhd"] \
+ [file normalize "${origin_dir}/simulation_wcfg/AXI_master_network_adapter_tb.wcfg"] \
+]
+add_files -norecurse -fileset $obj $files
+
+# Set 'AXI_master_network_adapter_sim' fileset file properties for remote files
+set file "$origin_dir/simulation_sources/AXI_master_network_adapter_tb.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets AXI_master_network_adapter_sim] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+
+# Set 'AXI_master_network_adapter_sim' fileset file properties for local files
+# None
+
+# Set 'AXI_master_network_adapter_sim' fileset properties
+set obj [get_filesets AXI_master_network_adapter_sim]
+set_property -name "hbs.configure_design_for_hier_access" -value "1" -objects $obj
+set_property -name "top" -value "AXI_master_network_adapter_tb" -objects $obj
+set_property -name "top_auto_set" -value "0" -objects $obj
+set_property -name "top_lib" -value "xil_defaultlib" -objects $obj
+set_property -name "xsim.simulate.runtime" -value "25000ns" -objects $obj
 
 # Create 'AXI_slave_network_adapter_sim' fileset (if not found)
 if {[string equal [get_filesets -quiet AXI_slave_network_adapter_sim] ""]} {
