@@ -318,7 +318,7 @@ begin
         -- WRITE RESPONSE
         BREADY_sim <= '1';
         
-        wait for (2 * clk_period);
+        wait for (3 * clk_period);
         
         noc_AXI_data_sim <= X"D1100000004";
         noc_AXI_data_valid_sim <= '1';
@@ -332,7 +332,7 @@ begin
         
         BREADY_sim <= '0';
         
-        wait for (6 * clk_period);
+        wait for (5 * clk_period);
         
         -- > READ
         ARADDR_sim <= X"E1234567";
@@ -355,7 +355,7 @@ begin
         
         noc_AXI_vc_busy_sim <= (others => '0');
         
-        wait for (3 * clk_period);
+        wait for (4 * clk_period);
         
         noc_AXI_vc_credits_sim <= (0 => '1', others => '0');
         
@@ -373,7 +373,7 @@ begin
         -- <
         
         -- READ RESPONSE
-        wait for (4 * clk_period);
+        wait for (3 * clk_period);
         
         noc_AXI_data_sim <= X"A1100000007";
         noc_AXI_data_valid_sim <= '1';
