@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: FER
--- Engineer: Mrkovic, Ramljak: 
+-- Engineer: Mrkovic, Ramljak
 -- 
 -- Create Date: 05/12/2021 01:13:16 PM
 -- Design Name: AXI_Network_Adapter
@@ -176,7 +176,7 @@ begin
         
     end process;
     
-     -- stimulirajuci proces
+    -- stimulirajuci proces
     stim_process : process
     
     begin
@@ -278,6 +278,5 @@ begin
         wait;
     
     end process;
-
 
 end Simulation;
