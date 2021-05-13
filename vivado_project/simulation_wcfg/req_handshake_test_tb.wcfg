@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="req_handshake_test_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="axi_network_adapter_config" />
+            <top_module name="component_declarations" />
+            <top_module name="req_handshake_test_tb" />
+            <top_module name="router_config" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="6024663fs"></ZoomEndTime>
+      <Cursor1Time time="3300000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="346"></NameColumnWidth>
+      <ValueColumnWidth column_width="169"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="36" />
+   <wvobject type="divider" fp_name="divider420">
+      <obj_property name="label">Kontrolni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/clk_sim" type="logic">
+      <obj_property name="ElementShortName">clk_sim</obj_property>
+      <obj_property name="ObjectShortName">clk_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/rst_sim" type="logic">
+      <obj_property name="ElementShortName">rst_sim</obj_property>
+      <obj_property name="ObjectShortName">rst_sim</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider421">
+      <obj_property name="label">SNA_req_AXI_handshake_controller SIGNALI</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/SNA_op_write_sim" type="logic">
+      <obj_property name="ElementShortName">SNA_op_write_sim</obj_property>
+      <obj_property name="ObjectShortName">SNA_op_write_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/SNA_op_read_sim" type="logic">
+      <obj_property name="ElementShortName">SNA_op_read_sim</obj_property>
+      <obj_property name="ObjectShortName">SNA_op_read_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/SNA_buffer_read_ready_sim" type="logic">
+      <obj_property name="ElementShortName">SNA_buffer_read_ready_sim</obj_property>
+      <obj_property name="ObjectShortName">SNA_buffer_read_ready_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/SNA_buffer_write_ready_sim" type="logic">
+      <obj_property name="ElementShortName">SNA_buffer_write_ready_sim</obj_property>
+      <obj_property name="ObjectShortName">SNA_buffer_write_ready_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/SNA_addr_sim" type="array">
+      <obj_property name="ElementShortName">SNA_addr_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SNA_addr_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/SNA_data_sim" type="array">
+      <obj_property name="ElementShortName">SNA_data_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SNA_data_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/SNA_prot_sim" type="array">
+      <obj_property name="ElementShortName">SNA_prot_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">SNA_prot_sim[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/SNA_strb_sim" type="array">
+      <obj_property name="ElementShortName">SNA_strb_sim[3:0]</obj_property>
+      <obj_property name="ObjectShortName">SNA_strb_sim[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider421">
+      <obj_property name="label">AXI WRITE ADDRESS CHANNEL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/AWADDR_sim" type="array">
+      <obj_property name="ElementShortName">AWADDR_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">AWADDR_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/AWPROT_sim" type="array">
+      <obj_property name="ElementShortName">AWPROT_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">AWPROT_sim[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/AWVALID_sim" type="logic">
+      <obj_property name="ElementShortName">AWVALID_sim</obj_property>
+      <obj_property name="ObjectShortName">AWVALID_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/AWREADY_sim" type="logic">
+      <obj_property name="ElementShortName">AWREADY_sim</obj_property>
+      <obj_property name="ObjectShortName">AWREADY_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider421">
+      <obj_property name="label">AXI WRITE DATA CHANNEL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/WDATA_sim" type="array">
+      <obj_property name="ElementShortName">WDATA_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WDATA_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/WSTRB_sim" type="array">
+      <obj_property name="ElementShortName">WSTRB_sim[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WSTRB_sim[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/WVALID_sim" type="logic">
+      <obj_property name="ElementShortName">WVALID_sim</obj_property>
+      <obj_property name="ObjectShortName">WVALID_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/WREADY_sim" type="logic">
+      <obj_property name="ElementShortName">WREADY_sim</obj_property>
+      <obj_property name="ObjectShortName">WREADY_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider421">
+      <obj_property name="label">AXI READ ADDRESS CHANNEL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/ARADDR_sim" type="array">
+      <obj_property name="ElementShortName">ARADDR_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ARADDR_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/ARPROT_sim" type="array">
+      <obj_property name="ElementShortName">ARPROT_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ARPROT_sim[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/ARVALID_sim" type="logic">
+      <obj_property name="ElementShortName">ARVALID_sim</obj_property>
+      <obj_property name="ObjectShortName">ARVALID_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/ARREADY_sim" type="logic">
+      <obj_property name="ElementShortName">ARREADY_sim</obj_property>
+      <obj_property name="ObjectShortName">ARREADY_sim</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider421">
+      <obj_property name="label">MNA_req_AXI_handshake_controller SIGNALI</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/MNA_op_write_sim" type="logic">
+      <obj_property name="ElementShortName">MNA_op_write_sim</obj_property>
+      <obj_property name="ObjectShortName">MNA_op_write_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/MNA_op_read_sim" type="logic">
+      <obj_property name="ElementShortName">MNA_op_read_sim</obj_property>
+      <obj_property name="ObjectShortName">MNA_op_read_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/MNA_buffer_read_ready_sim" type="logic">
+      <obj_property name="ElementShortName">MNA_buffer_read_ready_sim</obj_property>
+      <obj_property name="ObjectShortName">MNA_buffer_read_ready_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/MNA_buffer_write_ready_sim" type="logic">
+      <obj_property name="ElementShortName">MNA_buffer_write_ready_sim</obj_property>
+      <obj_property name="ObjectShortName">MNA_buffer_write_ready_sim</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/MNA_addr_sim" type="array">
+      <obj_property name="ElementShortName">MNA_addr_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MNA_addr_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/MNA_data_sim" type="array">
+      <obj_property name="ElementShortName">MNA_data_sim[31:0]</obj_property>
+      <obj_property name="ObjectShortName">MNA_data_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/MNA_prot_sim" type="array">
+      <obj_property name="ElementShortName">MNA_prot_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">MNA_prot_sim[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/req_handshake_test_tb/MNA_strb_sim" type="array">
+      <obj_property name="ElementShortName">MNA_strb_sim[3:0]</obj_property>
+      <obj_property name="ObjectShortName">MNA_strb_sim[3:0]</obj_property>
+   </wvobject>
+</wave_config>
