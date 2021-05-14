@@ -30,6 +30,7 @@ library noc_lib;
 use noc_lib.router_config.ALL;
 use noc_lib.AXI_network_adapter_config.ALL;
 use noc_lib.component_declarations.ALL;
+
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 -- use IEEE.NUMERIC_STD.ALL;
