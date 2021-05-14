@@ -117,6 +117,8 @@
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/req_handshake_test_tb.wcfg"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/resp_handshake_test_tb.vhd"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/resp_handshake_test_tb.wcfg"
+#    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/MNA_SNA_direct_tb.vhd"
+#    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/MNA_SNA_direct_tb.wcfg"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/noc_mesh_2x2_AXI_tb.vhd"
 #    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/noc_mesh_2x2_AXI_tb.wcfg"
 #
@@ -216,6 +218,8 @@ proc checkRequiredFiles { origin_dir} {
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/req_handshake_test_tb.wcfg" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/resp_handshake_test_tb.vhd" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/resp_handshake_test_tb.wcfg" \
+   "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/MNA_SNA_direct_tb.vhd" \
+   "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/MNA_SNA_direct_tb.wcfg" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_sources/noc_mesh_2x2_AXI_tb.vhd" \
    "C:/diplomski_rad/diplomski_rad-mrkovic_i_ramljak/vivado_project/simulation_wcfg/noc_mesh_2x2_AXI_tb.wcfg" \
   ]
@@ -327,7 +331,7 @@ set_property -name "sim.ip.auto_export_scripts" -value "1" -objects $obj
 set_property -name "simulator_language" -value "Mixed" -objects $obj
 set_property -name "source_mgmt_mode" -value "DisplayOnly" -objects $obj
 set_property -name "target_language" -value "VHDL" -objects $obj
-set_property -name "webtalk.xsim_launch_sim" -value "425" -objects $obj
+set_property -name "webtalk.xsim_launch_sim" -value "436" -objects $obj
 
 # Create 'sources_1' fileset (if not found)
 if {[string equal [get_filesets -quiet sources_1] ""]} {
@@ -1489,6 +1493,37 @@ set_property -name "top" -value "resp_handshake_test_tb" -objects $obj
 set_property -name "top_auto_set" -value "0" -objects $obj
 set_property -name "top_lib" -value "xil_defaultlib" -objects $obj
 set_property -name "xsim.simulate.runtime" -value "15000ns" -objects $obj
+
+# Create 'MNA_SNA_direct_sim' fileset (if not found)
+if {[string equal [get_filesets -quiet MNA_SNA_direct_sim] ""]} {
+  create_fileset -simset MNA_SNA_direct_sim
+}
+
+# Set 'MNA_SNA_direct_sim' fileset object
+set obj [get_filesets MNA_SNA_direct_sim]
+set files [list \
+ [file normalize "${origin_dir}/simulation_sources/MNA_SNA_direct_tb.vhd"] \
+ [file normalize "${origin_dir}/simulation_wcfg/MNA_SNA_direct_tb.wcfg"] \
+]
+add_files -norecurse -fileset $obj $files
+
+# Set 'MNA_SNA_direct_sim' fileset file properties for remote files
+set file "$origin_dir/simulation_sources/MNA_SNA_direct_tb.vhd"
+set file [file normalize $file]
+set file_obj [get_files -of_objects [get_filesets MNA_SNA_direct_sim] [list "*$file"]]
+set_property -name "file_type" -value "VHDL" -objects $file_obj
+
+
+# Set 'MNA_SNA_direct_sim' fileset file properties for local files
+# None
+
+# Set 'MNA_SNA_direct_sim' fileset properties
+set obj [get_filesets MNA_SNA_direct_sim]
+set_property -name "hbs.configure_design_for_hier_access" -value "1" -objects $obj
+set_property -name "top" -value "MNA_SNA_direct_tb" -objects $obj
+set_property -name "top_auto_set" -value "0" -objects $obj
+set_property -name "top_lib" -value "xil_defaultlib" -objects $obj
+set_property -name "xsim.simulate.runtime" -value "20000ns" -objects $obj
 
 # Create 'noc_mesh_2x2_AXI_sim' fileset (if not found)
 if {[string equal [get_filesets -quiet noc_mesh_2x2_AXI_sim] ""]} {
