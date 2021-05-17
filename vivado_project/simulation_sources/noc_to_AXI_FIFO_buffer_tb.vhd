@@ -103,21 +103,24 @@ begin
     
     begin
     
-        -- Inicijalne postavke ulaznih signala
+        -- > Inicijalne postavke ulaznih signala
         flit_in_sim <= (others => '0');
         flit_in_valid_sim <= '0';
         
         right_shift_sim <= '0';
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';
         
         wait for 2us;
         
+        -- Reset neaktivan
         rst_sim <= '1';
         
-        wait for 2.1 * clk_period;
+        wait for (2.1 * clk_period);
         
+        -- > Genericko testiranje
         --flit_in_sim <= X"31223456677";
         --flit_in_valid_sim <= '1';
         
@@ -197,9 +200,11 @@ begin
         
         --flit_in_sim <= (others => '0');
         --flit_in_valid_sim <= '0';
+        -- < Genericko testiranje
         
         --wait for clk_period;
         
+        -- > Testiranje kompatibilnosti
         flit_in_sim <= X"33333333333";
         flit_in_valid_sim <= '1';
         
@@ -218,10 +223,10 @@ begin
         wait for (2 * clk_period);
         
         right_shift_sim <= '0';
+        -- < Testiranje kompatibilnosti
     
         wait;
     
     end process;
-
 
 end Simulation;

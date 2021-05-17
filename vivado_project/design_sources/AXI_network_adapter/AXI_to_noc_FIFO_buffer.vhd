@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-03 - Mrkovic, Ramljak
 -- Additional Comments: Prva verzija AXI_to_noc_FIFO_buffera
+-- Revision 0.2 - 2021-05-17 - Mrkovic
+-- Additional Comments: Dotjerana verzija AXI_to_noc_FIFO_buffera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -75,22 +77,22 @@ architecture Behavioral of AXI_to_noc_FIFO_buffer is
     -- BROJAC ZAPUNJENOSTI POLJA FLITOVA
     subtype array_counter is integer range 0 to buffer_size; 
     
-    -- TESTNI SIGNALI - IZBRISATI IZ ZAVRSNE VERZIJE MODULA!
+    -- > TESTNI SIGNALI
     signal head_test : array_pointer;
     signal tail_test : array_pointer;
     signal counter_test : array_counter;
     signal FIFO_array_test : buffer_array;
+    -- < TESTNI SIGNALI
     
 begin
 
     AXI_to_noc_FIFO_buffer : process (clk) is
     
-        variable FIFO_array : buffer_array := (others => (others => '0'));
+        variable FIFO_array_var : buffer_array;
         
-        variable head : array_pointer := 0;
-        variable tail : array_pointer := 0; 
-        
-        variable counter : array_counter := 0;
+        variable head_var : array_pointer;
+        variable tail_var : array_pointer;
+        variable counter_var : array_counter;
         
     begin
     
@@ -98,12 +100,12 @@ begin
             if rst = '0' then
             
                 -- POLJE U 00... 0
-                FIFO_array := (others => (others => '0'));
+                FIFO_array_var := (others => (others => '0'));
                 
                 -- INTERNE VARIJABLE U 0
-                head := 0;
-                tail := 0;
-                counter := 0;
+                head_var := 0;
+                tail_var := 0;
+                counter_var := 0;
                 
                 -- IZLAZNI SIGNALI U 00... 0
                 flit_out <= (others => '0');
@@ -114,57 +116,57 @@ begin
             else 
             
                 -- AKO JE flit_in_valid POSTAVLJEN
-                -- POHRANI flit_in U POLJE I UVECAJ tail
-                -- UVECAJ counter
+                -- POHRANI flit_in U POLJE I UVECAJ tail_var
+                -- UVECAJ counter_var
                 if flit_in_valid = '1' then
-                    FIFO_array(tail) := flit_in;
-                    tail := (tail + 1) mod buffer_size;
-                    counter := counter + 1;
+                    FIFO_array_var(tail_var) := flit_in;
+                    tail_var := (tail_var + 1) mod buffer_size;
+                    counter_var := counter_var + 1;
                 end if;
                 
                 -- AKO JE right_shift POSTAVLJEN
-                -- PREBRISI FIFO_array(head) I UVECAJ head
-                -- SMANJI counter
+                -- PREBRISI FIFO_array_var(head_var) I UVECAJ head_var
+                -- SMANJI counter_var
                 if right_shift = '1' then
-                    FIFO_array(head) := (others => '0');
-                    head := (head + 1) mod buffer_size;
-                    counter := counter - 1;
+                    FIFO_array_var(head_var) := (others => '0');
+                    head_var := (head_var + 1) mod buffer_size;
+                    counter_var := counter_var - 1;
                 end if;
                 
-                -- OVISNO O VRIJEDNOSTI counter, POSTAVI empty SIGNAL
-                if counter = 0 then
+                -- OVISNO O VRIJEDNOSTI counter_var, POSTAVI empty SIGNAL
+                if counter_var = 0 then
                     empty <= '1';
                 else
                     empty <= '0';
                 end if;
                 
-                -- OVISNO O VRIJEDNOSTI counter, POSTAVI buffer_write_ready SIGNAL
-                if (buffer_size - counter) >= write_threshold then
+                -- OVISNO O VRIJEDNOSTI counter_var, POSTAVI buffer_write_ready SIGNAL
+                if (buffer_size - counter_var) >= write_threshold then
                     buffer_write_ready <= '1';
                 else
                     buffer_write_ready <= '0';
                 end if;
                 
-                -- OVISNO O VRIJEDNOSTI counter, POSTAVI buffer_read_ready SIGNAL
-                if (buffer_size - counter) >= read_threshold then
+                -- OVISNO O VRIJEDNOSTI counter_var, POSTAVI buffer_read_ready SIGNAL
+                if (buffer_size - counter_var) >= read_threshold then
                     buffer_read_ready <= '1';
                 else
                     buffer_read_ready <= '0';
                 end if;
                 
                 -- PROPUSTI VRIJEDNOSTI NA IZLAZ
-                flit_out <= FIFO_array(head);
+                flit_out <= FIFO_array_var(head_var);
                 
-                -- TESTNI SIGNALI
-                FIFO_array_test <= FIFO_array;
-                head_test <= head;
-                tail_test <= tail;
-                counter_test <= counter;
+                -- > TESTNI SIGNALI
+                FIFO_array_test <= FIFO_array_var;
+                head_test <= head_var;
+                tail_test <= tail_var;
+                counter_test <= counter_var;
+                -- < TESTNI SIGNALI
                 
             end if;    
         end if;
     
     end process;
-
 
 end Behavioral;

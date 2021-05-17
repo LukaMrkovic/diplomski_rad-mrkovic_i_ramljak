@@ -71,10 +71,11 @@ architecture Behavioral of noc_injector is
     -- ENABLE SIGNAL SLANJA U noc MREZU
     signal enable_output : std_logic;
     
-    -- TESTNI SIGNALI
+    -- > TESTNI SIGNALI
     signal output_counter_test : integer;
     signal credit_counter_test : credit_counter_vector(vc_num - 1 downto 0);
     signal vc_test : integer;
+    -- < TESTNI SIGNALI
 
 begin
 
@@ -94,11 +95,6 @@ begin
         if rising_edge(clk) then
             if rst = '0' then
             
-                AXI_noc_data <= (others => '0');
-                AXI_noc_data_valid <= '0';
-
-                right_shift <= '0';
-                
                 AXI_noc_data_var := (others => '0');
                 AXI_noc_data_valid_var := '0';
 
@@ -106,6 +102,11 @@ begin
                 
                 credit_counter := (others => buffer_size);
                 vc := 0;
+                
+                AXI_noc_data <= (others => '0');
+                AXI_noc_data_valid <= '0';
+
+                right_shift <= '0';
             
             else
             
@@ -190,7 +191,7 @@ begin
                 -- POSTAVI BROJILO NA 0
                 output_counter := (clock_divider * 2) - 1;
                 
-                -- POSTAVI INTERNI TAKT NA 0
+                -- POSTAVI IZLAZ NA '0'
                 enable_output <= '0';
             
             else
@@ -198,7 +199,7 @@ begin
                 -- POVECAJ BROJILO ZA 1
                 output_counter := (output_counter + 1) mod (clock_divider * 2);
                 
-                -- PROPUSTI UBRZANE IZLAZE
+                -- POSTAVI IZLAZ AKO JE BROJILO JEDNAKO 3
                 if (output_counter = 3) then 
                     enable_output <= '1';
                 else

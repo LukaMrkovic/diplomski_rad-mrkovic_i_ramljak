@@ -70,9 +70,10 @@ architecture Behavioral of noc_receiver is
     -- ENABLE SIGNAL SLANJA U noc MREZU
     signal enable_output : std_logic;
     
-    -- TESTNI SIGNALI
+    -- > TESTNI SIGNALI
     signal output_counter_test : integer;
     signal credit_to_send_test : credit_counter_vector(vc_num - 1 downto 0);
+    -- < TESTNI SIGNALI
 
 begin
 
@@ -92,13 +93,13 @@ begin
         if rising_edge(clk) then
             if rst = '0' then
             
-                AXI_noc_vc_credits <= (others => '0');
-                AXI_noc_vc_busy <= (others => '0');
-                
                 AXI_noc_vc_busy_var := (others => '0');
                 AXI_noc_vc_credits_var := (others => '0');
                 
                 credits_to_send := (others => 0);
+                
+                AXI_noc_vc_credits <= (others => '0');
+                AXI_noc_vc_busy <= (others => '0');
             
             else
             
@@ -169,7 +170,7 @@ begin
                 -- POSTAVI BROJILO NA 0
                 output_counter := (clock_divider * 2) - 1;
                 
-                -- POSTAVI INTERNI TAKT NA 0
+                -- POSTAVI IZLAZ NA '0'
                 enable_output <= '0';
             
             else
@@ -177,7 +178,7 @@ begin
                 -- POVECAJ BROJILO ZA 1
                 output_counter := (output_counter + 1) mod (clock_divider * 2);
                 
-                -- PROPUSTI UBRZANE IZLAZE
+                -- POSTAVI IZLAZ AKO JE BROJILO JEDNAKO 3
                 if (output_counter = 3) then 
                     enable_output <= '1';
                 else
@@ -190,6 +191,5 @@ begin
         end if;
         
     end process;
-
 
 end Behavioral;

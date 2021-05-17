@@ -466,6 +466,61 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente noc_injector
+    component noc_injector
+    
+        Generic (
+            vc_num : integer;
+            flit_size : integer;
+            buffer_size : integer;
+            clock_divider : integer
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+                       
+            flit_out : in std_logic_vector(flit_size - 1 downto 0);
+            empty : in std_logic;
+                    
+            right_shift : out std_logic;
+            
+            AXI_noc_data : out std_logic_vector(flit_size - 1 downto 0);        
+            AXI_noc_data_valid : out std_logic;
+            
+            noc_AXI_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
+            noc_AXI_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
+        );
+    
+    end component;
+    
+    -- Deklaracija komponente noc_receiver
+    component noc_receiver
+    
+        Generic (
+            vc_num : integer;
+            flit_size : integer;
+            clock_divider : integer
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic; 
+            
+            noc_AXI_data : in std_logic_vector(flit_size - 1 downto 0);        
+            noc_AXI_data_valid : in std_logic;
+            
+            AXI_noc_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
+            AXI_noc_vc_credits : out std_logic_vector(vc_num - 1 downto 0);
+            
+            flit_in : out std_logic_vector(flit_size - 1 downto 0);
+            flit_in_valid : out std_logic;
+            
+            vc_credits : in std_logic_vector(vc_num - 1 downto 0)
+        );
+    
+    end component;
+    
     -- Deklaracija komponente MNA_req_AXI_handshake_controller
     component MNA_req_AXI_handshake_controller
     
@@ -679,61 +734,6 @@ package component_declarations is
         AXI_noc_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
         AXI_noc_vc_credits : out std_logic_vector(vc_num - 1 downto 0)
     );
-    
-    end component;
-    
-    -- Deklaracija komponente noc_injector
-    component noc_injector
-    
-        Generic (
-            vc_num : integer;
-            flit_size : integer;
-            buffer_size : integer;
-            clock_divider : integer
-        );
-        
-        Port (
-            clk : in std_logic;
-            rst : in std_logic; 
-                       
-            flit_out : in std_logic_vector(flit_size - 1 downto 0);
-            empty : in std_logic;
-                    
-            right_shift : out std_logic;
-            
-            AXI_noc_data : out std_logic_vector(flit_size - 1 downto 0);        
-            AXI_noc_data_valid : out std_logic;
-            
-            noc_AXI_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
-            noc_AXI_vc_credits : in std_logic_vector(vc_num - 1 downto 0)
-        );
-    
-    end component;
-    
-    -- Deklaracija komponente noc_receiver
-    component noc_receiver
-    
-        Generic (
-            vc_num : integer;
-            flit_size : integer;
-            clock_divider : integer
-        );
-        
-        Port (
-            clk : in std_logic;
-            rst : in std_logic; 
-            
-            noc_AXI_data : in std_logic_vector(flit_size - 1 downto 0);        
-            noc_AXI_data_valid : in std_logic;
-            
-            AXI_noc_vc_busy : out std_logic_vector(vc_num - 1 downto 0);
-            AXI_noc_vc_credits : out std_logic_vector(vc_num - 1 downto 0);
-            
-            flit_in : out std_logic_vector(flit_size - 1 downto 0);
-            flit_in_valid : out std_logic;
-            
-            vc_credits : in std_logic_vector(vc_num - 1 downto 0)
-        );
     
     end component;
     
