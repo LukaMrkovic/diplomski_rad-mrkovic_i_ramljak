@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-04 - Mrkovic, Ramljak
 -- Additional Comments: Prva verzija MNA_resp_AXI_handshake_controllera
+-- Revision 0.2 - 2021-05-17 - Mrkovic
+-- Additional Comments: Dotjerana verzija MNA_resp_AXI_handshake_controllera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -44,16 +46,19 @@ entity MNA_resp_AXI_handshake_controller is
     Port (
         clk : in std_logic;
         rst : in std_logic; 
-                   
-        BREADY : in std_logic;
+
+        -- AXI WRITE RESPONSE CHANNEL
         BRESP : out std_logic_vector(1 downto 0);
         BVALID : out std_logic;
+        BREADY : in std_logic;
         
-        RREADY : in std_logic;
+        -- AXI READ RESPONSE CHANNEL
         RDATA : out std_logic_vector(31 downto 0);
         RRESP : out std_logic_vector(1 downto 0);
         RVALID : out std_logic;
+        RREADY : in std_logic;
         
+        -- MNA_resp_buffer_controller
         op_write : in std_logic;
         op_read : in std_logic;
         
@@ -110,6 +115,10 @@ begin
                     
                     next_state <= IDLE;
                     
+                else
+                
+                    next_state <= WRITE;
+                    
                 end if;
             
             when READ =>
@@ -119,6 +128,10 @@ begin
                 if RREADY = '1' then
                 
                     next_state <= IDLE;
+                    
+                else
+                
+                    next_state <= READ;
                 
                 end if;
         

@@ -47,27 +47,27 @@ architecture Simulation of SNA_resp_AXI_handshake_controller_tb is
     -- Simulirani signali
     signal clk_sim : std_logic;
     signal rst_sim : std_logic; 
-         
-    signal BREADY_sim : std_logic;
+    
     signal BRESP_sim : std_logic_vector(1 downto 0);
     signal BVALID_sim : std_logic;
-
-    signal RREADY_sim : std_logic;
+    signal BREADY_sim : std_logic;
+    
     signal RDATA_sim : std_logic_vector(31 downto 0);
     signal RRESP_sim : std_logic_vector(1 downto 0);
     signal RVALID_sim : std_logic;
-
-    signal resp_write_sim : std_logic;
-    signal resp_read_sim : std_logic;
-
+    signal RREADY_sim : std_logic;
+    
     signal op_write_sim : std_logic;
     signal op_read_sim : std_logic;
-
-    signal buffer_read_ready_sim : std_logic;
-    signal buffer_write_ready_sim : std_logic;
-
+      
     signal data_sim : std_logic_vector(31 downto 0);
     signal resp_sim : std_logic_vector(1 downto 0);
+    
+    signal buffer_write_ready_sim : std_logic;
+    signal buffer_read_ready_sim : std_logic;
+    
+    signal resp_write_sim : std_logic;
+    signal resp_read_sim : std_logic;
     
     -- Period takta
     constant clk_period : time := 200ns;
@@ -81,26 +81,31 @@ begin
             clk => clk_sim,
             rst => rst_sim,
             
-            BREADY => BREADY_sim,
+            -- AXI WRITE RESPONSE CHANNEL
             BRESP => BRESP_sim,
             BVALID => BVALID_sim,
+            BREADY => BREADY_sim,
             
-            RREADY => RREADY_sim,
+            -- AXI READ RESPONSE CHANNEL
             RDATA => RDATA_sim,
             RRESP => RRESP_sim,
             RVALID => RVALID_sim,
+            RREADY => RREADY_sim,
             
-            resp_write => resp_write_sim,
-            resp_read => resp_read_sim,
-            
+            -- SNA_resp_buffer_controller
             op_write => op_write_sim,
             op_read => op_read_sim,
             
-            buffer_read_ready => buffer_read_ready_sim,
-            buffer_write_ready => buffer_write_ready_sim,
-            
             data => data_sim,
-            resp => resp_sim
+            resp => resp_sim,
+            
+            -- AXI_to_noc_FIFO_buffer
+            buffer_write_ready => buffer_write_ready_sim,
+            buffer_read_ready => buffer_read_ready_sim,
+            
+            -- req_flow (SNA_req_buffer_controller)
+            resp_write => resp_write_sim,
+            resp_read => resp_read_sim
         );
 
     -- clk proces
@@ -120,6 +125,7 @@ begin
     
     begin
     
+        -- > Inicijalne postavke ulaznih signala
         BRESP_sim <= (others => '0');
         BVALID_sim <= '0';
         
@@ -127,11 +133,12 @@ begin
         RRESP_sim <= (others => '0');
         RVALID_sim <= '0';
         
+        buffer_write_ready_sim <= '0';
+        buffer_read_ready_sim <= '0';
+        
         resp_write_sim <= '0';
         resp_read_sim <= '0';
-        
-        buffer_read_ready_sim <= '0';
-        buffer_write_ready_sim <= '0';
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';
@@ -164,7 +171,7 @@ begin
         
         BRESP_sim <= (others => '0');
         BVALID_sim <= '0';
-        -- <
+        -- < WRITE (no PREWRITE)
         
         wait for clk_period;
         
@@ -186,7 +193,7 @@ begin
         RDATA_sim <= (others => '0');
         RRESP_sim <= (others => '0');
         RVALID_sim <= '0';
-        -- <
+        -- < READ (no PREREAD)
         
         wait for (2 * clk_period);
         
@@ -215,11 +222,11 @@ begin
         
         BRESP_sim <= (others => '0');
         BVALID_sim <= '0';
-        -- <
+        -- < WRITE (with PREWRITE)
         
         wait for clk_period;
         
-        -- > READ (no PREREAD)
+        -- > READ (with PREREAD)
         resp_read_sim <= '1';
         
         wait for clk_period;
@@ -241,8 +248,7 @@ begin
         RDATA_sim <= (others => '0');
         RRESP_sim <= (others => '0');
         RVALID_sim <= '0';
-        -- <
-        
+        -- < READ (with PREREAD)
         
         wait;
     

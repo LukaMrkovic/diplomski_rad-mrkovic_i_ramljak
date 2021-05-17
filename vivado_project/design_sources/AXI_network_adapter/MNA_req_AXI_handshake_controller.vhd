@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-04 - Mrkovic, Ramljak
 -- Additional Comments: Prva verzija MNA_req_AXI_handshake_controllera
+-- Revision 0.2 - 2021-05-17 - Mrkovic
+-- Additional Comments: Dotjerana verzija MNA_req_AXI_handshake_controllera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -44,34 +46,37 @@ entity MNA_req_AXI_handshake_controller is
     Port (
         clk : in std_logic;
         rst : in std_logic; 
-                   
+
+        -- AXI WRITE ADDRESS CHANNEL
         AWADDR : in std_logic_vector(31 downto 0);
+        AWPROT : in std_logic_vector(2 downto 0);
         AWVALID : in std_logic;
         AWREADY : out std_logic;
-        
+
+        -- AXI WRITE DATA CHANNEL
         WDATA : in std_logic_vector(31 downto 0);
+        WSTRB : in std_logic_vector(3 downto 0);
         WVALID : in std_logic;
         WREADY : out std_logic;
-        
-        AWPROT : in std_logic_vector(2 downto 0);
-        WSTRB : in std_logic_vector(3 downto 0);
-        
+
+        -- AXI READ ADDRESS CHANNEL
         ARADDR : in std_logic_vector(31 downto 0);
+        ARPROT : in std_logic_vector(2 downto 0);
         ARVALID : in std_logic;
         ARREADY : out std_logic;
-        
-        ARPROT : in std_logic_vector(2 downto 0);
-        
+
+        -- MNA_req_buffer_controller
         op_write : out std_logic;
         op_read : out std_logic;
-        
-        buffer_read_ready : in std_logic;
-        buffer_write_ready : in std_logic;
-        
+
         addr : out std_logic_vector(31 downto 0);
         data : out std_logic_vector(31 downto 0);
         prot : out std_logic_vector(2 downto 0);
-        strb : out std_logic_vector(3 downto 0)
+        strb : out std_logic_vector(3 downto 0);
+        
+        -- AXI_to_noc_FIFO_buffer
+        buffer_write_ready : in std_logic;
+        buffer_read_ready : in std_logic
     );
 
 end MNA_req_AXI_handshake_controller;
@@ -111,16 +116,13 @@ begin
         
             when IDLE =>
             
-                if AWVALID = '1' and
-                   WVALID = '1' and
-                   buffer_write_ready = '1' then
+                if AWVALID = '1' and WVALID = '1' and buffer_write_ready = '1' then
                     
                     data_write_enable <= '1';
                     
                     next_state <= WRITE;
                 
-                elsif ARVALID = '1' and
-                      buffer_read_ready = '1' then
+                elsif ARVALID = '1' and buffer_read_ready = '1' then
                     
                     data_read_enable <= '1';
                     

@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-07 - Mrkovic, Ramljak
 -- Additional Comments: Prva verzija noc_receivera
+-- Revision 0.2 - 2021-05-17 - Mrkovic
+-- Additional Comments: Dotjerana verzija noc_receivera
 -- 
 ----------------------------------------------------------------------------------
 

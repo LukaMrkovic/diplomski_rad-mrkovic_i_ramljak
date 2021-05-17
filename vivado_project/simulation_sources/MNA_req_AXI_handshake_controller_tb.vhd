@@ -49,32 +49,30 @@ architecture Simulation of MNA_req_AXI_handshake_controller_tb is
     signal rst_sim : std_logic;
     
     signal AWADDR_sim : std_logic_vector(31 downto 0);
+    signal AWPROT_sim : std_logic_vector(2 downto 0);
     signal AWVALID_sim : std_logic;
     signal AWREADY_sim : std_logic;
     
     signal WDATA_sim : std_logic_vector(31 downto 0);
+    signal WSTRB_sim : std_logic_vector(3 downto 0);
     signal WVALID_sim : std_logic;
     signal WREADY_sim : std_logic;
     
-    signal AWPROT_sim : std_logic_vector(2 downto 0);
-    signal WSTRB_sim : std_logic_vector(3 downto 0);
-    
     signal ARADDR_sim : std_logic_vector(31 downto 0);
+    signal ARPROT_sim : std_logic_vector(2 downto 0);
     signal ARVALID_sim : std_logic;
     signal ARREADY_sim : std_logic;
     
-    signal ARPROT_sim : std_logic_vector(2 downto 0);
-    
     signal op_write_sim : std_logic;
     signal op_read_sim : std_logic;
-    
-    signal buffer_read_ready_sim : std_logic;
-    signal buffer_write_ready_sim : std_logic;
     
     signal addr_sim : std_logic_vector(31 downto 0);
     signal data_sim : std_logic_vector(31 downto 0);
     signal prot_sim : std_logic_vector(2 downto 0);
     signal strb_sim : std_logic_vector(3 downto 0);
+    
+    signal buffer_write_ready_sim : std_logic;
+    signal buffer_read_ready_sim : std_logic;
     
     -- Period takta
     constant clk_period : time := 200ns;
@@ -87,34 +85,37 @@ begin
         port map(
             clk => clk_sim,
             rst => rst_sim, 
-              
+            
+            -- AXI WRITE ADDRESS CHANNEL
             AWADDR => AWADDR_sim,
+            AWPROT => AWPROT_sim,
             AWVALID => AWVALID_sim,
             AWREADY => AWREADY_sim,
             
+            -- AXI WRITE DATA CHANNEL
             WDATA => WDATA_sim,
+            WSTRB => WSTRB_sim,
             WVALID => WVALID_sim,
             WREADY => WREADY_sim,
             
-            AWPROT => AWPROT_sim,
-            WSTRB => WSTRB_sim,
-            
+            -- AXI READ ADDRESS CHANNEL
             ARADDR => ARADDR_sim,
+            ARPROT => ARPROT_sim,
             ARVALID => ARVALID_sim,
             ARREADY => ARREADY_sim,
             
-            ARPROT => ARPROT_sim,
-            
+            -- MNA_req_buffer_controller
             op_write => op_write_sim,
             op_read => op_read_sim,
-            
-            buffer_read_ready => buffer_read_ready_sim,
-            buffer_write_ready => buffer_write_ready_sim,
             
             addr => addr_sim,
             data => data_sim,
             prot => prot_sim,
-            strb => strb_sim
+            strb => strb_sim,
+            
+            -- AXI_to_noc_FIFO_buffer
+            buffer_write_ready => buffer_write_ready_sim,
+            buffer_read_ready => buffer_read_ready_sim
         );
         
     -- clk proces
@@ -134,28 +135,29 @@ begin
     
     begin
     
+        -- > Inicijalne postavke ulaznih signala
         AWADDR_sim <= (others => '0');
+        AWPROT_sim <= (others => '0');
         AWVALID_sim <= '0';
         
         WDATA_sim <= (others => '0');
+        WSTRB_sim <= (others => '0');
         WVALID_sim <= '0';
         
-        AWPROT_sim <= (others => '0');
-        WSTRB_sim <= (others => '0');
-        
         ARADDR_sim <= (others => '0');
+        ARPROT_sim <= (others => '0');
         ARVALID_sim <= '0';
         
-        ARPROT_sim <= (others => '0');
-        
-        buffer_read_ready_sim <= '0';
         buffer_write_ready_sim <= '0';
+        buffer_read_ready_sim <= '0';
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';
         
         wait for (10 * clk_period);
         
+        -- Reset neaktivan
         rst_sim <= '1';
         
         wait for (2.1 * clk_period);
@@ -165,16 +167,14 @@ begin
         wait for (3 * clk_period);
         
         ARADDR_sim <= X"12345678";
-        ARVALID_sim <= '1';
-        
         ARPROT_sim <= "111";
+        ARVALID_sim <= '1';
         
         wait for (2 * clk_period);
         
         ARADDR_sim <= (others => '0');
-        ARVALID_sim <= '0';
-        
         ARPROT_sim <= (others => '0');
+        ARVALID_sim <= '0';
         
         wait for (5 * clk_period);
         
@@ -183,38 +183,35 @@ begin
         wait for clk_period;
         
         AWADDR_sim <= X"87654321";
+        AWPROT_sim <= "010";
         AWVALID_sim <= '1';
         
         WDATA_sim <= X"12344321";
-        WVALID_sim <= '1';
-        
-        AWPROT_sim <= "010";
         WSTRB_sim <= "0101";
+        WVALID_sim <= '1';
         
         wait for (2 * clk_period);
         
         AWADDR_sim <= (others => '0');
+        AWPROT_sim <= (others => '0');
         AWVALID_sim <= '0';
         
         WDATA_sim <= (others => '0');
+        WSTRB_sim <= (others => '0');
         WVALID_sim <= '0';
         
-        AWPROT_sim <= (others => '0');
-        WSTRB_sim <= (others => '0');
-        
-        buffer_read_ready_sim <= '0';
         buffer_write_ready_sim <= '0';
+        buffer_read_ready_sim <= '0';
         
         wait for (4 * clk_period);
         
         AWADDR_sim <= X"22222222";
+        AWPROT_sim <= "101";
         AWVALID_sim <= '1';
         
         WDATA_sim <= X"44444444";
-        WVALID_sim <= '1';
-        
-        AWPROT_sim <= "101";
         WSTRB_sim <= "1010";
+        WVALID_sim <= '1';
         
         wait for clk_period;
         
@@ -223,25 +220,20 @@ begin
         wait for (2 * clk_period);
         
         AWADDR_sim <= (others => '0');
+        AWPROT_sim <= (others => '0');
         AWVALID_sim <= '0';
         
         WDATA_sim <= (others => '0');
-        WVALID_sim <= '0';
-        
-        AWPROT_sim <= (others => '0');
         WSTRB_sim <= (others => '0');
-        
-        buffer_read_ready_sim <= '0';
-        buffer_write_ready_sim <= '0';
+        WVALID_sim <= '0';
         
         buffer_write_ready_sim <= '0';
         
         wait for (3 * clk_period);
         
         ARADDR_sim <= X"12345678";
-        ARVALID_sim <= '1';
-        
         ARPROT_sim <= "111";
+        ARVALID_sim <= '1';
         
         wait for (4 * clk_period);
         
@@ -250,9 +242,8 @@ begin
         wait for (2 * clk_period);
         
         ARADDR_sim <= (others => '0');
-        ARVALID_sim <= '0';
-        
         ARPROT_sim <= (others => '0');
+        ARVALID_sim <= '0';
         
         buffer_read_ready_sim <= '0';
         

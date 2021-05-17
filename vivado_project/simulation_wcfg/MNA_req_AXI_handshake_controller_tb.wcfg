@@ -14,14 +14,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="4974294fs"></ZoomEndTime>
-      <Cursor1Time time="15000000fs"></Cursor1Time>
+      <ZoomEndTime time="15000001fs"></ZoomEndTime>
+      <Cursor1Time time="2420000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="211"></NameColumnWidth>
-      <ValueColumnWidth column_width="101"></ValueColumnWidth>
+      <ValueColumnWidth column_width="97"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="33" />
+   <WVObjectSize size="34" />
    <wvobject type="divider" fp_name="divider28">
       <obj_property name="label">Kontrolni signali</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -40,13 +40,17 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider29">
-      <obj_property name="label">AXI WRITE</obj_property>
+      <obj_property name="label">AXI WRITE ADDRESS CHANNEL</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
    <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/AWADDR_sim" type="array">
       <obj_property name="ElementShortName">AWADDR_sim[31:0]</obj_property>
       <obj_property name="ObjectShortName">AWADDR_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/AWPROT_sim" type="array">
+      <obj_property name="ElementShortName">AWPROT_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">AWPROT_sim[2:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/AWVALID_sim" type="logic">
       <obj_property name="ElementShortName">AWVALID_sim</obj_property>
@@ -56,9 +60,18 @@
       <obj_property name="ElementShortName">AWREADY_sim</obj_property>
       <obj_property name="ObjectShortName">AWREADY_sim</obj_property>
    </wvobject>
+   <wvobject type="divider" fp_name="divider29">
+      <obj_property name="label">AXI WRITE DATA CHANNEL</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#DCDCDC</obj_property>
+   </wvobject>
    <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/WDATA_sim" type="array">
       <obj_property name="ElementShortName">WDATA_sim[31:0]</obj_property>
       <obj_property name="ObjectShortName">WDATA_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/WSTRB_sim" type="array">
+      <obj_property name="ElementShortName">WSTRB_sim[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WSTRB_sim[3:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/WVALID_sim" type="logic">
       <obj_property name="ElementShortName">WVALID_sim</obj_property>
@@ -68,22 +81,18 @@
       <obj_property name="ElementShortName">WREADY_sim</obj_property>
       <obj_property name="ObjectShortName">WREADY_sim</obj_property>
    </wvobject>
-   <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/AWPROT_sim" type="array">
-      <obj_property name="ElementShortName">AWPROT_sim[2:0]</obj_property>
-      <obj_property name="ObjectShortName">AWPROT_sim[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/WSTRB_sim" type="array">
-      <obj_property name="ElementShortName">WSTRB_sim[3:0]</obj_property>
-      <obj_property name="ObjectShortName">WSTRB_sim[3:0]</obj_property>
-   </wvobject>
    <wvobject type="divider" fp_name="divider30">
-      <obj_property name="label">AXI READ</obj_property>
+      <obj_property name="label">AXI READ ADDRESS CHANNEL</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
    <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/ARADDR_sim" type="array">
       <obj_property name="ElementShortName">ARADDR_sim[31:0]</obj_property>
       <obj_property name="ObjectShortName">ARADDR_sim[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/ARPROT_sim" type="array">
+      <obj_property name="ElementShortName">ARPROT_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ARPROT_sim[2:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/ARVALID_sim" type="logic">
       <obj_property name="ElementShortName">ARVALID_sim</obj_property>
@@ -93,12 +102,8 @@
       <obj_property name="ElementShortName">ARREADY_sim</obj_property>
       <obj_property name="ObjectShortName">ARREADY_sim</obj_property>
    </wvobject>
-   <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/ARPROT_sim" type="array">
-      <obj_property name="ElementShortName">ARPROT_sim[2:0]</obj_property>
-      <obj_property name="ObjectShortName">ARPROT_sim[2:0]</obj_property>
-   </wvobject>
    <wvobject type="divider" fp_name="divider31">
-      <obj_property name="label">buffer_store_controller</obj_property>
+      <obj_property name="label">MNA_req_buffer_controller</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
@@ -127,20 +132,20 @@
       <obj_property name="ObjectShortName">strb_sim[3:0]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider32">
-      <obj_property name="label">buffer signali</obj_property>
+      <obj_property name="label">AXI_to_noc_FIFO_buffer</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
-   </wvobject>
-   <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/buffer_read_ready_sim" type="logic">
-      <obj_property name="ElementShortName">buffer_read_ready_sim</obj_property>
-      <obj_property name="ObjectShortName">buffer_read_ready_sim</obj_property>
    </wvobject>
    <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/buffer_write_ready_sim" type="logic">
       <obj_property name="ElementShortName">buffer_write_ready_sim</obj_property>
       <obj_property name="ObjectShortName">buffer_write_ready_sim</obj_property>
    </wvobject>
+   <wvobject fp_name="/MNA_req_AXI_handshake_controller_tb/buffer_read_ready_sim" type="logic">
+      <obj_property name="ElementShortName">buffer_read_ready_sim</obj_property>
+      <obj_property name="ObjectShortName">buffer_read_ready_sim</obj_property>
+   </wvobject>
    <wvobject type="divider" fp_name="divider33">
-      <obj_property name="label">FSM signali</obj_property>
+      <obj_property name="label">FSM</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
@@ -153,7 +158,7 @@
       <obj_property name="ObjectShortName">next_state</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider34">
-      <obj_property name="label">Unutarnji signali</obj_property>
+      <obj_property name="label">Interni signali</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>

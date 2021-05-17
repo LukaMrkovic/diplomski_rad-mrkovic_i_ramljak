@@ -49,32 +49,30 @@ architecture Simulation of SNA_req_AXI_handshake_controller_tb is
     signal rst_sim : std_logic; 
                    
     signal AWADDR_sim : std_logic_vector(31 downto 0);
+    signal AWPROT_sim : std_logic_vector(2 downto 0);
     signal AWVALID_sim : std_logic;
     signal AWREADY_sim : std_logic;
         
     signal WDATA_sim : std_logic_vector(31 downto 0);
+    signal WSTRB_sim : std_logic_vector(3 downto 0);
     signal WVALID_sim : std_logic;
     signal WREADY_sim : std_logic;
-        
-    signal AWPROT_sim : std_logic_vector(2 downto 0);
-    signal WSTRB_sim : std_logic_vector(3 downto 0);
-        
+    
     signal ARADDR_sim : std_logic_vector(31 downto 0);
+    signal ARPROT_sim : std_logic_vector(2 downto 0);
     signal ARVALID_sim : std_logic;
     signal ARREADY_sim : std_logic;
-        
-    signal ARPROT_sim : std_logic_vector(2 downto 0);
-        
+    
     signal op_write_sim : std_logic;
     signal op_read_sim : std_logic;
-        
-    signal buffer_read_ready_sim : std_logic;
-    signal buffer_write_ready_sim : std_logic;
-        
+    
     signal addr_sim : std_logic_vector(31 downto 0);
     signal data_sim : std_logic_vector(31 downto 0);
     signal prot_sim : std_logic_vector(2 downto 0);
     signal strb_sim : std_logic_vector(3 downto 0);
+    
+    signal buffer_write_ready_sim : std_logic;
+    signal buffer_read_ready_sim : std_logic;
     
     -- Period takta
     constant clk_period : time := 200ns;
@@ -87,34 +85,37 @@ begin
         port map(
             clk => clk_sim,
             rst => rst_sim, 
-              
+            
+            -- AXI WRITE ADDRESS CHANNEL
             AWADDR => AWADDR_sim,
+            AWPROT => AWPROT_sim,
             AWVALID => AWVALID_sim,
             AWREADY => AWREADY_sim,
             
+            -- AXI WRITE DATA CHANNEL
             WDATA => WDATA_sim,
+            WSTRB => WSTRB_sim,
             WVALID => WVALID_sim,
             WREADY => WREADY_sim,
             
-            AWPROT => AWPROT_sim,
-            WSTRB => WSTRB_sim,
-            
+            -- AXI READ ADDRESS CHANNEL
             ARADDR => ARADDR_sim,
+            ARPROT => ARPROT_sim,
             ARVALID => ARVALID_sim,
             ARREADY => ARREADY_sim,
             
-            ARPROT => ARPROT_sim,
-            
+            -- SNA_req_buffer_controller
             op_write => op_write_sim,
             op_read => op_read_sim,
-            
-            buffer_read_ready => buffer_read_ready_sim,
-            buffer_write_ready => buffer_write_ready_sim,
             
             addr => addr_sim,
             data => data_sim,
             prot => prot_sim,
-            strb => strb_sim
+            strb => strb_sim,
+            
+            -- resp_flow (AXI_to_noc_FIFO_buffer)
+            buffer_write_ready => buffer_write_ready_sim,
+            buffer_read_ready => buffer_read_ready_sim
         );
         
     -- clk proces
@@ -134,20 +135,24 @@ begin
     
     begin
     
+        -- > Inicijalne postavke ulaznih signala
         AWREADY_sim <= '0';
+        
         WREADY_sim <= '0';
+        
         ARREADY_sim <= '0';
         
         op_write_sim <= '0';
         op_read_sim <= '0';
         
-        buffer_read_ready_sim <= '0';
-        buffer_write_ready_sim <= '0';
-        
         addr_sim <= (others => '0');
         data_sim <= (others => '0');
         prot_sim <= (others => '0');
         strb_sim <= (others => '0');
+        
+        buffer_write_ready_sim <= '0';
+        buffer_read_ready_sim <= '0';
+        -- < Inicijalne postavke ulaznih signala
     
         -- Reset aktivan
         rst_sim <= '0';
@@ -162,10 +167,11 @@ begin
         buffer_read_ready_sim <= '1';
         buffer_write_ready_sim <= '1';
         
-        wait for (4 * clk_period);
+        wait for (3 * clk_period);
         
         -- > WRITE (no PREWRITE)
         op_write_sim <= '1';
+        
         addr_sim <= X"12345678";
         data_sim <= X"87654321";
         prot_sim <= "010";
@@ -182,24 +188,28 @@ begin
         wait for clk_period;
         
         AWREADY_sim <= '1';
+        
         WREADY_sim <= '1';
         
         wait for clk_period;
         
         AWREADY_sim <= '0';
+        
         WREADY_sim <= '0';
-        -- <
+        -- < WRITE (no PREWRITE)
         
         wait for clk_period;
         
         -- > READ (no PREREAD)
         op_read_sim <= '1';
+        
         addr_sim <= X"12344321";
         prot_sim <= "101";
         
         wait for clk_period;
         
         op_read_sim <= '0';
+        
         addr_sim <= (others => '0');
         prot_sim <= (others => '0');
         
@@ -210,7 +220,7 @@ begin
         wait for clk_period;
         
         ARREADY_sim <= '0';
-        -- <
+        -- < READ (no PREREAD)
         
         wait for (2 * clk_period);
         
@@ -221,6 +231,7 @@ begin
         
         -- > WRITE (with PREWRITE)
         op_write_sim <= '1';
+        
         addr_sim <= X"12344321";
         data_sim <= X"87655678";
         prot_sim <= "111";
@@ -229,6 +240,7 @@ begin
         wait for clk_period;
         
         op_write_sim <= '0';
+        
         addr_sim <= (others => '0');
         data_sim <= (others => '0');
         prot_sim <= (others => '0');
@@ -241,24 +253,28 @@ begin
         wait for (2 * clk_period);
         
         AWREADY_sim <= '1';
+        
         WREADY_sim <= '1';
         
         wait for clk_period;
         
         AWREADY_sim <= '0';
+        
         WREADY_sim <= '0';
-        -- <
+        -- < WRITE (with PREWRITE)
         
         wait for clk_period;
         
         -- > READ (with PREREAD)
         op_read_sim <= '1';
+        
         addr_sim <= X"12345678";
         prot_sim <= "011";
         
         wait for clk_period;
         
         op_read_sim <= '0';
+        
         addr_sim <= (others => '0');
         prot_sim <= (others => '0');
         
@@ -273,7 +289,7 @@ begin
         wait for clk_period;
         
         ARREADY_sim <= '0';
-        -- <
+        -- < READ (with PREREAD)
     
         wait;
     

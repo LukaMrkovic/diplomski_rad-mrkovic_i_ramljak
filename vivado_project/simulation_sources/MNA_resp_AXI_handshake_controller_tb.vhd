@@ -48,14 +48,14 @@ architecture Simulation of MNA_resp_AXI_handshake_controller_tb is
     signal clk_sim : std_logic;
     signal rst_sim : std_logic;
     
-    signal BREADY_sim : std_logic;
     signal BRESP_sim : std_logic_vector(1 downto 0);
     signal BVALID_sim : std_logic;
-            
-    signal RREADY_sim : std_logic;
+    signal BREADY_sim : std_logic;
+    
     signal RDATA_sim : std_logic_vector(31 downto 0);
     signal RRESP_sim : std_logic_vector(1 downto 0);
     signal RVALID_sim : std_logic;
+    signal RREADY_sim : std_logic;
             
     signal op_write_sim : std_logic;
     signal op_read_sim : std_logic;
@@ -74,16 +74,19 @@ begin
         port map(
             clk => clk_sim,
             rst => rst_sim, 
-              
-            BREADY => BREADY_sim,
+            
+            -- AXI WRITE RESPONSE CHANNEL
             BRESP => BRESP_sim,
             BVALID => BVALID_sim,
+            BREADY => BREADY_sim,
             
-            RREADY => RREADY_sim,
+            -- AXI READ RESPONSE CHANNEL
             RDATA => RDATA_sim,
             RRESP => RRESP_sim,
             RVALID => RVALID_sim,
+            RREADY => RREADY_sim,
             
+            -- MNA_resp_buffer_controller
             op_write => op_write_sim,
             op_read => op_read_sim,
             
@@ -108,6 +111,7 @@ begin
     
     begin
     
+        -- > Inicijalne postavke ulaznih signala
         BREADY_sim <= '0';
         
         RREADY_sim <= '0';
@@ -117,12 +121,14 @@ begin
         
         data_sim <= (others => '0');
         resp_sim <= (others => '0');
+        -- < Inicijalne postavke ulaznih signala
     
         -- Reset aktivan
         rst_sim <= '0';
         
         wait for (10 * clk_period);
         
+        -- Reset neaktivan
         rst_sim <= '1';
         
         wait for (2.1 * clk_period);

@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2020-05-10 - Mrkovic, Ramljak
 -- Additional Comments: Prva verzija SNA_resp_AXI_handshake_controllera
+-- Revision 0.2 - 2021-05-17 - Mrkovic
+-- Additional Comments: Dotjerana verzija SNA_resp_AXI_handshake_controllera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -44,27 +46,32 @@ entity SNA_resp_AXI_handshake_controller is
     Port (
         clk : in std_logic;
         rst : in std_logic; 
-                   
-        BREADY : out std_logic;
+        
+        -- AXI WRITE RESPONSE CHANNEL
         BRESP : in std_logic_vector(1 downto 0);
         BVALID : in std_logic;
+        BREADY : out std_logic;
         
-        RREADY : out std_logic;
+        -- AXI READ RESPONSE CHANNEL
         RDATA : in std_logic_vector(31 downto 0);
         RRESP : in std_logic_vector(1 downto 0);
         RVALID : in std_logic;
+        RREADY : out std_logic;
         
-        resp_write : in std_logic;
-        resp_read : in std_logic;
-        
+        -- SNA_resp_buffer_controller
         op_write : out std_logic;
         op_read : out std_logic;
         
-        buffer_read_ready : in std_logic;
-        buffer_write_ready : in std_logic;
-        
         data : out std_logic_vector(31 downto 0);
-        resp : out std_logic_vector(1 downto 0)
+        resp : out std_logic_vector(1 downto 0);
+        
+        -- AXI_to_noc_FIFO_buffer
+        buffer_write_ready : in std_logic;
+        buffer_read_ready : in std_logic;
+        
+        -- req_flow (SNA_req_buffer_controller)
+        resp_write : in std_logic;
+        resp_read : in std_logic
     );
 
 end SNA_resp_AXI_handshake_controller;

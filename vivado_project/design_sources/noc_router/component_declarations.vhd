@@ -527,34 +527,37 @@ package component_declarations is
         Port (
             clk : in std_logic;
             rst : in std_logic; 
-                       
+    
+            -- AXI WRITE ADDRESS CHANNEL
             AWADDR : in std_logic_vector(31 downto 0);
+            AWPROT : in std_logic_vector(2 downto 0);
             AWVALID : in std_logic;
             AWREADY : out std_logic;
-            
+    
+            -- AXI WRITE DATA CHANNEL
             WDATA : in std_logic_vector(31 downto 0);
+            WSTRB : in std_logic_vector(3 downto 0);
             WVALID : in std_logic;
             WREADY : out std_logic;
-            
-            AWPROT : in std_logic_vector(2 downto 0);
-            WSTRB : in std_logic_vector(3 downto 0);
-            
+    
+            -- AXI READ ADDRESS CHANNEL
             ARADDR : in std_logic_vector(31 downto 0);
+            ARPROT : in std_logic_vector(2 downto 0);
             ARVALID : in std_logic;
             ARREADY : out std_logic;
-            
-            ARPROT : in std_logic_vector(2 downto 0);
-            
+    
+            -- MNA_req_buffer_controller
             op_write : out std_logic;
             op_read : out std_logic;
-            
-            buffer_read_ready : in std_logic;
-            buffer_write_ready : in std_logic;
-            
+    
             addr : out std_logic_vector(31 downto 0);
             data : out std_logic_vector(31 downto 0);
             prot : out std_logic_vector(2 downto 0);
-            strb : out std_logic_vector(3 downto 0)
+            strb : out std_logic_vector(3 downto 0);
+            
+            -- AXI_to_noc_FIFO_buffer
+            buffer_write_ready : in std_logic;
+            buffer_read_ready : in std_logic
         );
     
     end component;
@@ -565,16 +568,19 @@ package component_declarations is
         Port (
             clk : in std_logic;
             rst : in std_logic; 
-                       
-            BREADY : in std_logic;
+    
+            -- AXI WRITE RESPONSE CHANNEL
             BRESP : out std_logic_vector(1 downto 0);
             BVALID : out std_logic;
+            BREADY : in std_logic;
             
-            RREADY : in std_logic;
+            -- AXI READ RESPONSE CHANNEL
             RDATA : out std_logic_vector(31 downto 0);
             RRESP : out std_logic_vector(1 downto 0);
             RVALID : out std_logic;
+            RREADY : in std_logic;
             
+            -- MNA_resp_buffer_controller
             op_write : in std_logic;
             op_read : in std_logic;
             
@@ -743,34 +749,37 @@ package component_declarations is
         Port (
             clk : in std_logic;
             rst : in std_logic; 
-                       
+            
+            -- AXI WRITE ADDRESS CHANNEL
             AWADDR : out std_logic_vector(31 downto 0);
+            AWPROT : out std_logic_vector(2 downto 0);
             AWVALID : out std_logic;
             AWREADY : in std_logic;
             
+            -- AXI WRITE DATA CHANNEL
             WDATA : out std_logic_vector(31 downto 0);
+            WSTRB : out std_logic_vector(3 downto 0);
             WVALID : out std_logic;
             WREADY : in std_logic;
             
-            AWPROT : out std_logic_vector(2 downto 0);
-            WSTRB : out std_logic_vector(3 downto 0);
-            
+            -- AXI READ ADDRESS CHANNEL
             ARADDR : out std_logic_vector(31 downto 0);
+            ARPROT : out std_logic_vector(2 downto 0);
             ARVALID : out std_logic;
             ARREADY : in std_logic;
             
-            ARPROT : out std_logic_vector(2 downto 0);
-            
+            -- SNA_req_buffer_controller
             op_write : in std_logic;
             op_read : in std_logic;
-            
-            buffer_read_ready : in std_logic;
-            buffer_write_ready : in std_logic;
             
             addr : in std_logic_vector(31 downto 0);
             data : in std_logic_vector(31 downto 0);
             prot : in std_logic_vector(2 downto 0);
-            strb : in std_logic_vector(3 downto 0)
+            strb : in std_logic_vector(3 downto 0);
+            
+            -- resp_flow (AXI_to_noc_FIFO_buffer)
+            buffer_write_ready : in std_logic;
+            buffer_read_ready : in std_logic
         );
     
     end component;
@@ -781,27 +790,32 @@ package component_declarations is
         Port (
             clk : in std_logic;
             rst : in std_logic; 
-                       
-            BREADY : out std_logic;
+            
+            -- AXI WRITE RESPONSE CHANNEL
             BRESP : in std_logic_vector(1 downto 0);
             BVALID : in std_logic;
+            BREADY : out std_logic;
             
-            RREADY : out std_logic;
+            -- AXI READ RESPONSE CHANNEL
             RDATA : in std_logic_vector(31 downto 0);
             RRESP : in std_logic_vector(1 downto 0);
             RVALID : in std_logic;
+            RREADY : out std_logic;
             
-            resp_write : in std_logic;
-            resp_read : in std_logic;
-            
+            -- SNA_resp_buffer_controller
             op_write : out std_logic;
             op_read : out std_logic;
             
-            buffer_read_ready : in std_logic;
-            buffer_write_ready : in std_logic;
-            
             data : out std_logic_vector(31 downto 0);
-            resp : out std_logic_vector(1 downto 0)
+            resp : out std_logic_vector(1 downto 0);
+            
+            -- AXI_to_noc_FIFO_buffer
+            buffer_write_ready : in std_logic;
+            buffer_read_ready : in std_logic;
+            
+            -- req_flow (SNA_req_buffer_controller)
+            resp_write : in std_logic;
+            resp_read : in std_logic
         );
     
     end component;

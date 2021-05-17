@@ -14,12 +14,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="15720001fs"></ZoomEndTime>
-      <Cursor1Time time="15000000fs"></Cursor1Time>
+      <ZoomEndTime time="14592804fs"></ZoomEndTime>
+      <Cursor1Time time="7000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="197"></NameColumnWidth>
-      <ValueColumnWidth column_width="99"></ValueColumnWidth>
+      <NameColumnWidth column_width="226"></NameColumnWidth>
+      <ValueColumnWidth column_width="109"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="20" />
    <wvobject type="divider" fp_name="divider282">
@@ -40,13 +40,9 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider283">
-      <obj_property name="label">AXI WRITE</obj_property>
+      <obj_property name="label">AXI WRITE RESPONSE CHANNEL</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
-   </wvobject>
-   <wvobject fp_name="/MNA_resp_AXI_handshake_controller_tb/BREADY_sim" type="logic">
-      <obj_property name="ElementShortName">BREADY_sim</obj_property>
-      <obj_property name="ObjectShortName">BREADY_sim</obj_property>
    </wvobject>
    <wvobject fp_name="/MNA_resp_AXI_handshake_controller_tb/BRESP_sim" type="array">
       <obj_property name="ElementShortName">BRESP_sim[1:0]</obj_property>
@@ -56,14 +52,14 @@
       <obj_property name="ElementShortName">BVALID_sim</obj_property>
       <obj_property name="ObjectShortName">BVALID_sim</obj_property>
    </wvobject>
+   <wvobject fp_name="/MNA_resp_AXI_handshake_controller_tb/BREADY_sim" type="logic">
+      <obj_property name="ElementShortName">BREADY_sim</obj_property>
+      <obj_property name="ObjectShortName">BREADY_sim</obj_property>
+   </wvobject>
    <wvobject type="divider" fp_name="divider284">
-      <obj_property name="label">AXI READ</obj_property>
+      <obj_property name="label">AXI READ RESPONSE CHANNEL</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
-   </wvobject>
-   <wvobject fp_name="/MNA_resp_AXI_handshake_controller_tb/RREADY_sim" type="logic">
-      <obj_property name="ElementShortName">RREADY_sim</obj_property>
-      <obj_property name="ObjectShortName">RREADY_sim</obj_property>
    </wvobject>
    <wvobject fp_name="/MNA_resp_AXI_handshake_controller_tb/RDATA_sim" type="array">
       <obj_property name="ElementShortName">RDATA_sim[31:0]</obj_property>
@@ -77,8 +73,12 @@
       <obj_property name="ElementShortName">RVALID_sim</obj_property>
       <obj_property name="ObjectShortName">RVALID_sim</obj_property>
    </wvobject>
+   <wvobject fp_name="/MNA_resp_AXI_handshake_controller_tb/RREADY_sim" type="logic">
+      <obj_property name="ElementShortName">RREADY_sim</obj_property>
+      <obj_property name="ObjectShortName">RREADY_sim</obj_property>
+   </wvobject>
    <wvobject type="divider" fp_name="divider285">
-      <obj_property name="label">buffer_load_controller</obj_property>
+      <obj_property name="label">MNA_resp_buffer_controller</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>

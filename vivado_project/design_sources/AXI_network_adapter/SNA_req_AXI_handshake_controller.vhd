@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-10 - Mrkovic, Ramljak
 -- Additional Comments: Prva verzija SNA_req_AXI_handshake_controllera
+-- Revision 0.2 - 2021-05-17 - Mrkovic
+-- Additional Comments: Dotjerana verzija SNA_req_AXI_handshake_controllera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -44,34 +46,37 @@ entity SNA_req_AXI_handshake_controller is
     Port (
         clk : in std_logic;
         rst : in std_logic; 
-                   
+        
+        -- AXI WRITE ADDRESS CHANNEL
         AWADDR : out std_logic_vector(31 downto 0);
+        AWPROT : out std_logic_vector(2 downto 0);
         AWVALID : out std_logic;
         AWREADY : in std_logic;
         
+        -- AXI WRITE DATA CHANNEL
         WDATA : out std_logic_vector(31 downto 0);
+        WSTRB : out std_logic_vector(3 downto 0);
         WVALID : out std_logic;
         WREADY : in std_logic;
         
-        AWPROT : out std_logic_vector(2 downto 0);
-        WSTRB : out std_logic_vector(3 downto 0);
-        
+        -- AXI READ ADDRESS CHANNEL
         ARADDR : out std_logic_vector(31 downto 0);
+        ARPROT : out std_logic_vector(2 downto 0);
         ARVALID : out std_logic;
         ARREADY : in std_logic;
         
-        ARPROT : out std_logic_vector(2 downto 0);
-        
+        -- SNA_req_buffer_controller
         op_write : in std_logic;
         op_read : in std_logic;
-        
-        buffer_read_ready : in std_logic;
-        buffer_write_ready : in std_logic;
         
         addr : in std_logic_vector(31 downto 0);
         data : in std_logic_vector(31 downto 0);
         prot : in std_logic_vector(2 downto 0);
-        strb : in std_logic_vector(3 downto 0)
+        strb : in std_logic_vector(3 downto 0);
+        
+        -- resp_flow (AXI_to_noc_FIFO_buffer)
+        buffer_write_ready : in std_logic;
+        buffer_read_ready : in std_logic
     );
 
 end SNA_req_AXI_handshake_controller;
@@ -88,13 +93,13 @@ architecture Behavioral of SNA_req_AXI_handshake_controller is
     constant initial_state : state_type := IDLE;
     
     -- UNUTARNJI SIGNALI
-    -- UNUTARNJI WRITE
+    -- UNUTARNJI WRITE SIGNALI
     signal AWADDR_int : std_logic_vector(31 downto 0);
-    signal WDATA_int : std_logic_vector(31 downto 0);
     signal AWPROT_int : std_logic_vector(2 downto 0);
+    signal WDATA_int : std_logic_vector(31 downto 0);
     signal WSTRB_int : std_logic_vector(3 downto 0);
     signal W_output_enable : std_logic_vector(31 downto 0);
-    -- UNUTARNJI READ
+    -- UNUTARNJI READ SIGNALI
     signal ARADDR_int : std_logic_vector(31 downto 0);
     signal ARPROT_int : std_logic_vector(2 downto 0);
     signal R_output_enable : std_logic_vector(31 downto 0);
@@ -212,8 +217,8 @@ begin
     data_process : process (clk) is
     
         variable awaddr_var : std_logic_vector(31 downto 0);
-        variable wdata_var : std_logic_vector(31 downto 0);
         variable awprot_var : std_logic_vector(2 downto 0);
+        variable wdata_var : std_logic_vector(31 downto 0);
         variable wstrb_var : std_logic_vector(3 downto 0);
         variable araddr_var : std_logic_vector(31 downto 0);
         variable arprot_var : std_logic_vector(2 downto 0);
@@ -224,15 +229,15 @@ begin
             if rst = '0' then
             
                 awaddr_var := (others => '0');
-                wdata_var := (others => '0');
                 awprot_var := (others => '0');
+                wdata_var := (others => '0');
                 wstrb_var := (others => '0');
                 araddr_var := (others => '0');
                 arprot_var := (others => '0');
                 
                 AWADDR_int <= (others => '0');
-                WDATA_int <= (others => '0');
                 AWPROT_int <= (others => '0');
+                WDATA_int <= (others => '0');
                 WSTRB_int <= (others => '0');
                 ARADDR_int <= (others => '0');
                 ARPROT_int <= (others => '0');
