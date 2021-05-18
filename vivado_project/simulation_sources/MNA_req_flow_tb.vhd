@@ -50,30 +50,22 @@ architecture Simulation of MNA_req_flow_tb is
     signal clk_sim : std_logic;
     signal int_clk_sim : std_logic;
     signal rst_sim : std_logic;
-    
-    -- AXI WRITE ADDRESS CHANNEL           
+             
     signal AWADDR_sim : std_logic_vector(31 downto 0);
+    signal AWPROT_sim : std_logic_vector(2 downto 0);
     signal AWVALID_sim : std_logic;
     signal AWREADY_sim : std_logic;
     
-    -- AXI WRITE DATA CHANNEL
     signal WDATA_sim : std_logic_vector(31 downto 0);
+    signal WSTRB_sim : std_logic_vector(3 downto 0);
     signal WVALID_sim : std_logic;
     signal WREADY_sim : std_logic;
     
-    -- AXI WRITE AUXILIARY SIGNALS
-    signal AWPROT_sim : std_logic_vector(2 downto 0);
-    signal WSTRB_sim : std_logic_vector(3 downto 0);
-    
-    -- AXI READ ADDRESS CHANNEL
     signal ARADDR_sim : std_logic_vector(31 downto 0);
+    signal ARPROT_sim : std_logic_vector(2 downto 0);
     signal ARVALID_sim : std_logic;
     signal ARREADY_sim : std_logic;
-            
-    -- AXI READ AUXILIARY SIGNALS
-    signal ARPROT_sim : std_logic_vector(2 downto 0);
     
-    -- NOC INTERFACE
     signal AXI_noc_data_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal AXI_noc_data_valid_sim : std_logic;
            
@@ -95,15 +87,15 @@ begin
             address_size => const_address_size,
             payload_size => const_payload_size,
             flit_size => const_flit_size,
-            node_address_size => const_node_address_size,
             buffer_size => const_buffer_size,
-            write_threshold => const_MNA_write_threshold,
-            read_threshold => const_MNA_read_threshold,
+            local_address_x => const_default_address_x,
+            local_address_y => const_default_address_y,
             clock_divider => const_clock_divider,
             
+            write_threshold => const_MNA_write_threshold,
+            read_threshold => const_MNA_read_threshold,
             injection_vc => const_default_injection_vc,
-            local_address_x => const_default_address_x,
-            local_address_y => const_default_address_y
+            node_address_size => const_node_address_size
         )
         
         port map(
@@ -112,27 +104,23 @@ begin
                 
             -- AXI WRITE ADDRESS CHANNEL           
             AWADDR => AWADDR_sim,
+            AWPROT => AWPROT_sim,
             AWVALID => AWVALID_sim,
             AWREADY => AWREADY_sim,
             
             -- AXI WRITE DATA CHANNEL
             WDATA => WDATA_sim,
+            WSTRB => WSTRB_sim,
             WVALID => WVALID_sim,
             WREADY => WREADY_sim,
             
-            -- AXI WRITE AUXILIARY SIGNALS
-            AWPROT => AWPROT_sim,
-            WSTRB => WSTRB_sim,
-            
             -- AXI READ ADDRESS CHANNEL
             ARADDR => ARADDR_sim,
+            ARPROT => ARPROT_sim,
             ARVALID => ARVALID_sim,
             ARREADY => ARREADY_sim,
             
-            -- AXI READ AUXILIARY SIGNALS
-            ARPROT => ARPROT_sim,
-            
-            -- NOC INTERFACE
+            -- NOC INTERFACE - FLIT AXI -> NOC
             AXI_noc_data => AXI_noc_data_sim,
             AXI_noc_data_valid => AXI_noc_data_valid_sim,
                     
@@ -188,23 +176,22 @@ begin
     
     begin
     
-        -- inicijalizacija ulaza
+        -- > Inicijalne postavke ulaznih signala
         AWADDR_sim <= (others => '0');
+        AWPROT_sim <= (others => '0');
         AWVALID_sim <= '0';
         
         WDATA_sim <= (others => '0');
+        WSTRB_sim <= (others => '0');
         WVALID_sim <= '0';
         
-        AWPROT_sim <= (others => '0');
-        WSTRB_sim <= (others => '0');
-        
         ARADDR_sim <= (others => '0');
-        ARVALID_sim <= '0';
-        
         ARPROT_sim <= (others => '0');
+        ARVALID_sim <= '0';
         
         noc_AXI_vc_busy_sim <= (others => '0');
         noc_AXI_vc_credits_sim <= (others => '0');
+        -- < Inicijalne postavke ulaznih signala
     
         -- Reset aktivan
         rst_sim <= '0';
@@ -218,24 +205,22 @@ begin
         
         -- > WRITE
         AWADDR_sim <= X"87654321";
+        AWPROT_sim <= "101";
         AWVALID_sim <= '1';
         
         WDATA_sim <= X"12344321";
-        WVALID_sim <= '1';
-        
-        AWPROT_sim <= "101";
         WSTRB_sim <= "1111";
+        WVALID_sim <= '1';
         
         wait for (2 * clk_period);
         
         AWADDR_sim <= (others => '0');
+        AWPROT_sim <= (others => '0');
         AWVALID_sim <= '0';
         
         WDATA_sim <= (others => '0');
-        WVALID_sim <= '0';
-        
-        AWPROT_sim <= (others => '0');
         WSTRB_sim <= (others => '0');
+        WVALID_sim <= '0';
         
         wait for (5 * clk_period);
         
@@ -267,20 +252,18 @@ begin
         noc_AXI_vc_credits_sim <= (others => '0');
         
         wait for (5 * clk_period);
-        -- <
+        -- < WRITE
         
         -- > READ
         ARADDR_sim <= X"E1234567";
-        ARVALID_sim <= '1';
-        
         ARPROT_sim <= "010";
+        ARVALID_sim <= '1';
         
         wait for (2 * clk_period);
         
         ARADDR_sim <= (others => '0');
-        ARVALID_sim <= '0';
-        
         ARPROT_sim <= (others => '0');
+        ARVALID_sim <= '0';
         
         wait for (5 * clk_period);
         
@@ -305,7 +288,7 @@ begin
         wait for clk_period;
         
         noc_AXI_vc_credits_sim <= (others => '0');
-        -- <
+        -- < READ
         
         wait;
     

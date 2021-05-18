@@ -50,49 +50,41 @@ architecture Simulation of SNA_req_flow_tb is
     signal clk_sim : std_logic;
     signal int_clk_sim : std_logic;
     signal rst_sim : std_logic;
-
-    -- AXI WRITE ADDRESS CHANNEL 
+    
     signal AWADDR_sim : std_logic_vector(31 downto 0);
+    signal AWPROT_sim : std_logic_vector(2 downto 0);
     signal AWVALID_sim : std_logic;
     signal AWREADY_sim : std_logic;
-
-    -- AXI WRITE DATA CHANNEL
+    
     signal WDATA_sim : std_logic_vector(31 downto 0);
+    signal WSTRB_sim : std_logic_vector(3 downto 0);
     signal WVALID_sim : std_logic;
     signal WREADY_sim : std_logic;
-
-    -- AXI WRITE AUXILIARY SIGNALS
-    signal AWPROT_sim : std_logic_vector(2 downto 0);
-    signal WSTRB_sim : std_logic_vector(3 downto 0);
-
+    
     -- AXI READ ADDRESS CHANNEL
     signal ARADDR_sim : std_logic_vector(31 downto 0);
+    signal ARPROT_sim : std_logic_vector(2 downto 0);
     signal ARVALID_sim : std_logic;
     signal ARREADY_sim : std_logic;
-
-    -- AXI READ AUXILIARY SIGNALS
-    signal ARPROT_sim : std_logic_vector(2 downto 0);
-
-    -- NOC INTERFACE
+    
     signal noc_AXI_data_sim : std_logic_vector(const_flit_size - 1 downto 0);        
     signal noc_AXI_data_valid_sim : std_logic;
 
     signal AXI_noc_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
     signal AXI_noc_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
-
-    -- RESP FLOW INTERFACE
-    signal SNA_ready_sim : std_logic;
-    signal t_begun_sim : std_logic;
-
+    
     signal resp_write_sim : std_logic;
     signal resp_read_sim : std_logic;
-
+    
     signal r_addr_sim : std_logic_vector(const_address_size - 1 downto 0);
     signal r_vc_sim : std_logic_vector(const_vc_num - 1 downto 0);
-
-    signal buffer_read_ready_sim : std_logic;
+    
     signal buffer_write_ready_sim : std_logic;
-
+    signal buffer_read_ready_sim : std_logic;
+    
+    signal SNA_ready_sim : std_logic;
+    signal t_begun_sim : std_logic;
+    
     -- Period takta
     constant clk_period : time := 200ns;
 
@@ -116,45 +108,44 @@ begin
             
             -- AXI WRITE ADDRESS CHANNEL 
             AWADDR => AWADDR_sim,
+            AWPROT => AWPROT_sim,
             AWVALID => AWVALID_sim,
             AWREADY => AWREADY_sim,
-    
+            
             -- AXI WRITE DATA CHANNEL
             WDATA => WDATA_sim,
+            WSTRB => WSTRB_sim,
             WVALID => WVALID_sim,
             WREADY => WREADY_sim,
             
-            -- AXI WRITE AUXILIARY SIGNALS
-            AWPROT => AWPROT_sim,
-            WSTRB => WSTRB_sim,
-    
             -- AXI READ ADDRESS CHANNEL
             ARADDR => ARADDR_sim,
+            ARPROT => ARPROT_sim,
             ARVALID => ARVALID_sim,
             ARREADY => ARREADY_sim,
-    
-            -- AXI READ AUXILIARY SIGNALS
-            ARPROT => ARPROT_sim,
-    
-            -- NOC INTERFACE
+            
+            -- NOC INTERFACE - FLIT AXI <- NOC
             noc_AXI_data => noc_AXI_data_sim,
             noc_AXI_data_valid => noc_AXI_data_valid_sim,
             
             AXI_noc_vc_busy => AXI_noc_vc_busy_sim,
             AXI_noc_vc_credits => AXI_noc_vc_credits_sim,
             
-            -- RESP FLOW INTERFACE
-            SNA_ready => SNA_ready_sim,
-            t_begun => t_begun_sim,
-            
+            -- resp_flow (SNA_resp_AXI_handshake_controller)
             resp_write => resp_write_sim,
             resp_read => resp_read_sim,
             
+            -- resp_flow (SNA_resp_buffer_controller)
             r_addr => r_addr_sim,
             r_vc => r_vc_sim,
             
+            -- resp_flow (AXI_to_noc_FIFO_buffer)
+            buffer_write_ready => buffer_write_ready_sim,
             buffer_read_ready => buffer_read_ready_sim,
-            buffer_write_ready => buffer_write_ready_sim
+            
+            -- t_monitor
+            SNA_ready => SNA_ready_sim,
+            t_begun => t_begun_sim
         );
 
     -- clk proces
@@ -205,17 +196,21 @@ begin
     
     begin
     
+        -- > Inicijalne postavke ulaznih signala
         AWREADY_sim <= '0';
+        
         WREADY_sim <= '0';
+        
         ARREADY_sim <= '0';
         
         noc_AXI_data_sim <= (others => '0');
         noc_AXI_data_valid_sim <= '0';
         
-        SNA_ready_sim <= '0';
-        
-        buffer_read_ready_sim <= '0';
         buffer_write_ready_sim <= '0';
+        buffer_read_ready_sim <= '0';
+        
+        SNA_ready_sim <= '0';
+        -- < Inicijalne postavke ulaznih signala
     
         -- Reset aktivan
         rst_sim <= '0';
@@ -265,11 +260,13 @@ begin
         wait for (5 * clk_period);
         
         AWREADY_sim <= '1';
+        
         WREADY_sim <= '1';
         
         wait for clk_period;
         
         AWREADY_sim <= '0';
+        
         WREADY_sim <= '0';
         
         wait for (5 * clk_period);

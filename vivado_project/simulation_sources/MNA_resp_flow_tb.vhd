@@ -50,19 +50,16 @@ architecture Simulation of MNA_resp_flow_tb is
     signal clk_sim : std_logic;
     signal int_clk_sim : std_logic;
     signal rst_sim : std_logic;
-        
-    -- AXI WRITE RESPONSE CHANNEL   
-    signal BREADY_sim : std_logic;
+    
     signal BRESP_sim : std_logic_vector(1 downto 0);
     signal BVALID_sim : std_logic;
-        
-    -- AXI READ RESPONSE CHANNEL
-    signal RREADY_sim : std_logic;
+    signal BREADY_sim : std_logic;
+    
     signal RDATA_sim : std_logic_vector(31 downto 0);
     signal RRESP_sim : std_logic_vector(1 downto 0);
     signal RVALID_sim : std_logic;
+    signal RREADY_sim : std_logic;
     
-    -- NOC INTERFACE
     signal noc_AXI_data_sim : std_logic_vector(const_flit_size - 1 downto 0);        
     signal noc_AXI_data_valid_sim : std_logic;
         
@@ -87,22 +84,22 @@ begin
         port map(
             clk => clk_sim,
             rst => rst_sim,
-                
-            -- AXI WRITE ADDRESS CHANNEL           
-            BREADY => BREADY_sim,
+            
+            -- AXI WRITE ADDRESS CHANNEL
             BRESP => BRESP_sim,
             BVALID => BVALID_sim,
+            BREADY => BREADY_sim,
             
             -- AXI WRITE DATA CHANNEL
-            RREADY => RREADY_sim,
             RDATA => RDATA_sim,
             RRESP => RRESP_sim,
             RVALID => RVALID_sim,
+            RREADY => RREADY_sim,
             
-            -- NOC INTERFACE
+            -- NOC INTERFACE - FLIT AXI <- NOC
             noc_AXI_data => noc_AXI_data_sim,   
             noc_AXI_data_valid => noc_AXI_data_valid_sim,
-        
+            
             AXI_noc_vc_busy => AXI_noc_vc_busy_sim,
             AXI_noc_vc_credits => AXI_noc_vc_credits_sim
         );
@@ -155,12 +152,14 @@ begin
     
     begin
     
-        -- inicijalizacija ulaza
+        -- > Inicijalne postavke ulaznih signala
         BREADY_sim <= '0';
+        
         RREADY_sim <= '0';
         
         noc_AXI_data_sim <= (others => '0');
         noc_AXI_data_valid_sim <= '0';
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';

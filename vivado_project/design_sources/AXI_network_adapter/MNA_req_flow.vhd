@@ -16,7 +16,9 @@
 -- Revision 0.01 - File Created
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-06 - Mrkovic, Ramljak
--- Additional Comments: Prva verzija MNA_req_flow-a - sadrzi MNA_req_AXI_handshake_controller, MNA_req_buffer_controller i AXI_to_noc_FIFO_buffer
+-- Additional Comments: Prva verzija MNA_req_flowa - sadrzi MNA_req_AXI_handshake_controller, MNA_req_buffer_controller i AXI_to_noc_FIFO_buffer
+-- Revision 0.2 - 2021-05-18 - Mrkovic
+-- Additional Comments: Dotjerana verzija MNA_req_flowa
 -- 
 ----------------------------------------------------------------------------------
 
@@ -49,15 +51,15 @@ entity MNA_req_flow is
         address_size : integer := const_address_size;
         payload_size : integer := const_payload_size;
         flit_size : integer := const_flit_size;
-        node_address_size : integer := const_node_address_size;
         buffer_size : integer := const_buffer_size;
-        write_threshold : integer := const_MNA_write_threshold;
-        read_threshold : integer := const_MNA_read_threshold;
+        local_address_x : std_logic_vector(const_mesh_size_x - 1 downto 0) := const_default_address_x;
+        local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0) := const_default_address_y;
         clock_divider : integer := const_clock_divider;
         
+        write_threshold : integer := const_MNA_write_threshold;
+        read_threshold : integer := const_MNA_read_threshold;
         injection_vc : integer := const_default_injection_vc;
-        local_address_x : std_logic_vector(const_mesh_size_x - 1 downto 0) := const_default_address_x;
-        local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0) := const_default_address_y
+        node_address_size : integer := const_node_address_size
     );
     
     Port (
@@ -66,27 +68,23 @@ entity MNA_req_flow is
             
         -- AXI WRITE ADDRESS CHANNEL           
         AWADDR : in std_logic_vector(31 downto 0);
+        AWPROT : in std_logic_vector(2 downto 0);
         AWVALID : in std_logic;
         AWREADY : out std_logic;
         
         -- AXI WRITE DATA CHANNEL
         WDATA : in std_logic_vector(31 downto 0);
+        WSTRB : in std_logic_vector(3 downto 0);
         WVALID : in std_logic;
         WREADY : out std_logic;
         
-        -- AXI WRITE AUXILIARY SIGNALS
-        AWPROT : in std_logic_vector(2 downto 0);
-        WSTRB : in std_logic_vector(3 downto 0);
-        
         -- AXI READ ADDRESS CHANNEL
         ARADDR : in std_logic_vector(31 downto 0);
+        ARPROT : in std_logic_vector(2 downto 0);
         ARVALID : in std_logic;
         ARREADY : out std_logic;
         
-        -- AXI READ AUXILIARY SIGNALS
-        ARPROT : in std_logic_vector(2 downto 0);
-        
-        -- NOC INTERFACE
+        -- NOC INTERFACE - FLIT AXI -> NOC
         AXI_noc_data : out std_logic_vector(flit_size - 1 downto 0);
         AXI_noc_data_valid : out std_logic;
                 
@@ -109,15 +107,15 @@ architecture Behavioral of MNA_req_flow is
     signal prot : std_logic_vector(2 downto 0);
     signal strb : std_logic_vector(3 downto 0);
     
-    -- HANDSHAKE CONTROLLER - BUFFER
-    signal buffer_read_ready : std_logic;
+    -- HANDSHAKE CONTROLLER - FIFO BUFFER
     signal buffer_write_ready : std_logic;
+    signal buffer_read_ready : std_logic;
     
-    -- BUFFER CONTROLLER - BUFFER
+    -- BUFFER CONTROLLER - FIFO BUFFER
     signal flit_in : std_logic_vector(flit_size - 1 downto 0);
     signal flit_in_valid : std_logic;
     
-    -- BUFFER - NOC_INJECTOR
+    -- FIFO BUFFER - NOC_INJECTOR
     signal flit_out : std_logic_vector(flit_size - 1 downto 0);
     signal empty : std_logic;
                 
@@ -131,34 +129,37 @@ begin
         port map(
             clk => clk,
             rst => rst, 
-              
+            
+            -- AXI WRITE ADDRESS CHANNEL
             AWADDR => AWADDR,
+            AWPROT => AWPROT,
             AWVALID => AWVALID,
             AWREADY => AWREADY,
             
+            -- AXI WRITE DATA CHANNEL
             WDATA => WDATA,
+            WSTRB => WSTRB,
             WVALID => WVALID,
             WREADY => WREADY,
             
-            AWPROT => AWPROT,
-            WSTRB => WSTRB,
-            
+            -- AXI READ ADDRESS CHANNEL
             ARADDR => ARADDR,
+            ARPROT => ARPROT,
             ARVALID => ARVALID,
             ARREADY => ARREADY,
             
-            ARPROT => ARPROT,
-            
+            -- MNA_req_buffer_controller
             op_write => op_write,
             op_read => op_read,
-            
-            buffer_read_ready => buffer_read_ready,
-            buffer_write_ready => buffer_write_ready,
             
             addr => addr,
             data => data,
             prot => prot,
-            strb => strb
+            strb => strb,
+            
+            -- AXI_to_noc_FIFO_buffer
+            buffer_read_ready => buffer_read_ready,
+            buffer_write_ready => buffer_write_ready
         );
 
     -- MNA_req_buffer_controller KOMPONENTA
@@ -171,26 +172,29 @@ begin
             address_size => address_size,
             payload_size => payload_size,
             flit_size => flit_size,
-            node_address_size => node_address_size,
-            injection_vc => injection_vc,
             local_address_x => local_address_x,
-            local_address_y => local_address_y
+            local_address_y => local_address_y,
+            
+            injection_vc => injection_vc,
+            node_address_size => node_address_size
         )
         
         port map(
             clk => clk,
             rst => rst, 
-           
-            flit_in => flit_in,
-            flit_in_valid => flit_in_valid,
             
+            -- MNA_req_AXI_handshake_controller
             op_write => op_write,
             op_read => op_read,
             
             addr => addr,
             data => data,
             prot => prot,
-            strb => strb
+            strb => strb,
+            
+            -- AXI_to_noc_FIFO_buffer
+            flit_in => flit_in,
+            flit_in_valid => flit_in_valid
         );
 
     -- AXI_to_noc_FIFO_buffer KOMPONENTA
@@ -206,7 +210,7 @@ begin
         port map(
             clk => clk,
             rst => rst, 
-           
+            
             flit_in => flit_in,
             flit_in_valid => flit_in_valid,
             
@@ -232,10 +236,10 @@ begin
         port map(
             clk => clk,
             rst => rst,
-                       
+            
             flit_out => flit_out,
             empty => empty,
-                    
+            
             right_shift => right_shift,
             
             AXI_noc_data => AXI_noc_data,

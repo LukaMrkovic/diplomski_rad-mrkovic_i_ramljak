@@ -16,7 +16,9 @@
 -- Revision 0.01 - File Created
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-06 - Mrkovic, Ramljak
--- Additional Comments: Prva verzija MNA_resp_flow-a - sadrzi MNA_resp_AXI_handshake_controller, MNA_resp_buffer_controller i noc_to_AXI_FIFO_buffer
+-- Additional Comments: Prva verzija MNA_resp_flowa - sadrzi MNA_resp_AXI_handshake_controller, MNA_resp_buffer_controller i noc_to_AXI_FIFO_buffer
+-- Revision 0.2 - 2021-05-18 - Mrkovic
+-- Additional Comments: Dotjerana verzija MNA_resp_flowa
 -- 
 ----------------------------------------------------------------------------------
 
@@ -53,18 +55,18 @@ entity MNA_resp_flow is
         clk : in std_logic;
         rst : in std_logic; 
         
-        -- AXI WRITE RESPONSE CHANNEL   
-        BREADY : in std_logic;
+        -- AXI WRITE RESPONSE CHANNEL
         BRESP : out std_logic_vector(1 downto 0);
         BVALID : out std_logic;
+        BREADY : in std_logic;
         
         -- AXI READ RESPONSE CHANNEL
-        RREADY : in std_logic;
         RDATA : out std_logic_vector(31 downto 0);
         RRESP : out std_logic_vector(1 downto 0);
         RVALID : out std_logic;
+        RREADY : in std_logic;
         
-        -- NOC INTERFACE
+        -- NOC INTERFACE - FLIT AXI <- NOC
         noc_AXI_data : in std_logic_vector(flit_size - 1 downto 0);        
         noc_AXI_data_valid : in std_logic;
         
@@ -85,7 +87,7 @@ architecture Behavioral of MNA_resp_flow is
     signal data : std_logic_vector(31 downto 0);
     signal resp : std_logic_vector(1 downto 0);
     
-    -- BUFFER CONTROLLER - BUFFER
+    -- BUFFER CONTROLLER - FIFO BUFFER
     signal flit_out : std_logic_vector(flit_size - 1 downto 0);
     signal has_tail : std_logic;
                 
@@ -94,7 +96,7 @@ architecture Behavioral of MNA_resp_flow is
     -- BUFFER CONTROLLER - NOC RECEIVER
     signal vc_credits : std_logic_vector(vc_num - 1 downto 0);
     
-    -- BUFFER - NOC RECEIVER
+    -- FIFO BUFFER - NOC RECEIVER
     signal flit_in : std_logic_vector(flit_size - 1 downto 0);
     signal flit_in_valid : std_logic;
         
@@ -108,16 +110,19 @@ begin
         port map (
             clk => clk,
             rst => rst, 
-              
-            BREADY => BREADY,
+            
+            -- AXI WRITE RESPONSE CHANNEL
             BRESP => BRESP,
             BVALID => BVALID,
+            BREADY => BREADY,
             
-            RREADY => RREADY,
+            -- AXI READ RESPONSE CHANNEL
             RDATA => RDATA,
             RRESP => RRESP,
             RVALID => RVALID,
+            RREADY => RREADY,
             
+            -- MNA_resp_buffer_controller
             op_write => op_write,
             op_read => op_read,
             
@@ -130,25 +135,29 @@ begin
     buffer_controller : MNA_resp_buffer_controller 
     
         generic map(
-            flit_size => flit_size,
-            vc_num => vc_num
+            vc_num => vc_num,
+            flit_size => flit_size
         )
         
         port map(
             clk => clk,
             rst => rst, 
-           
-            flit_out => flit_out,
-            has_tail => has_tail,
             
-            right_shift => right_shift,
-            vc_credits => vc_credits,
-            
+            -- MNA_resp_AXI_handshake_controller
             op_write => op_write,
             op_read => op_read,
             
             data => data,
-            resp => resp
+            resp => resp,
+            
+            -- noc_to_AXI_FIFO_buffer
+            flit_out => flit_out,
+            has_tail => has_tail,
+            
+            right_shift => right_shift,
+            
+            -- noc_receiver
+            vc_credits => vc_credits
         );
 
     -- noc_to_AXI_FIFO_buffer KOMPONENTA
@@ -162,7 +171,7 @@ begin
         port map(
             clk => clk,
             rst => rst, 
-           
+            
             flit_in => flit_in,
             flit_in_valid => flit_in_valid,
             

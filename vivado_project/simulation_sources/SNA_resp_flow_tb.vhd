@@ -51,35 +51,31 @@ architecture Simulation of SNA_resp_flow_tb is
     signal int_clk_sim : std_logic;
     signal rst_sim : std_logic;
     
-    -- AXI WRITE RESPONSE
-    signal BREADY_sim : std_logic;
     signal BRESP_sim : std_logic_vector(1 downto 0);
     signal BVALID_sim : std_logic;
-        
-    -- AXI READ RESPONSE
-    signal RREADY_sim : std_logic;
+    signal BREADY_sim : std_logic;
+    
     signal RDATA_sim : std_logic_vector(31 downto 0);
     signal RRESP_sim : std_logic_vector(1 downto 0);
     signal RVALID_sim : std_logic;
-            
-    --SNA REQ FLOW
-    signal resp_write_sim : std_logic;
-    signal resp_read_sim : std_logic;
-    signal r_addr_sim : std_logic_vector(const_address_size - 1 downto 0);
-    signal r_vc_sim : std_logic_vector(const_vc_num - 1 downto 0);
-            
-    signal buffer_read_ready_sim : std_logic;
-    signal buffer_write_ready_sim : std_logic;
-            
-    -- T_MONITOR
-    signal t_end_sim : std_logic;
-            
-    -- NOC INTERFACE
+    signal RREADY_sim : std_logic;
+    
     signal AXI_noc_data_sim : std_logic_vector(const_flit_size - 1 downto 0);        
     signal AXI_noc_data_valid_sim : std_logic;
-            
+    
     signal noc_AXI_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
     signal noc_AXI_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    
+    signal buffer_write_ready_sim : std_logic;
+    signal buffer_read_ready_sim : std_logic;
+    
+    signal resp_write_sim : std_logic;
+    signal resp_read_sim : std_logic;
+    
+    signal r_addr_sim : std_logic_vector(const_address_size - 1 downto 0);
+    signal r_vc_sim : std_logic_vector(const_vc_num - 1 downto 0);
+    
+    signal t_end_sim : std_logic;
     
     -- Period takta
     constant clk_period : time := 200ns;
@@ -91,46 +87,50 @@ begin
     
         generic map(
             vc_num => const_vc_num,
-            flit_size => const_flit_size,
             address_size => const_address_size,
+            flit_size => const_flit_size,
             buffer_size => const_buffer_size,
+            clock_divider => const_clock_divider,
+            
             write_threshold => const_SNA_write_threshold,
-            read_threshold => const_SNA_read_threshold,
-            clock_divider => const_clock_divider
+            read_threshold => const_SNA_read_threshold
         )
         
         port map(
             clk => clk_sim,
             rst => rst_sim,
-                
+            
             -- AXI WRITE ADDRESS CHANNEL           
-            BREADY => BREADY_sim,
             BRESP => BRESP_sim,
             BVALID => BVALID_sim,
+            BREADY => BREADY_sim,
             
             -- AXI READ ADDRESS CHANNEL
-            RREADY => RREADY_sim,
             RDATA => RDATA_sim,
             RRESP => RRESP_sim,
             RVALID => RVALID_sim,
+            RREADY => RREADY_sim,
             
-            -- AXI READ AUXILIARY SIGNALS
-            resp_write => resp_write_sim,
-            resp_read => resp_read_sim,
-            r_addr => r_addr_sim,
-            r_vc => r_vc_sim,
-            
-            buffer_read_ready => buffer_read_ready_sim,
-            buffer_write_ready => buffer_write_ready_sim,
-            
-            t_end => t_end_sim,
-            
-            -- NOC INTERFACE
+            -- NOC INTERFACE - FLIT AXI -> NOC
             AXI_noc_data => AXI_noc_data_sim,
             AXI_noc_data_valid => AXI_noc_data_valid_sim,
                     
             noc_AXI_vc_busy => noc_AXI_vc_busy_sim,
-            noc_AXI_vc_credits => noc_AXI_vc_credits_sim
+            noc_AXI_vc_credits => noc_AXI_vc_credits_sim,
+            
+            -- req_flow (SNA_req_AXI_handshake_controller)
+            buffer_write_ready => buffer_write_ready_sim,
+            buffer_read_ready => buffer_read_ready_sim,
+            
+            -- req_flow (SNA_req_buffer_controller)
+            resp_write => resp_write_sim,
+            resp_read => resp_read_sim,
+            
+            r_addr => r_addr_sim,
+            r_vc => r_vc_sim,
+            
+            -- t_monitor
+            t_end => t_end_sim
         );
         
     -- clk proces
@@ -181,6 +181,7 @@ begin
     
     begin
     
+        -- > Inicijalne postavke ulaznih signala
         BRESP_sim <= (others => '0');
         BVALID_sim <= '0';
         
@@ -188,13 +189,15 @@ begin
         RRESP_sim <= (others => '0');
         RVALID_sim <= '0';
         
-        resp_write_sim <= '0';
-        resp_read_sim <= '0';
-        r_addr_sim <= (others => '0');
-        r_vc_sim <= (others => '0');
-        
         noc_AXI_vc_busy_sim <= (others => '0');
         noc_AXI_vc_credits_sim <= (others => '0');
+        
+        resp_write_sim <= '0';
+        resp_read_sim <= '0';
+        
+        r_addr_sim <= (others => '0');
+        r_vc_sim <= (others => '0');
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';
@@ -207,6 +210,7 @@ begin
         wait for (4.1 * clk_period);
         
         resp_read_sim <= '1';
+        
         r_addr_sim <= X"24";
         r_vc_sim <= "10";
         
@@ -251,6 +255,7 @@ begin
         wait for (5 * clk_period);
         
         resp_write_sim <= '1';
+        
         r_addr_sim <= X"18";
         r_vc_sim <= "01";
         

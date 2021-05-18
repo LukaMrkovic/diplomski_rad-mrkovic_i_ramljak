@@ -14,14 +14,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="6642576fs"></ZoomEndTime>
-      <Cursor1Time time="15fs"></Cursor1Time>
+      <ZoomEndTime time="15000001fs"></ZoomEndTime>
+      <Cursor1Time time="1002fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="252"></NameColumnWidth>
-      <ValueColumnWidth column_width="102"></ValueColumnWidth>
+      <ValueColumnWidth column_width="94"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="51" />
+   <WVObjectSize size="49" />
    <wvobject type="divider" fp_name="divider148">
       <obj_property name="label">Kontrolni signali</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -54,6 +54,10 @@
       <obj_property name="ElementShortName">AWADDR_sim[31:0]</obj_property>
       <obj_property name="ObjectShortName">AWADDR_sim[31:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/MNA_req_flow_tb/AWPROT_sim" type="array">
+      <obj_property name="ElementShortName">AWPROT_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">AWPROT_sim[2:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/MNA_req_flow_tb/AWVALID_sim" type="logic">
       <obj_property name="ElementShortName">AWVALID_sim</obj_property>
       <obj_property name="ObjectShortName">AWVALID_sim</obj_property>
@@ -71,6 +75,10 @@
       <obj_property name="ElementShortName">WDATA_sim[31:0]</obj_property>
       <obj_property name="ObjectShortName">WDATA_sim[31:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/MNA_req_flow_tb/WSTRB_sim" type="array">
+      <obj_property name="ElementShortName">WSTRB_sim[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WSTRB_sim[3:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/MNA_req_flow_tb/WVALID_sim" type="logic">
       <obj_property name="ElementShortName">WVALID_sim</obj_property>
       <obj_property name="ObjectShortName">WVALID_sim</obj_property>
@@ -78,19 +86,6 @@
    <wvobject fp_name="/MNA_req_flow_tb/WREADY_sim" type="logic">
       <obj_property name="ElementShortName">WREADY_sim</obj_property>
       <obj_property name="ObjectShortName">WREADY_sim</obj_property>
-   </wvobject>
-   <wvobject type="divider" fp_name="divider152">
-      <obj_property name="label">AXI WRITE AUXILIARY</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="BkColor">#DCDCDC</obj_property>
-   </wvobject>
-   <wvobject fp_name="/MNA_req_flow_tb/AWPROT_sim" type="array">
-      <obj_property name="ElementShortName">AWPROT_sim[2:0]</obj_property>
-      <obj_property name="ObjectShortName">AWPROT_sim[2:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/MNA_req_flow_tb/WSTRB_sim" type="array">
-      <obj_property name="ElementShortName">WSTRB_sim[3:0]</obj_property>
-      <obj_property name="ObjectShortName">WSTRB_sim[3:0]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider150">
       <obj_property name="label">AXI READ ADDRESS CHANNEL</obj_property>
@@ -101,6 +96,10 @@
       <obj_property name="ElementShortName">ARADDR_sim[31:0]</obj_property>
       <obj_property name="ObjectShortName">ARADDR_sim[31:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/MNA_req_flow_tb/ARPROT_sim" type="array">
+      <obj_property name="ElementShortName">ARPROT_sim[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ARPROT_sim[2:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/MNA_req_flow_tb/ARVALID_sim" type="logic">
       <obj_property name="ElementShortName">ARVALID_sim</obj_property>
       <obj_property name="ObjectShortName">ARVALID_sim</obj_property>
@@ -109,17 +108,8 @@
       <obj_property name="ElementShortName">ARREADY_sim</obj_property>
       <obj_property name="ObjectShortName">ARREADY_sim</obj_property>
    </wvobject>
-   <wvobject type="divider" fp_name="divider153">
-      <obj_property name="label">AXI READ AUXILIARY</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="BkColor">#DCDCDC</obj_property>
-   </wvobject>
-   <wvobject fp_name="/MNA_req_flow_tb/ARPROT_sim" type="array">
-      <obj_property name="ElementShortName">ARPROT_sim[2:0]</obj_property>
-      <obj_property name="ObjectShortName">ARPROT_sim[2:0]</obj_property>
-   </wvobject>
    <wvobject type="divider" fp_name="divider154">
-      <obj_property name="label">NOC INTERFACE</obj_property>
+      <obj_property name="label">NOC INTERFACE - FLIT AXI -&gt; NOC</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
@@ -245,7 +235,6 @@
    <wvobject fp_name="group243" type="group">
       <obj_property name="label">FSM - handshake_controller</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/MNA_req_flow_tb/uut/handshake_controller/current_state" type="other">
          <obj_property name="ElementShortName">current_state</obj_property>
          <obj_property name="ObjectShortName">current_state</obj_property>
@@ -279,7 +268,6 @@
    <wvobject fp_name="group242" type="group">
       <obj_property name="label">FSM - buffer_controller</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/MNA_req_flow_tb/uut/buffer_controller/current_state" type="other">
          <obj_property name="ElementShortName">current_state</obj_property>
          <obj_property name="ObjectShortName">current_state</obj_property>
@@ -331,7 +319,6 @@
    <wvobject fp_name="group241" type="group">
       <obj_property name="label">Interni signali - FIFO_buffer</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/MNA_req_flow_tb/uut/FIFO_buffer/FIFO_array_test" type="array">
          <obj_property name="ElementShortName">FIFO_array_test[7:0][43:0]</obj_property>
          <obj_property name="ObjectShortName">FIFO_array_test[7:0][43:0]</obj_property>
@@ -358,14 +345,13 @@
       </wvobject>
    </wvobject>
    <wvobject type="divider" fp_name="divider243">
-      <obj_property name="label">Testni signali - noc_injector</obj_property>
+      <obj_property name="label">Interni signali - noc_injector</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
    <wvobject fp_name="group244" type="group">
-      <obj_property name="label">Testni signali - noc_injector</obj_property>
+      <obj_property name="label">Interni signali - noc_injector</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/MNA_req_flow_tb/uut/injector/enable_output" type="logic">
          <obj_property name="ElementShortName">enable_output</obj_property>
          <obj_property name="ObjectShortName">enable_output</obj_property>
