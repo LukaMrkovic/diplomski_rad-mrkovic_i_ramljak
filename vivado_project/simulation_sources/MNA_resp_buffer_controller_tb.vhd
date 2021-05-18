@@ -50,17 +50,18 @@ architecture Simulation of MNA_resp_buffer_controller_tb is
     signal clk_sim : std_logic;
     signal rst_sim : std_logic;
     
-    signal flit_out_sim : std_logic_vector(const_flit_size - 1 downto 0);
-    signal has_tail_sim : std_logic;
-    
-    signal right_shift_sim : std_logic;
-    signal vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
-    
     signal op_write_sim : std_logic;
     signal op_read_sim : std_logic;
     
     signal data_sim : std_logic_vector(31 downto 0);
     signal resp_sim : std_logic_vector(1 downto 0);
+    
+    signal flit_out_sim : std_logic_vector(const_flit_size - 1 downto 0);
+    signal has_tail_sim : std_logic;
+    
+    signal right_shift_sim : std_logic;
+    
+    signal vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
     
     -- Period takta
     constant clk_period : time := 200ns;
@@ -77,19 +78,23 @@ begin
         
         port map(
             clk => clk_sim,
-            rst => rst_sim, 
-           
-            flit_out => flit_out_sim,
-            has_tail => has_tail_sim,
+            rst => rst_sim,
             
-            right_shift => right_shift_sim,
-            vc_credits => vc_credits_sim,
-            
+            -- MNA_resp_AXI_handshake_controller
             op_write => op_write_sim,
             op_read => op_read_sim,
             
             data => data_sim,
-            resp => resp_sim
+            resp => resp_sim,
+            
+            -- noc_to_AXI_FIFO_buffer
+            flit_out => flit_out_sim,
+            has_tail => has_tail_sim,
+            
+            right_shift => right_shift_sim,
+            
+            -- noc_receiver
+            vc_credits => vc_credits_sim
         );
         
     -- clk proces
@@ -109,14 +114,17 @@ begin
     
     begin
         
+        -- > Inicijalne postavke ulaznih signala
         flit_out_sim <= (others => '0');
         has_tail_sim <= '0';
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';
         
         wait for (10 * clk_period);
         
+        -- Reset neaktivan
         rst_sim <= '1';
         
         wait for (2.1 * clk_period);
@@ -132,19 +140,16 @@ begin
         wait for (4 * clk_period);
         
         flit_out_sim <= X"A1234567893";
-        
-        wait for clk_period;
-        
         has_tail_sim <= '1';
         
         wait for clk_period;
         
         flit_out_sim <= X"60012345678";
-        has_tail_sim <= '0';
         
         wait for clk_period;
         
         flit_out_sim <= X"00000000000";
+        has_tail_sim <= '0';
         
         wait;
     

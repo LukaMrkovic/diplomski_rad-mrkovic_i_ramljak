@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-10 - Mrkovic
 -- Additional Comments: Prva verzija SNA_req_buffer_controllera
+-- Revision 0.2 - 2021-05-18 - Mrkovic
+-- Additional Comments: Dotjerana verzija SNA_req_buffer_controllera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -43,21 +45,16 @@ entity SNA_req_buffer_controller is
 
     Generic (
         vc_num : integer := const_vc_num;
-        flit_size : integer := const_flit_size;
         address_size : integer := const_address_size;
-        payload_size : integer := const_payload_size
+        payload_size : integer := const_payload_size;
+        flit_size : integer := const_flit_size
     );
                   
     Port (
         clk : in std_logic;
         rst : in std_logic; 
-                   
-        flit_out : in std_logic_vector(flit_size - 1 downto 0);
-        has_tail : in std_logic;
         
-        right_shift : out std_logic;
-        vc_credits : out std_logic_vector(vc_num - 1 downto 0);
-        
+        -- SNA_req_AXI_handshake_controller
         op_write : out std_logic;
         op_read : out std_logic;
         
@@ -66,14 +63,26 @@ entity SNA_req_buffer_controller is
         prot : out std_logic_vector(2 downto 0);
         strb : out std_logic_vector(3 downto 0);
         
-        SNA_ready : in std_logic;
-        t_begun : out std_logic;
+        -- noc_to_AXI_FIFO_buffer
+        flit_out : in std_logic_vector(flit_size - 1 downto 0);
+        has_tail : in std_logic;
         
+        right_shift : out std_logic;
+        
+        -- noc_receiver
+        vc_credits : out std_logic_vector(vc_num - 1 downto 0);
+        
+        -- resp_flow (SNA_resp_AXI_handshake_controller)
         resp_write : out std_logic;
         resp_read : out std_logic;
         
+        -- resp_flow (SNA_resp_buffer_controller)
         r_addr : out std_logic_vector(address_size - 1 downto 0);
-        r_vc : out std_logic_vector(vc_num - 1 downto 0)
+        r_vc : out std_logic_vector(vc_num - 1 downto 0);
+        
+        -- t_monitor
+        SNA_ready : in std_logic;
+        t_begun : out std_logic
     );
 
 end SNA_req_buffer_controller;
@@ -103,21 +112,23 @@ begin
     
     begin
     
+        op_write <= '0';
+        op_read <= '0';
+        
+        resp_write <= '0';
+        resp_read <= '0';
+        
+        right_shift <= '0';
+        
+        vc_credits <= (others => '0');
+        
+        t_begun <= '0';
+        
         W_FLIT_1_enable <= '0';
         W_FLIT_2_enable <= '0';
         W_FLIT_3_enable <= '0';
         R_FLIT_1_enable <= '0';
         R_FLIT_2_enable <= '0';
-        
-        op_write <= '0';
-        op_read <= '0';
-        resp_write <= '0';
-        resp_read <= '0';
-        
-        right_shift <= '0';
-        vc_credits <= (others => '0');
-        
-        t_begun <= '0';
         
         case current_state is
         
@@ -127,7 +138,6 @@ begin
                 
                     right_shift <= '1';
                     vc_credits <= flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
-                    
                     t_begun <= '1';
                 
                     if flit_out(0) = '0' then
@@ -152,7 +162,6 @@ begin
             
                 right_shift <= '1';
                 vc_credits <= flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
-                
                 W_FLIT_2_enable <= '1';
                 next_state <= W_FLIT_2;
             
@@ -160,7 +169,6 @@ begin
             
                 right_shift <= '1';
                 vc_credits <= flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
-                
                 W_FLIT_3_enable <= '1';
                 next_state <= W_FLIT_3;
             
@@ -174,7 +182,6 @@ begin
             
                 right_shift <= '1';
                 vc_credits <= flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
-                
                 R_FLIT_2_enable <= '1';
                 next_state <= R_FLIT_2;
             

@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-05 - Mrkovic, Ramljak
 -- Additional Comments: Prva verzija MNA_req_buffer_controllera
+-- Revision 0.2 - 2021-05-18 - Mrkovic
+-- Additional Comments: Dotjerana verzija MNA_req_buffer_controllera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -48,26 +50,29 @@ entity MNA_req_buffer_controller is
         address_size : integer := const_address_size;
         payload_size : integer := const_payload_size;
         flit_size : integer := const_flit_size;
-        node_address_size : integer := const_node_address_size;
-        injection_vc : integer := const_default_injection_vc;
         local_address_x : std_logic_vector(const_mesh_size_x - 1 downto 0) := const_default_address_x;
-        local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0) := const_default_address_y
+        local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0) := const_default_address_y;
+        
+        injection_vc : integer := const_default_injection_vc;
+        node_address_size : integer := const_node_address_size
     );
                   
     Port (
         clk : in std_logic;
         rst : in std_logic; 
-                   
-        flit_in : out std_logic_vector(flit_size - 1 downto 0);
-        flit_in_valid : out std_logic;
         
+        -- MNA_req_AXI_handshake_controller
         op_write : in std_logic;
         op_read : in std_logic;
         
         addr : in std_logic_vector(31 downto 0);
         data : in std_logic_vector(31 downto 0);
         prot : in std_logic_vector(2 downto 0);
-        strb : in std_logic_vector(3 downto 0)
+        strb : in std_logic_vector(3 downto 0);
+        
+        -- AXI_to_noc_FIFO_buffer
+        flit_in : out std_logic_vector(flit_size - 1 downto 0);
+        flit_in_valid : out std_logic
     );    
 
 end MNA_req_buffer_controller;

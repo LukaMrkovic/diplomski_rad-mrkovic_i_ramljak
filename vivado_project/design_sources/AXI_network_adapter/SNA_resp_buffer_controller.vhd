@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-10 - Ramljak
 -- Additional Comments: Prva verzija SNA_resp_buffer_controllera
+-- Revision 0.2 - 2021-05-18 - Mrkovic
+-- Additional Comments: Dotjerana verzija SNA_resp_buffer_controllera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -50,19 +52,23 @@ entity SNA_resp_buffer_controller is
     Port (
         clk : in std_logic;
         rst : in std_logic; 
-                   
-        flit_in : out std_logic_vector(flit_size - 1 downto 0);
-        flit_in_valid : out std_logic;
         
+        -- SNA_resp_AXI_handshake_controller
         op_write : in std_logic;
         op_read : in std_logic;
         
         data : in std_logic_vector(31 downto 0);
         resp : in std_logic_vector(1 downto 0);
         
+        -- AXI_to_noc_FIFO_buffer
+        flit_in : out std_logic_vector(flit_size - 1 downto 0);
+        flit_in_valid : out std_logic;
+        
+        -- req_flow (SNA_req_buffer_controller)
         r_addr : in std_logic_vector(address_size - 1 downto 0);
         r_vc : in std_logic_vector(vc_num - 1 downto 0);
         
+        -- t_monitor
         t_end : out std_logic
     );
 
@@ -92,12 +98,12 @@ begin
     begin
     
         flit_in_valid <= '0';
+        
+        t_end <= '0';
     
         W_FLIT_1_enable <= '0';
         R_FLIT_1_enable <= '0';
         R_FLIT_2_enable <= '0';
-        
-        t_end <= '0';
     
         case current_state is
         
@@ -121,8 +127,8 @@ begin
             
             when W_FLIT_1 =>
                 
-                t_end <= '1';
                 flit_in_valid <= '1';
+                t_end <= '1';
                 next_state <= IDLE;
                 
             when R_FLIT_1 =>
@@ -133,8 +139,8 @@ begin
                 
             when R_FLIT_2 =>
             
-                t_end <= '1';
                 flit_in_valid <= '1';
+                t_end <= '1';
                 next_state <= IDLE;
             
         end case;
@@ -151,10 +157,8 @@ begin
         if rising_edge(clk) then
             if rst = '0' then
                 
-                -- Varijable
                 flit_var := (others => '0');
                 
-                -- Izlazni signali
                 flit_in <= (others => '0');
                 
             else

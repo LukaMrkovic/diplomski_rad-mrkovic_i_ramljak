@@ -50,9 +50,6 @@ architecture Simulation of MNA_req_buffer_controller_tb is
     signal clk_sim : std_logic;
     signal rst_sim : std_logic;
     
-    signal flit_in_sim : std_logic_vector(const_flit_size - 1 downto 0);
-    signal flit_in_valid_sim : std_logic;
-    
     signal op_write_sim : std_logic;
     signal op_read_sim : std_logic;
     
@@ -60,6 +57,9 @@ architecture Simulation of MNA_req_buffer_controller_tb is
     signal data_sim : std_logic_vector(31 downto 0);
     signal prot_sim : std_logic_vector(2 downto 0);
     signal strb_sim : std_logic_vector(3 downto 0);
+    
+    signal flit_in_sim : std_logic_vector(const_flit_size - 1 downto 0);
+    signal flit_in_valid_sim : std_logic;
     
     -- Period takta
     constant clk_period : time := 200ns;
@@ -76,26 +76,29 @@ begin
             address_size => const_address_size,
             payload_size => const_payload_size,
             flit_size => const_flit_size,
-            node_address_size => const_node_address_size,
-            injection_vc => 1,
             local_address_x => "0100",
-            local_address_y => "0010"
+            local_address_y => "0010",
+            
+            injection_vc => 1,
+            node_address_size => const_node_address_size
         )
         
         port map(
             clk => clk_sim,
             rst => rst_sim, 
-           
-            flit_in => flit_in_sim,
-            flit_in_valid => flit_in_valid_sim,
             
+            -- MNA_req_AXI_handshake_controller
             op_write => op_write_sim,
             op_read => op_read_sim,
             
             addr => addr_sim,
             data => data_sim,
             prot => prot_sim,
-            strb => strb_sim
+            strb => strb_sim,
+            
+            -- AXI_to_noc_FIFO_buffer
+            flit_in => flit_in_sim,
+            flit_in_valid => flit_in_valid_sim
         );
         
     -- clk proces
@@ -110,12 +113,12 @@ begin
         
     end process;
     
-    
     -- stimulirajuci proces
     stim_process : process
     
     begin
         
+        -- > Inicijalne postavke ulaznih signala
         op_write_sim <= '0';
         op_read_sim <= '0';
         
@@ -123,12 +126,14 @@ begin
         data_sim <= (others => '0');
         prot_sim <= (others => '0');
         strb_sim <= (others => '0');
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';
         
         wait for (10 * clk_period);
         
+        -- Reset neaktivan
         rst_sim <= '1';
         
         wait for (2.1 * clk_period);

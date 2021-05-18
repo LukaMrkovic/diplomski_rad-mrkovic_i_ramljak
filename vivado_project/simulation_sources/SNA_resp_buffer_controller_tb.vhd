@@ -50,14 +50,14 @@ architecture Simulation of SNA_resp_buffer_controller_tb is
     signal clk_sim : std_logic;
     signal rst_sim : std_logic;
     
-    signal flit_in_sim : std_logic_vector(const_flit_size - 1 downto 0);
-    signal flit_in_valid_sim : std_logic;
-    
     signal op_write_sim : std_logic;
     signal op_read_sim : std_logic;
     
     signal data_sim : std_logic_vector(31 downto 0);
     signal resp_sim : std_logic_vector(1 downto 0);
+    
+    signal flit_in_sim : std_logic_vector(const_flit_size - 1 downto 0);
+    signal flit_in_valid_sim : std_logic;
     
     signal r_addr_sim : std_logic_vector(const_address_size - 1 downto 0);
     signal r_vc_sim : std_logic_vector(const_vc_num - 1 downto 0);
@@ -73,27 +73,31 @@ begin
     uut: SNA_resp_buffer_controller
 
         generic map (
-            flit_size => const_flit_size,
             vc_num => const_vc_num,
-            address_size => const_address_size
+            address_size => const_address_size,
+            flit_size => const_flit_size
         )
                       
         port map (
             clk => clk_sim,
             rst => rst_sim,
-                       
-            flit_in => flit_in_sim,
-            flit_in_valid => flit_in_valid_sim,
             
+            -- SNA_resp_AXI_handshake_controller
             op_write => op_write_sim,
             op_read => op_read_sim,
             
             data => data_sim,
             resp => resp_sim,
-
+            
+            -- AXI_to_noc_FIFO_buffer
+            flit_in => flit_in_sim,
+            flit_in_valid => flit_in_valid_sim,
+            
+            -- req_flow (SNA_req_buffer_controller)
             r_addr => r_addr_sim,
             r_vc => r_vc_sim,
             
+            -- t_monitor
             t_end => t_end_sim
         );
         
@@ -114,6 +118,7 @@ begin
     
     begin
         
+        -- > Inicijalne postavke ulaznih signala
         op_write_sim <= '0';
         op_read_sim <= '0';
         
@@ -122,6 +127,7 @@ begin
         
         r_addr_sim <= (others => '0');
         r_vc_sim <= (others => '0');
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';
@@ -133,7 +139,7 @@ begin
         
         wait for (2.1 * clk_period);
         
-        --> WRITE RESPONSE
+        -- > WRITE RESPONSE
         -- Povratna adresa routera 0 (0001 0001)
         r_addr_sim <= "00010001";
         r_vc_sim <= "01";
@@ -147,11 +153,11 @@ begin
         wait for clk_period;
         
         op_write_sim <= '0';
-        --<
+        -- < WRITE RESPONSE
         
         wait for (2 * clk_period);
         
-        --> READ RESPONSE
+        -- > READ RESPONSE
         -- Povratna adresa routera 15 (1000 1000)
         r_addr_sim <= "10001000";
         r_vc_sim <= "10";
@@ -166,7 +172,7 @@ begin
         wait for clk_period;
          
         op_read_sim <= '0';
-        --<
+        -- < READ RESPONSE
         
         wait;
     

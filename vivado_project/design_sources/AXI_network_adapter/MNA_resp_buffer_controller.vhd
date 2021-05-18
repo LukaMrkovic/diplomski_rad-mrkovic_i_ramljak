@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-05 - Mrkovic, Ramljak
 -- Additional Comments: Prva verzija MNA_resp_buffer_controllera
+-- Revision 0.2 - 2021-05-18 - Mrkovic
+-- Additional Comments: Dotjerana verzija MNA_resp_buffer_controllera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -42,25 +44,29 @@ use noc_lib.AXI_network_adapter_config.ALL;
 entity MNA_resp_buffer_controller is
 
     Generic (
-        flit_size : integer := const_flit_size;
-        vc_num : integer := const_vc_num
+        vc_num : integer := const_vc_num;
+        flit_size : integer := const_flit_size
     );
                   
     Port (
         clk : in std_logic;
-        rst : in std_logic; 
-                   
-        flit_out : in std_logic_vector(flit_size - 1 downto 0);
-        has_tail : in std_logic;
+        rst : in std_logic;
         
-        right_shift : out std_logic;
-        vc_credits : out std_logic_vector(vc_num - 1 downto 0);
-        
+        -- MNA_resp_AXI_handshake_controller
         op_write : out std_logic;
         op_read : out std_logic;
         
         data : out std_logic_vector(31 downto 0);
-        resp : out std_logic_vector(1 downto 0)
+        resp : out std_logic_vector(1 downto 0);
+        
+        -- noc_to_AXI_FIFO_buffer
+        flit_out : in std_logic_vector(flit_size - 1 downto 0);
+        has_tail : in std_logic;
+        
+        right_shift : out std_logic;
+        
+        -- noc_receiver
+        vc_credits : out std_logic_vector(vc_num - 1 downto 0)
     );
 
 end MNA_resp_buffer_controller;
@@ -88,17 +94,17 @@ begin
     
     begin
     
-        W_FLIT_1_enable <= '0';
-        R_FLIT_1_enable <= '0';
-        R_FLIT_2_enable <= '0';
-        
         op_write <= '0';
         op_read <= '0';
         
         right_shift <= '0';
         
         vc_credits <= (others => '0');
-    
+        
+        W_FLIT_1_enable <= '0';
+        R_FLIT_1_enable <= '0';
+        R_FLIT_2_enable <= '0';
+        
         case current_state is
         
             when IDLE =>
@@ -135,7 +141,6 @@ begin
             
                 right_shift <= '1';
                 vc_credits <= flit_out(flit_size - 2 - 1 downto flit_size - 2 - vc_num);
-                
                 R_FLIT_2_enable <= '1';
                 next_state <= R_FLIT_2;
                 

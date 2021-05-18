@@ -14,12 +14,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1264fs"></ZoomEndTime>
-      <Cursor1Time time="48fs"></Cursor1Time>
+      <ZoomEndTime time="15000001fs"></ZoomEndTime>
+      <Cursor1Time time="15000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="194"></NameColumnWidth>
-      <ValueColumnWidth column_width="89"></ValueColumnWidth>
+      <NameColumnWidth column_width="241"></NameColumnWidth>
+      <ValueColumnWidth column_width="117"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="21" />
    <wvobject type="divider" fp_name="divider17">
@@ -40,7 +40,7 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider17">
-      <obj_property name="label">handshake_controller signali</obj_property>
+      <obj_property name="label">SNA_resp_AXI_handshake_controller</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
@@ -61,7 +61,7 @@
       <obj_property name="ObjectShortName">resp_sim[1:0]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider17">
-      <obj_property name="label">FIFO_buffer signali</obj_property>
+      <obj_property name="label">AXI_to_noc_FIFO_buffer</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
@@ -74,7 +74,7 @@
       <obj_property name="ObjectShortName">flit_in_valid_sim</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider17">
-      <obj_property name="label">req_flow signali</obj_property>
+      <obj_property name="label">req_flow (SNA_req_buffer_controller)</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
@@ -87,7 +87,7 @@
       <obj_property name="ObjectShortName">r_vc_sim[1:0]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider149">
-      <obj_property name="label">t_monitor signali</obj_property>
+      <obj_property name="label">t_monitor</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
@@ -96,31 +96,30 @@
       <obj_property name="ObjectShortName">t_end_sim</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider25">
-      <obj_property name="label">FSM buffer controller</obj_property>
+      <obj_property name="label">FSM</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
    <wvobject fp_name="/SNA_resp_buffer_controller_tb/uut/current_state" type="other">
       <obj_property name="ElementShortName">current_state</obj_property>
       <obj_property name="ObjectShortName">current_state</obj_property>
-      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/SNA_resp_buffer_controller_tb/uut/next_state" type="other">
       <obj_property name="ElementShortName">next_state</obj_property>
       <obj_property name="ObjectShortName">next_state</obj_property>
-      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="CustomSignalColor">#00FF00</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider26">
-      <obj_property name="label">Interni enable signali</obj_property>
+      <obj_property name="label">Interni signali</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
    <wvobject fp_name="group27" type="group">
-      <obj_property name="label">Interni enable signali</obj_property>
+      <obj_property name="label">Interni signali</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/SNA_resp_buffer_controller_tb/uut/W_FLIT_1_enable" type="logic">
          <obj_property name="ElementShortName">W_FLIT_1_enable</obj_property>
          <obj_property name="ObjectShortName">W_FLIT_1_enable</obj_property>

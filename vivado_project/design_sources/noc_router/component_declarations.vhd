@@ -600,26 +600,29 @@ package component_declarations is
             address_size : integer;
             payload_size : integer;
             flit_size : integer;
-            node_address_size : integer;
-            injection_vc : integer;
             local_address_x : std_logic_vector(const_mesh_size_x - 1 downto 0);
-            local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0)
+            local_address_y : std_logic_vector(const_mesh_size_y - 1 downto 0);
+            
+            injection_vc : integer;
+            node_address_size : integer
         );
                       
         Port (
             clk : in std_logic;
             rst : in std_logic; 
-                       
-            flit_in : out std_logic_vector(flit_size - 1 downto 0);
-            flit_in_valid : out std_logic;
             
+            -- MNA_req_AXI_handshake_controller
             op_write : in std_logic;
             op_read : in std_logic;
             
             addr : in std_logic_vector(31 downto 0);
             data : in std_logic_vector(31 downto 0);
             prot : in std_logic_vector(2 downto 0);
-            strb : in std_logic_vector(3 downto 0)
+            strb : in std_logic_vector(3 downto 0);
+            
+            -- AXI_to_noc_FIFO_buffer
+            flit_in : out std_logic_vector(flit_size - 1 downto 0);
+            flit_in_valid : out std_logic
         );
     
     end component;
@@ -628,25 +631,29 @@ package component_declarations is
     component MNA_resp_buffer_controller
     
         Generic (
-            flit_size : integer;
-            vc_num : integer
+            vc_num : integer;
+            flit_size : integer
         );
                       
         Port (
             clk : in std_logic;
-            rst : in std_logic; 
-                       
-            flit_out : in std_logic_vector(flit_size - 1 downto 0);
-            has_tail : in std_logic;
+            rst : in std_logic;
             
-            right_shift : out std_logic;
-            vc_credits : out std_logic_vector(vc_num - 1 downto 0);
-            
+            -- MNA_resp_AXI_handshake_controller
             op_write : out std_logic;
             op_read : out std_logic;
             
             data : out std_logic_vector(31 downto 0);
-            resp : out std_logic_vector(1 downto 0)
+            resp : out std_logic_vector(1 downto 0);
+            
+            -- noc_to_AXI_FIFO_buffer
+            flit_out : in std_logic_vector(flit_size - 1 downto 0);
+            has_tail : in std_logic;
+            
+            right_shift : out std_logic;
+            
+            -- noc_receiver
+            vc_credits : out std_logic_vector(vc_num - 1 downto 0)
         );
         
     end component;
@@ -825,21 +832,16 @@ package component_declarations is
     
         Generic (
             vc_num : integer;
-            flit_size : integer;
             address_size : integer;
-            payload_size : integer
+            payload_size : integer;
+            flit_size : integer
         );
                       
         Port (
             clk : in std_logic;
             rst : in std_logic; 
-                       
-            flit_out : in std_logic_vector(flit_size - 1 downto 0);
-            has_tail : in std_logic;
             
-            right_shift : out std_logic;
-            vc_credits : out std_logic_vector(vc_num - 1 downto 0);
-            
+            -- SNA_req_AXI_handshake_controller
             op_write : out std_logic;
             op_read : out std_logic;
             
@@ -848,14 +850,26 @@ package component_declarations is
             prot : out std_logic_vector(2 downto 0);
             strb : out std_logic_vector(3 downto 0);
             
-            SNA_ready : in std_logic;
-            t_begun : out std_logic;
+            -- noc_to_AXI_FIFO_buffer
+            flit_out : in std_logic_vector(flit_size - 1 downto 0);
+            has_tail : in std_logic;
             
+            right_shift : out std_logic;
+            
+            -- noc_receiver
+            vc_credits : out std_logic_vector(vc_num - 1 downto 0);
+            
+            -- resp_flow (SNA_resp_AXI_handshake_controller)
             resp_write : out std_logic;
             resp_read : out std_logic;
             
+            -- resp_flow (SNA_resp_buffer_controller)
             r_addr : out std_logic_vector(address_size - 1 downto 0);
-            r_vc : out std_logic_vector(vc_num - 1 downto 0)
+            r_vc : out std_logic_vector(vc_num - 1 downto 0);
+            
+            -- t_monitor
+            SNA_ready : in std_logic;
+            t_begun : out std_logic
         );
     
     end component;
@@ -872,19 +886,23 @@ package component_declarations is
         Port (
             clk : in std_logic;
             rst : in std_logic; 
-                       
-            flit_in : out std_logic_vector(flit_size - 1 downto 0);
-            flit_in_valid : out std_logic;
             
+            -- SNA_resp_AXI_handshake_controller
             op_write : in std_logic;
             op_read : in std_logic;
             
             data : in std_logic_vector(31 downto 0);
             resp : in std_logic_vector(1 downto 0);
             
+            -- AXI_to_noc_FIFO_buffer
+            flit_in : out std_logic_vector(flit_size - 1 downto 0);
+            flit_in_valid : out std_logic;
+            
+            -- req_flow (SNA_req_buffer_controller)
             r_addr : in std_logic_vector(address_size - 1 downto 0);
             r_vc : in std_logic_vector(vc_num - 1 downto 0);
             
+            -- t_monitor
             t_end : out std_logic
         );
     
