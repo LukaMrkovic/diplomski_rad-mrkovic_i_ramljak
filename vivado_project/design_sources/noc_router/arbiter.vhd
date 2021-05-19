@@ -560,11 +560,14 @@ begin
                                 vc_index := vc_priority_vector_array(rr_index)(arbitrated_vc_priority_index_array(rr_index));
                             
                                 -- GENERIRAJ ODGOVARAJUCI grant SIGNAL
-                                grant_array_var(rr_index) := (vc_index => '1', others => '0');
+                                grant_array_var(rr_index) := (others => '0');
+                                grant_array_var(rr_index)(vc_index) := '1';
                                 -- GENERIRAJ ODGOVARAJUCI vc_downstream SIGNAL
-                                vc_downstream_array_var(rr_index) := (vc_index => '1', others => '0');
+                                vc_downstream_array_var(rr_index) := (others => '0');
+                                vc_downstream_array_var(rr_index)(vc_index) := '1';
                                 -- GENERIRAJ ODGOVARAJUCI select_vector SIGNAL
-                                select_vector_array_var(i) := (rr_index => '1', others => '0');
+                                select_vector_array_var(i) := (others => '0');
+                                select_vector_array_var(i)(rr_index) := '1';
                                 
                                 -- AKO JE POSTAVLJEN head SIGNAL POHRANI KONEKCIJU UZVODNOG I NIZVODNOG VIRTUALNOG KANALA
                                 if head_array(rr_index)(vc_index) = '1' then

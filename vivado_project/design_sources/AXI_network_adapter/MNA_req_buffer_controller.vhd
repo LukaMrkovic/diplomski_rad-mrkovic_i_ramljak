@@ -199,8 +199,10 @@ begin
                 dest_int := conv_integer(dest);
                 index_x := dest_int mod mesh_size_x;
                 index_y := dest_int / mesh_size_x;
-                dest_x := (index_x => '1', others => '0');
-                dest_y := (index_y => '1', others => '0');
+                dest_x := (others => '0');
+                dest_x(index_x) := '1';
+                dest_y := (others => '0');
+                dest_y(index_y) := '1';
                 
                 if W_FLIT_1_enable = '1' then
                 

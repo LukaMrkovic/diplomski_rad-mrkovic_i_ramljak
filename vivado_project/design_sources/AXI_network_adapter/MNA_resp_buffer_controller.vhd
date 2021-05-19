@@ -90,7 +90,7 @@ architecture Behavioral of MNA_resp_buffer_controller is
 begin
 
     -- PROCES KOJI KOORDINIRA PROCESE POJEDINIH STANJA
-    combinatorial_process : process (current_state, has_tail) is
+    combinatorial_process : process (current_state, flit_out, has_tail) is
     
     begin
     
