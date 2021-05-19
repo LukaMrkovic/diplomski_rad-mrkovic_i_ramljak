@@ -80,14 +80,14 @@ architecture Simulation of AXI_slave_network_adapter_tb is
     signal RVALID_sim : std_logic;
     signal RREADY_sim : std_logic;
 
-    -- NOC INTERFACE - FLIT AXI > NOC
+    -- NOC INTERFACE - FLIT AXI -> NOC
     signal AXI_noc_data_sim : std_logic_vector(const_flit_size - 1 downto 0);        
     signal AXI_noc_data_valid_sim : std_logic;
 
     signal noc_AXI_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
     signal noc_AXI_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
 
-    -- NOC INTERFACE - FLIT NOC > AXI
+    -- NOC INTERFACE - FLIT AXI <- NOC
     signal noc_AXI_data_sim : std_logic_vector(const_flit_size - 1 downto 0);        
     signal noc_AXI_data_valid_sim : std_logic;
 
@@ -147,14 +147,14 @@ begin
             RVALID => RVALID_sim,
             RREADY => RREADY_sim,
             
-            -- NOC INTERFACE - FLIT AXI > NOC
+            -- NOC INTERFACE - FLIT AXI -> NOC
             AXI_noc_data => AXI_noc_data_sim,
             AXI_noc_data_valid => AXI_noc_data_valid_sim,
             
             noc_AXI_vc_busy => noc_AXI_vc_busy_sim,
             noc_AXI_vc_credits => noc_AXI_vc_credits_sim,
             
-            -- NOC INTERFACE - FLIT NOC > AXI
+            -- NOC INTERFACE - FLIT AXI <- NOC
             noc_AXI_data => noc_AXI_data_sim,
             noc_AXI_data_valid => noc_AXI_data_valid_sim,
             
@@ -210,31 +210,26 @@ begin
     
     begin
     
-        -- AXI WRITE ADDRESS CHANNEL
+        -- > Inicijalne postavke ulaznih signala
         AWREADY_sim <= '0';
         
-        -- AXI WRITE DATA CHANNEL
         WREADY_sim <= '0';
         
-        -- AXI READ ADDRESS CHANNEL
         ARREADY_sim <= '0';
-    
-        -- AXI WRITE RESPONSE CHANNEL
+        
         BRESP_sim <= (others => '0');
         BVALID_sim <= '0';
         
-        -- AXI READ RESPONSE CHANNEL
         RDATA_sim <= (others => '0');
         RRESP_sim <= (others => '0');
         RVALID_sim <= '0';
         
-        -- NOC INTERFACE - FLIT AXI > NOC
         noc_AXI_vc_busy_sim <= (others => '0');
         noc_AXI_vc_credits_sim <= (others => '0');
         
-        -- NOC INTERFACE - FLIT NOC > AXI
         noc_AXI_data_sim <= (others => '0');
         noc_AXI_data_valid_sim <= '0';
+        -- < Inicijalne postavke ulaznih signala
     
         -- Reset aktivan
         rst_sim <= '0';
@@ -246,7 +241,8 @@ begin
         
         wait for (4.1 * clk_period);
         
-        -- > WRITE REQ
+        -- > WRITE
+        -- > REQUEST FLOW
         noc_AXI_data_sim <= X"914110000fa";
         noc_AXI_data_valid_sim <= '1';
         
@@ -278,15 +274,17 @@ begin
         wait for (5 * clk_period);
         
         AWREADY_sim <= '1';
+        
         WREADY_sim <= '1';
         
         wait for clk_period;
         
         AWREADY_sim <= '0';
-        WREADY_sim <= '0';
-        -- < WRITE REQ
         
-        -- > WRITE RESP
+        WREADY_sim <= '0';
+        -- < REQUEST FLOW
+        
+        -- > RESPONSE FLOW
         BRESP_sim <= "11";
         BVALID_sim <= '1';
         
@@ -301,11 +299,13 @@ begin
         wait for clk_period;
         
         noc_AXI_vc_credits_sim <= (others => '0');
-        -- < WRITE RESP
+        -- < RESPONSE FLOW
+        -- < WRITE
         
-        -- > READ REQ
         wait for (3 * clk_period);
         
+        -- > READ
+        -- > REQUEST FLOW
         noc_AXI_data_sim <= X"A4822000005";
         noc_AXI_data_valid_sim <= '1';
         
@@ -331,9 +331,9 @@ begin
         wait for clk_period;
         
         ARREADY_sim <= '0';
-        -- < READ REQ
+        -- < REQUEST FLOW
         
-        -- > READ RESP
+        -- > RESPONSE FLOW
         RDATA_sim <= X"12345678";
         RRESP_sim <= "01";
         RVALID_sim <= '1';
@@ -365,7 +365,8 @@ begin
         wait for clk_period;
         
         noc_AXI_vc_credits_sim <= (others => '0');
-        -- < READ RESP
+        -- < RESPONSE FLOW
+        -- < READ
     
         wait;
     

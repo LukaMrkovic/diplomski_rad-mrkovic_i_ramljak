@@ -103,34 +103,37 @@ begin
         port map(
             clk => clk_sim,
             rst => rst_sim, 
-              
+            
+            -- AXI WRITE ADDRESS CHANNEL
             AWADDR => AWADDR_sim,
+            AWPROT => AWPROT_sim,
             AWVALID => AWVALID_sim,
             AWREADY => AWREADY_sim,
             
+            -- AXI WRITE DATA CHANNEL
             WDATA => WDATA_sim,
+            WSTRB => WSTRB_sim,
             WVALID => WVALID_sim,
             WREADY => WREADY_sim,
             
-            AWPROT => AWPROT_sim,
-            WSTRB => WSTRB_sim,
-            
+            -- AXI READ ADDRESS CHANNEL
             ARADDR => ARADDR_sim,
+            ARPROT => ARPROT_sim,
             ARVALID => ARVALID_sim,
             ARREADY => ARREADY_sim,
             
-            ARPROT => ARPROT_sim,
-            
+            -- MNA_req_buffer_controller
             op_write => MNA_op_write_sim,
             op_read => MNA_op_read_sim,
-            
-            buffer_read_ready => MNA_buffer_read_ready_sim,
-            buffer_write_ready => MNA_buffer_write_ready_sim,
             
             addr => MNA_addr_sim,
             data => MNA_data_sim,
             prot => MNA_prot_sim,
-            strb => MNA_strb_sim
+            strb => MNA_strb_sim,
+            
+            -- AXI_to_noc_FIFO_buffer
+            buffer_write_ready => MNA_buffer_write_ready_sim,
+            buffer_read_ready => MNA_buffer_read_ready_sim
         );
         
     -- Komponenta koja se testira (Unit Under Test) - SNA_req_AXI_handshake_controller
@@ -139,34 +142,37 @@ begin
         port map(
             clk => clk_sim,
             rst => rst_sim, 
-              
+            
+            -- AXI WRITE ADDRESS CHANNEL
             AWADDR => AWADDR_sim,
+            AWPROT => AWPROT_sim,
             AWVALID => AWVALID_sim,
             AWREADY => AWREADY_sim,
             
+            -- AXI WRITE DATA CHANNEL
             WDATA => WDATA_sim,
+            WSTRB => WSTRB_sim,
             WVALID => WVALID_sim,
             WREADY => WREADY_sim,
             
-            AWPROT => AWPROT_sim,
-            WSTRB => WSTRB_sim,
-            
+            -- AXI READ ADDRESS CHANNEL
             ARADDR => ARADDR_sim,
+            ARPROT => ARPROT_sim,
             ARVALID => ARVALID_sim,
             ARREADY => ARREADY_sim,
             
-            ARPROT => ARPROT_sim,
-            
+            -- SNA_req_buffer_controller
             op_write => SNA_op_write_sim,
             op_read => SNA_op_read_sim,
-            
-            buffer_read_ready => SNA_buffer_read_ready_sim,
-            buffer_write_ready => SNA_buffer_write_ready_sim,
             
             addr => SNA_addr_sim,
             data => SNA_data_sim,
             prot => SNA_prot_sim,
-            strb => SNA_strb_sim
+            strb => SNA_strb_sim,
+            
+            -- resp_flow (AXI_to_noc_FIFO_buffer)
+            buffer_write_ready => SNA_buffer_write_ready_sim,
+            buffer_read_ready => SNA_buffer_read_ready_sim
         );
         
     -- clk proces
@@ -186,19 +192,21 @@ begin
     
     begin
     
-        MNA_buffer_read_ready_sim <= '1';
+        -- > Inicijalne postavke ulaznih signala
         MNA_buffer_write_ready_sim <= '1';
+        MNA_buffer_read_ready_sim <= '1';
         
         SNA_op_write_sim <= '0';
         SNA_op_read_sim <= '0';
-            
-        SNA_buffer_read_ready_sim <= '1';
-        SNA_buffer_write_ready_sim <= '1';
             
         SNA_addr_sim <= (others => '0');
         SNA_data_sim <= (others => '0');
         SNA_prot_sim <= (others => '0');
         SNA_strb_sim <= (others => '0');
+        
+        SNA_buffer_write_ready_sim <= '1';
+        SNA_buffer_read_ready_sim <= '1';
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';
@@ -224,9 +232,11 @@ begin
         SNA_data_sim <= (others => '0');
         SNA_prot_sim <= (others => '0');
         SNA_strb_sim <= (others => '0');
+        -- < WRITE
         
         wait for (4 * clk_period);
         
+        -- > READ
         SNA_op_read_sim <= '1';
         SNA_addr_sim <= X"12344321";
         SNA_prot_sim <= "101";
@@ -236,6 +246,7 @@ begin
         SNA_op_read_sim <= '0';
         SNA_addr_sim <= (others => '0');
         SNA_prot_sim <= (others => '0');
+        -- < READ
     
         wait;
     

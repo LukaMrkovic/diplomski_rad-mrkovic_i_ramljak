@@ -51,132 +51,122 @@ architecture Simulation of AXI_master_network_adapter_tb is
     signal int_clk_sim : std_logic;
     signal rst_sim : std_logic;
     
-    -- AXI WRITE ADDRESS CHANNEL           
+    -- AXI WRITE ADDRESS CHANNEL
     signal AWADDR_sim : std_logic_vector(31 downto 0);
+    signal AWPROT_sim : std_logic_vector(2 downto 0);
     signal AWVALID_sim : std_logic;
     signal AWREADY_sim : std_logic;
     
     -- AXI WRITE DATA CHANNEL
     signal WDATA_sim : std_logic_vector(31 downto 0);
+    signal WSTRB_sim : std_logic_vector(3 downto 0);
     signal WVALID_sim : std_logic;
     signal WREADY_sim : std_logic;
     
-    -- AXI WRITE AUXILIARY SIGNALS
-    signal AWPROT_sim : std_logic_vector(2 downto 0);
-    signal WSTRB_sim : std_logic_vector(3 downto 0);
-    
     -- AXI READ ADDRESS CHANNEL
     signal ARADDR_sim : std_logic_vector(31 downto 0);
+    signal ARPROT_sim : std_logic_vector(2 downto 0);
     signal ARVALID_sim : std_logic;
     signal ARREADY_sim : std_logic;
-            
-    -- AXI READ AUXILIARY SIGNALS
-    signal ARPROT_sim : std_logic_vector(2 downto 0);
     
     -- AXI WRITE RESPONSE CHANNEL   
-    signal BREADY_sim : std_logic;
     signal BRESP_sim : std_logic_vector(1 downto 0);
     signal BVALID_sim : std_logic;
+    signal BREADY_sim : std_logic;
         
     -- AXI READ RESPONSE CHANNEL
-    signal RREADY_sim : std_logic;
     signal RDATA_sim : std_logic_vector(31 downto 0);
     signal RRESP_sim : std_logic_vector(1 downto 0);
     signal RVALID_sim : std_logic;
+    signal RREADY_sim : std_logic;
     
-    -- NOC INTERFACE - FLIT AXI > NOC
+    -- NOC INTERFACE - FLIT AXI -> NOC
     signal AXI_noc_data_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal AXI_noc_data_valid_sim : std_logic;
-           
+    
     signal noc_AXI_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
     signal noc_AXI_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
-
     
-    -- NOC INTERFACE - FLIT NOC > AXI 
-    signal noc_AXI_data_sim : std_logic_vector(const_flit_size - 1 downto 0);        
+    -- NOC INTERFACE - FLIT AXI <- NOC
+    signal noc_AXI_data_sim : std_logic_vector(const_flit_size - 1 downto 0);
     signal noc_AXI_data_valid_sim : std_logic;
-        
+    
     signal AXI_noc_vc_busy_sim : std_logic_vector(const_vc_num - 1 downto 0);
     signal AXI_noc_vc_credits_sim : std_logic_vector(const_vc_num - 1 downto 0);
-    
     
     -- Period takta
     constant clk_period : time := 200ns;
 
 begin
 
-    -- Komponenta MNA_req_flow
-    AXI_MNA: AXI_master_network_adapter
+    -- Komponenta koja se testira (Unit Under Test)
+    uut: AXI_master_network_adapter
     
         generic map ( 
-        vc_num => const_vc_num,
-        mesh_size_x => const_mesh_size_x,
-        mesh_size_y => const_mesh_size_y,
-        address_size => const_address_size,
-        payload_size => const_payload_size,
-        flit_size => const_flit_size,
-        node_address_size => const_node_address_size,
-        buffer_size => const_buffer_size,
-        write_threshold => const_MNA_write_threshold,
-        read_threshold => const_MNA_read_threshold,
-        clock_divider => const_clock_divider,
-        
-        injection_vc => const_default_injection_vc,
-        local_address_x => const_default_address_x,
-        local_address_y => const_default_address_y
-    )
-    
-    port map (
-        clk => clk_sim,
-        rst => rst_sim,
+            vc_num => const_vc_num,
+            mesh_size_x => const_mesh_size_x,
+            mesh_size_y => const_mesh_size_y,
+            address_size => const_address_size,
+            payload_size => const_payload_size,
+            flit_size => const_flit_size,
+            buffer_size => const_buffer_size,
+            local_address_x => const_default_address_x,
+            local_address_y => const_default_address_y,
+            clock_divider => const_clock_divider,
             
-        -- AXI WRITE ADDRESS CHANNEL           
-        AWADDR => AWADDR_sim,
-        AWVALID => AWVALID_sim,
-        AWREADY => AWREADY_sim,
+            write_threshold => const_MNA_write_threshold,
+            read_threshold => const_MNA_read_threshold,
+            injection_vc => const_default_injection_vc,
+            node_address_size => const_node_address_size
+        )
         
-        -- AXI WRITE DATA CHANNEL
-        WDATA => WDATA_sim,
-        WVALID => WVALID_sim,
-        WREADY => WREADY_sim,
-        
-        -- AXI WRITE AUXILIARY SIGNALS
-        AWPROT => AWPROT_sim,
-        WSTRB => WSTRB_sim,
-        
-        -- AXI READ ADDRESS CHANNEL
-        ARADDR => ARADDR_sim,
-        ARVALID => ARVALID_sim, 
-        ARREADY => ARREADY_sim,
-        
-        -- AXI READ AUXILIARY SIGNALS
-        ARPROT => ARPROT_sim,
-    
-        -- AXI WRITE RESPONSE CHANNEL   
-        BREADY => BREADY_sim,
-        BRESP => BRESP_sim,
-        BVALID => BVALID_sim,
-        
-        -- AXI READ RESPONSE CHANNEL
-        RREADY => RREADY_sim,
-        RDATA => RDATA_sim,
-        RRESP => RRESP_sim,
-        RVALID => RVALID_sim,
-        
-        -- NOC INTERFACE - FLIT AXI > NOC
-        AXI_noc_data => AXI_noc_data_sim, 
-        AXI_noc_data_valid => AXI_noc_data_valid_sim,
-                
-        noc_AXI_vc_busy => noc_AXI_vc_busy_sim,
-        noc_AXI_vc_credits => noc_AXI_vc_credits_sim,
-        
-        -- NOC INTERFACE - FLIT NOC > AXI 
-        noc_AXI_data => noc_AXI_data_sim,     
-        noc_AXI_data_valid => noc_AXI_data_valid_sim,
-        
-        AXI_noc_vc_busy => AXI_noc_vc_busy_sim,
-        AXI_noc_vc_credits => AXI_noc_vc_credits_sim
-    );
+        port map (
+            clk => clk_sim,
+            rst => rst_sim,
+            
+            -- AXI WRITE ADDRESS CHANNEL
+            AWADDR => AWADDR_sim,
+            AWPROT => AWPROT_sim,
+            AWVALID => AWVALID_sim,
+            AWREADY => AWREADY_sim,
+            
+            -- AXI WRITE DATA CHANNEL
+            WDATA => WDATA_sim,
+            WSTRB => WSTRB_sim,
+            WVALID => WVALID_sim,
+            WREADY => WREADY_sim,
+            
+            -- AXI READ ADDRESS CHANNEL
+            ARADDR => ARADDR_sim,
+            ARPROT => ARPROT_sim,
+            ARVALID => ARVALID_sim, 
+            ARREADY => ARREADY_sim,
+            
+            -- AXI WRITE RESPONSE CHANNEL   
+            BRESP => BRESP_sim,
+            BVALID => BVALID_sim,
+            BREADY => BREADY_sim,
+            
+            -- AXI READ RESPONSE CHANNEL
+            RDATA => RDATA_sim,
+            RRESP => RRESP_sim,
+            RVALID => RVALID_sim,
+            RREADY => RREADY_sim,
+            
+            -- NOC INTERFACE - FLIT AXI -> NOC
+            AXI_noc_data => AXI_noc_data_sim,
+            AXI_noc_data_valid => AXI_noc_data_valid_sim,
+            
+            noc_AXI_vc_busy => noc_AXI_vc_busy_sim,
+            noc_AXI_vc_credits => noc_AXI_vc_credits_sim,
+            
+            -- NOC INTERFACE - FLIT AXI <- NOC
+            noc_AXI_data => noc_AXI_data_sim,
+            noc_AXI_data_valid => noc_AXI_data_valid_sim,
+            
+            AXI_noc_vc_busy => AXI_noc_vc_busy_sim,
+            AXI_noc_vc_credits => AXI_noc_vc_credits_sim
+        );
 
     -- clk proces
     clk_process : process
@@ -226,31 +216,29 @@ begin
 
     begin
         
-        -- inicijalizacija ulaza
+        -- > Inicijalne postavke ulaznih signala
         AWADDR_sim <= (others => '0');
+        AWPROT_sim <= (others => '0');
         AWVALID_sim <= '0';
         
         WDATA_sim <= (others => '0');
+        WSTRB_sim <= (others => '0');
         WVALID_sim <= '0';
         
-        AWPROT_sim <= (others => '0');
-        WSTRB_sim <= (others => '0');
-        
         ARADDR_sim <= (others => '0');
+        ARPROT_sim <= (others => '0');
         ARVALID_sim <= '0';
         
-        ARPROT_sim <= (others => '0');
-        
-        -- inicijalizacija ulaza
         BREADY_sim <= '0';
-        RREADY_sim <= '0';
         
-        noc_AXI_data_sim <= (others => '0');
-        noc_AXI_data_valid_sim <= '0';
+        RREADY_sim <= '0';
         
         noc_AXI_vc_busy_sim <= (others => '0');
         noc_AXI_vc_credits_sim <= (others => '0');
         
+        noc_AXI_data_sim <= (others => '0');
+        noc_AXI_data_valid_sim <= '0';
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';
@@ -262,27 +250,25 @@ begin
         
         wait for (2.1 * clk_period);
         
-        -- REQUEST FLOW
         -- > WRITE
+        -- > REQUEST FLOW
         AWADDR_sim <= X"87654321";
+        AWPROT_sim <= "101";
         AWVALID_sim <= '1';
         
-        WDATA_sim <= X"12344321";
-        WVALID_sim <= '1';
-        
-        AWPROT_sim <= "101";
+        WDATA_sim <= X"12345678";
         WSTRB_sim <= "1111";
+        WVALID_sim <= '1';
         
         wait for (2 * clk_period);
         
         AWADDR_sim <= (others => '0');
+        AWPROT_sim <= (others => '0');
         AWVALID_sim <= '0';
         
         WDATA_sim <= (others => '0');
-        WVALID_sim <= '0';
-        
-        AWPROT_sim <= (others => '0');
         WSTRB_sim <= (others => '0');
+        WVALID_sim <= '0';
         
         wait for (5 * clk_period);
         
@@ -312,11 +298,11 @@ begin
         wait for clk_period;
         
         noc_AXI_vc_credits_sim <= (others => '0');
+        -- < REQUEST FLOW
         
         wait for (8 * clk_period);
-        -- <
         
-        -- WRITE RESPONSE
+        -- > RESPONSE FLOW
         BREADY_sim <= '1';
         
         wait for (3 * clk_period);
@@ -332,21 +318,22 @@ begin
         wait for (3 * clk_period);
         
         BREADY_sim <= '0';
+        -- < RESPONSE FLOW
+        -- < WRITE
         
         wait for (5 * clk_period);
         
         -- > READ
+        -- > REQUEST FLOW
         ARADDR_sim <= X"E1234567";
-        ARVALID_sim <= '1';
-        
         ARPROT_sim <= "010";
+        ARVALID_sim <= '1';
         
         wait for (2 * clk_period);
         
         ARADDR_sim <= (others => '0');
-        ARVALID_sim <= '0';
-        
         ARPROT_sim <= (others => '0');
+        ARVALID_sim <= '0';
         
         wait for (5 * clk_period);
         
@@ -371,12 +358,12 @@ begin
         wait for clk_period;
         
         noc_AXI_vc_credits_sim <= (others => '0');
-        -- <
+        -- < REQUEST FLOW
         
-        -- READ RESPONSE
         wait for (3 * clk_period);
         
-        noc_AXI_data_sim <= X"A1100000007";
+        -- > RESPONSE FLOW
+        noc_AXI_data_sim <= X"91100000007";
         noc_AXI_data_valid_sim <= '1';
         
         wait for clk_period;
@@ -386,7 +373,7 @@ begin
         
         wait for (3 * clk_period);
         
-        noc_AXI_data_sim <= X"61187654321";
+        noc_AXI_data_sim <= X"51187654321";
         noc_AXI_data_valid_sim <= '1';
         
         wait for clk_period;
@@ -401,6 +388,8 @@ begin
         wait for clk_period;
         
         RREADY_sim <= '0';
+        -- < RESPONSE FLOW
+        -- < READ
         
         wait;
     

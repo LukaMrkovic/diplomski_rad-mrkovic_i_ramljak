@@ -17,6 +17,8 @@
 -- Additional Comments:
 -- Revision 0.1 - 2021-05-12 - Mrkovic
 -- Additional Comments: Prva verzija potpunog AXI_slave_network_adaptera
+-- Revision 0.2 - 2021-05-19 - Mrkovic
+-- Additional Comments: Dotjerana verzija AXI_slave_network_adaptera
 -- 
 ----------------------------------------------------------------------------------
 
@@ -87,14 +89,14 @@ entity AXI_slave_network_adapter is
         RVALID : in std_logic;
         RREADY : out std_logic;
         
-        -- NOC INTERFACE - FLIT AXI > NOC
+        -- NOC INTERFACE - FLIT AXI -> NOC
         AXI_noc_data : out std_logic_vector(flit_size - 1 downto 0);        
         AXI_noc_data_valid : out std_logic;
         
         noc_AXI_vc_busy : in std_logic_vector(vc_num - 1 downto 0);
         noc_AXI_vc_credits : in std_logic_vector(vc_num - 1 downto 0);
         
-        -- NOC INTERFACE - FLIT NOC > AXI
+        -- NOC INTERFACE - FLIT AXI <- NOC
         noc_AXI_data : in std_logic_vector(flit_size - 1 downto 0);        
         noc_AXI_data_valid : in std_logic;
         
@@ -108,21 +110,22 @@ architecture Behavioral of AXI_slave_network_adapter is
 
     -- INTERNI SIGNALI
     
-    -- T_MONITOR
-    signal t_begun : std_logic;
-    signal t_end : std_logic;
-    signal SNA_ready : std_logic;
-    
-    -- REQ FLOW > RESP FLOW
+    -- SNA_req_buffer_controller -> SNA_resp_AXI_handshake_controller
     signal resp_write : std_logic;
     signal resp_read : std_logic;
     
+    -- SNA_req_buffer_controller -> SNA_resp_buffer_controller
     signal r_addr : std_logic_vector(address_size - 1 downto 0);
     signal r_vc : std_logic_vector(vc_num - 1 downto 0);
     
-    -- RESP FLOW > REQ FLOW
+    -- AXI_to_noc_FIFO_buffer -> SNA_req_AXI_handshake_controller
     signal buffer_write_ready : std_logic;
     signal buffer_read_ready : std_logic;
+    
+    -- t_monitor
+    signal SNA_ready : std_logic;
+    signal t_begun : std_logic;
+    signal t_end : std_logic;
 
 begin
 
@@ -144,45 +147,44 @@ begin
             
             -- AXI WRITE ADDRESS CHANNEL 
             AWADDR => AWADDR,
+            AWPROT => AWPROT,
             AWVALID => AWVALID,
             AWREADY => AWREADY,
-    
+            
             -- AXI WRITE DATA CHANNEL
             WDATA => WDATA,
+            WSTRB => WSTRB,
             WVALID => WVALID,
             WREADY => WREADY,
             
-            -- AXI WRITE AUXILIARY SIGNALS
-            AWPROT => AWPROT,
-            WSTRB => WSTRB,
-    
             -- AXI READ ADDRESS CHANNEL
             ARADDR => ARADDR,
+            ARPROT => ARPROT,
             ARVALID => ARVALID,
             ARREADY => ARREADY,
-    
-            -- AXI READ AUXILIARY SIGNALS
-            ARPROT => ARPROT,
-    
-            -- NOC INTERFACE
+            
+            -- NOC INTERFACE - FLIT AXI <- NOC
             noc_AXI_data => noc_AXI_data,
             noc_AXI_data_valid => noc_AXI_data_valid,
             
             AXI_noc_vc_busy => AXI_noc_vc_busy,
             AXI_noc_vc_credits => AXI_noc_vc_credits,
             
-            -- RESP FLOW INTERFACE
-            SNA_ready => SNA_ready,
-            t_begun => t_begun,
-            
+            -- resp_flow (SNA_resp_AXI_handshake_controller)
             resp_write => resp_write,
             resp_read => resp_read,
             
+            -- resp_flow (SNA_resp_buffer_controller)
             r_addr => r_addr,
             r_vc => r_vc,
             
+            -- resp_flow (AXI_to_noc_FIFO_buffer)
+            buffer_write_ready => buffer_write_ready,
             buffer_read_ready => buffer_read_ready,
-            buffer_write_ready => buffer_write_ready
+            
+            -- t_monitor
+            SNA_ready => SNA_ready,
+            t_begun => t_begun
         );
 
     -- SNA_resp_flow KOMPONENTA
@@ -190,46 +192,50 @@ begin
 
         generic map(
             vc_num => vc_num,
-            flit_size => flit_size,
             address_size => address_size,
+            flit_size => flit_size,
             buffer_size => buffer_size,
+            clock_divider => clock_divider,
+            
             write_threshold => write_threshold,
-            read_threshold => read_threshold,
-            clock_divider => clock_divider
+            read_threshold => read_threshold
         )
         
         port map(
             clk => clk,
             rst => rst,
                 
-            -- AXI WRITE ADDRESS CHANNEL           
-            BREADY => BREADY,
+            -- AXI WRITE RESPONSE CHANNEL
             BRESP => BRESP,
             BVALID => BVALID,
+            BREADY => BREADY,
             
-            -- AXI READ ADDRESS CHANNEL
-            RREADY => RREADY,
+            -- AXI READ RESPONSE CHANNEL
             RDATA => RDATA,
             RRESP => RRESP,
             RVALID => RVALID,
+            RREADY => RREADY,
             
-            -- AXI READ AUXILIARY SIGNALS
+            -- NOC INTERFACE - FLIT AXI -> NOC
+            AXI_noc_data => AXI_noc_data,
+            AXI_noc_data_valid => AXI_noc_data_valid,
+            
+            noc_AXI_vc_busy => noc_AXI_vc_busy,
+            noc_AXI_vc_credits => noc_AXI_vc_credits,
+            
+            -- req_flow (SNA_req_AXI_handshake_controller)
+            buffer_write_ready => buffer_write_ready,
+            buffer_read_ready => buffer_read_ready,
+            
+            -- req_flow (SNA_req_buffer_controller)
             resp_write => resp_write,
             resp_read => resp_read,
+            
             r_addr => r_addr,
             r_vc => r_vc,
             
-            buffer_read_ready => buffer_read_ready,
-            buffer_write_ready => buffer_write_ready,
-            
-            t_end => t_end,
-            
-            -- NOC INTERFACE
-            AXI_noc_data => AXI_noc_data,
-            AXI_noc_data_valid => AXI_noc_data_valid,
-                    
-            noc_AXI_vc_busy => noc_AXI_vc_busy,
-            noc_AXI_vc_credits => noc_AXI_vc_credits
+            -- t_monitor
+            t_end => t_end
         );
 
     -- TRANSACTION MONITOR PROCES

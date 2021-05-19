@@ -50,32 +50,32 @@ architecture Simulation of resp_handshake_test_tb is
     signal clk_sim : std_logic;
     signal rst_sim : std_logic;
     
-    signal BREADY_sim : std_logic;
     signal BRESP_sim : std_logic_vector(1 downto 0);
     signal BVALID_sim : std_logic;
-            
-    signal RREADY_sim : std_logic;
+    signal BREADY_sim : std_logic;
+    
     signal RDATA_sim : std_logic_vector(31 downto 0);
     signal RRESP_sim : std_logic_vector(1 downto 0);
     signal RVALID_sim : std_logic;
-            
-    signal op_write_SNA_sim : std_logic;
-    signal op_read_SNA_sim : std_logic;
-            
-    signal data_SNA_sim : std_logic_vector(31 downto 0);
-    signal resp_SNA_sim : std_logic_vector(1 downto 0);
+    signal RREADY_sim : std_logic;
     
-    signal op_write_MNA_sim : std_logic;
-    signal op_read_MNA_sim : std_logic;
-            
-    signal data_MNA_sim : std_logic_vector(31 downto 0);
-    signal resp_MNA_sim : std_logic_vector(1 downto 0);
+    signal MNA_op_write_sim : std_logic;
+    signal MNA_op_read_sim : std_logic;
     
-    signal resp_write_sim : std_logic;
-    signal resp_read_sim : std_logic;
+    signal MNA_data_sim : std_logic_vector(31 downto 0);
+    signal MNA_resp_sim : std_logic_vector(1 downto 0);
     
-    signal buffer_read_ready_sim : std_logic;
-    signal buffer_write_ready_sim : std_logic;
+    signal SNA_op_write_sim : std_logic;
+    signal SNA_op_read_sim : std_logic;
+    
+    signal SNA_data_sim : std_logic_vector(31 downto 0);
+    signal SNA_resp_sim : std_logic_vector(1 downto 0);
+    
+    signal SNA_buffer_write_ready_sim : std_logic;
+    signal SNA_buffer_read_ready_sim : std_logic;
+    
+    signal SNA_resp_write_sim : std_logic;
+    signal SNA_resp_read_sim : std_logic;
     
     -- Period takta
     constant clk_period : time := 200ns;
@@ -83,55 +83,63 @@ architecture Simulation of resp_handshake_test_tb is
 begin
 
     -- Komponenta koja se testira (Unit Under Test)
-    MNA_resp_handshake: MNA_resp_AXI_handshake_controller
-    
-        port map(
-            clk => clk_sim,
-            rst => rst_sim, 
-              
-            BREADY => BREADY_sim,
-            BRESP => BRESP_sim,
-            BVALID => BVALID_sim,
-            
-            RREADY => RREADY_sim,
-            RDATA => RDATA_sim,
-            RRESP => RRESP_sim,
-            RVALID => RVALID_sim,
-            
-            op_write => op_write_MNA_sim,
-            op_read => op_read_MNA_sim,
-            
-            data => data_MNA_sim,
-            resp => resp_MNA_sim
-        );
-        
-    -- Komponenta koja se testira (Unit Under Test)
-    SNA_resp_handshake: SNA_resp_AXI_handshake_controller
+    uut_1: MNA_resp_AXI_handshake_controller
     
         port map(
             clk => clk_sim,
             rst => rst_sim,
             
-            BREADY => BREADY_sim,
+            -- AXI WRITE RESPONSE CHANNEL
             BRESP => BRESP_sim,
             BVALID => BVALID_sim,
+            BREADY => BREADY_sim,
             
-            RREADY => RREADY_sim,
+            -- AXI READ RESPONSE CHANNEL
             RDATA => RDATA_sim,
             RRESP => RRESP_sim,
             RVALID => RVALID_sim,
+            RREADY => RREADY_sim,
             
-            resp_write => resp_write_sim,
-            resp_read => resp_read_sim,
+            -- MNA_resp_buffer_controller
+            op_write => MNA_op_write_sim,
+            op_read => MNA_op_read_sim,
             
-            op_write => op_write_SNA_sim,
-            op_read => op_read_SNA_sim,
+            data => MNA_data_sim,
+            resp => MNA_resp_sim
+        );
+        
+    -- Komponenta koja se testira (Unit Under Test)
+    uut_2: SNA_resp_AXI_handshake_controller
+    
+        port map(
+            clk => clk_sim,
+            rst => rst_sim,
             
-            buffer_read_ready => buffer_read_ready_sim,
-            buffer_write_ready => buffer_write_ready_sim,
+            -- AXI WRITE RESPONSE CHANNEL
+            BRESP => BRESP_sim,
+            BVALID => BVALID_sim,
+            BREADY => BREADY_sim,
             
-            data => data_SNA_sim,
-            resp => resp_SNA_sim
+            -- AXI READ RESPONSE CHANNEL
+            RDATA => RDATA_sim,
+            RRESP => RRESP_sim,
+            RVALID => RVALID_sim,
+            RREADY => RREADY_sim,
+            
+            -- SNA_resp_buffer_controller
+            op_write => SNA_op_write_sim,
+            op_read => SNA_op_read_sim,
+            
+            data => SNA_data_sim,
+            resp => SNA_resp_sim,
+            
+            -- AXI_to_noc_FIFO_buffer
+            buffer_write_ready => SNA_buffer_write_ready_sim,
+            buffer_read_ready => SNA_buffer_read_ready_sim,
+            
+            -- req_flow (SNA_req_buffer_controller)
+            resp_write => SNA_resp_write_sim,
+            resp_read => SNA_resp_read_sim
         );
         
      -- clk proces
@@ -151,17 +159,19 @@ begin
     
     begin
     
-        op_write_MNA_sim <= '0';
-        op_read_MNA_sim <= '0';
+        -- > Inicijalne postavke ulaznih signala
+        MNA_op_write_sim <= '0';
+        MNA_op_read_sim <= '0';
         
-        data_MNA_sim <= (others => '0');
-        resp_MNA_sim <= (others => '0');
+        MNA_data_sim <= (others => '0');
+        MNA_resp_sim <= (others => '0');
         
-        resp_write_sim <= '0';
-        resp_read_sim <= '0';
+        SNA_buffer_write_ready_sim <= '0';
+        SNA_buffer_read_ready_sim <= '0';
         
-        buffer_read_ready_sim <= '0';
-        buffer_write_ready_sim <= '0';
+        SNA_resp_write_sim <= '0';
+        SNA_resp_read_sim <= '0';
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';
@@ -173,46 +183,49 @@ begin
         
         wait for (4.1 * clk_period);
         
-        buffer_read_ready_sim <= '1';
-        buffer_write_ready_sim <= '1';
+        SNA_buffer_write_ready_sim <= '1';
+        SNA_buffer_read_ready_sim <= '1';
         
         wait for (4 * clk_period);
         
-        op_write_MNA_sim <= '1';
-        
-        data_MNA_sim <= (others => '0');
-        resp_MNA_sim <= "01";
+        SNA_resp_write_sim <= '1';
         
         wait for clk_period;
         
-        op_write_MNA_sim <= '0';    
-            
-        resp_write_sim <= '1';
+        SNA_resp_write_sim <= '0';
         
         wait for clk_period;
         
-        resp_write_sim <= '0';
+        MNA_op_write_sim <= '1';
+        
+        MNA_data_sim <= (others => '0');
+        MNA_resp_sim <= "01";
+        
+        wait for clk_period;
+        
+        MNA_op_write_sim <= '0';
         
         wait for (4 * clk_period);
         
-        op_read_MNA_sim <= '1';
-        
-        data_MNA_sim <= X"12345678";
-        resp_MNA_sim <= "10";
+        SNA_resp_read_sim <= '1';
         
         wait for clk_period;
         
-        op_read_MNA_sim <= '0';
-        
-        resp_read_sim <= '1';
+        SNA_resp_read_sim <= '0';
         
         wait for clk_period;
         
-        resp_read_sim <= '0';
+        MNA_op_read_sim <= '1';
+        
+        MNA_data_sim <= X"12345678";
+        MNA_resp_sim <= "10";
+        
+        wait for clk_period;
+        
+        MNA_op_read_sim <= '0';
     
         wait;
     
     end process;
-
 
 end Simulation;
