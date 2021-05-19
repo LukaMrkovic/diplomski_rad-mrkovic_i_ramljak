@@ -556,14 +556,14 @@ begin
             RVALID => MNA_RVALID,
             RREADY => MNA_RREADY,
             
-            -- NOC INTERFACE - FLIT AXI > NOC
+            -- NOC INTERFACE - FLIT AXI -> NOC
             AXI_noc_data => data_MNA_to_rA, 
             AXI_noc_data_valid => data_valid_MNA_to_rA,
                     
             noc_AXI_vc_busy => vc_busy_rA_to_MNA,
             noc_AXI_vc_credits => vc_credits_rA_to_MNA,
             
-            -- NOC INTERFACE - FLIT NOC > AXI 
+            -- NOC INTERFACE - FLIT AXI <- NOC
             noc_AXI_data => data_rA_to_MNA,     
             noc_AXI_data_valid => data_valid_rA_to_MNA,
             
@@ -619,14 +619,14 @@ begin
             RVALID => SNA_RVALID,
             RREADY => SNA_RREADY,
             
-            -- NOC INTERFACE - FLIT AXI > NOC
+            -- NOC INTERFACE - FLIT AXI -> NOC
             AXI_noc_data => data_SNA_to_rD,
             AXI_noc_data_valid => data_valid_SNA_to_rD,
             
             noc_AXI_vc_busy => vc_busy_rD_to_SNA,
             noc_AXI_vc_credits => vc_credits_rD_to_SNA,
             
-            -- NOC INTERFACE - FLIT NOC > AXI
+            -- NOC INTERFACE - FLIT AXI <- NOC
             noc_AXI_data => data_rD_to_SNA,
             noc_AXI_data_valid => data_valid_rD_to_SNA,
             
@@ -682,8 +682,7 @@ begin
     
     begin
     
-        -- Inicijalne postavke ulaznih signala
-        
+        -- > Inicijalne postavke ulaznih signala
         -- > ROUTER B
             -- LOCAL
             data_in_B_local <= (others => '0');
@@ -732,6 +731,7 @@ begin
             SNA_RRESP <= (others => '0');
             SNA_RVALID <= '0';
         -- < SNA
+        -- > Inicijalne postavke ulaznih signala
     
         -- Reset aktivan
         rst_sim <= '0';
@@ -743,7 +743,8 @@ begin
 
         wait for (2.1 * clk_period);
         
-        -- > WRITE REQ
+        -- > WRITE
+        -- > REQUEST
         MNA_AWADDR <= X"51111111";
         MNA_AWPROT <= "101";
         MNA_AWVALID <= '1';
@@ -763,17 +764,19 @@ begin
         MNA_WDATA <= (others => '0');
         MNA_WSTRB <= (others => '0');
         MNA_WVALID <= '0';
-        -- < WRITE REQ
+        -- < REQUEST
         
         wait for (42 * clk_period);
         
-        -- > WRITE RESP
+        -- > RESPONSE
         SNA_AWREADY <= '1';
+        
         SNA_WREADY <= '1';
         
         wait for clk_period;
         
         SNA_AWREADY <= '0';
+        
         SNA_WREADY <= '0';
         
         SNA_BRESP <= "11";
@@ -786,11 +789,13 @@ begin
         wait for (32 * clk_period);
         
         MNA_BREADY <= '0';
-        -- < WRITE RESP
+        -- < RESPONSE
+        -- < WRITE
         
         wait for (2 * clk_period);
         
-        -- > READ REQ
+        -- > READ
+        -- > REQUEST
         MNA_ARADDR <= X"52222222";
         MNA_ARPROT <= "010";
         MNA_ARVALID <= '1';
@@ -802,11 +807,11 @@ begin
         MNA_ARADDR <= (others => '0');
         MNA_ARPROT <= (others => '0');
         MNA_ARVALID <= '0';
-        -- < READ REQ
+        -- < REQUEST
         
         wait for (37 * clk_period);
         
-        -- > READ RESP
+        -- > RESPONSE
         SNA_ARREADY <= '1';
         
         wait for clk_period;
@@ -824,7 +829,8 @@ begin
         wait for (38 * clk_period);
         
         MNA_RREADY <= '0';
-        -- < READ RESP
+        -- < RESPONSE
+        -- < READ
         
         wait;
     

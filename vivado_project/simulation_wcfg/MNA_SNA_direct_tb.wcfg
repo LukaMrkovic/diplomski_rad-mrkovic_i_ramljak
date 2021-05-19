@@ -14,12 +14,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="4189190fs"></ZoomEndTime>
-      <Cursor1Time time="6200000fs"></Cursor1Time>
+      <ZoomEndTime time="20000000fs"></ZoomEndTime>
+      <Cursor1Time time="6200fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="290"></NameColumnWidth>
-      <ValueColumnWidth column_width="135"></ValueColumnWidth>
+      <NameColumnWidth column_width="252"></NameColumnWidth>
+      <ValueColumnWidth column_width="131"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="18" />
    <wvobject type="divider" fp_name="divider51">
@@ -46,265 +46,265 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider51">
-      <obj_property name="label">master_network_adapter</obj_property>
+      <obj_property name="label">AXI_master_network_adapter</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
    <wvobject fp_name="group78" type="group">
-      <obj_property name="label">master_network_adapter</obj_property>
+      <obj_property name="label">AXI_master_network_adapter</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <wvobject type="divider" fp_name="divider51">
          <obj_property name="label">AXI WRITE ADDRESS CHANNEL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#DCDCDC</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/AWADDR_MNA_sim" type="array">
-         <obj_property name="ElementShortName">AWADDR_MNA_sim[31:0]</obj_property>
-         <obj_property name="ObjectShortName">AWADDR_MNA_sim[31:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_AWADDR" type="array">
+         <obj_property name="ElementShortName">MNA_AWADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_AWADDR[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/AWVALID_MNA_sim" type="logic">
-         <obj_property name="ElementShortName">AWVALID_MNA_sim</obj_property>
-         <obj_property name="ObjectShortName">AWVALID_MNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_AWPROT" type="array">
+         <obj_property name="ElementShortName">MNA_AWPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_AWPROT[2:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/AWREADY_MNA_sim" type="logic">
-         <obj_property name="ElementShortName">AWREADY_MNA_sim</obj_property>
-         <obj_property name="ObjectShortName">AWREADY_MNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_AWVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_AWVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_AWVALID</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/AWPROT_MNA_sim" type="array">
-         <obj_property name="ElementShortName">AWPROT_MNA_sim[2:0]</obj_property>
-         <obj_property name="ObjectShortName">AWPROT_MNA_sim[2:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_AWREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_AWREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_AWREADY</obj_property>
       </wvobject>
       <wvobject type="divider" fp_name="divider51">
          <obj_property name="label">AXI WRITE DATA CHANNEL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#DCDCDC</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/WDATA_MNA_sim" type="array">
-         <obj_property name="ElementShortName">WDATA_MNA_sim[31:0]</obj_property>
-         <obj_property name="ObjectShortName">WDATA_MNA_sim[31:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_WDATA" type="array">
+         <obj_property name="ElementShortName">MNA_WDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_WDATA[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/WSTRB_MNA_sim" type="array">
-         <obj_property name="ElementShortName">WSTRB_MNA_sim[3:0]</obj_property>
-         <obj_property name="ObjectShortName">WSTRB_MNA_sim[3:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_WSTRB" type="array">
+         <obj_property name="ElementShortName">MNA_WSTRB[3:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_WSTRB[3:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/WVALID_MNA_sim" type="logic">
-         <obj_property name="ElementShortName">WVALID_MNA_sim</obj_property>
-         <obj_property name="ObjectShortName">WVALID_MNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_WVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_WVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_WVALID</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/WREADY_MNA_sim" type="logic">
-         <obj_property name="ElementShortName">WREADY_MNA_sim</obj_property>
-         <obj_property name="ObjectShortName">WREADY_MNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_WREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_WREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_WREADY</obj_property>
       </wvobject>
       <wvobject type="divider" fp_name="divider51">
          <obj_property name="label">AXI READ ADDRESS CHANNEL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#DCDCDC</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/ARADDR_MNA_sim" type="array">
-         <obj_property name="ElementShortName">ARADDR_MNA_sim[31:0]</obj_property>
-         <obj_property name="ObjectShortName">ARADDR_MNA_sim[31:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_ARADDR" type="array">
+         <obj_property name="ElementShortName">MNA_ARADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_ARADDR[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/ARPROT_MNA_sim" type="array">
-         <obj_property name="ElementShortName">ARPROT_MNA_sim[2:0]</obj_property>
-         <obj_property name="ObjectShortName">ARPROT_MNA_sim[2:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_ARPROT" type="array">
+         <obj_property name="ElementShortName">MNA_ARPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_ARPROT[2:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/ARVALID_MNA_sim" type="logic">
-         <obj_property name="ElementShortName">ARVALID_MNA_sim</obj_property>
-         <obj_property name="ObjectShortName">ARVALID_MNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_ARVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_ARVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_ARVALID</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/ARREADY_MNA_sim" type="logic">
-         <obj_property name="ElementShortName">ARREADY_MNA_sim</obj_property>
-         <obj_property name="ObjectShortName">ARREADY_MNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_ARREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_ARREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_ARREADY</obj_property>
       </wvobject>
       <wvobject type="divider" fp_name="divider51">
          <obj_property name="label">AXI WRITE RESPONSE CHANNEL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#DCDCDC</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/BREADY_MNA_sim" type="logic">
-         <obj_property name="ElementShortName">BREADY_MNA_sim</obj_property>
-         <obj_property name="ObjectShortName">BREADY_MNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_BRESP" type="array">
+         <obj_property name="ElementShortName">MNA_BRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_BRESP[1:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/BRESP_MNA_sim" type="array">
-         <obj_property name="ElementShortName">BRESP_MNA_sim[1:0]</obj_property>
-         <obj_property name="ObjectShortName">BRESP_MNA_sim[1:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_BVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_BVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_BVALID</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/BVALID_MNA_sim" type="logic">
-         <obj_property name="ElementShortName">BVALID_MNA_sim</obj_property>
-         <obj_property name="ObjectShortName">BVALID_MNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_BREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_BREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_BREADY</obj_property>
       </wvobject>
       <wvobject type="divider" fp_name="divider51">
          <obj_property name="label">AXI READ RESPONSE CHANNEL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#DCDCDC</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/RREADY_MNA_sim" type="logic">
-         <obj_property name="ElementShortName">RREADY_MNA_sim</obj_property>
-         <obj_property name="ObjectShortName">RREADY_MNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_RDATA" type="array">
+         <obj_property name="ElementShortName">MNA_RDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_RDATA[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/RDATA_MNA_sim" type="array">
-         <obj_property name="ElementShortName">RDATA_MNA_sim[31:0]</obj_property>
-         <obj_property name="ObjectShortName">RDATA_MNA_sim[31:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_RRESP" type="array">
+         <obj_property name="ElementShortName">MNA_RRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_RRESP[1:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/RRESP_MNA_sim" type="array">
-         <obj_property name="ElementShortName">RRESP_MNA_sim[1:0]</obj_property>
-         <obj_property name="ObjectShortName">RRESP_MNA_sim[1:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_RVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_RVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_RVALID</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/RVALID_MNA_sim" type="logic">
-         <obj_property name="ElementShortName">RVALID_MNA_sim</obj_property>
-         <obj_property name="ObjectShortName">RVALID_MNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/MNA_RREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_RREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_RREADY</obj_property>
       </wvobject>
    </wvobject>
    <wvobject type="divider" fp_name="divider51">
-      <obj_property name="label">slave_network_adapter</obj_property>
+      <obj_property name="label">AXI_slave_network_adapter</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
    <wvobject fp_name="group81" type="group">
-      <obj_property name="label">slave_network_adapter</obj_property>
+      <obj_property name="label">AXI_slave_network_adapter</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <wvobject type="divider" fp_name="divider51">
          <obj_property name="label">AXI WRITE ADDRESS CHANNEL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#DCDCDC</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/AWADDR_SNA_sim" type="array">
-         <obj_property name="ElementShortName">AWADDR_SNA_sim[31:0]</obj_property>
-         <obj_property name="ObjectShortName">AWADDR_SNA_sim[31:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_AWADDR" type="array">
+         <obj_property name="ElementShortName">SNA_AWADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_AWADDR[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/AWPROT_SNA_sim" type="array">
-         <obj_property name="ElementShortName">AWPROT_SNA_sim[2:0]</obj_property>
-         <obj_property name="ObjectShortName">AWPROT_SNA_sim[2:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_AWPROT" type="array">
+         <obj_property name="ElementShortName">SNA_AWPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_AWPROT[2:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/AWVALID_SNA_sim" type="logic">
-         <obj_property name="ElementShortName">AWVALID_SNA_sim</obj_property>
-         <obj_property name="ObjectShortName">AWVALID_SNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_AWVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_AWVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_AWVALID</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/AWREADY_SNA_sim" type="logic">
-         <obj_property name="ElementShortName">AWREADY_SNA_sim</obj_property>
-         <obj_property name="ObjectShortName">AWREADY_SNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_AWREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_AWREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_AWREADY</obj_property>
       </wvobject>
       <wvobject type="divider" fp_name="divider51">
          <obj_property name="label">AXI WRITE DATA CHANNEL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#DCDCDC</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/WDATA_SNA_sim" type="array">
-         <obj_property name="ElementShortName">WDATA_SNA_sim[31:0]</obj_property>
-         <obj_property name="ObjectShortName">WDATA_SNA_sim[31:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_WDATA" type="array">
+         <obj_property name="ElementShortName">SNA_WDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_WDATA[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/WSTRB_SNA_sim" type="array">
-         <obj_property name="ElementShortName">WSTRB_SNA_sim[3:0]</obj_property>
-         <obj_property name="ObjectShortName">WSTRB_SNA_sim[3:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_WSTRB" type="array">
+         <obj_property name="ElementShortName">SNA_WSTRB[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_WSTRB[3:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/WVALID_SNA_sim" type="logic">
-         <obj_property name="ElementShortName">WVALID_SNA_sim</obj_property>
-         <obj_property name="ObjectShortName">WVALID_SNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_WVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_WVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_WVALID</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/WREADY_SNA_sim" type="logic">
-         <obj_property name="ElementShortName">WREADY_SNA_sim</obj_property>
-         <obj_property name="ObjectShortName">WREADY_SNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_WREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_WREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_WREADY</obj_property>
       </wvobject>
       <wvobject type="divider" fp_name="divider51">
          <obj_property name="label">AXI READ ADDRESS CHANNEL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#DCDCDC</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/ARADDR_SNA_sim" type="array">
-         <obj_property name="ElementShortName">ARADDR_SNA_sim[31:0]</obj_property>
-         <obj_property name="ObjectShortName">ARADDR_SNA_sim[31:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_ARADDR" type="array">
+         <obj_property name="ElementShortName">SNA_ARADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_ARADDR[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/ARPROT_SNA_sim" type="array">
-         <obj_property name="ElementShortName">ARPROT_SNA_sim[2:0]</obj_property>
-         <obj_property name="ObjectShortName">ARPROT_SNA_sim[2:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_ARPROT" type="array">
+         <obj_property name="ElementShortName">SNA_ARPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_ARPROT[2:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/ARVALID_SNA_sim" type="logic">
-         <obj_property name="ElementShortName">ARVALID_SNA_sim</obj_property>
-         <obj_property name="ObjectShortName">ARVALID_SNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_ARVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_ARVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_ARVALID</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/ARREADY_SNA_sim" type="logic">
-         <obj_property name="ElementShortName">ARREADY_SNA_sim</obj_property>
-         <obj_property name="ObjectShortName">ARREADY_SNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_ARREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_ARREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_ARREADY</obj_property>
       </wvobject>
       <wvobject type="divider" fp_name="divider51">
          <obj_property name="label">AXI WRITE RESPONSE CHANNEL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#DCDCDC</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/BRESP_SNA_sim" type="array">
-         <obj_property name="ElementShortName">BRESP_SNA_sim[1:0]</obj_property>
-         <obj_property name="ObjectShortName">BRESP_SNA_sim[1:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_BRESP" type="array">
+         <obj_property name="ElementShortName">SNA_BRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_BRESP[1:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/BVALID_SNA_sim" type="logic">
-         <obj_property name="ElementShortName">BVALID_SNA_sim</obj_property>
-         <obj_property name="ObjectShortName">BVALID_SNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_BVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_BVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_BVALID</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/BREADY_SNA_sim" type="logic">
-         <obj_property name="ElementShortName">BREADY_SNA_sim</obj_property>
-         <obj_property name="ObjectShortName">BREADY_SNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_BREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_BREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_BREADY</obj_property>
       </wvobject>
       <wvobject type="divider" fp_name="divider51">
          <obj_property name="label">AXI READ RESPONSE CHANNEL</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="BkColor">#DCDCDC</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/RDATA_SNA_sim" type="array">
-         <obj_property name="ElementShortName">RDATA_SNA_sim[31:0]</obj_property>
-         <obj_property name="ObjectShortName">RDATA_SNA_sim[31:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_RDATA" type="array">
+         <obj_property name="ElementShortName">SNA_RDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_RDATA[31:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/RRESP_SNA_sim" type="array">
-         <obj_property name="ElementShortName">RRESP_SNA_sim[1:0]</obj_property>
-         <obj_property name="ObjectShortName">RRESP_SNA_sim[1:0]</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_RRESP" type="array">
+         <obj_property name="ElementShortName">SNA_RRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_RRESP[1:0]</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/RVALID_SNA_sim" type="logic">
-         <obj_property name="ElementShortName">RVALID_SNA_sim</obj_property>
-         <obj_property name="ObjectShortName">RVALID_SNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_RVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_RVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_RVALID</obj_property>
       </wvobject>
-      <wvobject fp_name="/MNA_SNA_direct_tb/RREADY_SNA_sim" type="logic">
-         <obj_property name="ElementShortName">RREADY_SNA_sim</obj_property>
-         <obj_property name="ObjectShortName">RREADY_SNA_sim</obj_property>
+      <wvobject fp_name="/MNA_SNA_direct_tb/SNA_RREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_RREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_RREADY</obj_property>
       </wvobject>
    </wvobject>
    <wvobject type="divider" fp_name="divider51">
-      <obj_property name="label">REQUEST FLOW</obj_property>
+      <obj_property name="label">MNA -&gt; SNA</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
-   <wvobject fp_name="/MNA_SNA_direct_tb/AXI_noc_data_REQ_sim" type="array">
-      <obj_property name="ElementShortName">AXI_noc_data_REQ_sim[43:0]</obj_property>
-      <obj_property name="ObjectShortName">AXI_noc_data_REQ_sim[43:0]</obj_property>
+   <wvobject fp_name="/MNA_SNA_direct_tb/MNA_to_SNA_data" type="array">
+      <obj_property name="ElementShortName">MNA_to_SNA_data[43:0]</obj_property>
+      <obj_property name="ObjectShortName">MNA_to_SNA_data[43:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/MNA_SNA_direct_tb/AXI_noc_data_valid_REQ_sim" type="logic">
-      <obj_property name="ElementShortName">AXI_noc_data_valid_REQ_sim</obj_property>
-      <obj_property name="ObjectShortName">AXI_noc_data_valid_REQ_sim</obj_property>
+   <wvobject fp_name="/MNA_SNA_direct_tb/MNA_to_SNA_data_valid" type="logic">
+      <obj_property name="ElementShortName">MNA_to_SNA_data_valid</obj_property>
+      <obj_property name="ObjectShortName">MNA_to_SNA_data_valid</obj_property>
    </wvobject>
-   <wvobject fp_name="/MNA_SNA_direct_tb/noc_AXI_vc_busy_REQ_sim" type="array">
-      <obj_property name="ElementShortName">noc_AXI_vc_busy_REQ_sim[1:0]</obj_property>
-      <obj_property name="ObjectShortName">noc_AXI_vc_busy_REQ_sim[1:0]</obj_property>
+   <wvobject fp_name="/MNA_SNA_direct_tb/SNA_to_MNA_vc_busy" type="array">
+      <obj_property name="ElementShortName">SNA_to_MNA_vc_busy[1:0]</obj_property>
+      <obj_property name="ObjectShortName">SNA_to_MNA_vc_busy[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/MNA_SNA_direct_tb/noc_AXI_vc_credits_REQ_sim" type="array">
-      <obj_property name="ElementShortName">noc_AXI_vc_credits_REQ_sim[1:0]</obj_property>
-      <obj_property name="ObjectShortName">noc_AXI_vc_credits_REQ_sim[1:0]</obj_property>
+   <wvobject fp_name="/MNA_SNA_direct_tb/SNA_to_MNA_vc_credits" type="array">
+      <obj_property name="ElementShortName">SNA_to_MNA_vc_credits[1:0]</obj_property>
+      <obj_property name="ObjectShortName">SNA_to_MNA_vc_credits[1:0]</obj_property>
    </wvobject>
    <wvobject type="divider" fp_name="divider51">
-      <obj_property name="label">RESPONSE FLOW</obj_property>
+      <obj_property name="label">SNA -&gt; MNA</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="BkColor">#DCDCDC</obj_property>
    </wvobject>
-   <wvobject fp_name="/MNA_SNA_direct_tb/noc_AXI_data_RESP_sim" type="array">
-      <obj_property name="ElementShortName">noc_AXI_data_RESP_sim[43:0]</obj_property>
-      <obj_property name="ObjectShortName">noc_AXI_data_RESP_sim[43:0]</obj_property>
+   <wvobject fp_name="/MNA_SNA_direct_tb/SNA_to_MNA_data" type="array">
+      <obj_property name="ElementShortName">SNA_to_MNA_data[43:0]</obj_property>
+      <obj_property name="ObjectShortName">SNA_to_MNA_data[43:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/MNA_SNA_direct_tb/noc_AXI_data_valid_RESP_sim" type="logic">
-      <obj_property name="ElementShortName">noc_AXI_data_valid_RESP_sim</obj_property>
-      <obj_property name="ObjectShortName">noc_AXI_data_valid_RESP_sim</obj_property>
+   <wvobject fp_name="/MNA_SNA_direct_tb/SNA_to_MNA_data_valid" type="logic">
+      <obj_property name="ElementShortName">SNA_to_MNA_data_valid</obj_property>
+      <obj_property name="ObjectShortName">SNA_to_MNA_data_valid</obj_property>
    </wvobject>
-   <wvobject fp_name="/MNA_SNA_direct_tb/AXI_noc_vc_busy_RESP_sim" type="array">
-      <obj_property name="ElementShortName">AXI_noc_vc_busy_RESP_sim[1:0]</obj_property>
-      <obj_property name="ObjectShortName">AXI_noc_vc_busy_RESP_sim[1:0]</obj_property>
+   <wvobject fp_name="/MNA_SNA_direct_tb/MNA_to_SNA_vc_busy" type="array">
+      <obj_property name="ElementShortName">MNA_to_SNA_vc_busy[1:0]</obj_property>
+      <obj_property name="ObjectShortName">MNA_to_SNA_vc_busy[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/MNA_SNA_direct_tb/AXI_noc_vc_credits_RESP_sim" type="array">
-      <obj_property name="ElementShortName">AXI_noc_vc_credits_RESP_sim[1:0]</obj_property>
-      <obj_property name="ObjectShortName">AXI_noc_vc_credits_RESP_sim[1:0]</obj_property>
+   <wvobject fp_name="/MNA_SNA_direct_tb/MNA_to_SNA_vc_credits" type="array">
+      <obj_property name="ElementShortName">MNA_to_SNA_vc_credits[1:0]</obj_property>
+      <obj_property name="ObjectShortName">MNA_to_SNA_vc_credits[1:0]</obj_property>
    </wvobject>
 </wave_config>

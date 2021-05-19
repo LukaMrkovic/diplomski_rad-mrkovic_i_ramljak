@@ -51,163 +51,158 @@ architecture Simulation of MNA_SNA_direct_tb is
     signal int_clk_sim : std_logic;
     signal rst_sim : std_logic;
     
-    -- AXI WRITE ADDRESS CHANNEL           
-    signal AWADDR_MNA_sim : std_logic_vector(31 downto 0);
-    signal AWVALID_MNA_sim : std_logic;
-    signal AWREADY_MNA_sim : std_logic;
-    
-    -- AXI WRITE DATA CHANNEL
-    signal WDATA_MNA_sim : std_logic_vector(31 downto 0);
-    signal WVALID_MNA_sim : std_logic;
-    signal WREADY_MNA_sim : std_logic;
-    
-    -- AXI WRITE AUXILIARY SIGNALS
-    signal AWPROT_MNA_sim : std_logic_vector(2 downto 0);
-    signal WSTRB_MNA_sim : std_logic_vector(3 downto 0);
-    
-    -- AXI READ ADDRESS CHANNEL
-    signal ARADDR_MNA_sim : std_logic_vector(31 downto 0);
-    signal ARVALID_MNA_sim : std_logic;
-    signal ARREADY_MNA_sim : std_logic;
+    -- > MNA
+        -- AXI WRITE ADDRESS CHANNEL
+        signal MNA_AWADDR : std_logic_vector(31 downto 0);
+        signal MNA_AWPROT : std_logic_vector(2 downto 0);
+        signal MNA_AWVALID : std_logic;
+        signal MNA_AWREADY : std_logic;
+        
+        -- AXI WRITE DATA CHANNEL
+        signal MNA_WDATA : std_logic_vector(31 downto 0);
+        signal MNA_WSTRB : std_logic_vector(3 downto 0);
+        signal MNA_WVALID : std_logic;
+        signal MNA_WREADY : std_logic;
+        
+        -- AXI READ ADDRESS CHANNEL
+        signal MNA_ARADDR : std_logic_vector(31 downto 0);
+        signal MNA_ARPROT : std_logic_vector(2 downto 0);
+        signal MNA_ARVALID : std_logic;
+        signal MNA_ARREADY : std_logic;
+        
+        -- AXI WRITE RESPONSE CHANNEL
+        signal MNA_BRESP : std_logic_vector(1 downto 0);
+        signal MNA_BVALID : std_logic;
+        signal MNA_BREADY : std_logic;
             
-    -- AXI READ AUXILIARY SIGNALS
-    signal ARPROT_MNA_sim : std_logic_vector(2 downto 0);
+        -- AXI READ RESPONSE CHANNEL
+        signal MNA_RDATA : std_logic_vector(31 downto 0);
+        signal MNA_RRESP : std_logic_vector(1 downto 0);
+        signal MNA_RVALID : std_logic;
+        signal MNA_RREADY : std_logic;
+    -- < MNA
     
-    -- AXI WRITE RESPONSE CHANNEL   
-    signal BREADY_MNA_sim : std_logic;
-    signal BRESP_MNA_sim : std_logic_vector(1 downto 0);
-    signal BVALID_MNA_sim : std_logic;
+    -- > SNA
+        -- AXI WRITE ADDRESS CHANNEL
+        signal SNA_AWADDR : std_logic_vector(31 downto 0);
+        signal SNA_AWPROT : std_logic_vector(2 downto 0);
+        signal SNA_AWVALID : std_logic;
+        signal SNA_AWREADY : std_logic;
         
-    -- AXI READ RESPONSE CHANNEL
-    signal RREADY_MNA_sim : std_logic;
-    signal RDATA_MNA_sim : std_logic_vector(31 downto 0);
-    signal RRESP_MNA_sim : std_logic_vector(1 downto 0);
-    signal RVALID_MNA_sim : std_logic;
-    
-    -- AXI WRITE ADDRESS CHANNEL 
-    signal AWADDR_SNA_sim : std_logic_vector(31 downto 0);
-    signal AWPROT_SNA_sim : std_logic_vector(2 downto 0);
-    signal AWVALID_SNA_sim : std_logic;
-    signal AWREADY_SNA_sim : std_logic;
-
-    -- AXI WRITE DATA CHANNEL
-    signal WDATA_SNA_sim : std_logic_vector(31 downto 0);
-    signal WSTRB_SNA_sim : std_logic_vector(3 downto 0);
-    signal WVALID_SNA_sim : std_logic;
-    signal WREADY_SNA_sim : std_logic;
-
-    -- AXI READ ADDRESS CHANNEL
-    signal ARADDR_SNA_sim : std_logic_vector(31 downto 0);
-    signal ARPROT_SNA_sim : std_logic_vector(2 downto 0);
-    signal ARVALID_SNA_sim : std_logic;
-    signal ARREADY_SNA_sim : std_logic;
-
-    -- AXI WRITE RESPONSE CHANNEL
-    signal BRESP_SNA_sim : std_logic_vector(1 downto 0);
-    signal BVALID_SNA_sim : std_logic;
-    signal BREADY_SNA_sim : std_logic;
-
-    -- AXI READ RESPONSE CHANNEL
-    signal RDATA_SNA_sim : std_logic_vector(31 downto 0);
-    signal RRESP_SNA_sim : std_logic_vector(1 downto 0);
-    signal RVALID_SNA_sim : std_logic;
-    signal RREADY_SNA_sim : std_logic;
-    
-    -- NOC INTERFACE - REQ FLOW
-    signal AXI_noc_data_REQ_sim : std_logic_vector(const_flit_size - 1 downto 0);
-    signal AXI_noc_data_valid_REQ_sim : std_logic;
-           
-    signal noc_AXI_vc_busy_REQ_sim : std_logic_vector(const_vc_num - 1 downto 0);
-    signal noc_AXI_vc_credits_REQ_sim : std_logic_vector(const_vc_num - 1 downto 0);
-
-    
-    -- NOC INTERFACE - RESP FLOW 
-    signal noc_AXI_data_RESP_sim : std_logic_vector(const_flit_size - 1 downto 0);        
-    signal noc_AXI_data_valid_RESP_sim : std_logic;
+        -- AXI WRITE DATA CHANNEL
+        signal SNA_WDATA : std_logic_vector(31 downto 0);
+        signal SNA_WSTRB : std_logic_vector(3 downto 0);
+        signal SNA_WVALID : std_logic;
+        signal SNA_WREADY : std_logic;
         
-    signal AXI_noc_vc_busy_RESP_sim : std_logic_vector(const_vc_num - 1 downto 0);
-    signal AXI_noc_vc_credits_RESP_sim : std_logic_vector(const_vc_num - 1 downto 0);
+        -- AXI READ ADDRESS CHANNEL
+        signal SNA_ARADDR : std_logic_vector(31 downto 0);
+        signal SNA_ARPROT : std_logic_vector(2 downto 0);
+        signal SNA_ARVALID : std_logic;
+        signal SNA_ARREADY : std_logic;
+        
+        -- AXI WRITE RESPONSE CHANNEL
+        signal SNA_BRESP : std_logic_vector(1 downto 0);
+        signal SNA_BVALID : std_logic;
+        signal SNA_BREADY : std_logic;
+            
+        -- AXI READ RESPONSE CHANNEL
+        signal SNA_RDATA : std_logic_vector(31 downto 0);
+        signal SNA_RRESP : std_logic_vector(1 downto 0);
+        signal SNA_RVALID : std_logic;
+        signal SNA_RREADY : std_logic;
+    -- < SNA
+    
+    -- NOC INTERFACE - FLIT MNA -> SNA
+    signal MNA_to_SNA_data: std_logic_vector(const_flit_size - 1 downto 0);
+    signal MNA_to_SNA_data_valid : std_logic;
+    
+    signal SNA_to_MNA_vc_busy : std_logic_vector(const_vc_num - 1 downto 0);
+    signal SNA_to_MNA_vc_credits : std_logic_vector(const_vc_num - 1 downto 0);
+    
+    -- NOC INTERFACE - FLIT MNA <- SNA
+    signal SNA_to_MNA_data : std_logic_vector(const_flit_size - 1 downto 0);        
+    signal SNA_to_MNA_data_valid : std_logic;
+    
+    signal MNA_to_SNA_vc_busy : std_logic_vector(const_vc_num - 1 downto 0);
+    signal MNA_to_SNA_vc_credits : std_logic_vector(const_vc_num - 1 downto 0);
     
     -- Period takta
     constant clk_period : time := 200ns;
     
 begin
 
-    -- Komponenta MNA_req_flow
-    AXI_MNA: AXI_master_network_adapter
+    -- komponenta AXI_master_network_adapter
+    uut_MNA: AXI_master_network_adapter
     
         generic map ( 
-        vc_num => const_vc_num,
-        mesh_size_x => const_mesh_size_x,
-        mesh_size_y => const_mesh_size_y,
-        address_size => const_address_size,
-        payload_size => const_payload_size,
-        flit_size => const_flit_size,
-        node_address_size => const_node_address_size,
-        buffer_size => const_buffer_size,
-        write_threshold => const_MNA_write_threshold,
-        read_threshold => const_MNA_read_threshold,
-        clock_divider => const_clock_divider,
-        
-        injection_vc => const_default_injection_vc,
-        local_address_x => const_default_address_x,
-        local_address_y => const_default_address_y
-    )
-    
-    port map (
-        clk => clk_sim,
-        rst => rst_sim,
+            vc_num => const_vc_num,
+            mesh_size_x => const_mesh_size_x,
+            mesh_size_y => const_mesh_size_y,
+            address_size => const_address_size,
+            payload_size => const_payload_size,
+            flit_size => const_flit_size,
+            buffer_size => const_buffer_size,
+            local_address_x => "0001",
+            local_address_y => "0001",
+            clock_divider => const_clock_divider,
             
-        -- AXI WRITE ADDRESS CHANNEL           
-        AWADDR => AWADDR_MNA_sim,
-        AWVALID => AWVALID_MNA_sim,
-        AWREADY => AWREADY_MNA_sim,
+            write_threshold => const_MNA_write_threshold,
+            read_threshold => const_MNA_read_threshold,
+            injection_vc => 1,
+            node_address_size => const_node_address_size
+        )
         
-        -- AXI WRITE DATA CHANNEL
-        WDATA => WDATA_MNA_sim,
-        WVALID => WVALID_MNA_sim,
-        WREADY => WREADY_MNA_sim,
-        
-        -- AXI WRITE AUXILIARY SIGNALS
-        AWPROT => AWPROT_MNA_sim,
-        WSTRB => WSTRB_MNA_sim,
-        
-        -- AXI READ ADDRESS CHANNEL
-        ARADDR => ARADDR_MNA_sim,
-        ARVALID => ARVALID_MNA_sim, 
-        ARREADY => ARREADY_MNA_sim,
-        
-        -- AXI READ AUXILIARY SIGNALS
-        ARPROT => ARPROT_MNA_sim,
-    
-        -- AXI WRITE RESPONSE CHANNEL   
-        BREADY => BREADY_MNA_sim,
-        BRESP => BRESP_MNA_sim,
-        BVALID => BVALID_MNA_sim,
-        
-        -- AXI READ RESPONSE CHANNEL
-        RREADY => RREADY_MNA_sim,
-        RDATA => RDATA_MNA_sim,
-        RRESP => RRESP_MNA_sim,
-        RVALID => RVALID_MNA_sim,
-        
-        -- NOC INTERFACE - FLIT AXI > NOC
-        AXI_noc_data => AXI_noc_data_REQ_sim, 
-        AXI_noc_data_valid => AXI_noc_data_valid_REQ_sim,
+        port map (
+            clk => clk_sim,
+            rst => rst_sim,
                 
-        noc_AXI_vc_busy => noc_AXI_vc_busy_REQ_sim,
-        noc_AXI_vc_credits => noc_AXI_vc_credits_REQ_sim,
-        
-        -- NOC INTERFACE - FLIT NOC > AXI 
-        noc_AXI_data => noc_AXI_data_RESP_sim,     
-        noc_AXI_data_valid => noc_AXI_data_valid_RESP_sim,
-        
-        AXI_noc_vc_busy => AXI_noc_vc_busy_RESP_sim,
-        AXI_noc_vc_credits => AXI_noc_vc_credits_RESP_sim
-    );
+            -- AXI WRITE ADDRESS CHANNEL           
+            AWADDR => MNA_AWADDR,
+            AWPROT => MNA_AWPROT,
+            AWVALID => MNA_AWVALID,
+            AWREADY => MNA_AWREADY,
+            
+            -- AXI WRITE DATA CHANNEL
+            WDATA => MNA_WDATA,
+            WSTRB => MNA_WSTRB,
+            WVALID => MNA_WVALID,
+            WREADY => MNA_WREADY,
+            
+            -- AXI READ ADDRESS CHANNEL
+            ARADDR => MNA_ARADDR,
+            ARPROT => MNA_ARPROT,
+            ARVALID => MNA_ARVALID,
+            ARREADY => MNA_ARREADY,
+            
+            -- AXI WRITE RESPONSE CHANNEL
+            BRESP => MNA_BRESP,
+            BVALID => MNA_BVALID,
+            BREADY => MNA_BREADY,
+            
+            -- AXI READ RESPONSE CHANNEL
+            RDATA => MNA_RDATA,
+            RRESP => MNA_RRESP,
+            RVALID => MNA_RVALID,
+            RREADY => MNA_RREADY,
+            
+            -- NOC INTERFACE - FLIT AXI -> NOC
+            AXI_noc_data => MNA_to_SNA_data,
+            AXI_noc_data_valid => MNA_to_SNA_data_valid,
+                    
+            noc_AXI_vc_busy => SNA_to_MNA_vc_busy,
+            noc_AXI_vc_credits => SNA_to_MNA_vc_credits,
+            
+            -- NOC INTERFACE - FLIT AXI <- NOC
+            noc_AXI_data => SNA_to_MNA_data,
+            noc_AXI_data_valid => SNA_to_MNA_data_valid,
+            
+            AXI_noc_vc_busy => MNA_to_SNA_vc_busy,
+            AXI_noc_vc_credits => MNA_to_SNA_vc_credits
+        );
     
-    -- Komponenta koja se testira (Unit Under Test)
-    uut: AXI_slave_network_adapter
+    -- komponenta AXI_slave_network_adapter
+    uut_SNA: AXI_slave_network_adapter
     
         generic map(
             vc_num => const_vc_num,
@@ -226,47 +221,47 @@ begin
             rst => rst_sim,
             
             -- AXI WRITE ADDRESS CHANNEL 
-            AWADDR => AWADDR_SNA_sim,
-            AWPROT => AWPROT_SNA_sim,
-            AWVALID => AWVALID_SNA_sim,
-            AWREADY => AWREADY_SNA_sim,
+            AWADDR => SNA_AWADDR,
+            AWPROT => SNA_AWPROT,
+            AWVALID => SNA_AWVALID,
+            AWREADY => SNA_AWREADY,
             
             -- AXI WRITE DATA CHANNEL
-            WDATA => WDATA_SNA_sim,
-            WSTRB => WSTRB_SNA_sim,
-            WVALID => WVALID_SNA_sim,
-            WREADY => WREADY_SNA_sim,
+            WDATA => SNA_WDATA,
+            WSTRB => SNA_WSTRB,
+            WVALID => SNA_WVALID,
+            WREADY => SNA_WREADY,
             
             -- AXI READ ADDRESS CHANNEL
-            ARADDR => ARADDR_SNA_sim,
-            ARPROT => ARPROT_SNA_sim,
-            ARVALID => ARVALID_SNA_sim,
-            ARREADY => ARREADY_SNA_sim,
+            ARADDR => SNA_ARADDR,
+            ARPROT => SNA_ARPROT,
+            ARVALID => SNA_ARVALID,
+            ARREADY => SNA_ARREADY,
             
             -- AXI WRITE RESPONSE CHANNEL
-            BRESP => BRESP_SNA_sim,
-            BVALID => BVALID_SNA_sim,
-            BREADY => BREADY_SNA_sim,
+            BRESP => SNA_BRESP,
+            BVALID => SNA_BVALID,
+            BREADY => SNA_BREADY,
             
             -- AXI READ RESPONSE CHANNEL
-            RDATA => RDATA_SNA_sim,
-            RRESP => RRESP_SNA_sim,
-            RVALID => RVALID_SNA_sim,
-            RREADY => RREADY_SNA_sim,
+            RDATA => SNA_RDATA,
+            RRESP => SNA_RRESP,
+            RVALID => SNA_RVALID,
+            RREADY => SNA_RREADY,
             
             -- NOC INTERFACE - FLIT AXI > NOC
-            AXI_noc_data => noc_AXI_data_RESP_sim,
-            AXI_noc_data_valid => noc_AXI_data_valid_RESP_sim,
+            AXI_noc_data => SNA_to_MNA_data,
+            AXI_noc_data_valid => SNA_to_MNA_data_valid,
             
-            noc_AXI_vc_busy => AXI_noc_vc_busy_RESP_sim,
-            noc_AXI_vc_credits => AXI_noc_vc_credits_RESP_sim,
+            noc_AXI_vc_busy => MNA_to_SNA_vc_busy,
+            noc_AXI_vc_credits => MNA_to_SNA_vc_credits,
             
             -- NOC INTERFACE - FLIT NOC > AXI
-            noc_AXI_data => AXI_noc_data_REQ_sim,
-            noc_AXI_data_valid => AXI_noc_data_valid_REQ_sim,
+            noc_AXI_data => MNA_to_SNA_data,
+            noc_AXI_data_valid => MNA_to_SNA_data_valid,
             
-            AXI_noc_vc_busy => noc_AXI_vc_busy_REQ_sim,
-            AXI_noc_vc_credits => noc_AXI_vc_credits_REQ_sim
+            AXI_noc_vc_busy => SNA_to_MNA_vc_busy,
+            AXI_noc_vc_credits => SNA_to_MNA_vc_credits
         );
         
     -- clk proces
@@ -317,44 +312,36 @@ begin
     
     begin
     
-        -- master_network_adapter
-        -- inicijalizacija ulaza
-        AWADDR_MNA_sim <= (others => '0');
-        AWVALID_MNA_sim <= '0';
+        -- > Inicijalne postavke ulaznih signala
+        MNA_AWADDR <= (others => '0');
+        MNA_AWPROT <= (others => '0');
+        MNA_AWVALID <= '0';
         
-        WDATA_MNA_sim <= (others => '0');
-        WVALID_MNA_sim <= '0';
+        MNA_WDATA <= (others => '0');
+        MNA_WSTRB <= (others => '0');
+        MNA_WVALID <= '0';
         
-        AWPROT_MNA_sim <= (others => '0');
-        WSTRB_MNA_sim <= (others => '0');
+        MNA_ARADDR <= (others => '0');
+        MNA_ARPROT <= (others => '0');
+        MNA_ARVALID <= '0';
         
-        ARADDR_MNA_sim <= (others => '0');
-        ARVALID_MNA_sim <= '0';
+        MNA_BREADY <= '0';
         
-        ARPROT_MNA_sim <= (others => '0');
+        MNA_RREADY <= '0';
         
-        -- inicijalizacija ulaza
-        BREADY_MNA_sim <= '0';
-        RREADY_MNA_sim <= '0';
+        SNA_AWREADY <= '0';
         
-        -- slave_network_adapter
-        -- AXI WRITE ADDRESS CHANNEL
-        AWREADY_SNA_sim <= '0';
+        SNA_WREADY <= '0';
         
-        -- AXI WRITE DATA CHANNEL
-        WREADY_SNA_sim <= '0';
+        SNA_ARREADY <= '0';
         
-        -- AXI READ ADDRESS CHANNEL
-        ARREADY_SNA_sim <= '0';
-    
-        -- AXI WRITE RESPONSE CHANNEL
-        BRESP_SNA_sim <= (others => '0');
-        BVALID_SNA_sim <= '0';
+        SNA_BRESP <= (others => '0');
+        SNA_BVALID <= '0';
         
-        -- AXI READ RESPONSE CHANNEL
-        RDATA_SNA_sim <= (others => '0');
-        RRESP_SNA_sim <= (others => '0');
-        RVALID_SNA_sim <= '0';
+        SNA_RDATA <= (others => '0');
+        SNA_RRESP <= (others => '0');
+        SNA_RVALID <= '0';
+        -- < Inicijalne postavke ulaznih signala
         
         -- Reset aktivan
         rst_sim <= '0';
@@ -367,97 +354,96 @@ begin
         wait for (4.1 * clk_period);
         
         -- > WRITE
-        AWADDR_MNA_sim <= X"87654321";
-        AWVALID_MNA_sim <= '1';
+        -- > REQUEST
+        MNA_AWADDR <= X"87654321";
+        MNA_AWPROT <= "101";
+        MNA_AWVALID <= '1';
         
-        WDATA_MNA_sim <= X"12344321";
-        WVALID_MNA_sim <= '1';
+        MNA_WDATA <= X"12344321";
+        MNA_WSTRB <= "1111";
+        MNA_WVALID <= '1';
         
-        AWPROT_MNA_sim <= "101";
-        WSTRB_MNA_sim <= "1111";
+        MNA_BREADY <= '1';
         
         wait for (2 * clk_period);
         
-        AWADDR_MNA_sim <= (others => '0');
-        AWVALID_MNA_sim <= '0';
+        MNA_AWADDR <= (others => '0');
+        MNA_AWPROT <= (others => '0');
+        MNA_AWVALID <= '0';
         
-        WDATA_MNA_sim <= (others => '0');
-        WVALID_MNA_sim <= '0';
-        
-        AWPROT_MNA_sim <= (others => '0');
-        WSTRB_MNA_sim <= (others => '0');
+        MNA_WDATA <= (others => '0');
+        MNA_WSTRB <= (others => '0');
+        MNA_WVALID <= '0';
         
         wait for (16 * clk_period);
         
-        AWREADY_SNA_sim <= '1';
-        WREADY_SNA_sim <= '1';
+        SNA_AWREADY <= '1';
+        
+        SNA_WREADY <= '1';
         
         wait for clk_period;
         
-        AWREADY_SNA_sim <= '0';
-        WREADY_SNA_sim <= '0';
+        SNA_AWREADY <= '0';
         
-        -- > WRITE RESP
-        BRESP_SNA_sim <= "11";
-        BVALID_SNA_sim <= '1';
+        SNA_WREADY <= '0';
+        -- < REQUEST
+        
+        -- > RESPONSE
+        SNA_BRESP <= "11";
+        SNA_BVALID <= '1';
         
         wait for clk_period;
         
-        BVALID_SNA_sim <= '0';
+        SNA_BVALID <= '0';
         
         wait for (8 * clk_period);
         
-        BREADY_MNA_sim <= '1';
+        MNA_BREADY <= '0';
+        -- < RESPONSE
+        -- < WRITE
         
-        wait for clk_period;
+        wait for (6 * clk_period);
         
-        BREADY_MNA_sim <= '0';
-        -- <
+        -- > READ
+        -- > REQUEST
+        MNA_ARADDR <= X"E1234567";
+        MNA_ARPROT <= "010";
+        MNA_ARVALID <= '1';
         
-        wait for (5 * clk_period);
-        
-        -- > READ REQ
-        ARADDR_MNA_sim <= X"E1234567";
-        ARVALID_MNA_sim <= '1';
-        
-        ARPROT_MNA_sim <= "010";
+        MNA_RREADY <= '1';
         
         wait for (2 * clk_period);
         
-        ARADDR_MNA_sim <= (others => '0');
-        ARVALID_MNA_sim <= '0';
-        
-        ARPROT_MNA_sim <= (others => '0');
+        MNA_ARADDR <= (others => '0');
+        MNA_ARPROT <= (others => '0');
+        MNA_ARVALID <= '0';
         
         wait for (13 * clk_period);
         
-        ARREADY_SNA_sim <= '1';
+        SNA_ARREADY <= '1';
         
         wait for clk_period;
         
-        ARREADY_SNA_sim <= '0';
-        -- < READ REQ
+        SNA_ARREADY <= '0';
+        -- < REQUEST
         
-        -- > READ RESP
-        RDATA_SNA_sim <= X"12345678";
-        RRESP_SNA_sim <= "01";
-        RVALID_SNA_sim <= '1';
+        -- > RESPONSE
+        SNA_RDATA <= X"12345678";
+        SNA_RRESP <= "01";
+        SNA_RVALID <= '1';
         
         wait for clk_period;
         
-        RVALID_SNA_sim <= '0';
+        SNA_RVALID <= '0';
         
         wait for (14 * clk_period);
         
-        RREADY_MNA_sim <= '1';
-        
-        wait for clk_period;
-        
-        RREADY_MNA_sim <= '0';
+        MNA_RREADY <= '0';
+        -- < RESPONSE
+        -- < READ
         
         wait;
     
     end process;
-
 
 end Simulation;
