@@ -1153,4 +1153,222 @@ package component_declarations is
     
     end component;
     
+    -- Deklaracija komponente noc_mesh_2x2
+    component noc_mesh_2x2
+    
+        Generic (
+            vc_num : integer := const_vc_num;
+            mesh_size_x : integer := const_mesh_size_x;
+            mesh_size_y : integer := const_mesh_size_y;
+            address_size : integer := const_address_size;
+            payload_size : integer := const_payload_size;
+            flit_size : integer := const_flit_size;
+            buffer_size : integer := const_buffer_size;
+            clock_divider : integer := const_clock_divider
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic;
+            
+            -- MESH INJECTION INTERFACES
+            
+            -- ROUTER A (11)
+            data_in_A : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_A : in std_logic;
+            data_in_vc_busy_A : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_A : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_A : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_A : out std_logic;
+            data_out_vc_busy_A : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_A : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER B (21)
+            data_in_B : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_B : in std_logic;
+            data_in_vc_busy_B : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_B : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_B : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_B : out std_logic;
+            data_out_vc_busy_B : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_B : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER C (12)
+            data_in_C : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_C : in std_logic;
+            data_in_vc_busy_C : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_C : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_C : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_C : out std_logic;
+            data_out_vc_busy_C : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_C : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER D (22)
+            data_in_D : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_D : in std_logic;
+            data_in_vc_busy_D : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_D : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_D : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_D : out std_logic;
+            data_out_vc_busy_D : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_D : in std_logic_vector(vc_num - 1 downto 0)
+        );
+    
+    end component;
+    
+    -- Deklaracija komponente demo_1
+    component demo_1
+    
+        Generic (
+            vc_num : integer := 2;
+            mesh_size_x : integer := 4;
+            mesh_size_y : integer := 4;
+            address_size : integer := 8;
+            payload_size : integer := 32;
+            flit_size : integer := 44;
+            buffer_size : integer := 8;
+            clock_divider : integer := 2;
+            
+            MNA_write_threshold : integer := 3;
+            MNA_read_threshold : integer := 2;
+            SNA_write_threshold : integer := 1;
+            SNA_read_threshold : integer := 2;
+            node_address_size : integer := 4
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic;
+            
+            -- > MNA_0
+                -- AXI WRITE ADDRESS CHANNEL           
+                MNA_0_AWADDR : in std_logic_vector(31 downto 0);
+                MNA_0_AWPROT : in std_logic_vector(2 downto 0);
+                MNA_0_AWVALID : in std_logic;
+                MNA_0_AWREADY : out std_logic;
+                
+                -- AXI WRITE DATA CHANNEL
+                MNA_0_WDATA : in std_logic_vector(31 downto 0);
+                MNA_0_WSTRB : in std_logic_vector(3 downto 0);
+                MNA_0_WVALID : in std_logic;
+                MNA_0_WREADY : out std_logic;
+                
+                -- AXI READ ADDRESS CHANNEL
+                MNA_0_ARADDR : in std_logic_vector(31 downto 0);
+                MNA_0_ARPROT : in std_logic_vector(2 downto 0);
+                MNA_0_ARVALID : in std_logic;
+                MNA_0_ARREADY : out std_logic;
+                
+                -- AXI WRITE RESPONSE CHANNEL   
+                MNA_0_BRESP : out std_logic_vector(1 downto 0);
+                MNA_0_BVALID : out std_logic;
+                MNA_0_BREADY : in std_logic;
+                
+                -- AXI READ RESPONSE CHANNEL
+                MNA_0_RDATA : out std_logic_vector(31 downto 0);
+                MNA_0_RRESP : out std_logic_vector(1 downto 0);
+                MNA_0_RVALID : out std_logic;
+                MNA_0_RREADY : in std_logic;
+            -- < MNA_0
+            
+            -- > MNA_1
+                -- AXI WRITE ADDRESS CHANNEL           
+                MNA_1_AWADDR : in std_logic_vector(31 downto 0);
+                MNA_1_AWPROT : in std_logic_vector(2 downto 0);
+                MNA_1_AWVALID : in std_logic;
+                MNA_1_AWREADY : out std_logic;
+                
+                -- AXI WRITE DATA CHANNEL
+                MNA_1_WDATA : in std_logic_vector(31 downto 0);
+                MNA_1_WSTRB : in std_logic_vector(3 downto 0);
+                MNA_1_WVALID : in std_logic;
+                MNA_1_WREADY : out std_logic;
+                
+                -- AXI READ ADDRESS CHANNEL
+                MNA_1_ARADDR : in std_logic_vector(31 downto 0);
+                MNA_1_ARPROT : in std_logic_vector(2 downto 0);
+                MNA_1_ARVALID : in std_logic;
+                MNA_1_ARREADY : out std_logic;
+                
+                -- AXI WRITE RESPONSE CHANNEL   
+                MNA_1_BRESP : out std_logic_vector(1 downto 0);
+                MNA_1_BVALID : out std_logic;
+                MNA_1_BREADY : in std_logic;
+                
+                -- AXI READ RESPONSE CHANNEL
+                MNA_1_RDATA : out std_logic_vector(31 downto 0);
+                MNA_1_RRESP : out std_logic_vector(1 downto 0);
+                MNA_1_RVALID : out std_logic;
+                MNA_1_RREADY : in std_logic;
+            -- < MNA_1
+            
+            -- > SNA_0
+                -- AXI WRITE ADDRESS CHANNEL 
+                SNA_0_AWADDR : out std_logic_vector(31 downto 0);
+                SNA_0_AWPROT : out std_logic_vector(2 downto 0);
+                SNA_0_AWVALID : out std_logic;
+                SNA_0_AWREADY : in std_logic;
+                
+                -- AXI WRITE DATA CHANNEL
+                SNA_0_WDATA : out std_logic_vector(31 downto 0);
+                SNA_0_WSTRB : out std_logic_vector(3 downto 0);
+                SNA_0_WVALID : out std_logic;
+                SNA_0_WREADY : in std_logic;
+                
+                -- AXI READ ADDRESS CHANNEL
+                SNA_0_ARADDR : out std_logic_vector(31 downto 0);
+                SNA_0_ARPROT : out std_logic_vector(2 downto 0);
+                SNA_0_ARVALID : out std_logic;
+                SNA_0_ARREADY : in std_logic;
+                
+                -- AXI WRITE RESPONSE CHANNEL
+                SNA_0_BRESP : in std_logic_vector(1 downto 0);
+                SNA_0_BVALID : in std_logic;
+                SNA_0_BREADY : out std_logic;
+                
+                -- AXI READ RESPONSE CHANNEL
+                SNA_0_RDATA : in std_logic_vector(31 downto 0);
+                SNA_0_RRESP : in std_logic_vector(1 downto 0);
+                SNA_0_RVALID : in std_logic;
+                SNA_0_RREADY : out std_logic;
+            -- < SNA_0
+            
+            -- > SNA_1
+                -- AXI WRITE ADDRESS CHANNEL 
+                SNA_1_AWADDR : out std_logic_vector(31 downto 0);
+                SNA_1_AWPROT : out std_logic_vector(2 downto 0);
+                SNA_1_AWVALID : out std_logic;
+                SNA_1_AWREADY : in std_logic;
+                
+                -- AXI WRITE DATA CHANNEL
+                SNA_1_WDATA : out std_logic_vector(31 downto 0);
+                SNA_1_WSTRB : out std_logic_vector(3 downto 0);
+                SNA_1_WVALID : out std_logic;
+                SNA_1_WREADY : in std_logic;
+                
+                -- AXI READ ADDRESS CHANNEL
+                SNA_1_ARADDR : out std_logic_vector(31 downto 0);
+                SNA_1_ARPROT : out std_logic_vector(2 downto 0);
+                SNA_1_ARVALID : out std_logic;
+                SNA_1_ARREADY : in std_logic;
+                
+                -- AXI WRITE RESPONSE CHANNEL
+                SNA_1_BRESP : in std_logic_vector(1 downto 0);
+                SNA_1_BVALID : in std_logic;
+                SNA_1_BREADY : out std_logic;
+                
+                -- AXI READ RESPONSE CHANNEL
+                SNA_1_RDATA : in std_logic_vector(31 downto 0);
+                SNA_1_RRESP : in std_logic_vector(1 downto 0);
+                SNA_1_RVALID : in std_logic;
+                SNA_1_RREADY : out std_logic
+            -- < SNA_1
+        );
+    
+    end component;
+    
 end package component_declarations;
