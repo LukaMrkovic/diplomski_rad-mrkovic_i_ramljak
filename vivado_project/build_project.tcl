@@ -317,7 +317,8 @@ if { $validate_required } {
 }
 
 # Create project
-create_project ${_xil_proj_name_} ./${_xil_proj_name_} -part xc7z045ffg900-2
+# create_project ${_xil_proj_name_} ./${_xil_proj_name_} -part xc7z045ffg900-2
+create_project ${_xil_proj_name_} C:/Vivado/${_xil_proj_name_} -part xc7z045ffg900-2
 
 # Set the directory path for the new project
 set proj_dir [get_property directory [current_project]]
