@@ -1,0 +1,1290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="demo_1_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="axi_bram_ctrl_funcs" />
+            <top_module name="axi_network_adapter_config" />
+            <top_module name="axi_vip_pkg" />
+            <top_module name="component_declarations" />
+            <top_module name="demo_1_tb" />
+            <top_module name="glbl" />
+            <top_module name="router_config" />
+            <top_module name="router_functions" />
+            <top_module name="std" />
+            <top_module name="vcomponents" />
+            <top_module name="xil_common_vip_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="5150001fs"></ZoomEndTime>
+      <Cursor1Time time="1930fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="265"></NameColumnWidth>
+      <ValueColumnWidth column_width="133"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="25" />
+   <wvobject type="divider" fp_name="divider865">
+      <obj_property name="label">Kontrolni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="/demo_1_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/demo_1_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider72">
+      <obj_property name="label">ROUTER A</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="group73" type="group">
+      <obj_property name="label">ROUTER A</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider70">
+         <obj_property name="label">AXI_VIP_0 - MNA_0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group74" type="group">
+         <obj_property name="label">AXI_VIP_0 - MNA_0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE ADDRESS CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_AWADDR" type="array">
+            <obj_property name="ElementShortName">MNA_0_AWADDR[31:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_AWADDR[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_AWPROT" type="array">
+            <obj_property name="ElementShortName">MNA_0_AWPROT[2:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_AWPROT[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_AWVALID" type="logic">
+            <obj_property name="ElementShortName">MNA_0_AWVALID</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_AWVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_AWREADY" type="logic">
+            <obj_property name="ElementShortName">MNA_0_AWREADY</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_AWREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE DATA CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_WDATA" type="array">
+            <obj_property name="ElementShortName">MNA_0_WDATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_WDATA[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_WSTRB" type="array">
+            <obj_property name="ElementShortName">MNA_0_WSTRB[3:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_WSTRB[3:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_WVALID" type="logic">
+            <obj_property name="ElementShortName">MNA_0_WVALID</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_WVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_WREADY" type="logic">
+            <obj_property name="ElementShortName">MNA_0_WREADY</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_WREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI READ ADDRESS CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_ARADDR" type="array">
+            <obj_property name="ElementShortName">MNA_0_ARADDR[31:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_ARADDR[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_ARPROT" type="array">
+            <obj_property name="ElementShortName">MNA_0_ARPROT[2:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_ARPROT[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_ARVALID" type="logic">
+            <obj_property name="ElementShortName">MNA_0_ARVALID</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_ARVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_ARREADY" type="logic">
+            <obj_property name="ElementShortName">MNA_0_ARREADY</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_ARREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE RESPONSE CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_BRESP" type="array">
+            <obj_property name="ElementShortName">MNA_0_BRESP[1:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_BRESP[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_BVALID" type="logic">
+            <obj_property name="ElementShortName">MNA_0_BVALID</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_BVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_BREADY" type="logic">
+            <obj_property name="ElementShortName">MNA_0_BREADY</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_BREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI READ RESPONSE CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_RDATA" type="array">
+            <obj_property name="ElementShortName">MNA_0_RDATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_RDATA[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_RRESP" type="array">
+            <obj_property name="ElementShortName">MNA_0_RRESP[1:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_RRESP[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_RVALID" type="logic">
+            <obj_property name="ElementShortName">MNA_0_RVALID</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_RVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/MNA_0_RREADY" type="logic">
+            <obj_property name="ElementShortName">MNA_0_RREADY</obj_property>
+            <obj_property name="ObjectShortName">MNA_0_RREADY</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider71">
+         <obj_property name="label">MNA_0 - rA</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group92" type="group">
+         <obj_property name="label">MNA_0 - rA</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="divider" fp_name="divider238">
+            <obj_property name="label">MNA_0 &gt; rA</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_0/AXI_noc_data" type="array">
+            <obj_property name="ElementShortName">AXI_noc_data[43:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_data[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_0/AXI_noc_data_valid" type="logic">
+            <obj_property name="ElementShortName">AXI_noc_data_valid</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_data_valid</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_0/noc_AXI_vc_busy" type="array">
+            <obj_property name="ElementShortName">noc_AXI_vc_busy[1:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_vc_busy[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_0/noc_AXI_vc_credits" type="array">
+            <obj_property name="ElementShortName">noc_AXI_vc_credits[1:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_vc_credits[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider238">
+            <obj_property name="label">rA &gt; MNA_0</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_0/noc_AXI_data" type="array">
+            <obj_property name="ElementShortName">noc_AXI_data[43:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_data[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_0/noc_AXI_data_valid" type="logic">
+            <obj_property name="ElementShortName">noc_AXI_data_valid</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_data_valid</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_0/AXI_noc_vc_busy" type="array">
+            <obj_property name="ElementShortName">AXI_noc_vc_busy[1:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_vc_busy[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_0/AXI_noc_vc_credits" type="array">
+            <obj_property name="ElementShortName">AXI_noc_vc_credits[1:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_vc_credits[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider72">
+      <obj_property name="label">ROUTER B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="group231" type="group">
+      <obj_property name="label">ROUTER B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider394">
+         <obj_property name="label">AXI_BRAM_controller_0 - SNA_0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group400" type="group">
+         <obj_property name="label">AXI_BRAM_controller_0 - SNA_0</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE ADDRESS CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_AWADDR" type="array">
+            <obj_property name="ElementShortName">SNA_0_AWADDR[31:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_AWADDR[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_AWPROT" type="array">
+            <obj_property name="ElementShortName">SNA_0_AWPROT[2:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_AWPROT[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_AWVALID" type="logic">
+            <obj_property name="ElementShortName">SNA_0_AWVALID</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_AWVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_AWREADY" type="logic">
+            <obj_property name="ElementShortName">SNA_0_AWREADY</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_AWREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE DATA CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_WDATA" type="array">
+            <obj_property name="ElementShortName">SNA_0_WDATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_WDATA[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_WSTRB" type="array">
+            <obj_property name="ElementShortName">SNA_0_WSTRB[3:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_WSTRB[3:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_WVALID" type="logic">
+            <obj_property name="ElementShortName">SNA_0_WVALID</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_WVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_WREADY" type="logic">
+            <obj_property name="ElementShortName">SNA_0_WREADY</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_WREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI READ ADDRESS CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_ARADDR" type="array">
+            <obj_property name="ElementShortName">SNA_0_ARADDR[31:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_ARADDR[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_ARPROT" type="array">
+            <obj_property name="ElementShortName">SNA_0_ARPROT[2:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_ARPROT[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_ARVALID" type="logic">
+            <obj_property name="ElementShortName">SNA_0_ARVALID</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_ARVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_ARREADY" type="logic">
+            <obj_property name="ElementShortName">SNA_0_ARREADY</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_ARREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE RESPONSE CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_BRESP" type="array">
+            <obj_property name="ElementShortName">SNA_0_BRESP[1:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_BRESP[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_BVALID" type="logic">
+            <obj_property name="ElementShortName">SNA_0_BVALID</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_BVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_BREADY" type="logic">
+            <obj_property name="ElementShortName">SNA_0_BREADY</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_BREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI READ RESPONSE CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_RDATA" type="array">
+            <obj_property name="ElementShortName">SNA_0_RDATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_RDATA[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_RRESP" type="array">
+            <obj_property name="ElementShortName">SNA_0_RRESP[1:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_RRESP[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_RVALID" type="logic">
+            <obj_property name="ElementShortName">SNA_0_RVALID</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_RVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0_RREADY" type="logic">
+            <obj_property name="ElementShortName">SNA_0_RREADY</obj_property>
+            <obj_property name="ObjectShortName">SNA_0_RREADY</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider397">
+         <obj_property name="label">SNA_0 - rB</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group403" type="group">
+         <obj_property name="label">SNA_0 - rB</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="divider" fp_name="divider238">
+            <obj_property name="label">SNA_0 &gt; rB</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0/AXI_noc_data" type="array">
+            <obj_property name="ElementShortName">AXI_noc_data[43:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_data[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0/AXI_noc_data_valid" type="logic">
+            <obj_property name="ElementShortName">AXI_noc_data_valid</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_data_valid</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0/noc_AXI_vc_busy" type="array">
+            <obj_property name="ElementShortName">noc_AXI_vc_busy[1:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_vc_busy[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0/noc_AXI_vc_credits" type="array">
+            <obj_property name="ElementShortName">noc_AXI_vc_credits[1:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_vc_credits[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider238">
+            <obj_property name="label">rB &gt; SNA_0</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0/noc_AXI_data" type="array">
+            <obj_property name="ElementShortName">noc_AXI_data[43:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_data[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0/noc_AXI_data_valid" type="logic">
+            <obj_property name="ElementShortName">noc_AXI_data_valid</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_data_valid</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0/AXI_noc_vc_busy" type="array">
+            <obj_property name="ElementShortName">AXI_noc_vc_busy[1:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_vc_busy[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_0/AXI_noc_vc_credits" type="array">
+            <obj_property name="ElementShortName">AXI_noc_vc_credits[1:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_vc_credits[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider72">
+      <obj_property name="label">ROUTER C</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="group231" type="group">
+      <obj_property name="label">ROUTER C</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider236">
+         <obj_property name="label">AXI_VIP_1 - MNA_1</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group241" type="group">
+         <obj_property name="label">AXI_VIP_1 - MNA_1</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE ADDRESS CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_AWADDR" type="array">
+            <obj_property name="ElementShortName">MNA_1_AWADDR[31:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_AWADDR[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_AWPROT" type="array">
+            <obj_property name="ElementShortName">MNA_1_AWPROT[2:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_AWPROT[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_AWVALID" type="logic">
+            <obj_property name="ElementShortName">MNA_1_AWVALID</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_AWVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_AWREADY" type="logic">
+            <obj_property name="ElementShortName">MNA_1_AWREADY</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_AWREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE DATA CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_WDATA" type="array">
+            <obj_property name="ElementShortName">MNA_1_WDATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_WDATA[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_WSTRB" type="array">
+            <obj_property name="ElementShortName">MNA_1_WSTRB[3:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_WSTRB[3:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_WVALID" type="logic">
+            <obj_property name="ElementShortName">MNA_1_WVALID</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_WVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_WREADY" type="logic">
+            <obj_property name="ElementShortName">MNA_1_WREADY</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_WREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI READ ADDRESS CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_ARADDR" type="array">
+            <obj_property name="ElementShortName">MNA_1_ARADDR[31:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_ARADDR[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_ARPROT" type="array">
+            <obj_property name="ElementShortName">MNA_1_ARPROT[2:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_ARPROT[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_ARVALID" type="logic">
+            <obj_property name="ElementShortName">MNA_1_ARVALID</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_ARVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_ARREADY" type="logic">
+            <obj_property name="ElementShortName">MNA_1_ARREADY</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_ARREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE RESPONSE CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_BRESP" type="array">
+            <obj_property name="ElementShortName">MNA_1_BRESP[1:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_BRESP[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_BVALID" type="logic">
+            <obj_property name="ElementShortName">MNA_1_BVALID</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_BVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_BREADY" type="logic">
+            <obj_property name="ElementShortName">MNA_1_BREADY</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_BREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI READ RESPONSE CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_RDATA" type="array">
+            <obj_property name="ElementShortName">MNA_1_RDATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_RDATA[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_RRESP" type="array">
+            <obj_property name="ElementShortName">MNA_1_RRESP[1:0]</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_RRESP[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_RVALID" type="logic">
+            <obj_property name="ElementShortName">MNA_1_RVALID</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_RVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1_RREADY" type="logic">
+            <obj_property name="ElementShortName">MNA_1_RREADY</obj_property>
+            <obj_property name="ObjectShortName">MNA_1_RREADY</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider237">
+         <obj_property name="label">MNA_1 - rC</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group242" type="group">
+         <obj_property name="label">MNA_1 - rC</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="divider" fp_name="divider238">
+            <obj_property name="label">MNA_1 &gt; rC</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1/AXI_noc_data" type="array">
+            <obj_property name="ElementShortName">AXI_noc_data[43:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_data[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1/AXI_noc_data_valid" type="logic">
+            <obj_property name="ElementShortName">AXI_noc_data_valid</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_data_valid</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1/noc_AXI_vc_busy" type="array">
+            <obj_property name="ElementShortName">noc_AXI_vc_busy[1:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_vc_busy[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1/noc_AXI_vc_credits" type="array">
+            <obj_property name="ElementShortName">noc_AXI_vc_credits[1:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_vc_credits[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider238">
+            <obj_property name="label">rC &gt; MNA_1</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1/noc_AXI_data" type="array">
+            <obj_property name="ElementShortName">noc_AXI_data[43:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_data[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1/noc_AXI_data_valid" type="logic">
+            <obj_property name="ElementShortName">noc_AXI_data_valid</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_data_valid</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1/AXI_noc_vc_busy" type="array">
+            <obj_property name="ElementShortName">AXI_noc_vc_busy[1:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_vc_busy[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/MNA_1/AXI_noc_vc_credits" type="array">
+            <obj_property name="ElementShortName">AXI_noc_vc_credits[1:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_vc_credits[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider72">
+      <obj_property name="label">ROUTER D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="group231" type="group">
+      <obj_property name="label">ROUTER D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider394">
+         <obj_property name="label">AXI_BRAM_controller_1 - SNA_1</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group400" type="group">
+         <obj_property name="label">AXI_BRAM_controller_1 - SNA_1</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE ADDRESS CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_AWADDR" type="array">
+            <obj_property name="ElementShortName">SNA_1_AWADDR[31:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_AWADDR[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_AWPROT" type="array">
+            <obj_property name="ElementShortName">SNA_1_AWPROT[2:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_AWPROT[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_AWVALID" type="logic">
+            <obj_property name="ElementShortName">SNA_1_AWVALID</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_AWVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_AWREADY" type="logic">
+            <obj_property name="ElementShortName">SNA_1_AWREADY</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_AWREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE DATA CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_WDATA" type="array">
+            <obj_property name="ElementShortName">SNA_1_WDATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_WDATA[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_WSTRB" type="array">
+            <obj_property name="ElementShortName">SNA_1_WSTRB[3:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_WSTRB[3:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_WVALID" type="logic">
+            <obj_property name="ElementShortName">SNA_1_WVALID</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_WVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_WREADY" type="logic">
+            <obj_property name="ElementShortName">SNA_1_WREADY</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_WREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI READ ADDRESS CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_ARADDR" type="array">
+            <obj_property name="ElementShortName">SNA_1_ARADDR[31:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_ARADDR[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_ARPROT" type="array">
+            <obj_property name="ElementShortName">SNA_1_ARPROT[2:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_ARPROT[2:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_ARVALID" type="logic">
+            <obj_property name="ElementShortName">SNA_1_ARVALID</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_ARVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_ARREADY" type="logic">
+            <obj_property name="ElementShortName">SNA_1_ARREADY</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_ARREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI WRITE RESPONSE CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_BRESP" type="array">
+            <obj_property name="ElementShortName">SNA_1_BRESP[1:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_BRESP[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_BVALID" type="logic">
+            <obj_property name="ElementShortName">SNA_1_BVALID</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_BVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_BREADY" type="logic">
+            <obj_property name="ElementShortName">SNA_1_BREADY</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_BREADY</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider75">
+            <obj_property name="label">AXI READ RESPONSE CHANNEL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_RDATA" type="array">
+            <obj_property name="ElementShortName">SNA_1_RDATA[31:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_RDATA[31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_RRESP" type="array">
+            <obj_property name="ElementShortName">SNA_1_RRESP[1:0]</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_RRESP[1:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_RVALID" type="logic">
+            <obj_property name="ElementShortName">SNA_1_RVALID</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_RVALID</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1_RREADY" type="logic">
+            <obj_property name="ElementShortName">SNA_1_RREADY</obj_property>
+            <obj_property name="ObjectShortName">SNA_1_RREADY</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider397">
+         <obj_property name="label">SNA_1 - rD</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#DCDCDC</obj_property>
+      </wvobject>
+      <wvobject fp_name="group403" type="group">
+         <obj_property name="label">SNA_1 - rD</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="divider" fp_name="divider238">
+            <obj_property name="label">SNA_1 &gt; rD</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1/AXI_noc_data" type="array">
+            <obj_property name="ElementShortName">AXI_noc_data[43:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_data[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1/AXI_noc_data_valid" type="logic">
+            <obj_property name="ElementShortName">AXI_noc_data_valid</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_data_valid</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1/noc_AXI_vc_busy" type="array">
+            <obj_property name="ElementShortName">noc_AXI_vc_busy[1:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_vc_busy[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1/noc_AXI_vc_credits" type="array">
+            <obj_property name="ElementShortName">noc_AXI_vc_credits[1:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_vc_credits[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject type="divider" fp_name="divider238">
+            <obj_property name="label">rD &gt; SNA_1</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="BkColor">#E0FFFF</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1/noc_AXI_data" type="array">
+            <obj_property name="ElementShortName">noc_AXI_data[43:0]</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_data[43:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1/noc_AXI_data_valid" type="logic">
+            <obj_property name="ElementShortName">noc_AXI_data_valid</obj_property>
+            <obj_property name="ObjectShortName">noc_AXI_data_valid</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1/AXI_noc_vc_busy" type="array">
+            <obj_property name="ElementShortName">AXI_noc_vc_busy[1:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_vc_busy[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/SNA_1/AXI_noc_vc_credits" type="array">
+            <obj_property name="ElementShortName">AXI_noc_vc_credits[1:0]</obj_property>
+            <obj_property name="ObjectShortName">AXI_noc_vc_credits[1:0]</obj_property>
+            <obj_property name="CustomSignalColor">#008080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider72">
+      <obj_property name="label">ROUTER A - ROUTER B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="group683" type="group">
+      <obj_property name="label">ROUTER A - ROUTER B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider690">
+         <obj_property name="label">rA - rB</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_A_to_B" type="array">
+         <obj_property name="ElementShortName">data_A_to_B[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_A_to_B[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_valid_A_to_B" type="logic">
+         <obj_property name="ElementShortName">data_valid_A_to_B</obj_property>
+         <obj_property name="ObjectShortName">data_valid_A_to_B</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_busy_B_to_A" type="array">
+         <obj_property name="ElementShortName">vc_busy_B_to_A[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_B_to_A[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_credits_B_to_A" type="array">
+         <obj_property name="ElementShortName">vc_credits_B_to_A[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_B_to_A[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider690">
+         <obj_property name="label">rB - rA</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_B_to_A" type="array">
+         <obj_property name="ElementShortName">data_B_to_A[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_B_to_A[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_valid_B_to_A" type="logic">
+         <obj_property name="ElementShortName">data_valid_B_to_A</obj_property>
+         <obj_property name="ObjectShortName">data_valid_B_to_A</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_busy_A_to_B" type="array">
+         <obj_property name="ElementShortName">vc_busy_A_to_B[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_A_to_B[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_credits_A_to_B" type="array">
+         <obj_property name="ElementShortName">vc_credits_A_to_B[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_A_to_B[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider72">
+      <obj_property name="label">ROUTER A - ROUTER C</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="group683" type="group">
+      <obj_property name="label">ROUTER A - ROUTER C</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider690">
+         <obj_property name="label">rA - rC</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_A_to_C" type="array">
+         <obj_property name="ElementShortName">data_A_to_C[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_A_to_C[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_valid_A_to_C" type="logic">
+         <obj_property name="ElementShortName">data_valid_A_to_C</obj_property>
+         <obj_property name="ObjectShortName">data_valid_A_to_C</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_busy_C_to_A" type="array">
+         <obj_property name="ElementShortName">vc_busy_C_to_A[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_C_to_A[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_credits_C_to_A" type="array">
+         <obj_property name="ElementShortName">vc_credits_C_to_A[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_C_to_A[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider690">
+         <obj_property name="label">rC - rA</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_C_to_A" type="array">
+         <obj_property name="ElementShortName">data_C_to_A[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_C_to_A[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_valid_C_to_A" type="logic">
+         <obj_property name="ElementShortName">data_valid_C_to_A</obj_property>
+         <obj_property name="ObjectShortName">data_valid_C_to_A</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_busy_A_to_C" type="array">
+         <obj_property name="ElementShortName">vc_busy_A_to_C[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_A_to_C[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_credits_A_to_C" type="array">
+         <obj_property name="ElementShortName">vc_credits_A_to_C[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_A_to_C[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider72">
+      <obj_property name="label">ROUTER B - ROUTER D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="group683" type="group">
+      <obj_property name="label">ROUTER B - ROUTER D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider697">
+         <obj_property name="label">rB - rD</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_B_to_D" type="array">
+         <obj_property name="ElementShortName">data_B_to_D[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_B_to_D[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_valid_B_to_D" type="logic">
+         <obj_property name="ElementShortName">data_valid_B_to_D</obj_property>
+         <obj_property name="ObjectShortName">data_valid_B_to_D</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_busy_D_to_B" type="array">
+         <obj_property name="ElementShortName">vc_busy_D_to_B[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_D_to_B[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_credits_D_to_B" type="array">
+         <obj_property name="ElementShortName">vc_credits_D_to_B[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_D_to_B[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider697">
+         <obj_property name="label">rD - rB</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_D_to_B" type="array">
+         <obj_property name="ElementShortName">data_D_to_B[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_D_to_B[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_valid_D_to_B" type="logic">
+         <obj_property name="ElementShortName">data_valid_D_to_B</obj_property>
+         <obj_property name="ObjectShortName">data_valid_D_to_B</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_busy_B_to_D" type="array">
+         <obj_property name="ElementShortName">vc_busy_B_to_D[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_B_to_D[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_credits_B_to_D" type="array">
+         <obj_property name="ElementShortName">vc_credits_B_to_D[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_B_to_D[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider72">
+      <obj_property name="label">ROUTER C - ROUTER D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="group683" type="group">
+      <obj_property name="label">ROUTER C - ROUTER D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider697">
+         <obj_property name="label">rC - rD</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_C_to_D" type="array">
+         <obj_property name="ElementShortName">data_C_to_D[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_C_to_D[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_valid_C_to_D" type="logic">
+         <obj_property name="ElementShortName">data_valid_C_to_D</obj_property>
+         <obj_property name="ObjectShortName">data_valid_C_to_D</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_busy_D_to_C" type="array">
+         <obj_property name="ElementShortName">vc_busy_D_to_C[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_D_to_C[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_credits_D_to_C" type="array">
+         <obj_property name="ElementShortName">vc_credits_D_to_C[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_D_to_C[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider697">
+         <obj_property name="label">rD - rC</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_D_to_C" type="array">
+         <obj_property name="ElementShortName">data_D_to_C[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_D_to_C[43:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/data_valid_D_to_C" type="logic">
+         <obj_property name="ElementShortName">data_valid_D_to_C</obj_property>
+         <obj_property name="ObjectShortName">data_valid_D_to_C</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_busy_C_to_D" type="array">
+         <obj_property name="ElementShortName">vc_busy_C_to_D[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_busy_C_to_D[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/demo_1_0/U0/noc_mesh/vc_credits_C_to_D" type="array">
+         <obj_property name="ElementShortName">vc_credits_C_to_D[1:0]</obj_property>
+         <obj_property name="ObjectShortName">vc_credits_C_to_D[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider824">
+      <obj_property name="label">AXI_BRAM_controller_0 - BRAM_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="group827" type="group">
+      <obj_property name="label">AXI_BRAM_controller_0 - BRAM_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider844">
+         <obj_property name="label">PORT A</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_rst_a" type="logic">
+         <obj_property name="ElementShortName">bram_rst_a</obj_property>
+         <obj_property name="ObjectShortName">bram_rst_a</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_clk_a" type="logic">
+         <obj_property name="ElementShortName">bram_clk_a</obj_property>
+         <obj_property name="ObjectShortName">bram_clk_a</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_en_a" type="logic">
+         <obj_property name="ElementShortName">bram_en_a</obj_property>
+         <obj_property name="ObjectShortName">bram_en_a</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_we_a" type="array">
+         <obj_property name="ElementShortName">bram_we_a[3:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_we_a[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_addr_a" type="array">
+         <obj_property name="ElementShortName">bram_addr_a[12:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_addr_a[12:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_wrdata_a" type="array">
+         <obj_property name="ElementShortName">bram_wrdata_a[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_wrdata_a[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_rddata_a" type="array">
+         <obj_property name="ElementShortName">bram_rddata_a[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_rddata_a[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider844">
+         <obj_property name="label">PORT B</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_rst_b" type="logic">
+         <obj_property name="ElementShortName">bram_rst_b</obj_property>
+         <obj_property name="ObjectShortName">bram_rst_b</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_clk_b" type="logic">
+         <obj_property name="ElementShortName">bram_clk_b</obj_property>
+         <obj_property name="ObjectShortName">bram_clk_b</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_en_b" type="logic">
+         <obj_property name="ElementShortName">bram_en_b</obj_property>
+         <obj_property name="ObjectShortName">bram_en_b</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_we_b" type="array">
+         <obj_property name="ElementShortName">bram_we_b[3:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_we_b[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_addr_b" type="array">
+         <obj_property name="ElementShortName">bram_addr_b[12:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_addr_b[12:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_wrdata_b" type="array">
+         <obj_property name="ElementShortName">bram_wrdata_b[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_wrdata_b[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_0/bram_rddata_b" type="array">
+         <obj_property name="ElementShortName">bram_rddata_b[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_rddata_b[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider824">
+      <obj_property name="label">AXI_BRAM_controller_1 - BRAM_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="group827" type="group">
+      <obj_property name="label">AXI_BRAM_controller_1 - BRAM_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider844">
+         <obj_property name="label">PORT A</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_rst_a" type="logic">
+         <obj_property name="ElementShortName">bram_rst_a</obj_property>
+         <obj_property name="ObjectShortName">bram_rst_a</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_clk_a" type="logic">
+         <obj_property name="ElementShortName">bram_clk_a</obj_property>
+         <obj_property name="ObjectShortName">bram_clk_a</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_en_a" type="logic">
+         <obj_property name="ElementShortName">bram_en_a</obj_property>
+         <obj_property name="ObjectShortName">bram_en_a</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_we_a" type="array">
+         <obj_property name="ElementShortName">bram_we_a[3:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_we_a[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_addr_a" type="array">
+         <obj_property name="ElementShortName">bram_addr_a[12:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_addr_a[12:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_wrdata_a" type="array">
+         <obj_property name="ElementShortName">bram_wrdata_a[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_wrdata_a[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_rddata_a" type="array">
+         <obj_property name="ElementShortName">bram_rddata_a[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_rddata_a[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider844">
+         <obj_property name="label">PORT B</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="BkColor">#E0FFFF</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_rst_b" type="logic">
+         <obj_property name="ElementShortName">bram_rst_b</obj_property>
+         <obj_property name="ObjectShortName">bram_rst_b</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_clk_b" type="logic">
+         <obj_property name="ElementShortName">bram_clk_b</obj_property>
+         <obj_property name="ObjectShortName">bram_clk_b</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_en_b" type="logic">
+         <obj_property name="ElementShortName">bram_en_b</obj_property>
+         <obj_property name="ObjectShortName">bram_en_b</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_we_b" type="array">
+         <obj_property name="ElementShortName">bram_we_b[3:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_we_b[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_addr_b" type="array">
+         <obj_property name="ElementShortName">bram_addr_b[12:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_addr_b[12:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_wrdata_b" type="array">
+         <obj_property name="ElementShortName">bram_wrdata_b[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_wrdata_b[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/DUT/demo_1_design_i/axi_bram_ctrl_1/bram_rddata_b" type="array">
+         <obj_property name="ElementShortName">bram_rddata_b[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_rddata_b[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider69">
+      <obj_property name="label">Varijable - simulacija</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFD700</obj_property>
+   </wvobject>
+   <wvobject fp_name="group68" type="group">
+      <obj_property name="label">varijable - simulacija</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/demo_1_tb/addr_0_1" type="array">
+         <obj_property name="ElementShortName">addr_0_1[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_0_1[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/addr_0_2" type="array">
+         <obj_property name="ElementShortName">addr_0_2[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_0_2[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/addr_0_3" type="array">
+         <obj_property name="ElementShortName">addr_0_3[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_0_3[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/addr_1_1" type="array">
+         <obj_property name="ElementShortName">addr_1_1[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_1_1[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/addr_1_2" type="array">
+         <obj_property name="ElementShortName">addr_1_2[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_1_2[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/addr_1_3" type="array">
+         <obj_property name="ElementShortName">addr_1_3[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_1_3[63:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/prot_0" type="array">
+         <obj_property name="ElementShortName">prot_0[2:0]</obj_property>
+         <obj_property name="ObjectShortName">prot_0[2:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/prot_1" type="array">
+         <obj_property name="ElementShortName">prot_1[2:0]</obj_property>
+         <obj_property name="ObjectShortName">prot_1[2:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_0_wr1" type="array">
+         <obj_property name="ElementShortName">data_0_wr1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_wr1[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_0_wr2" type="array">
+         <obj_property name="ElementShortName">data_0_wr2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_wr2[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_0_wr3" type="array">
+         <obj_property name="ElementShortName">data_0_wr3[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_wr3[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_1_wr1" type="array">
+         <obj_property name="ElementShortName">data_1_wr1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_wr1[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_1_wr2" type="array">
+         <obj_property name="ElementShortName">data_1_wr2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_wr2[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_1_wr3" type="array">
+         <obj_property name="ElementShortName">data_1_wr3[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_wr3[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_0_rd1" type="array">
+         <obj_property name="ElementShortName">data_0_rd1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_rd1[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_0_rd2" type="array">
+         <obj_property name="ElementShortName">data_0_rd2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_rd2[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_0_rd3" type="array">
+         <obj_property name="ElementShortName">data_0_rd3[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_rd3[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_1_rd1" type="array">
+         <obj_property name="ElementShortName">data_1_rd1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_rd1[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_1_rd2" type="array">
+         <obj_property name="ElementShortName">data_1_rd2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_rd2[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/data_1_rd3" type="array">
+         <obj_property name="ElementShortName">data_1_rd3[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_rd3[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/resp_0" type="array">
+         <obj_property name="ElementShortName">resp_0[1:0]</obj_property>
+         <obj_property name="ObjectShortName">resp_0[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/demo_1_tb/resp_1" type="array">
+         <obj_property name="ElementShortName">resp_1[1:0]</obj_property>
+         <obj_property name="ObjectShortName">resp_1[1:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>
