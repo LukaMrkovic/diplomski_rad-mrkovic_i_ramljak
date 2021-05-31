@@ -121,9 +121,31 @@ module demo_1_tb
         
         #500ns
         if((data_0_wr1 == data_1_rd1)&&(data_0_wr2 == data_1_rd2)&&(data_0_wr3 == data_1_rd3))
-            $display("DATA MATCH - TEST SUCCESSFUL");
+            $display("DATA MATCH - TEST 1 SUCCESSFUL");
         else
-            $display("DATA MISMATCH - TEST UNSUCCESSFUL");
+            $display("DATA MISMATCH - TEST 1 UNSUCCESSFUL");
+            
+        // pisanje - MNA_1
+        #20ns
+        MNA_1_agent.AXI4LITE_WRITE_BURST(addr_1_1, prot_1, data_1_wr1, resp_1);
+        #20ns
+        MNA_1_agent.AXI4LITE_WRITE_BURST(addr_1_2, prot_1, data_1_wr2, resp_1);
+        #20ns
+        MNA_1_agent.AXI4LITE_WRITE_BURST(addr_1_3, prot_1, data_1_wr3, resp_1);
+        
+        // citanje - MNA_0
+        #20ns
+        MNA_0_agent.AXI4LITE_READ_BURST(addr_1_1, prot_0, data_0_rd1, resp_0);
+        #20ns
+        MNA_0_agent.AXI4LITE_READ_BURST(addr_1_2, prot_0, data_0_rd2, resp_0);
+        #20ns
+        MNA_0_agent.AXI4LITE_READ_BURST(addr_1_3, prot_0, data_0_rd3, resp_0);
+        
+        #500ns
+        if((data_1_wr1 == data_0_rd1)&&(data_1_wr2 == data_0_rd2)&&(data_1_wr3 == data_0_rd3))
+            $display("DATA MATCH - TEST 2 SUCCESSFUL");
+        else
+            $display("DATA MISMATCH - TEST 2 UNSUCCESSFUL");
         
         $finish;
     
