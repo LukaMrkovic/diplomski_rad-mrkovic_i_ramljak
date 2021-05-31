@@ -1371,4 +1371,350 @@ package component_declarations is
     
     end component;
     
+    component noc_mesh_4x4 
+    
+        Generic (
+            vc_num : integer := const_vc_num;
+            mesh_size_x : integer := const_mesh_size_x;
+            mesh_size_y : integer := const_mesh_size_y;
+            address_size : integer := const_address_size;
+            payload_size : integer := const_payload_size;
+            flit_size : integer := const_flit_size;
+            buffer_size : integer := const_buffer_size;
+            clock_divider : integer := const_clock_divider
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic;
+            
+            -- MESH INJECTION INTERFACES
+            
+            -- ROUTER A (11)
+            data_in_A : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_A : in std_logic;
+            data_in_vc_busy_A : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_A : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_A : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_A : out std_logic;
+            data_out_vc_busy_A : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_A : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER B (21)
+            data_in_B : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_B : in std_logic;
+            data_in_vc_busy_B : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_B : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_B : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_B : out std_logic;
+            data_out_vc_busy_B : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_B : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER C (41)
+            data_in_C : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_C : in std_logic;
+            data_in_vc_busy_C : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_C : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_C : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_C : out std_logic;
+            data_out_vc_busy_C : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_C : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER D (81)
+            data_in_D : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_D : in std_logic;
+            data_in_vc_busy_D : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_D : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_D : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_D : out std_logic;
+            data_out_vc_busy_D : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_D : in std_logic_vector(vc_num - 1 downto 0);
+        
+            -- ROUTER E (12)
+            data_in_E : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_E : in std_logic;
+            data_in_vc_busy_E : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_E : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_E : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_E : out std_logic;
+            data_out_vc_busy_E : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_E : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER F (22)
+            data_in_F : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_F : in std_logic;
+            data_in_vc_busy_F : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_F : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_F : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_F : out std_logic;
+            data_out_vc_busy_F : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_F : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER G (42)
+            data_in_G : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_G : in std_logic;
+            data_in_vc_busy_G : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_G : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_G : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_G : out std_logic;
+            data_out_vc_busy_G : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_G : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER H (82)
+            data_in_H : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_H : in std_logic;
+            data_in_vc_busy_H : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_H : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_H : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_H : out std_logic;
+            data_out_vc_busy_H : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_H : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER I (14)
+            data_in_I : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_I : in std_logic;
+            data_in_vc_busy_I : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_I : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_I : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_I : out std_logic;
+            data_out_vc_busy_I : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_I : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER J (24)
+            data_in_J : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_J : in std_logic;
+            data_in_vc_busy_J : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_J : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_J : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_J : out std_logic;
+            data_out_vc_busy_J : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_J : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER K (44)
+            data_in_K : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_K : in std_logic;
+            data_in_vc_busy_K : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_K : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_K : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_K : out std_logic;
+            data_out_vc_busy_K : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_K : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER L (84)
+            data_in_L : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_L : in std_logic;
+            data_in_vc_busy_L : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_L : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_L : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_L : out std_logic;
+            data_out_vc_busy_L : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_L : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER M (18)
+            data_in_M : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_M : in std_logic;
+            data_in_vc_busy_M : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_M : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_M : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_M : out std_logic;
+            data_out_vc_busy_M : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_M : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER N (28)
+            data_in_N : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_N : in std_logic;
+            data_in_vc_busy_N : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_N : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_N : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_N : out std_logic;
+            data_out_vc_busy_N : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_N : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER O (48)
+            data_in_O : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_O : in std_logic;
+            data_in_vc_busy_O : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_O : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_O : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_O : out std_logic;
+            data_out_vc_busy_O : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_O : in std_logic_vector(vc_num - 1 downto 0);
+            
+            -- ROUTER P (88)
+            data_in_P : in std_logic_vector(flit_size - 1 downto 0);
+            data_in_valid_P : in std_logic;
+            data_in_vc_busy_P : out std_logic_vector(vc_num - 1 downto 0);
+            data_in_vc_credits_P : out std_logic_vector(vc_num - 1 downto 0);
+            
+            data_out_P : out std_logic_vector(flit_size - 1 downto 0);
+            data_out_valid_P : out std_logic;
+            data_out_vc_busy_P : in std_logic_vector(vc_num - 1 downto 0);
+            data_out_vc_credits_P : in std_logic_vector(vc_num - 1 downto 0)
+        );
+    end component;
+    
+    component demo_4x4 
+    
+        Generic (
+            vc_num : integer := 2;
+            mesh_size_x : integer := 4;
+            mesh_size_y : integer := 4;
+            address_size : integer := 8;
+            payload_size : integer := 32;
+            flit_size : integer := 44;
+            buffer_size : integer := 8;
+            clock_divider : integer := 2;
+            
+            MNA_write_threshold : integer := 3;
+            MNA_read_threshold : integer := 2;
+            SNA_write_threshold : integer := 1;
+            SNA_read_threshold : integer := 2;
+            node_address_size : integer := 4
+        );
+        
+        Port (
+            clk : in std_logic;
+            rst : in std_logic;
+            
+            -- > MNA_0
+                -- AXI WRITE ADDRESS CHANNEL           
+                MNA_0_AWADDR : in std_logic_vector(31 downto 0);
+                MNA_0_AWPROT : in std_logic_vector(2 downto 0);
+                MNA_0_AWVALID : in std_logic;
+                MNA_0_AWREADY : out std_logic;
+                
+                -- AXI WRITE DATA CHANNEL
+                MNA_0_WDATA : in std_logic_vector(31 downto 0);
+                MNA_0_WSTRB : in std_logic_vector(3 downto 0);
+                MNA_0_WVALID : in std_logic;
+                MNA_0_WREADY : out std_logic;
+                
+                -- AXI READ ADDRESS CHANNEL
+                MNA_0_ARADDR : in std_logic_vector(31 downto 0);
+                MNA_0_ARPROT : in std_logic_vector(2 downto 0);
+                MNA_0_ARVALID : in std_logic;
+                MNA_0_ARREADY : out std_logic;
+                
+                -- AXI WRITE RESPONSE CHANNEL   
+                MNA_0_BRESP : out std_logic_vector(1 downto 0);
+                MNA_0_BVALID : out std_logic;
+                MNA_0_BREADY : in std_logic;
+                
+                -- AXI READ RESPONSE CHANNEL
+                MNA_0_RDATA : out std_logic_vector(31 downto 0);
+                MNA_0_RRESP : out std_logic_vector(1 downto 0);
+                MNA_0_RVALID : out std_logic;
+                MNA_0_RREADY : in std_logic;
+            -- < MNA_0
+            
+            -- > MNA_1
+                -- AXI WRITE ADDRESS CHANNEL           
+                MNA_1_AWADDR : in std_logic_vector(31 downto 0);
+                MNA_1_AWPROT : in std_logic_vector(2 downto 0);
+                MNA_1_AWVALID : in std_logic;
+                MNA_1_AWREADY : out std_logic;
+                
+                -- AXI WRITE DATA CHANNEL
+                MNA_1_WDATA : in std_logic_vector(31 downto 0);
+                MNA_1_WSTRB : in std_logic_vector(3 downto 0);
+                MNA_1_WVALID : in std_logic;
+                MNA_1_WREADY : out std_logic;
+                
+                -- AXI READ ADDRESS CHANNEL
+                MNA_1_ARADDR : in std_logic_vector(31 downto 0);
+                MNA_1_ARPROT : in std_logic_vector(2 downto 0);
+                MNA_1_ARVALID : in std_logic;
+                MNA_1_ARREADY : out std_logic;
+                
+                -- AXI WRITE RESPONSE CHANNEL   
+                MNA_1_BRESP : out std_logic_vector(1 downto 0);
+                MNA_1_BVALID : out std_logic;
+                MNA_1_BREADY : in std_logic;
+                
+                -- AXI READ RESPONSE CHANNEL
+                MNA_1_RDATA : out std_logic_vector(31 downto 0);
+                MNA_1_RRESP : out std_logic_vector(1 downto 0);
+                MNA_1_RVALID : out std_logic;
+                MNA_1_RREADY : in std_logic;
+            -- < MNA_1
+            
+            -- > SNA_0
+                -- AXI WRITE ADDRESS CHANNEL 
+                SNA_0_AWADDR : out std_logic_vector(31 downto 0);
+                SNA_0_AWPROT : out std_logic_vector(2 downto 0);
+                SNA_0_AWVALID : out std_logic;
+                SNA_0_AWREADY : in std_logic;
+                
+                -- AXI WRITE DATA CHANNEL
+                SNA_0_WDATA : out std_logic_vector(31 downto 0);
+                SNA_0_WSTRB : out std_logic_vector(3 downto 0);
+                SNA_0_WVALID : out std_logic;
+                SNA_0_WREADY : in std_logic;
+                
+                -- AXI READ ADDRESS CHANNEL
+                SNA_0_ARADDR : out std_logic_vector(31 downto 0);
+                SNA_0_ARPROT : out std_logic_vector(2 downto 0);
+                SNA_0_ARVALID : out std_logic;
+                SNA_0_ARREADY : in std_logic;
+                
+                -- AXI WRITE RESPONSE CHANNEL
+                SNA_0_BRESP : in std_logic_vector(1 downto 0);
+                SNA_0_BVALID : in std_logic;
+                SNA_0_BREADY : out std_logic;
+                
+                -- AXI READ RESPONSE CHANNEL
+                SNA_0_RDATA : in std_logic_vector(31 downto 0);
+                SNA_0_RRESP : in std_logic_vector(1 downto 0);
+                SNA_0_RVALID : in std_logic;
+                SNA_0_RREADY : out std_logic;
+            -- < SNA_0
+            
+            -- > SNA_1
+                -- AXI WRITE ADDRESS CHANNEL 
+                SNA_1_AWADDR : out std_logic_vector(31 downto 0);
+                SNA_1_AWPROT : out std_logic_vector(2 downto 0);
+                SNA_1_AWVALID : out std_logic;
+                SNA_1_AWREADY : in std_logic;
+                
+                -- AXI WRITE DATA CHANNEL
+                SNA_1_WDATA : out std_logic_vector(31 downto 0);
+                SNA_1_WSTRB : out std_logic_vector(3 downto 0);
+                SNA_1_WVALID : out std_logic;
+                SNA_1_WREADY : in std_logic;
+                
+                -- AXI READ ADDRESS CHANNEL
+                SNA_1_ARADDR : out std_logic_vector(31 downto 0);
+                SNA_1_ARPROT : out std_logic_vector(2 downto 0);
+                SNA_1_ARVALID : out std_logic;
+                SNA_1_ARREADY : in std_logic;
+                
+                -- AXI WRITE RESPONSE CHANNEL
+                SNA_1_BRESP : in std_logic_vector(1 downto 0);
+                SNA_1_BVALID : in std_logic;
+                SNA_1_BREADY : out std_logic;
+                
+                -- AXI READ RESPONSE CHANNEL
+                SNA_1_RDATA : in std_logic_vector(31 downto 0);
+                SNA_1_RRESP : in std_logic_vector(1 downto 0);
+                SNA_1_RVALID : in std_logic;
+                SNA_1_RREADY : out std_logic
+            -- < SNA_1
+        );    
+    end component;
+    
 end package component_declarations;
