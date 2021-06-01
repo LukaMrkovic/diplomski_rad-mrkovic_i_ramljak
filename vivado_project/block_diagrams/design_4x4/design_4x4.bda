@@ -21,9 +21,22 @@
   <key attr.name="vert_type" attr.type="string" for="node" id="VT"/>
   <graph edgedefault="undirected" id="G" parse.edgeids="canonical" parse.nodeids="canonical" parse.order="nodesfirst">
     <node id="n0">
-      <data key="TU">active</data>
-      <data key="VH">2</data>
-      <data key="VT">PM</data>
+      <data key="BA">0xC0000000</data>
+      <data key="BP">C_S_AXI_BASEADDR</data>
+      <data key="HA">0xC0001FFF</data>
+      <data key="HP">C_S_AXI_HIGHADDR</data>
+      <data key="MA">SNA_0</data>
+      <data key="MX">/demo_4x4_0</data>
+      <data key="MI">SNA_0</data>
+      <data key="MS">SEG_axi_bram_ctrl_0_Mem0</data>
+      <data key="MV">xilinx.com:module_ref:demo_4x4:1.0</data>
+      <data key="TM">both</data>
+      <data key="SX">/axi_bram_ctrl_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Mem0</data>
+      <data key="SV">xilinx.com:ip:axi_bram_ctrl:4.1</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
     </node>
     <node id="n1">
       <data key="VH">2</data>
@@ -34,9 +47,38 @@
       <data key="VM">design_4x4</data>
       <data key="VT">BC</data>
     </node>
+    <node id="n3">
+      <data key="TU">active</data>
+      <data key="VH">2</data>
+      <data key="VT">PM</data>
+    </node>
+    <node id="n4">
+      <data key="BA">0xC0000000</data>
+      <data key="BP">C_S_AXI_BASEADDR</data>
+      <data key="HA">0xC0001FFF</data>
+      <data key="HP">C_S_AXI_HIGHADDR</data>
+      <data key="MA">SNA_1</data>
+      <data key="MX">/demo_4x4_0</data>
+      <data key="MI">SNA_1</data>
+      <data key="MS">SEG_axi_bram_ctrl_1_Mem0</data>
+      <data key="MV">xilinx.com:module_ref:demo_4x4:1.0</data>
+      <data key="TM">both</data>
+      <data key="SX">/axi_bram_ctrl_1</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Mem0</data>
+      <data key="SV">xilinx.com:ip:axi_bram_ctrl:4.1</data>
+      <data key="TU">memory</data>
+      <data key="VT">AC</data>
+    </node>
     <edge id="e0" source="n2" target="n1">
     </edge>
-    <edge id="e1" source="n1" target="n0">
+    <edge id="e1" source="n1" target="n3">
+    </edge>
+    <edge id="e2" source="n4" target="n3">
+      <data key="EH">2</data>
+    </edge>
+    <edge id="e3" source="n0" target="n3">
+      <data key="EH">2</data>
     </edge>
   </graph>
 </graphml>
