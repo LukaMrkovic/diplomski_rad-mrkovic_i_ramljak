@@ -1,12 +1,13 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x0",
+      "boundary_crc": "0xEDAC9A23886AAAD1",
       "device": "xc7z045ffg900-2",
       "name": "design_4x4",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2020.2"
+      "tool_version": "2020.2",
+      "validated": "true"
     },
     "design_tree": {
       "demo_4x4_0": "",
@@ -20,11 +21,47 @@
     "ports": {
       "clk_0": {
         "type": "clk",
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "ASSOCIATED_RESET": {
+            "value": "rst_0",
+            "value_src": "default"
+          },
+          "CLK_DOMAIN": {
+            "value": "design_4x4_clk_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
       },
       "rst_0": {
         "type": "rst",
-        "direction": "I"
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
       }
     },
     "components": {
@@ -134,6 +171,18 @@
               "MAX_BURST_LENGTH": {
                 "value": "1",
                 "value_src": "auto"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_4x4_clk_0",
+                "value_src": "default_prop"
+              },
+              "RUSER_BITS_PER_BYTE": {
+                "value": "0",
+                "value_src": "user_prop"
+              },
+              "WUSER_BITS_PER_BYTE": {
+                "value": "0",
+                "value_src": "user_prop"
               }
             },
             "port_maps": {
@@ -328,6 +377,18 @@
               "MAX_BURST_LENGTH": {
                 "value": "1",
                 "value_src": "auto"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_4x4_clk_0",
+                "value_src": "default_prop"
+              },
+              "RUSER_BITS_PER_BYTE": {
+                "value": "0",
+                "value_src": "user_prop"
+              },
+              "WUSER_BITS_PER_BYTE": {
+                "value": "0",
+                "value_src": "user_prop"
               }
             },
             "port_maps": {
@@ -528,6 +589,10 @@
               "MAX_BURST_LENGTH": {
                 "value": "1",
                 "value_src": "auto"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_4x4_clk_0",
+                "value_src": "default_prop"
               }
             },
             "port_maps": {
@@ -728,6 +793,10 @@
               "MAX_BURST_LENGTH": {
                 "value": "1",
                 "value_src": "auto"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_4x4_clk_0",
+                "value_src": "default_prop"
               }
             },
             "port_maps": {
@@ -840,6 +909,10 @@
               "ASSOCIATED_RESET": {
                 "value": "rst",
                 "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "design_4x4_clk_0",
+                "value_src": "default_prop"
               }
             }
           },
@@ -887,6 +960,12 @@
         "xci_path": "ip\\design_4x4_axi_vip_0_0\\design_4x4_axi_vip_0_0.xci",
         "inst_hier_path": "axi_vip_0",
         "parameters": {
+          "ADDR_WIDTH": {
+            "value": "32"
+          },
+          "DATA_WIDTH": {
+            "value": "32"
+          },
           "HAS_BRESP": {
             "value": "1"
           },
@@ -899,17 +978,33 @@
           "HAS_WSTRB": {
             "value": "1"
           },
+          "INTERFACE_MODE": {
+            "value": "MASTER"
+          },
           "PROTOCOL": {
             "value": "AXI4LITE"
+          },
+          "READ_WRITE_MODE": {
+            "value": "READ_WRITE"
+          }
+        },
+        "addressing": {
+          "address_spaces": {
+            "Master_AXI": {
+              "range": "4G",
+              "width": "32"
+            }
           }
         },
         "interface_ports": {
-          "S_AXI": {
-            "mode": "Slave",
-            "memory_map_ref": "S_AXI",
-            "bridges": [
-              "M_AXI"
-            ]
+          "M_AXI": {
+            "mode": "Master",
+            "address_space_ref": "Master_AXI",
+            "base_address": {
+              "minimum": "0x00000000",
+              "maximum": "0xFFFFFFFF",
+              "width": "32"
+            }
           }
         }
       },
@@ -918,13 +1013,52 @@
         "xci_name": "design_4x4_axi_vip_1_0",
         "xci_path": "ip\\design_4x4_axi_vip_1_0\\design_4x4_axi_vip_1_0.xci",
         "inst_hier_path": "axi_vip_1",
+        "parameters": {
+          "ADDR_WIDTH": {
+            "value": "32"
+          },
+          "DATA_WIDTH": {
+            "value": "32"
+          },
+          "HAS_BRESP": {
+            "value": "1"
+          },
+          "HAS_PROT": {
+            "value": "1"
+          },
+          "HAS_RRESP": {
+            "value": "1"
+          },
+          "HAS_WSTRB": {
+            "value": "1"
+          },
+          "INTERFACE_MODE": {
+            "value": "MASTER"
+          },
+          "PROTOCOL": {
+            "value": "AXI4LITE"
+          },
+          "READ_WRITE_MODE": {
+            "value": "READ_WRITE"
+          }
+        },
+        "addressing": {
+          "address_spaces": {
+            "Master_AXI": {
+              "range": "4G",
+              "width": "32"
+            }
+          }
+        },
         "interface_ports": {
-          "S_AXI": {
-            "mode": "Slave",
-            "memory_map_ref": "S_AXI",
-            "bridges": [
-              "M_AXI"
-            ]
+          "M_AXI": {
+            "mode": "Master",
+            "address_space_ref": "Master_AXI",
+            "base_address": {
+              "minimum": "0x00000000",
+              "maximum": "0xFFFFFFFF",
+              "width": "32"
+            }
           }
         }
       },
@@ -1004,12 +1138,6 @@
       }
     },
     "interface_nets": {
-      "demo_4x4_0_SNA_1": {
-        "interface_ports": [
-          "demo_4x4_0/SNA_1",
-          "axi_bram_ctrl_1/S_AXI"
-        ]
-      },
       "axi_vip_0_M_AXI": {
         "interface_ports": [
           "axi_vip_0/M_AXI",
@@ -1032,6 +1160,12 @@
         "interface_ports": [
           "axi_bram_ctrl_1/BRAM_PORTA",
           "blk_mem_gen_1/BRAM_PORTA"
+        ]
+      },
+      "demo_4x4_0_SNA_1": {
+        "interface_ports": [
+          "demo_4x4_0/SNA_1",
+          "axi_bram_ctrl_1/S_AXI"
         ]
       },
       "axi_bram_ctrl_1_BRAM_PORTB": {
@@ -1082,7 +1216,7 @@
             "segments": {
               "SEG_axi_bram_ctrl_0_Mem0": {
                 "address_block": "/axi_bram_ctrl_0/S_AXI/Mem0",
-                "offset": "0xC0000000",
+                "offset": "0x70000000",
                 "range": "8K"
               }
             }
@@ -1093,6 +1227,32 @@
                 "address_block": "/axi_bram_ctrl_1/S_AXI/Mem0",
                 "offset": "0xC0000000",
                 "range": "8K"
+              }
+            }
+          }
+        }
+      },
+      "/axi_vip_0": {
+        "address_spaces": {
+          "Master_AXI": {
+            "segments": {
+              "SEG_demo_4x4_0_reg0": {
+                "address_block": "/demo_4x4_0/MNA_0/reg0",
+                "offset": "0x00000000",
+                "range": "4G"
+              }
+            }
+          }
+        }
+      },
+      "/axi_vip_1": {
+        "address_spaces": {
+          "Master_AXI": {
+            "segments": {
+              "SEG_demo_4x4_0_reg0": {
+                "address_block": "/demo_4x4_0/MNA_1/reg0",
+                "offset": "0x00000000",
+                "range": "4G"
               }
             }
           }
