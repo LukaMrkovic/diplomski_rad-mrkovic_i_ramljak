@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
---Date        : Tue Jun  1 16:17:39 2021
+--Date        : Tue Jun  1 16:59:00 2021
 --Host        : DESKTOP-SDVR1UU running 64-bit major release  (build 9200)
 --Command     : generate_target design_4x4.bd
 --Design      : design_4x4
@@ -156,12 +156,16 @@ architecture STRUCTURE of design_4x4 is
     clka : in STD_LOGIC;
     rsta : in STD_LOGIC;
     ena : in STD_LOGIC;
+    wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
     addra : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 31 downto 0 );
     douta : out STD_LOGIC_VECTOR ( 31 downto 0 );
     clkb : in STD_LOGIC;
     rstb : in STD_LOGIC;
     enb : in STD_LOGIC;
+    web : in STD_LOGIC_VECTOR ( 3 downto 0 );
     addrb : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dinb : in STD_LOGIC_VECTOR ( 31 downto 0 );
     doutb : out STD_LOGIC_VECTOR ( 31 downto 0 );
     rsta_busy : out STD_LOGIC;
     rstb_busy : out STD_LOGIC
@@ -172,12 +176,16 @@ architecture STRUCTURE of design_4x4 is
     clka : in STD_LOGIC;
     rsta : in STD_LOGIC;
     ena : in STD_LOGIC;
+    wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
     addra : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dina : in STD_LOGIC_VECTOR ( 31 downto 0 );
     douta : out STD_LOGIC_VECTOR ( 31 downto 0 );
     clkb : in STD_LOGIC;
     rstb : in STD_LOGIC;
     enb : in STD_LOGIC;
+    web : in STD_LOGIC_VECTOR ( 3 downto 0 );
     addrb : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    dinb : in STD_LOGIC_VECTOR ( 31 downto 0 );
     doutb : out STD_LOGIC_VECTOR ( 31 downto 0 );
     rsta_busy : out STD_LOGIC;
     rstb_busy : out STD_LOGIC
@@ -267,24 +275,32 @@ architecture STRUCTURE of design_4x4 is
   end component design_4x4_demo_4x4_0_0;
   signal axi_bram_ctrl_0_BRAM_PORTA_ADDR : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal axi_bram_ctrl_0_BRAM_PORTA_CLK : STD_LOGIC;
+  signal axi_bram_ctrl_0_BRAM_PORTA_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_bram_ctrl_0_BRAM_PORTA_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_bram_ctrl_0_BRAM_PORTA_EN : STD_LOGIC;
   signal axi_bram_ctrl_0_BRAM_PORTA_RST : STD_LOGIC;
+  signal axi_bram_ctrl_0_BRAM_PORTA_WE : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axi_bram_ctrl_0_BRAM_PORTB_ADDR : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal axi_bram_ctrl_0_BRAM_PORTB_CLK : STD_LOGIC;
+  signal axi_bram_ctrl_0_BRAM_PORTB_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_bram_ctrl_0_BRAM_PORTB_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_bram_ctrl_0_BRAM_PORTB_EN : STD_LOGIC;
   signal axi_bram_ctrl_0_BRAM_PORTB_RST : STD_LOGIC;
+  signal axi_bram_ctrl_0_BRAM_PORTB_WE : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axi_bram_ctrl_1_BRAM_PORTA_ADDR : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal axi_bram_ctrl_1_BRAM_PORTA_CLK : STD_LOGIC;
+  signal axi_bram_ctrl_1_BRAM_PORTA_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_bram_ctrl_1_BRAM_PORTA_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_bram_ctrl_1_BRAM_PORTA_EN : STD_LOGIC;
   signal axi_bram_ctrl_1_BRAM_PORTA_RST : STD_LOGIC;
+  signal axi_bram_ctrl_1_BRAM_PORTA_WE : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axi_bram_ctrl_1_BRAM_PORTB_ADDR : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal axi_bram_ctrl_1_BRAM_PORTB_CLK : STD_LOGIC;
+  signal axi_bram_ctrl_1_BRAM_PORTB_DIN : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_bram_ctrl_1_BRAM_PORTB_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_bram_ctrl_1_BRAM_PORTB_EN : STD_LOGIC;
   signal axi_bram_ctrl_1_BRAM_PORTB_RST : STD_LOGIC;
+  signal axi_bram_ctrl_1_BRAM_PORTB_WE : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axi_vip_0_M_AXI_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal axi_vip_0_M_AXI_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal axi_vip_0_M_AXI_ARREADY : STD_LOGIC;
@@ -363,14 +379,6 @@ architecture STRUCTURE of design_4x4 is
   signal demo_4x4_0_SNA_1_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal demo_4x4_0_SNA_1_WVALID : STD_LOGIC;
   signal rst_0_1 : STD_LOGIC;
-  signal NLW_axi_bram_ctrl_0_bram_we_a_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_axi_bram_ctrl_0_bram_we_b_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_axi_bram_ctrl_0_bram_wrdata_a_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_axi_bram_ctrl_0_bram_wrdata_b_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_axi_bram_ctrl_1_bram_we_a_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_axi_bram_ctrl_1_bram_we_b_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal NLW_axi_bram_ctrl_1_bram_wrdata_a_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
-  signal NLW_axi_bram_ctrl_1_bram_wrdata_b_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_blk_mem_gen_0_rsta_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_blk_mem_gen_0_rstb_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_blk_mem_gen_1_rsta_busy_UNCONNECTED : STD_LOGIC;
@@ -396,10 +404,10 @@ axi_bram_ctrl_0: component design_4x4_axi_bram_ctrl_0_0
       bram_rddata_b(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTB_DOUT(31 downto 0),
       bram_rst_a => axi_bram_ctrl_0_BRAM_PORTA_RST,
       bram_rst_b => axi_bram_ctrl_0_BRAM_PORTB_RST,
-      bram_we_a(3 downto 0) => NLW_axi_bram_ctrl_0_bram_we_a_UNCONNECTED(3 downto 0),
-      bram_we_b(3 downto 0) => NLW_axi_bram_ctrl_0_bram_we_b_UNCONNECTED(3 downto 0),
-      bram_wrdata_a(31 downto 0) => NLW_axi_bram_ctrl_0_bram_wrdata_a_UNCONNECTED(31 downto 0),
-      bram_wrdata_b(31 downto 0) => NLW_axi_bram_ctrl_0_bram_wrdata_b_UNCONNECTED(31 downto 0),
+      bram_we_a(3 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_WE(3 downto 0),
+      bram_we_b(3 downto 0) => axi_bram_ctrl_0_BRAM_PORTB_WE(3 downto 0),
+      bram_wrdata_a(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_DIN(31 downto 0),
+      bram_wrdata_b(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTB_DIN(31 downto 0),
       s_axi_aclk => clk_0_1,
       s_axi_araddr(12 downto 0) => demo_4x4_0_SNA_0_ARADDR(12 downto 0),
       s_axi_aresetn => rst_0_1,
@@ -434,10 +442,10 @@ axi_bram_ctrl_1: component design_4x4_axi_bram_ctrl_1_0
       bram_rddata_b(31 downto 0) => axi_bram_ctrl_1_BRAM_PORTB_DOUT(31 downto 0),
       bram_rst_a => axi_bram_ctrl_1_BRAM_PORTA_RST,
       bram_rst_b => axi_bram_ctrl_1_BRAM_PORTB_RST,
-      bram_we_a(3 downto 0) => NLW_axi_bram_ctrl_1_bram_we_a_UNCONNECTED(3 downto 0),
-      bram_we_b(3 downto 0) => NLW_axi_bram_ctrl_1_bram_we_b_UNCONNECTED(3 downto 0),
-      bram_wrdata_a(31 downto 0) => NLW_axi_bram_ctrl_1_bram_wrdata_a_UNCONNECTED(31 downto 0),
-      bram_wrdata_b(31 downto 0) => NLW_axi_bram_ctrl_1_bram_wrdata_b_UNCONNECTED(31 downto 0),
+      bram_we_a(3 downto 0) => axi_bram_ctrl_1_BRAM_PORTA_WE(3 downto 0),
+      bram_we_b(3 downto 0) => axi_bram_ctrl_1_BRAM_PORTB_WE(3 downto 0),
+      bram_wrdata_a(31 downto 0) => axi_bram_ctrl_1_BRAM_PORTA_DIN(31 downto 0),
+      bram_wrdata_b(31 downto 0) => axi_bram_ctrl_1_BRAM_PORTB_DIN(31 downto 0),
       s_axi_aclk => clk_0_1,
       s_axi_araddr(12 downto 0) => demo_4x4_0_SNA_1_ARADDR(12 downto 0),
       s_axi_aresetn => rst_0_1,
@@ -516,6 +524,8 @@ blk_mem_gen_0: component design_4x4_blk_mem_gen_0_0
       addrb(12 downto 0) => axi_bram_ctrl_0_BRAM_PORTB_ADDR(12 downto 0),
       clka => axi_bram_ctrl_0_BRAM_PORTA_CLK,
       clkb => axi_bram_ctrl_0_BRAM_PORTB_CLK,
+      dina(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_DIN(31 downto 0),
+      dinb(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTB_DIN(31 downto 0),
       douta(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_DOUT(31 downto 0),
       doutb(31 downto 0) => axi_bram_ctrl_0_BRAM_PORTB_DOUT(31 downto 0),
       ena => axi_bram_ctrl_0_BRAM_PORTA_EN,
@@ -523,7 +533,9 @@ blk_mem_gen_0: component design_4x4_blk_mem_gen_0_0
       rsta => axi_bram_ctrl_0_BRAM_PORTA_RST,
       rsta_busy => NLW_blk_mem_gen_0_rsta_busy_UNCONNECTED,
       rstb => axi_bram_ctrl_0_BRAM_PORTB_RST,
-      rstb_busy => NLW_blk_mem_gen_0_rstb_busy_UNCONNECTED
+      rstb_busy => NLW_blk_mem_gen_0_rstb_busy_UNCONNECTED,
+      wea(3 downto 0) => axi_bram_ctrl_0_BRAM_PORTA_WE(3 downto 0),
+      web(3 downto 0) => axi_bram_ctrl_0_BRAM_PORTB_WE(3 downto 0)
     );
 blk_mem_gen_1: component design_4x4_blk_mem_gen_1_0
      port map (
@@ -533,6 +545,8 @@ blk_mem_gen_1: component design_4x4_blk_mem_gen_1_0
       addrb(12 downto 0) => axi_bram_ctrl_1_BRAM_PORTB_ADDR(12 downto 0),
       clka => axi_bram_ctrl_1_BRAM_PORTA_CLK,
       clkb => axi_bram_ctrl_1_BRAM_PORTB_CLK,
+      dina(31 downto 0) => axi_bram_ctrl_1_BRAM_PORTA_DIN(31 downto 0),
+      dinb(31 downto 0) => axi_bram_ctrl_1_BRAM_PORTB_DIN(31 downto 0),
       douta(31 downto 0) => axi_bram_ctrl_1_BRAM_PORTA_DOUT(31 downto 0),
       doutb(31 downto 0) => axi_bram_ctrl_1_BRAM_PORTB_DOUT(31 downto 0),
       ena => axi_bram_ctrl_1_BRAM_PORTA_EN,
@@ -540,7 +554,9 @@ blk_mem_gen_1: component design_4x4_blk_mem_gen_1_0
       rsta => axi_bram_ctrl_1_BRAM_PORTA_RST,
       rsta_busy => NLW_blk_mem_gen_1_rsta_busy_UNCONNECTED,
       rstb => axi_bram_ctrl_1_BRAM_PORTB_RST,
-      rstb_busy => NLW_blk_mem_gen_1_rstb_busy_UNCONNECTED
+      rstb_busy => NLW_blk_mem_gen_1_rstb_busy_UNCONNECTED,
+      wea(3 downto 0) => axi_bram_ctrl_1_BRAM_PORTA_WE(3 downto 0),
+      web(3 downto 0) => axi_bram_ctrl_1_BRAM_PORTB_WE(3 downto 0)
     );
 demo_4x4_0: component design_4x4_demo_4x4_0_0
      port map (

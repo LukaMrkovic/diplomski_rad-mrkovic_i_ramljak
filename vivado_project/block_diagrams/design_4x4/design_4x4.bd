@@ -205,16 +205,19 @@
             "value": "Use_ENB_Pin"
           },
           "Memory_Type": {
-            "value": "Dual_Port_ROM"
+            "value": "True_Dual_Port_RAM"
           },
           "Port_A_Write_Rate": {
-            "value": "0"
+            "value": "50"
           },
           "Port_B_Clock": {
             "value": "100"
           },
           "Port_B_Enable_Rate": {
             "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
           },
           "Use_RSTB_Pin": {
             "value": "true"
@@ -231,16 +234,19 @@
             "value": "Use_ENB_Pin"
           },
           "Memory_Type": {
-            "value": "Dual_Port_ROM"
+            "value": "True_Dual_Port_RAM"
           },
           "Port_A_Write_Rate": {
-            "value": "0"
+            "value": "50"
           },
           "Port_B_Clock": {
             "value": "100"
           },
           "Port_B_Enable_Rate": {
             "value": "100"
+          },
+          "Port_B_Write_Rate": {
+            "value": "50"
           },
           "Use_RSTB_Pin": {
             "value": "true"
@@ -1138,10 +1144,10 @@
       }
     },
     "interface_nets": {
-      "axi_bram_ctrl_0_BRAM_PORTA": {
+      "demo_4x4_0_SNA_0": {
         "interface_ports": [
-          "axi_bram_ctrl_0/BRAM_PORTA",
-          "blk_mem_gen_0/BRAM_PORTA"
+          "demo_4x4_0/SNA_0",
+          "axi_bram_ctrl_0/S_AXI"
         ]
       },
       "axi_bram_ctrl_1_BRAM_PORTA": {
@@ -1150,28 +1156,22 @@
           "blk_mem_gen_1/BRAM_PORTA"
         ]
       },
-      "axi_vip_1_M_AXI": {
+      "axi_bram_ctrl_0_BRAM_PORTB": {
         "interface_ports": [
-          "axi_vip_1/M_AXI",
-          "demo_4x4_0/MNA_1"
+          "axi_bram_ctrl_0/BRAM_PORTB",
+          "blk_mem_gen_0/BRAM_PORTB"
         ]
       },
-      "demo_4x4_0_SNA_0": {
+      "axi_bram_ctrl_0_BRAM_PORTA": {
         "interface_ports": [
-          "demo_4x4_0/SNA_0",
-          "axi_bram_ctrl_0/S_AXI"
+          "axi_bram_ctrl_0/BRAM_PORTA",
+          "blk_mem_gen_0/BRAM_PORTA"
         ]
       },
       "demo_4x4_0_SNA_1": {
         "interface_ports": [
           "demo_4x4_0/SNA_1",
           "axi_bram_ctrl_1/S_AXI"
-        ]
-      },
-      "axi_bram_ctrl_0_BRAM_PORTB": {
-        "interface_ports": [
-          "axi_bram_ctrl_0/BRAM_PORTB",
-          "blk_mem_gen_0/BRAM_PORTB"
         ]
       },
       "axi_vip_0_M_AXI": {
@@ -1184,6 +1184,12 @@
         "interface_ports": [
           "axi_bram_ctrl_1/BRAM_PORTB",
           "blk_mem_gen_1/BRAM_PORTB"
+        ]
+      },
+      "axi_vip_1_M_AXI": {
+        "interface_ports": [
+          "axi_vip_1/M_AXI",
+          "demo_4x4_0/MNA_1"
         ]
       }
     },

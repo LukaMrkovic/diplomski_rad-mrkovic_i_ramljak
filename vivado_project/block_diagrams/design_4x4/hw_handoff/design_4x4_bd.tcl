@@ -240,11 +240,12 @@ proc create_root_design { parentCell } {
   set blk_mem_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 blk_mem_gen_0 ]
   set_property -dict [ list \
    CONFIG.Enable_B {Use_ENB_Pin} \
-   CONFIG.Memory_Type {Dual_Port_ROM} \
-   CONFIG.Port_A_Write_Rate {0} \
+   CONFIG.Memory_Type {True_Dual_Port_RAM} \
+   CONFIG.Port_A_Write_Rate {50} \
    CONFIG.Port_B_Clock {100} \
    CONFIG.Port_B_Enable_Rate {100} \
-   CONFIG.Use_Byte_Write_Enable {false} \
+   CONFIG.Port_B_Write_Rate {50} \
+   CONFIG.Use_Byte_Write_Enable {true} \
    CONFIG.Use_RSTB_Pin {true} \
  ] $blk_mem_gen_0
 
@@ -252,11 +253,12 @@ proc create_root_design { parentCell } {
   set blk_mem_gen_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 blk_mem_gen_1 ]
   set_property -dict [ list \
    CONFIG.Enable_B {Use_ENB_Pin} \
-   CONFIG.Memory_Type {Dual_Port_ROM} \
-   CONFIG.Port_A_Write_Rate {0} \
+   CONFIG.Memory_Type {True_Dual_Port_RAM} \
+   CONFIG.Port_A_Write_Rate {50} \
    CONFIG.Port_B_Clock {100} \
    CONFIG.Port_B_Enable_Rate {100} \
-   CONFIG.Use_Byte_Write_Enable {false} \
+   CONFIG.Port_B_Write_Rate {50} \
+   CONFIG.Use_Byte_Write_Enable {true} \
    CONFIG.Use_RSTB_Pin {true} \
  ] $blk_mem_gen_1
 
