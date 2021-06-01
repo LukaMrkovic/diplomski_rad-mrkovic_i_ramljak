@@ -1,0 +1,1345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="design_4x4_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="axi_bram_ctrl_funcs" />
+            <top_module name="axi_network_adapter_config" />
+            <top_module name="axi_vip_pkg" />
+            <top_module name="component_declarations" />
+            <top_module name="design_4x4_tb" />
+            <top_module name="glbl" />
+            <top_module name="router_config" />
+            <top_module name="router_functions" />
+            <top_module name="std" />
+            <top_module name="vcomponents" />
+            <top_module name="xil_common_vip_pkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="8029996fs"></ZoomStartTime>
+      <ZoomEndTime time="8030012fs"></ZoomEndTime>
+      <Cursor1Time time="8029996fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="254"></NameColumnWidth>
+      <ValueColumnWidth column_width="76"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="33" />
+   <wvobject type="divider" fp_name="divider49">
+      <obj_property name="label">Kontrolni signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#A0A0A4</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_4x4_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/design_4x4_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider51">
+      <obj_property name="label">MNA_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group73" type="group">
+      <obj_property name="label">MNA_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE ADDRESS CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_AWADDR" type="array">
+         <obj_property name="ElementShortName">MNA_0_AWADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_AWADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_AWPROT" type="array">
+         <obj_property name="ElementShortName">MNA_0_AWPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_AWPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_AWVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_0_AWVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_AWVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_AWREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_0_AWREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_AWREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE DATA CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_WDATA" type="array">
+         <obj_property name="ElementShortName">MNA_0_WDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_WDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_WSTRB" type="array">
+         <obj_property name="ElementShortName">MNA_0_WSTRB[3:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_WSTRB[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_WVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_0_WVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_WVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_WREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_0_WREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_WREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">READ ADDRESS CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_ARADDR" type="array">
+         <obj_property name="ElementShortName">MNA_0_ARADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_ARADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_ARPROT" type="array">
+         <obj_property name="ElementShortName">MNA_0_ARPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_ARPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_ARVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_0_ARVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_ARVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_ARREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_0_ARREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_ARREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE RESPONSE CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_BRESP" type="array">
+         <obj_property name="ElementShortName">MNA_0_BRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_BRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_BVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_0_BVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_BVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_BREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_0_BREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_BREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">READ RESPONSE CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_RREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_0_RREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_RREADY</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_RDATA" type="array">
+         <obj_property name="ElementShortName">MNA_0_RDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_RDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_RRESP" type="array">
+         <obj_property name="ElementShortName">MNA_0_RRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_RRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_0_RVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_0_RVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_0_RVALID</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider51">
+      <obj_property name="label">MNA_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group86" type="group">
+      <obj_property name="label">MNA_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE ADDRESS CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_AWADDR" type="array">
+         <obj_property name="ElementShortName">MNA_1_AWADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_AWADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_AWPROT" type="array">
+         <obj_property name="ElementShortName">MNA_1_AWPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_AWPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_AWVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_1_AWVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_AWVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_AWREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_1_AWREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_AWREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE DATA CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_WDATA" type="array">
+         <obj_property name="ElementShortName">MNA_1_WDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_WDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_WSTRB" type="array">
+         <obj_property name="ElementShortName">MNA_1_WSTRB[3:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_WSTRB[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_WVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_1_WVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_WVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_WREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_1_WREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_WREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">READ ADDRESS CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_ARADDR" type="array">
+         <obj_property name="ElementShortName">MNA_1_ARADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_ARADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_ARPROT" type="array">
+         <obj_property name="ElementShortName">MNA_1_ARPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_ARPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_ARVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_1_ARVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_ARVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_ARREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_1_ARREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_ARREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE RESPONSE CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_BRESP" type="array">
+         <obj_property name="ElementShortName">MNA_1_BRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_BRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_BVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_1_BVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_BVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_BREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_1_BREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_BREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">READ RESPONSE CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_RDATA" type="array">
+         <obj_property name="ElementShortName">MNA_1_RDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_RDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_RRESP" type="array">
+         <obj_property name="ElementShortName">MNA_1_RRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_RRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_RVALID" type="logic">
+         <obj_property name="ElementShortName">MNA_1_RVALID</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_RVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/MNA_1_RREADY" type="logic">
+         <obj_property name="ElementShortName">MNA_1_RREADY</obj_property>
+         <obj_property name="ObjectShortName">MNA_1_RREADY</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider51">
+      <obj_property name="label">SNA_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group118" type="group">
+      <obj_property name="label">SNA_0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE ADDRESS CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_AWADDR" type="array">
+         <obj_property name="ElementShortName">SNA_0_AWADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_AWADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_AWPROT" type="array">
+         <obj_property name="ElementShortName">SNA_0_AWPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_AWPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_AWVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_0_AWVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_AWVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_AWREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_0_AWREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_AWREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE DATA CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_WDATA" type="array">
+         <obj_property name="ElementShortName">SNA_0_WDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_WDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_WSTRB" type="array">
+         <obj_property name="ElementShortName">SNA_0_WSTRB[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_WSTRB[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_WVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_0_WVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_WVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_WREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_0_WREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_WREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">READ ADDRESS CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_ARADDR" type="array">
+         <obj_property name="ElementShortName">SNA_0_ARADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_ARADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_ARPROT" type="array">
+         <obj_property name="ElementShortName">SNA_0_ARPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_ARPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_ARVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_0_ARVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_ARVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_ARREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_0_ARREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_ARREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE RESPONSE CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_BRESP" type="array">
+         <obj_property name="ElementShortName">SNA_0_BRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_BRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_BVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_0_BVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_BVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_BREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_0_BREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_BREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">READ RESPONSE CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_RDATA" type="array">
+         <obj_property name="ElementShortName">SNA_0_RDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_RDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_RRESP" type="array">
+         <obj_property name="ElementShortName">SNA_0_RRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_RRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_RVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_0_RVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_RVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_0_RREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_0_RREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_0_RREADY</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider51">
+      <obj_property name="label">SNA_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group150" type="group">
+      <obj_property name="label">SNA_1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE ADDRESS CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_AWADDR" type="array">
+         <obj_property name="ElementShortName">SNA_1_AWADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_AWADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_AWPROT" type="array">
+         <obj_property name="ElementShortName">SNA_1_AWPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_AWPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_AWVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_1_AWVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_AWVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_AWREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_1_AWREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_AWREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE DATA CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_WDATA" type="array">
+         <obj_property name="ElementShortName">SNA_1_WDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_WDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_WSTRB" type="array">
+         <obj_property name="ElementShortName">SNA_1_WSTRB[3:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_WSTRB[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_WVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_1_WVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_WVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_WREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_1_WREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_WREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">READ ADDRESS CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_ARADDR" type="array">
+         <obj_property name="ElementShortName">SNA_1_ARADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_ARADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_ARPROT" type="array">
+         <obj_property name="ElementShortName">SNA_1_ARPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_ARPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_ARVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_1_ARVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_ARVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_ARREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_1_ARREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_ARREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">WRITE RESPONSE CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_BRESP" type="array">
+         <obj_property name="ElementShortName">SNA_1_BRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_BRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_BVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_1_BVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_BVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_BREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_1_BREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_BREADY</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider51">
+         <obj_property name="label">READ RESPONSE CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_RDATA" type="array">
+         <obj_property name="ElementShortName">SNA_1_RDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_RDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_RRESP" type="array">
+         <obj_property name="ElementShortName">SNA_1_RRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_RRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_RVALID" type="logic">
+         <obj_property name="ElementShortName">SNA_1_RVALID</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_RVALID</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/SNA_1_RREADY" type="logic">
+         <obj_property name="ElementShortName">SNA_1_RREADY</obj_property>
+         <obj_property name="ObjectShortName">SNA_1_RREADY</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider181">
+      <obj_property name="label">ROUTER A</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group189" type="group">
+      <obj_property name="label">ROUTER A</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider181">
+         <obj_property name="label">LOCAL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_in_local" type="array">
+         <obj_property name="ElementShortName">data_in_local[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_local[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_in_valid_local" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_local</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_local</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_in_vc_busy_local" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_in_vc_credits_local" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_out_local" type="array">
+         <obj_property name="ElementShortName">data_out_local[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_local[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_out_valid_local" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_local</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_local</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_out_vc_busy_local" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_out_vc_credits_local" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider181">
+         <obj_property name="label">EAST</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_in_east" type="array">
+         <obj_property name="ElementShortName">data_in_east[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_east[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_in_valid_east" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_east</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_east</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_in_vc_busy_east" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_east[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_in_vc_credits_east" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_east[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_out_east" type="array">
+         <obj_property name="ElementShortName">data_out_east[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_east[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_out_valid_east" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_east</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_east</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_out_vc_busy_east" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_east[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_A/data_out_vc_credits_east" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_east[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider374">
+      <obj_property name="label">ROUTER B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group751" type="group">
+      <obj_property name="label">ROUTER B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider374">
+         <obj_property name="label">EAST</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_in_east" type="array">
+         <obj_property name="ElementShortName">data_in_east[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_east[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_in_valid_east" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_east</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_east</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_in_vc_busy_east" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_east[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_in_vc_credits_east" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_east[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_out_east" type="array">
+         <obj_property name="ElementShortName">data_out_east[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_east[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_out_valid_east" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_east</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_east</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_out_vc_busy_east" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_east[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_out_vc_credits_east" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_east[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider374">
+         <obj_property name="label">WEST</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_in_west" type="array">
+         <obj_property name="ElementShortName">data_in_west[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_west[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_in_valid_west" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_west</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_west</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_in_vc_busy_west" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_in_vc_credits_west" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_out_west" type="array">
+         <obj_property name="ElementShortName">data_out_west[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_west[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_out_valid_west" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_west</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_west</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_out_vc_busy_west" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_B/data_out_vc_credits_west" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_west[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider374">
+      <obj_property name="label">ROUTER C</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group777" type="group">
+      <obj_property name="label">ROUTER C</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider374">
+         <obj_property name="label">EAST</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_in_east" type="array">
+         <obj_property name="ElementShortName">data_in_east[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_east[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_in_valid_east" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_east</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_east</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_in_vc_busy_east" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_east[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_in_vc_credits_east" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_east[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_out_east" type="array">
+         <obj_property name="ElementShortName">data_out_east[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_east[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_out_valid_east" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_east</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_east</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_out_vc_busy_east" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_east[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_out_vc_credits_east" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_east[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_east[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider374">
+         <obj_property name="label">WEST</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_in_west" type="array">
+         <obj_property name="ElementShortName">data_in_west[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_west[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_in_valid_west" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_west</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_west</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_in_vc_busy_west" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_in_vc_credits_west" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_out_west" type="array">
+         <obj_property name="ElementShortName">data_out_west[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_west[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_out_valid_west" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_west</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_west</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_out_vc_busy_west" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_C/data_out_vc_credits_west" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_west[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider374">
+      <obj_property name="label">ROUTER D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group800" type="group">
+      <obj_property name="label">ROUTER D</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider374">
+         <obj_property name="label">SOUTH</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_in_south" type="array">
+         <obj_property name="ElementShortName">data_in_south[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_south[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_in_valid_south" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_south</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_south</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_in_vc_busy_south" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_south[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_south[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_in_vc_credits_south" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_south[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_south[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_out_south" type="array">
+         <obj_property name="ElementShortName">data_out_south[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_south[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_out_valid_south" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_south</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_south</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_out_vc_busy_south" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_south[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_south[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_out_vc_credits_south" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_south[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_south[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider374">
+         <obj_property name="label">WEST</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_in_west" type="array">
+         <obj_property name="ElementShortName">data_in_west[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_west[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_in_valid_west" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_west</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_west</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_in_vc_busy_west" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_in_vc_credits_west" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_out_west" type="array">
+         <obj_property name="ElementShortName">data_out_west[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_west[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_out_valid_west" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_west</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_west</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_out_vc_busy_west" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_D/data_out_vc_credits_west" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_west[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider181">
+      <obj_property name="label">ROUTER H</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group365" type="group">
+      <obj_property name="label">ROUTER H</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider181">
+         <obj_property name="label">LOCAL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_local" type="array">
+         <obj_property name="ElementShortName">data_in_local[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_local[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_valid_local" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_local</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_local</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_vc_busy_local" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_vc_credits_local" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_local" type="array">
+         <obj_property name="ElementShortName">data_out_local[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_local[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_valid_local" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_local</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_local</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_vc_busy_local" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_vc_credits_local" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider181">
+         <obj_property name="label">NORTH</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_north" type="array">
+         <obj_property name="ElementShortName">data_in_north[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_north[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_valid_north" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_north</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_north</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_vc_busy_north" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_north[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_north[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_vc_credits_north" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_north[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_north[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_north" type="array">
+         <obj_property name="ElementShortName">data_out_north[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_north[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_valid_north" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_north</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_north</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_vc_busy_north" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_north[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_north[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_vc_credits_north" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_north[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_north[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider181">
+         <obj_property name="label">SOUTH</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_south" type="array">
+         <obj_property name="ElementShortName">data_in_south[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_south[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_valid_south" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_south</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_south</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_vc_busy_south" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_south[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_south[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_vc_credits_south" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_south[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_south[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_south" type="array">
+         <obj_property name="ElementShortName">data_out_south[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_south[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_valid_south" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_south</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_south</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_vc_busy_south" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_south[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_south[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_vc_credits_south" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_south[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_south[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider181">
+         <obj_property name="label">WEST</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_west" type="array">
+         <obj_property name="ElementShortName">data_in_west[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_west[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_valid_west" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_west</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_west</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_vc_busy_west" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_in_vc_credits_west" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_west" type="array">
+         <obj_property name="ElementShortName">data_out_west[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_west[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_valid_west" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_west</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_west</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_vc_busy_west" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_west[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_H/data_out_vc_credits_west" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_west[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_west[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider374">
+      <obj_property name="label">ROUTER M</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group375" type="group">
+      <obj_property name="label">ROUTER M</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_M/data_in_local" type="array">
+         <obj_property name="ElementShortName">data_in_local[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_local[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_M/data_in_valid_local" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_local</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_local</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_M/data_in_vc_busy_local" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_M/data_in_vc_credits_local" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_M/data_out_local" type="array">
+         <obj_property name="ElementShortName">data_out_local[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_local[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_M/data_out_valid_local" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_local</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_local</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_M/data_out_vc_busy_local" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_M/data_out_vc_credits_local" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_local[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider374">
+      <obj_property name="label">ROUTER P</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group386" type="group">
+      <obj_property name="label">ROUTER P</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_P/data_in_local" type="array">
+         <obj_property name="ElementShortName">data_in_local[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_local[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_P/data_in_valid_local" type="logic">
+         <obj_property name="ElementShortName">data_in_valid_local</obj_property>
+         <obj_property name="ObjectShortName">data_in_valid_local</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_P/data_in_vc_busy_local" type="array">
+         <obj_property name="ElementShortName">data_in_vc_busy_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_busy_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_P/data_in_vc_credits_local" type="array">
+         <obj_property name="ElementShortName">data_in_vc_credits_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_vc_credits_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_P/data_out_local" type="array">
+         <obj_property name="ElementShortName">data_out_local[43:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_local[43:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_P/data_out_valid_local" type="logic">
+         <obj_property name="ElementShortName">data_out_valid_local</obj_property>
+         <obj_property name="ObjectShortName">data_out_valid_local</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_P/data_out_vc_busy_local" type="array">
+         <obj_property name="ElementShortName">data_out_vc_busy_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_busy_local[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/demo_4x4_0/U0/noc_mesh/router_P/data_out_vc_credits_local" type="array">
+         <obj_property name="ElementShortName">data_out_vc_credits_local[1:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_vc_credits_local[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider50">
+      <obj_property name="label">Simulacijski signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group180" type="group">
+      <obj_property name="label">Simulacijski signali</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/design_4x4_tb/addr_0_1" type="array">
+         <obj_property name="ElementShortName">addr_0_1[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_0_1[63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/addr_0_2" type="array">
+         <obj_property name="ElementShortName">addr_0_2[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_0_2[63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/addr_0_3" type="array">
+         <obj_property name="ElementShortName">addr_0_3[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_0_3[63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/addr_1_1" type="array">
+         <obj_property name="ElementShortName">addr_1_1[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_1_1[63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/addr_1_2" type="array">
+         <obj_property name="ElementShortName">addr_1_2[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_1_2[63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/addr_1_3" type="array">
+         <obj_property name="ElementShortName">addr_1_3[63:0]</obj_property>
+         <obj_property name="ObjectShortName">addr_1_3[63:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/prot_0" type="array">
+         <obj_property name="ElementShortName">prot_0[2:0]</obj_property>
+         <obj_property name="ObjectShortName">prot_0[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/prot_1" type="array">
+         <obj_property name="ElementShortName">prot_1[2:0]</obj_property>
+         <obj_property name="ObjectShortName">prot_1[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_0_wr1" type="array">
+         <obj_property name="ElementShortName">data_0_wr1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_wr1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_0_wr2" type="array">
+         <obj_property name="ElementShortName">data_0_wr2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_wr2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_0_wr3" type="array">
+         <obj_property name="ElementShortName">data_0_wr3[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_wr3[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_1_wr1" type="array">
+         <obj_property name="ElementShortName">data_1_wr1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_wr1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_1_wr2" type="array">
+         <obj_property name="ElementShortName">data_1_wr2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_wr2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_1_wr3" type="array">
+         <obj_property name="ElementShortName">data_1_wr3[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_wr3[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_0_rd1" type="array">
+         <obj_property name="ElementShortName">data_0_rd1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_rd1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_0_rd2" type="array">
+         <obj_property name="ElementShortName">data_0_rd2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_rd2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_0_rd3" type="array">
+         <obj_property name="ElementShortName">data_0_rd3[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_0_rd3[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_1_rd1" type="array">
+         <obj_property name="ElementShortName">data_1_rd1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_rd1[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_1_rd2" type="array">
+         <obj_property name="ElementShortName">data_1_rd2[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_rd2[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/data_1_rd3" type="array">
+         <obj_property name="ElementShortName">data_1_rd3[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_1_rd3[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/resp_0" type="array">
+         <obj_property name="ElementShortName">resp_0[1:0]</obj_property>
+         <obj_property name="ObjectShortName">resp_0[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/resp_1" type="array">
+         <obj_property name="ElementShortName">resp_1[1:0]</obj_property>
+         <obj_property name="ObjectShortName">resp_1[1:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider50">
+      <obj_property name="label">AXI BRAM CTRL 0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group2300" type="group">
+      <obj_property name="label">AXI BRAM CTRL 0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider50">
+         <obj_property name="label">WRITE ADDRESS CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_awaddr" type="array">
+         <obj_property name="ElementShortName">s_axi_awaddr[12:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awaddr[12:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_awprot" type="array">
+         <obj_property name="ElementShortName">s_axi_awprot[2:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awprot[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_awvalid" type="logic">
+         <obj_property name="ElementShortName">s_axi_awvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awvalid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_awready" type="logic">
+         <obj_property name="ElementShortName">s_axi_awready</obj_property>
+         <obj_property name="ObjectShortName">s_axi_awready</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider50">
+         <obj_property name="label">WRITE DATA CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_wdata" type="array">
+         <obj_property name="ElementShortName">s_axi_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_wstrb" type="array">
+         <obj_property name="ElementShortName">s_axi_wstrb[3:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wstrb[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_wvalid" type="logic">
+         <obj_property name="ElementShortName">s_axi_wvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wvalid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_wready" type="logic">
+         <obj_property name="ElementShortName">s_axi_wready</obj_property>
+         <obj_property name="ObjectShortName">s_axi_wready</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider50">
+         <obj_property name="label">WRITE RESPONSE CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_bresp" type="array">
+         <obj_property name="ElementShortName">s_axi_bresp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_bresp[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_bvalid" type="logic">
+         <obj_property name="ElementShortName">s_axi_bvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axi_bvalid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_bready" type="logic">
+         <obj_property name="ElementShortName">s_axi_bready</obj_property>
+         <obj_property name="ObjectShortName">s_axi_bready</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider50">
+         <obj_property name="label">READ ADDRESS CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_araddr" type="array">
+         <obj_property name="ElementShortName">s_axi_araddr[12:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_araddr[12:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_arprot" type="array">
+         <obj_property name="ElementShortName">s_axi_arprot[2:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_arprot[2:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_arvalid" type="logic">
+         <obj_property name="ElementShortName">s_axi_arvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axi_arvalid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_arready" type="logic">
+         <obj_property name="ElementShortName">s_axi_arready</obj_property>
+         <obj_property name="ObjectShortName">s_axi_arready</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider50">
+         <obj_property name="label">READ RESPONSE CHANNEL</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_rdata" type="array">
+         <obj_property name="ElementShortName">s_axi_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_rresp" type="array">
+         <obj_property name="ElementShortName">s_axi_rresp[1:0]</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rresp[1:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_rvalid" type="logic">
+         <obj_property name="ElementShortName">s_axi_rvalid</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rvalid</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/s_axi_rready" type="logic">
+         <obj_property name="ElementShortName">s_axi_rready</obj_property>
+         <obj_property name="ObjectShortName">s_axi_rready</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider50">
+         <obj_property name="label">BRAM PORT A</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/bram_en_a" type="logic">
+         <obj_property name="ElementShortName">bram_en_a</obj_property>
+         <obj_property name="ObjectShortName">bram_en_a</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/bram_we_a" type="array">
+         <obj_property name="ElementShortName">bram_we_a[3:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_we_a[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/bram_addr_a" type="array">
+         <obj_property name="ElementShortName">bram_addr_a[12:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_addr_a[12:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/bram_wrdata_a" type="array">
+         <obj_property name="ElementShortName">bram_wrdata_a[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_wrdata_a[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/bram_rddata_a" type="array">
+         <obj_property name="ElementShortName">bram_rddata_a[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_rddata_a[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider50">
+         <obj_property name="label">BRAM PORT B</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/bram_en_b" type="logic">
+         <obj_property name="ElementShortName">bram_en_b</obj_property>
+         <obj_property name="ObjectShortName">bram_en_b</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/bram_we_b" type="array">
+         <obj_property name="ElementShortName">bram_we_b[3:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_we_b[3:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/bram_addr_b" type="array">
+         <obj_property name="ElementShortName">bram_addr_b[12:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_addr_b[12:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/bram_wrdata_b" type="array">
+         <obj_property name="ElementShortName">bram_wrdata_b[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_wrdata_b[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/axi_bram_ctrl_0/bram_rddata_b" type="array">
+         <obj_property name="ElementShortName">bram_rddata_b[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bram_rddata_b[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider50">
+      <obj_property name="label">AXI BRAM 0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group1662" type="group">
+      <obj_property name="label">AXI BRAM 0</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider50">
+         <obj_property name="label">PORT A</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_0/ena" type="logic">
+         <obj_property name="ElementShortName">ena</obj_property>
+         <obj_property name="ObjectShortName">ena</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_0/addra" type="array">
+         <obj_property name="ElementShortName">addra[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addra[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_0/douta" type="array">
+         <obj_property name="ElementShortName">douta[31:0]</obj_property>
+         <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider50">
+         <obj_property name="label">PORT B</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_0/enb" type="logic">
+         <obj_property name="ElementShortName">enb</obj_property>
+         <obj_property name="ObjectShortName">enb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_0/addrb" type="array">
+         <obj_property name="ElementShortName">addrb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_0/doutb" type="array">
+         <obj_property name="ElementShortName">doutb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider50">
+      <obj_property name="label">AXI BRAM 1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+   </wvobject>
+   <wvobject fp_name="group1677" type="group">
+      <obj_property name="label">AXI BRAM 1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject type="divider" fp_name="divider50">
+         <obj_property name="label">PORT A</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_1/ena" type="logic">
+         <obj_property name="ElementShortName">ena</obj_property>
+         <obj_property name="ObjectShortName">ena</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_1/addra" type="array">
+         <obj_property name="ElementShortName">addra[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addra[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_1/douta" type="array">
+         <obj_property name="ElementShortName">douta[31:0]</obj_property>
+         <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="divider" fp_name="divider50">
+         <obj_property name="label">PORT B</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_1/enb" type="logic">
+         <obj_property name="ElementShortName">enb</obj_property>
+         <obj_property name="ObjectShortName">enb</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_1/addrb" type="array">
+         <obj_property name="ElementShortName">addrb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">addrb[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/design_4x4_tb/DUT/design_4x4_i/blk_mem_gen_1/doutb" type="array">
+         <obj_property name="ElementShortName">doutb[31:0]</obj_property>
+         <obj_property name="ObjectShortName">doutb[31:0]</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

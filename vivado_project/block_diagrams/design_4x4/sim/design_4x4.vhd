@@ -1,7 +1,7 @@
 --Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
---Date        : Tue Jun  1 14:08:26 2021
+--Date        : Tue Jun  1 16:17:40 2021
 --Host        : DESKTOP-SDVR1UU running 64-bit major release  (build 9200)
 --Command     : generate_target design_4x4.bd
 --Design      : design_4x4
@@ -23,88 +23,6 @@ entity design_4x4 is
 end design_4x4;
 
 architecture STRUCTURE of design_4x4 is
-  component design_4x4_demo_4x4_0_0 is
-  port (
-    clk : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    MNA_0_AWADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    MNA_0_AWPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    MNA_0_AWVALID : in STD_LOGIC;
-    MNA_0_AWREADY : out STD_LOGIC;
-    MNA_0_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    MNA_0_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    MNA_0_WVALID : in STD_LOGIC;
-    MNA_0_WREADY : out STD_LOGIC;
-    MNA_0_ARADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    MNA_0_ARPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    MNA_0_ARVALID : in STD_LOGIC;
-    MNA_0_ARREADY : out STD_LOGIC;
-    MNA_0_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    MNA_0_BVALID : out STD_LOGIC;
-    MNA_0_BREADY : in STD_LOGIC;
-    MNA_0_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    MNA_0_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    MNA_0_RVALID : out STD_LOGIC;
-    MNA_0_RREADY : in STD_LOGIC;
-    MNA_1_AWADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    MNA_1_AWPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    MNA_1_AWVALID : in STD_LOGIC;
-    MNA_1_AWREADY : out STD_LOGIC;
-    MNA_1_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    MNA_1_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    MNA_1_WVALID : in STD_LOGIC;
-    MNA_1_WREADY : out STD_LOGIC;
-    MNA_1_ARADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    MNA_1_ARPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
-    MNA_1_ARVALID : in STD_LOGIC;
-    MNA_1_ARREADY : out STD_LOGIC;
-    MNA_1_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    MNA_1_BVALID : out STD_LOGIC;
-    MNA_1_BREADY : in STD_LOGIC;
-    MNA_1_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    MNA_1_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    MNA_1_RVALID : out STD_LOGIC;
-    MNA_1_RREADY : in STD_LOGIC;
-    SNA_0_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    SNA_0_AWPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    SNA_0_AWVALID : out STD_LOGIC;
-    SNA_0_AWREADY : in STD_LOGIC;
-    SNA_0_WDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    SNA_0_WSTRB : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    SNA_0_WVALID : out STD_LOGIC;
-    SNA_0_WREADY : in STD_LOGIC;
-    SNA_0_ARADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    SNA_0_ARPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    SNA_0_ARVALID : out STD_LOGIC;
-    SNA_0_ARREADY : in STD_LOGIC;
-    SNA_0_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    SNA_0_BVALID : in STD_LOGIC;
-    SNA_0_BREADY : out STD_LOGIC;
-    SNA_0_RDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    SNA_0_RRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    SNA_0_RVALID : in STD_LOGIC;
-    SNA_0_RREADY : out STD_LOGIC;
-    SNA_1_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    SNA_1_AWPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    SNA_1_AWVALID : out STD_LOGIC;
-    SNA_1_AWREADY : in STD_LOGIC;
-    SNA_1_WDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    SNA_1_WSTRB : out STD_LOGIC_VECTOR ( 3 downto 0 );
-    SNA_1_WVALID : out STD_LOGIC;
-    SNA_1_WREADY : in STD_LOGIC;
-    SNA_1_ARADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    SNA_1_ARPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
-    SNA_1_ARVALID : out STD_LOGIC;
-    SNA_1_ARREADY : in STD_LOGIC;
-    SNA_1_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    SNA_1_BVALID : in STD_LOGIC;
-    SNA_1_BREADY : out STD_LOGIC;
-    SNA_1_RDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    SNA_1_RRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    SNA_1_RVALID : in STD_LOGIC;
-    SNA_1_RREADY : out STD_LOGIC
-  );
-  end component design_4x4_demo_4x4_0_0;
   component design_4x4_axi_vip_0_0 is
   port (
     aclk : in STD_LOGIC;
@@ -265,6 +183,88 @@ architecture STRUCTURE of design_4x4 is
     rstb_busy : out STD_LOGIC
   );
   end component design_4x4_blk_mem_gen_1_0;
+  component design_4x4_demo_4x4_0_0 is
+  port (
+    clk : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    MNA_0_AWADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    MNA_0_AWPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    MNA_0_AWVALID : in STD_LOGIC;
+    MNA_0_AWREADY : out STD_LOGIC;
+    MNA_0_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    MNA_0_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    MNA_0_WVALID : in STD_LOGIC;
+    MNA_0_WREADY : out STD_LOGIC;
+    MNA_0_ARADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    MNA_0_ARPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    MNA_0_ARVALID : in STD_LOGIC;
+    MNA_0_ARREADY : out STD_LOGIC;
+    MNA_0_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    MNA_0_BVALID : out STD_LOGIC;
+    MNA_0_BREADY : in STD_LOGIC;
+    MNA_0_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    MNA_0_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    MNA_0_RVALID : out STD_LOGIC;
+    MNA_0_RREADY : in STD_LOGIC;
+    MNA_1_AWADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    MNA_1_AWPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    MNA_1_AWVALID : in STD_LOGIC;
+    MNA_1_AWREADY : out STD_LOGIC;
+    MNA_1_WDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    MNA_1_WSTRB : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    MNA_1_WVALID : in STD_LOGIC;
+    MNA_1_WREADY : out STD_LOGIC;
+    MNA_1_ARADDR : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    MNA_1_ARPROT : in STD_LOGIC_VECTOR ( 2 downto 0 );
+    MNA_1_ARVALID : in STD_LOGIC;
+    MNA_1_ARREADY : out STD_LOGIC;
+    MNA_1_BRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    MNA_1_BVALID : out STD_LOGIC;
+    MNA_1_BREADY : in STD_LOGIC;
+    MNA_1_RDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    MNA_1_RRESP : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    MNA_1_RVALID : out STD_LOGIC;
+    MNA_1_RREADY : in STD_LOGIC;
+    SNA_0_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    SNA_0_AWPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    SNA_0_AWVALID : out STD_LOGIC;
+    SNA_0_AWREADY : in STD_LOGIC;
+    SNA_0_WDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    SNA_0_WSTRB : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    SNA_0_WVALID : out STD_LOGIC;
+    SNA_0_WREADY : in STD_LOGIC;
+    SNA_0_ARADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    SNA_0_ARPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    SNA_0_ARVALID : out STD_LOGIC;
+    SNA_0_ARREADY : in STD_LOGIC;
+    SNA_0_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    SNA_0_BVALID : in STD_LOGIC;
+    SNA_0_BREADY : out STD_LOGIC;
+    SNA_0_RDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    SNA_0_RRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    SNA_0_RVALID : in STD_LOGIC;
+    SNA_0_RREADY : out STD_LOGIC;
+    SNA_1_AWADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    SNA_1_AWPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    SNA_1_AWVALID : out STD_LOGIC;
+    SNA_1_AWREADY : in STD_LOGIC;
+    SNA_1_WDATA : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    SNA_1_WSTRB : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    SNA_1_WVALID : out STD_LOGIC;
+    SNA_1_WREADY : in STD_LOGIC;
+    SNA_1_ARADDR : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    SNA_1_ARPROT : out STD_LOGIC_VECTOR ( 2 downto 0 );
+    SNA_1_ARVALID : out STD_LOGIC;
+    SNA_1_ARREADY : in STD_LOGIC;
+    SNA_1_BRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    SNA_1_BVALID : in STD_LOGIC;
+    SNA_1_BREADY : out STD_LOGIC;
+    SNA_1_RDATA : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    SNA_1_RRESP : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    SNA_1_RVALID : in STD_LOGIC;
+    SNA_1_RREADY : out STD_LOGIC
+  );
+  end component design_4x4_demo_4x4_0_0;
   signal axi_bram_ctrl_0_BRAM_PORTA_ADDR : STD_LOGIC_VECTOR ( 12 downto 0 );
   signal axi_bram_ctrl_0_BRAM_PORTA_CLK : STD_LOGIC;
   signal axi_bram_ctrl_0_BRAM_PORTA_DOUT : STD_LOGIC_VECTOR ( 31 downto 0 );

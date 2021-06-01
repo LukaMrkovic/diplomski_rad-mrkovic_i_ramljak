@@ -718,15 +718,15 @@ begin
             
             -- ROUTER TO ROUTER INTERFACE
             -- EAST
-            data_in_east => data_C_to_B,
-            data_in_valid_east => data_valid_C_to_B,
-            data_in_vc_busy_east => vc_busy_B_to_C,
-            data_in_vc_credits_east => vc_credits_B_to_C,
+            data_in_east => data_D_to_C,
+            data_in_valid_east => data_valid_D_to_C,
+            data_in_vc_busy_east => vc_busy_C_to_D,
+            data_in_vc_credits_east => vc_credits_C_to_D,
             
-            data_out_east => data_B_to_C,
-            data_out_valid_east => data_valid_B_to_C,
-            data_out_vc_busy_east => vc_busy_C_to_B,
-            data_out_vc_credits_east => vc_credits_C_to_B,
+            data_out_east => data_C_to_D,
+            data_out_valid_east => data_valid_C_to_D,
+            data_out_vc_busy_east => vc_busy_D_to_C,
+            data_out_vc_credits_east => vc_credits_D_to_C,
             
             -- ROUTER TO ROUTER INTERFACE
             -- SOUTH

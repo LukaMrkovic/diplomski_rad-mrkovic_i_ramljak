@@ -214,7 +214,7 @@ architecture Behavioral of demo_4x4 is
     signal vc_busy_SNA_0_to_rH : std_logic_vector(const_vc_num - 1 downto 0);
     signal vc_credits_SNA_0_to_rH : std_logic_vector(const_vc_num - 1 downto 0);
     
-    -- ROUTER M (12) INJECTION (MNA_1)
+    -- ROUTER M (18) INJECTION (MNA_1)
     signal data_MNA_1_to_rM : std_logic_vector(const_flit_size - 1 downto 0);
     signal data_valid_MNA_1_to_rM : std_logic;
     signal vc_busy_rM_to_MNA_1 : std_logic_vector(const_vc_num - 1 downto 0);
